@@ -1,14 +1,14 @@
 - [Python](#python)
     - [1.Base](#1base)
-        - [POP](#pop)
-        - [OOP](#oop)
+        - [1.1.POP](#11pop)
+        - [1.2.OOP](#12oop)
 - [NetCore](#netcore)
 
 # Python
 
 ## 1.Base
 
-### POP
+### 1.1.POP
 
 <a href="https://www.cnblogs.com/dotnetcrazy/p/9102030.html" target="_blank">1.Python3 与 C# 基础语法对比（就当Python和C#基础的普及吧）</a>
 
@@ -18,7 +18,7 @@
 
 <a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html" target="_blank">4.Python3 与 C# 基础语法对比（Function专栏）</a>
 
-### OOP
+### 1.2.OOP
 <a href="./python/base/oop/1.封装.html" target="_blank">1.Python3 与 C# 面向对象之～封装</a>
 
 # NetCore

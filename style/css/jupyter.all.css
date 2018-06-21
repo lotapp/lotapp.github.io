@@ -1,5 +1,5 @@
 html {
-  font-family: sans-serif;
+  font-family: Consolas,"微软雅黑",sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -97,7 +97,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
+  font-family: Consolas,"微软雅黑",monospace, monospace;
   font-size: 1em;
 }
 button,
@@ -247,7 +247,7 @@ th {
   }
 }
 @font-face {
-  font-family: 'Glyphicons Halflings';
+  font-family: Consolas,"微软雅黑",'Glyphicons Halflings';
   src: url('../components/bootstrap/fonts/glyphicons-halflings-regular.eot');
   src: url('../components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../components/bootstrap/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
@@ -255,7 +255,7 @@ th {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: Consolas,"微软雅黑",'Glyphicons Halflings';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -1065,7 +1065,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Consolas,"微软雅黑","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
   color: #000;
@@ -1075,7 +1075,7 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
+  font-family: Consolas,"微软雅黑",inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -1166,7 +1166,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: Consolas,"微软雅黑",inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1514,7 +1514,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
 }
 code {
   padding: 2px 4px;
@@ -5956,7 +5956,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Consolas,"微软雅黑","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6074,7 +6074,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Consolas,"微软雅黑","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6342,7 +6342,7 @@ button.close {
   width: 20px;
   height: 20px;
   line-height: 1;
-  font-family: serif;
+  font-family: Consolas,"微软雅黑",serif;
 }
 .carousel-control .icon-prev:before {
   content: '\2039';
@@ -6732,7 +6732,7 @@ button.close {
 /* FONT PATH
  * -------------------------- */
 @font-face {
-  font-family: 'FontAwesome';
+  font-family: Consolas,"微软雅黑",'FontAwesome';
   src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0');
   src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
   font-weight: normal;
@@ -9536,7 +9536,7 @@ div.cell.selected.jupyter-soft-selected {
   /* This padding is tuned to match the padding on the CodeMirror editor. */
   padding: 0.4em;
   margin: 0px;
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
   text-align: right;
   /* This has to match that of the the CodeMirror class line-height below */
   line-height: 1.21429em;
@@ -10081,7 +10081,7 @@ pre.raw_input_prompt {
   /* nothing needed here. */
 }
 input.raw_input {
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
   font-size: inherit;
   color: inherit;
   width: auto;
@@ -10313,7 +10313,7 @@ div.text_cell {
   }
 }
 div.text_cell_render {
-  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  /*font-family: Consolas,"微软雅黑","Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
   outline: none;
   resize: none;
   width: inherit;
@@ -10354,7 +10354,7 @@ h6:hover .anchor-link {
 .cm-header-5,
 .cm-header-6 {
   font-weight: bold;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Consolas,"微软雅黑","Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .cm-header-1 {
   font-size: 185.7%;
@@ -10454,7 +10454,7 @@ samp {
   white-space: pre-wrap;
 }
 #fonttest {
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
 }
 p {
   margin-bottom: 0;
@@ -10631,7 +10631,7 @@ select[multiple].celltoolbar select {
   padding: 0px;
   margin: 0px;
   overflow: auto;
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
   font-size: 110%;
   color: #000;
   width: auto;
@@ -11249,7 +11249,7 @@ div#pager .ui-resizable-handle::after {
   display: inline-block;
   width: 21ex;
   text-align: right;
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
 }
 .shortcut_descr {
   display: inline-block;
@@ -11448,7 +11448,7 @@ li.pulse.open > a.dropdown-toggle {
   padding: 3px;
   margin: 0px;
   padding-left: 7px;
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
   min-height: 50px;
   -moz-box-shadow: 0px 6px 10px -1px #adadad;
   -webkit-box-shadow: 0px 6px 10px -1px #adadad;
@@ -11561,7 +11561,7 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal {
   width: 100%;
   float: left;
-  font-family: monospace;
+  font-family: Consolas,"微软雅黑",monospace;
   color: white;
   background: black;
   padding: 0.4em;
@@ -11584,3 +11584,108 @@ ul.typeahead-list > li > a {
 .terminal-app #terminado-container {
   margin-top: 20px;
 }
+/* code */
+.highlight .hll { background-color: #ffffcc }
+/* .highlight  {background: #f8f8f8;} */
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* 输出样式 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+.ansi-bold { font-weight: bold; }
