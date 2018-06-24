@@ -19,6 +19,10 @@
 <a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html" target="_blank">4.Python3 与 C# 基础语法对比（Function专栏）</a>
 
 ### 1.2.OOP
-<a href="./python/base/oop/1.封装.html" target="_blank">1.Python3 与 C# 面向对象之～封装</a>
+<a href="./python/base/oop/1.封装.md" target="_blank">1.Python3 与 C# 面向对象之～封装</a>
+<a href="./python/base/oop/2.继承与多态.md" target="_blank">2.Python3 与 C# 面向对象之～继承与多态</a>
+<a href="./python/base/oop/3.异常相关.md" target="_blank">2.Python3 与 C# 面向对象之～异常相关</a>
+
+---
 
 # NetCore
