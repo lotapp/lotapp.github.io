@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>01.helloworld</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>文章汇总：<a href="https://www.cnblogs.com/dotnetcrazy/p/9160514.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9160514.html</a></p>
+<p>多图旧排版：<a href="https://www.cnblogs.com/dunitian/p/9103673.html" target="_blank">https://www.cnblogs.com/dunitian/p/9103673.html</a></p>
+<p>VSCode设置python3的开发环境（linux下默认是python2）<a href="https://www.cnblogs.com/dotnetcrazy/p/9095793.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9095793.html</a></p>
+<p>欢迎提出更简单的语法~（文章中案例有两个福利哦，一个是养生，一个是人工智能[ 密码：fqif]）</p>
+<p>先说下感觉，<code>python</code>的编程有点<code>JavaScript</code>的感觉(比如：'和“有时候不区别)，又感觉像外国版的易语言，整个过程像读书一样，比如一个元素不在列表之中==&gt; <code>for item not in lists</code>。使用它做个大点的项目一定要先规定好编程风格，不然能让人崩溃的。先不深究，后面会继续深究。。。（Python2我就不讲了，官方推荐使用<code>Python3</code>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.&#21629;&#21517;&#35268;&#21017;">1.&#21629;&#21517;&#35268;&#21017;<a class="anchor-link" href="#1.&#21629;&#21517;&#35268;&#21017;">&#182;</a></h2><p>Python官方是推荐使用<code>_</code>来间隔单词，但一般开发人员都是以各自主语言的命名来定义的，这个就各人爱好了，不过团队一定要统一。</p>
+<p><strong>命名规则</strong>：总的原则就是 <strong>见名知意</strong>，一般都是 <strong>驼峰命名法</strong>，纯Python的话推荐用 <strong><code>_</code>连接单词</strong></p>
+<p>扩充：<code>Python</code>的<code>关键词</code>可以自己打印一下：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;False&#39;, &#39;None&#39;, &#39;True&#39;, &#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;, &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, &#39;is&#39;, &#39;lambda&#39;, &#39;nonlocal&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;raise&#39;, &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.1.&#26631;&#35782;&#31526;">1.1.&#26631;&#35782;&#31526;<a class="anchor-link" href="#1.1.&#26631;&#35782;&#31526;">&#182;</a></h3><p>标示符由字母、下划线和数字组成，且数字不能开头（这个基本上都一样）注意：<strong>标识符是区分大小写的</strong></p>
+<h3 id="1.2.Python">1.2.Python<a class="anchor-link" href="#1.2.Python">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python标识符区分大小写的案例</span>
+<span class="n">temp</span><span class="o">=</span><span class="s2">&quot;xxx&quot;</span>
+<span class="n">tEmp</span><span class="o">=</span><span class="s2">&quot;===&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">+</span><span class="n">tEmp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>xxx===
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.3.CSharp">1.3.CSharp<a class="anchor-link" href="#1.3.CSharp">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+//CSharp标识符区分大小写的案例
+var temp = &quot;xxx&quot;;
+var tEmp = &quot;===&quot;;
+Console.WriteLine(temp + tEmp);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>xxx===
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#27880;&#37322;">2.&#27880;&#37322;<a class="anchor-link" href="#2.&#27880;&#37322;">&#182;</a></h2><h3 id="2.1.python">2.1.python<a class="anchor-link" href="#2.1.python">&#182;</a></h3><p>python输出就直接<code>print</code>即可，C是<code>printf</code>（<strong>不要搞混哦</strong>）</p>
+<p><code>#</code><strong>注释一行</strong>，三个单引号或者三个双引号 <strong>注释多行</strong>：<code>'''XXX'''</code>或者<code>"""XXXX"""</code>（一般用<code>#</code>就够了，有点像<code>shell</code>脚本的感觉）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#单行注释 输出</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello World!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;三个单引号多行注释：</span>
+<span class="sd">print(&quot;Hello World!&quot;)</span>
+<span class="sd">print(&quot;Hello World!&quot;)</span>
+<span class="sd">print(&quot;Hello World!&quot;)&#39;&#39;&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;三个单引号多行注释：\nprint(&#34;Hello World!&#34;)\nprint(&#34;Hello World!&#34;)\nprint(&#34;Hello World!&#34;)&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;三个双引号多行注释：</span>
+<span class="sd">print(&quot;Hello World!&quot;)</span>
+<span class="sd">print(&quot;Hello World!&quot;)</span>
+<span class="sd">print(&quot;Hello World!&quot;)&quot;&quot;&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;三个双引号多行注释：\nprint(&#34;Hello World!&#34;)\nprint(&#34;Hello World!&#34;)\nprint(&#34;Hello World!&#34;)&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.CSharp">2.2.CSharp<a class="anchor-link" href="#2.2.CSharp">&#182;</a></h3><p>C、Java、Net都是<code>//</code>注释一行，<code>/**/</code>注释多行</p>
+<div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;小明同学&quot;</span><span class="p">);</span>
+<span class="c1">// Console.WriteLine(&quot;小明同学&quot;); 注释一行</span>
+<span class="cm">/*Console.WriteLine(&quot;小明同学&quot;);</span>
+<span class="cm">Console.WriteLine(&quot;小明同学&quot;); 注释多行*/</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.&#21464;&#37327;">3.&#21464;&#37327;<a class="anchor-link" href="#3.&#21464;&#37327;">&#182;</a></h2><h3 id="3.1.Python">3.1.Python<a class="anchor-link" href="#3.1.Python">&#182;</a></h3><p>python定义变量比较牛逼，<strong>直接写变量名</strong>即可，句子后面 <strong>不用加分号</strong>，eg：<code>name="小明"</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#定义一个变量并输出</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;小明&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>小明
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2.CSharp">3.2.CSharp<a class="anchor-link" href="#3.2.CSharp">&#182;</a></h3><p>可以用<code>var</code>来进行类型推断，eg：<code>var name="小明";</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var test = &quot;123&quot;;//定义一个变量
+Console.WriteLine(test);//输出这个变量
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>123
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.&#36755;&#20837;&#36755;&#20986;">4.&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#4.&#36755;&#20837;&#36755;&#20986;">&#182;</a></h2><h3 id="4.1.Python">4.1.Python<a class="anchor-link" href="#4.1.Python">&#182;</a></h3><p><strong>换行</strong>输出，<strong>不换行</strong>输出：(<strong>\n</strong>使用这个就不说了，它们和C都是一样的)</p>
+<p>python：<code>print("dnt.dkill.net/now",end='')</code> <strong>默认end='\n' （' 和 " 随意）</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dnt.dkill.net/now&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;带你走进中医经络&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dnt.dkill.net/now带你走进中医经络
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dnt.dkill.net/now&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;带你走进中医经络&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dnt.dkill.net/now带你走进中医经络
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果字符串内部既包含<code>'</code>又包含<code>"</code>怎么办？可以用转义字符<code>\</code>来标识</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#如果字符串内部既包含&#39;又包含&quot;怎么办？可以用转义字符\来标识</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I</span><span class="se">\&#39;</span><span class="s2">m </span><span class="se">\&quot;</span><span class="s2">OK</span><span class="se">\&quot;</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I&#39;m &#34;OK&#34;!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>r''</code>表示<code>''</code>内部的字符串默认不转义</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 如果字符串里面有很多字符都需要转义，就需要加很多\，为了简化，Python还允许用r&#39;&#39;表示&#39;&#39;内部的字符串默认不转义</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">\t</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>\\\t\\
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>'''...'''</code>的格式表示多行内容</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许用&#39;&#39;&#39;...&#39;&#39;&#39;的格式表示多行内容</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;我请你吃饭吧～</span>
+<span class="s1">晚上吃啥？</span>
+<span class="s1">去厕所，你说呢？&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>我请你吃饭吧～
+晚上吃啥？
+去厕所，你说呢？
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>扩：Python提供一种以空格分隔的方式：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;Love&quot;</span><span class="p">,</span><span class="s2">&quot;You&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I Love You
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>python输出<code>多个重复字符</code>，不需要自己手打N个<code>*</code>或者<code>for</code>循环输出多个重复字符，eg：<code>print("x"*10)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>xxxxxxxxxx
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>如果你不太确定应该用什么，<code>%s</code>永远起作用，它会 <strong>把任何数据类型转换为字符串</strong></p>
+
+<pre><code>%c    字符
+%s    通过str() 字符串转换来格式化
+%o    八进制整数
+%x    十六进制整数（小写字母）
+%X    十六进制整数（大写字母）
+%e    指数（小写'e'）
+%E    指数（大写“E”）
+%f    浮点实数
+%g    ％f和％e 的简写
+%G    ％f和％E的简写</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>下面来个输入输出的简单的 <strong>案例</strong>吧：打印一张名片，<strong>Name:毒逆天，Gender：男</strong></p>
+<p><code>print("Name:%s,Gender:%s"%(name,gender))</code>【<strong>注意引号后面没有<code>，</code>哦</strong>】</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#定义一个变量name,用户输入将赋值给name</span>
+<span class="n">name</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入用户名:&quot;</span><span class="p">)</span>
+
+<span class="c1">#定义一个变量gender，用户输入将赋值给gender</span>
+<span class="n">gender</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入性别:&quot;</span><span class="p">)</span>
+
+<span class="c1">#多个变量输出</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name:</span><span class="si">%s</span><span class="s2">,Gender:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">gender</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>请输入用户名:毒逆天
+请输入性别:男
+Name:毒逆天,Gender:男
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.CSharp">4.2.CSharp<a class="anchor-link" href="#4.2.CSharp">&#182;</a></h3><p>输出用：<code>Console.Write</code> <code>Console.WriteLine</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+Console.Write(&quot;dnt.dkill.net/now&quot;);
+Console.WriteLine(&quot;带你走进中医经络&quot;);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dnt.dkill.net/now带你走进中医经络
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>C#用<code>@</code>来转义字符，不管你是转义字符还是换行，<strong>通杀</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+Console.WriteLine(@&quot;\\\\\\\&quot;);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>\\\\\\\
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+Console.WriteLine(@&quot;我请你吃饭吧～
+晚上吃啥？
+去厕所，你说呢？&quot;)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>我请你吃饭吧～
+晚上吃啥？
+去厕所，你说呢？
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Csharp输入输出的简单的 <strong>案例</strong>：打印一张名片，<code>Name:毒逆天，Gender：男</code></p>
+<p>C#：<code>Console.WriteLine($"Name:{name}，Gender:{gender}");</code></p>
+<div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;请输入用户名：&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">name</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;请输入性别:&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">gender</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;Name:{name}，Gender:{gender}&quot;</span><span class="p">);</span> <span class="c1">//推荐用法</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Name:{0}，Gender:{1}&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">);</span> <span class="c1">//Old 输出</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.&#31867;&#22411;&#36716;&#25442;">5.&#31867;&#22411;&#36716;&#25442;<a class="anchor-link" href="#5.&#31867;&#22411;&#36716;&#25442;">&#182;</a></h2><h3 id="5.1.Python">5.1.Python<a class="anchor-link" href="#5.1.Python">&#182;</a></h3><p><strong>类型(值)</strong>，eg:<code>int()</code>，<code>long()</code>，<code>float()</code>，<code>str()</code>，<code>list()</code>,<code>set()</code>...等等</p>
+<p>Python没有 <strong>double</strong>类型哦~</p>
+<p><strong>扩</strong>：转换成 <strong>16进制</strong>：<code>hex()</code>、转换为 <strong>8进制</strong>：<code>oct()</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 求和</span>
+<span class="n">num1</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入第一个数字&quot;</span><span class="p">)</span>
+<span class="n">num2</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入第二个数字&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num1+num2=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">num2</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>输入第一个数字1
+输入第二个数字2
+num1+num2=3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.2.Csharp">5.2.Csharp<a class="anchor-link" href="#5.2.Csharp">&#182;</a></h3><p><code>C#</code>：该案例推荐使用 <code>int.TryParse</code>，我这边就用常用的<code>Convert</code>系列了【<strong>支持类型比较多</strong>】</p>
+<p><code>Convert.ToInt64()</code>,<code>Convert.ToDouble()</code>，<code>Convert.ToString()</code>...</p>
+<div class="highlight"><pre><span></span><span class="c1">//类型转换</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;输入第一个数字：&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">num1</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;输入第二个数字:&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">num2</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;num1+num2={Convert.ToInt32(num1) + Convert.ToInt32(num2)}&quot;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.&#31639;&#26415;&#36816;&#31639;&#31526;">6.&#31639;&#26415;&#36816;&#31639;&#31526;<a class="anchor-link" href="#6.&#31639;&#26415;&#36816;&#31639;&#31526;">&#182;</a></h2><h3 id="6.1.Python">6.1.Python<a class="anchor-link" href="#6.1.Python">&#182;</a></h3><p>算术运算符编程语言基本上差不多，Python多了个 <code>//</code> 取商（<code>%</code>是取余）和 幂<code>**</code>，来个案例：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num=9，下面结果是对2的除，取余，取商操作：&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="k">2</span>.0)
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">//</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2^3=</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">2</span>**3)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>num=9，下面结果是对2的除，取余，取商操作：
+4.5
+1.0
+4.0
+2^3=8
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python3现在这样写也行，<code>推荐和其他语言写法一致</code>（<strong>不然你用惯了Python,切换的时候会出事的</strong>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num=9，下面结果是对2的除，取余，取商操作：&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="k">2</span>)
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2^3=</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">2</span>**3)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>num=9，下面结果是对2的除，取余，取商操作：
+4.5
+1
+4
+2^3=8
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>**=</code> <code>//=</code> 这些就不用详说了吧？</p>
+<p>举个例子：<code>c += a</code> 等效于 <code>c = c + a</code></p>
+<p>注意下，<strong>Python中不见得等效</strong>，Python都是<strong>引用</strong>，这个先不说<strong>后面说</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="6.2.Csharp">6.2.Csharp<a class="anchor-link" href="#6.2.Csharp">&#182;</a></h3><p>C#常用数学方法都在<code>Match</code>类中</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var num=9;
+Console.WriteLine(&quot;num=9，下面结果是对2的除，取余，取商操作：&quot;)
+Console.WriteLine(num/2.0);
+Console.WriteLine(num%2.0);
+Console.WriteLine(num/2);
+Console.WriteLine(Math.Pow(2,3));
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>num=9，下面结果是对2的除，取余，取商操作：
+4.5
+1
+4
+8
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.if-else">7.if else<a class="anchor-link" href="#7.if-else">&#182;</a></h2><h3 id="7.1.Python">7.1.Python<a class="anchor-link" href="#7.1.Python">&#182;</a></h3><p>说Python像外国版的<code>易语言</code>，这边就可以看出来一点了，如果再结合Python命名规则就感觉在阅读文章一样</p>
+<p>先说说Python的<code>逻辑运算符</code>：与<code>and</code> 或<code>or</code> 非<code>not</code>，这个倒是跟C、C#、Java等大大不同，和SQL倒是差不多</p>
+<p>关系运算符和其他语言基本上差不多（<code>==</code> <code>!=</code> <code>&lt;&gt;</code> <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code>）</p>
+<p>就一点不一样：不等于也可以用<code>&lt;&gt;</code>，这是兼容SQL的写法吗？</p>
+<p>来个<code>if else</code>基础语法：<strong>括号可加可不加</strong>，但是<strong>记得加<code>：</code></strong>。<strong>不用大括号</strong>，但是if里面的代码<strong>注意缩进</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">age</span><span class="o">=</span><span class="mi">19</span>
+
+<span class="k">if</span> <span class="n">age</span><span class="o">&gt;=</span><span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成年了&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>成年了
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>再来个<strong>嵌套</strong>的：注意哦~ <code>else if</code> 在python里面 <strong>简写</strong>成了：<strong><code>elif</code></strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">age</span><span class="o">=</span><span class="mi">24</span>
+
+<span class="k">if</span> <span class="n">age</span><span class="o">&gt;=</span><span class="mi">23</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span><span class="o">&gt;=</span><span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成年了哇&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;好好学习天天向上&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>结合前面知识，再来个案例：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">input_int</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入（1-7)&quot;</span><span class="p">))</span>
+
+<span class="c1">#if后面的:,tab格式,else if 现在是elif</span>
+<span class="k">if</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期一&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期二&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期三&quot;</span><span class="p">)</span> 
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期四&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期五&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">6</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期六&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">input_int</span><span class="o">==</span><span class="mi">7</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;星期日&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;别闹&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>请输入（1-7)2
+星期二
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.2.Csharp">7.2.Csharp<a class="anchor-link" href="#7.2.Csharp">&#182;</a></h3><p>C# <code>if else</code> <strong>单行代码可以不用写括号</strong></p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="m">24</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="p">&gt;=</span> <span class="m">23</span><span class="p">)</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;</span><span class="p">);</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">age</span> <span class="p">&gt;=</span> <span class="m">18</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">age</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;成年了哇&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;好好学习天天向上&quot;</span><span class="p">);</span>
+</pre></div>
+<p><strong>NetCore现在推荐，如果是单行，建议<code>Code</code>和<code>if else</code>写在一行：</strong></p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="m">24</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="p">&gt;=</span> <span class="m">23</span><span class="p">)</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;</span><span class="p">);</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">age</span> <span class="p">&gt;=</span> <span class="m">18</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">age</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;成年了哇&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;好好学习天天向上&quot;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="8.While">8.While<a class="anchor-link" href="#8.While">&#182;</a></h2><h3 id="8.1.Python">8.1.Python<a class="anchor-link" href="#8.1.Python">&#182;</a></h3><p>python里面没有<code>++</code> 和 <code>--</code>，这点的确用的有点小不方便，<strong>扩展部分有相关说明</strong></p>
+<p><strong>while循环一般通过数值是否满足来确定循环的条件</strong></p>
+<p>来几个个案例（PS：感觉用C了，捂脸^_^）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="k">while</span> <span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">num</span><span class="o">-=</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<span class="c1">#输出一个三角形</span>
+<span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">:</span>
+    <span class="n">j</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="c1">#不换行输出</span>
+        <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="c1">#下一行</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>*
+**
+***
+****
+*****
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1~100求和</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<span class="nb">sum</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">100</span><span class="p">:</span>
+    <span class="nb">sum</span><span class="o">+=</span><span class="n">i</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5050
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.2.Csharp">8.2.Csharp<a class="anchor-link" href="#8.2.Csharp">&#182;</a></h3><p>用法差不多，来个案例</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+int index = 1;
+int sum = 0;
+while (index &lt;= 100)
+{
+    sum += index;
+    index++;
+}
+Console.WriteLine(sum);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5050
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.3.Python&#25193;&#23637;&#65288;++---&#65289;">8.3.Python&#25193;&#23637;&#65288;++ --&#65289;<a class="anchor-link" href="#8.3.Python&#25193;&#23637;&#65288;++---&#65289;">&#182;</a></h3><p>其实Python分为 <strong>可变类型</strong>（<code>list</code>，<code>dict</code>,<code>set</code>等等）和 <strong>不可变类型</strong>（<code>int</code>，<code>str</code>，<code>tuple</code>等等）</p>
+<p>像数字这类的是不可变类型（后面会继续说）所以结果往往和你预期的不一样哦～看个案例：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># python 中，变量是以内容为基准而不是像 c 中以变量名为基准，所以只要你的数字内容是5</span>
+<span class="c1"># 不管你起什么名字，这个变量的 ID 是相同的，同时也就说明了 python 中一个变量可以以多个名称访问</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>93994553510560
+93994553510560
+True
+93994553510592
+93994553510560
+False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>你还可以看看这篇文章：<strong>Python没有 ++/--</strong> <a href="https://blog.csdn.net/somehow1002/article/details/73744626" target="_blank"> 参考文章（点我）</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="9.for">9.for<a class="anchor-link" href="#9.for">&#182;</a></h2><h3 id="9.1.Python">9.1.Python<a class="anchor-link" href="#9.1.Python">&#182;</a></h3><p><code>python</code>的<code>for</code>循环，类似于<code>js</code>里面的<code>for in</code>以及<code>C#</code>里面的<code>foreach</code></p>
+<p>当然了，python的<code>for</code>还有很多诸如<code>列表生成式</code>的便捷功能，基础部分先不说</p>
+<p>看个基础案例：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#while循环一般通过数值是否满足来确定循环的条件</span>
+<span class="c1">#for循环一般是对能保存多个数据的变量，进行遍历</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ#mmd&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="s1">&#39;#&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="c1">#另一种写法：print(&quot;%s&quot;%i,end=&quot;&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> end ...&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ
+ end ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="9.2.Csharp">9.2.Csharp<a class="anchor-link" href="#9.2.Csharp">&#182;</a></h3><p><code>foreach (var i in name)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var url = &quot;https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ#mmd&quot;;
+foreach (var item in url)
+{
+    if (item == &#39;#&#39;)
+        break;
+    Console.Write(item);
+}
+Console.WriteLine(&quot;\n end ...&quot;);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ
+ end ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="9.3.Python&#25193;&#23637;&#65288;for-else&#65289;">9.3.Python&#25193;&#23637;&#65288;for else&#65289;<a class="anchor-link" href="#9.3.Python&#25193;&#23637;&#65288;for-else&#65289;">&#182;</a></h3><p>for的扩展：<code>for else</code>（一般不太用）</p>
+<p><strong>官方参考</strong>：<a href="https://docs.python.org/3/reference/compound_stmts.html#the-for-statement" target="_blank">https://docs.python.org/3/reference/compound_stmts.html#the-for-statement</a></p>
+<p><img src="../../../images/python/2018-06-01/ifelse.png" alt="for-else图片"></p>
+<p>图片出处：<a href="https://www.cnblogs.com/dspace/p/6622799.html" target="_blank">https://www.cnblogs.com/dspace/p/6622799.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20854;&#20182;&#25193;&#23637;">&#20854;&#20182;&#25193;&#23637;<a class="anchor-link" href="#&#20854;&#20182;&#25193;&#23637;">&#182;</a></h2><h3 id="1.Python-&#27809;&#26377;-switch-/-case-&#35821;&#21477;">1.Python &#27809;&#26377; switch / case &#35821;&#21477;<a class="anchor-link" href="#1.Python-&#27809;&#26377;-switch-/-case-&#35821;&#21477;">&#182;</a></h3><p>Python 没有<code>switch / case</code>语句。为了实现它，我们可以使用<code>字典映射</code>：</p>
+<p>官方的解释说：<a href="https://docs.python.org/3.6/faq/design.html#why-isn-t-there-a-switch-or-case-statement-in-python" target="_blank">https://docs.python.org/3.6/faq/design.html#why-isn-t-there-a-switch-or-case-statement-in-python</a></p>
+<p>"用<code>if... elif... elif... else</code>序列很容易来实现<code>switch / case</code>语句,而且可以使用函数字典映射和类的调度方法"</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numbers_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+<span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;zero&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+</pre></div>
+<p>这段代码类似于：</p>
+
+<pre><code>function(argument){
+    switch(argument) {
+        case 0:
+            return "zero";
+        case 1:
+            return "one";
+        case 2:
+            return "two";
+        default:
+            return "nothing";
+    };
+};</code></pre>
+<p><strong>在Python中字典映射也可以包含函数或者 lambda 表达式：</strong></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zero</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
+
+<span class="k">def</span> <span class="nf">one</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
+
+<span class="k">def</span> <span class="nf">numbers_to_functions_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="n">zero</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="n">one</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">()</span>
+</pre></div>
+<p><strong>类的调度方法</strong>:</p>
+<p>如果在一个类中，不确定要使用哪种方法，可以用一个调度方法在运行的时候来确定</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Switcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">numbers_to_methods_to_strings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="n">method_name</span> <span class="o">=</span> <span class="s1">&#39;number_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">method</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">number_0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
+
+    <span class="k">def</span> <span class="nf">number_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
+
+    <span class="k">def</span> <span class="nf">number_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;two&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Python设计相关的为什么，可以参考官方文档</strong>：<a href="https://docs.python.org/3.6/faq/design.html" target="_blank">https://docs.python.org/3.6/faq/design.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.Csharp&#22522;&#30784;&#31508;&#35760;">2.Csharp&#22522;&#30784;&#31508;&#35760;<a class="anchor-link" href="#2.Csharp&#22522;&#30784;&#31508;&#35760;">&#182;</a></h3><p>C#基础（逆天上学那会做的笔记）</p>
+<p><a href="https://images2018.cnblogs.com/blog/658978/201806/658978-20180607154628616-1225096525.jpg" target="_blank">易忘知识点</a></p>
+<p><a href="https://images2018.cnblogs.com/blog/658978/201806/658978-20180607154702861-1611313816.jpg" target="_blank">C#基础汇总</a></p>
+<p><a href="https://images2018.cnblogs.com/blog/658978/201806/658978-20180607155437373-1409607729.png" target="_blank">异常概况系</a></p>
+<p><strong>其实有了Code，笔记也就没啥用了，知识点直接Code验证一下即可</strong></p>
+<p><a href="https://github.com/dunitian/LoTCodeBase/tree/master/NetCode/1.面向过程" target="_blank">CodeBase ~ POP</a></p>
+<p><a href="https://github.com/dunitian/LoTCodeBase/tree/master/NetCode/2.面向对象" target="_blank">CodeBase ~ OOP</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>欢迎纠正+补充～</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
