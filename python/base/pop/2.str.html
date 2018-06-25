@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>2.str</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Code：<a href="https://github.com/lotapp/BaseCode" target="_blank">https://github.com/lotapp/BaseCode</a></p>
+<p>多图旧排版：<a href="https://www.cnblogs.com/dunitian/p/9119986.html" target="_blank">https://www.cnblogs.com/dunitian/p/9119986.html</a></p>
+<p>在线编程：<a href="https://mybinder.org/v2/gh/lotapp/BaseCode/master" target="_blank">https://mybinder.org/v2/gh/lotapp/BaseCode/master</a></p>
+<p>Python设计的目的就是 ==&gt; <strong>让程序员解放出来，不要过于关注代码本身</strong></p>
+<p>步入正题：<strong>欢迎提出更简单或者效率更高的方法</strong></p>
+<p><strong>基础系列</strong>：（这边重点说说<code>Python</code>，上次讲过的东西我就一笔带过了）</p>
+<h2 id="1.&#22522;&#30784;&#22238;&#39038;">1.&#22522;&#30784;&#22238;&#39038;<a class="anchor-link" href="#1.&#22522;&#30784;&#22238;&#39038;">&#182;</a></h2><h3 id="1.1.&#36755;&#20986;+&#31867;&#22411;&#36716;&#25442;">1.1.&#36755;&#20986;+&#31867;&#22411;&#36716;&#25442;<a class="anchor-link" href="#1.1.&#36755;&#20986;+&#31867;&#22411;&#36716;&#25442;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_num1</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入第一个数：&quot;</span><span class="p">)</span>
+<span class="n">user_num2</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入第二个数：&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;两数之和：</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">user_num1</span><span class="p">)</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">user_num2</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>输入第一个数：1
+输入第二个数：2
+两数之和：3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.&#23383;&#31526;&#20018;&#25340;&#25509;+&#25340;&#25509;&#36755;&#20986;&#26041;&#24335;">1.2.&#23383;&#31526;&#20018;&#25340;&#25509;+&#25340;&#25509;&#36755;&#20986;&#26041;&#24335;<a class="anchor-link" href="#1.2.&#23383;&#31526;&#20018;&#25340;&#25509;+&#25340;&#25509;&#36755;&#20986;&#26041;&#24335;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_name</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入昵称：&quot;</span><span class="p">)</span>
+<span class="n">user_pass</span><span class="o">=</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;输入密码：&quot;</span><span class="p">)</span>
+<span class="n">user_url</span><span class="o">=</span><span class="s2">&quot;192.168.1.121&quot;</span>
+
+<span class="c1">#拼接输出方式一：</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ftp://&quot;</span><span class="o">+</span><span class="n">user_name</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="o">+</span><span class="n">user_pass</span><span class="o">+</span><span class="s2">&quot;@&quot;</span><span class="o">+</span><span class="n">user_url</span><span class="p">)</span>
+
+<span class="c1">#拼接输出方式二：</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ftp://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">@</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span><span class="n">user_pass</span><span class="p">,</span><span class="n">user_url</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>输入昵称：tom
+输入密码：1379
+ftp://tom:1379@192.168.1.121
+ftp://tom:1379@192.168.1.121
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#23383;&#31526;&#20018;&#36941;&#21382;&#12289;&#19979;&#26631;&#12289;&#20999;&#29255;">2.&#23383;&#31526;&#20018;&#36941;&#21382;&#12289;&#19979;&#26631;&#12289;&#20999;&#29255;<a class="anchor-link" href="#2.&#23383;&#31526;&#20018;&#36941;&#21382;&#12289;&#19979;&#26631;&#12289;&#20999;&#29255;">&#182;</a></h2><h3 id="2.1.Python">2.1.Python<a class="anchor-link" href="#2.1.Python">&#182;</a></h3><p>重点说下<code>python</code>的 <strong>下标</strong>，有点意思，最后一个元素，我们一般都是<code>len(str)-1</code>，他可以直接用<code>-1</code>，倒2自然就是<code>-2</code>了</p>
+<p><strong>最后一个元素：<code>user_str[-1]</code></strong></p>
+<p>user_str[-1]</p>
+<p>user_str[len(user_str)-1] #其他编程语言写法</p>
+<p><strong>倒数第二个元素：<code>user_str[-2]</code></strong></p>
+<p>user_str[-1]</p>
+<p>user_str[len(user_str)-2] #其他编程语言写法</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_str</span><span class="o">=</span><span class="s2">&quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#遍历</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">user_str</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="c1"># 不换行，以“ ”方式拼接</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>七 大 姑 曰 ： 工 作 了 吗 ？ 八 大 姨 问 ： 买 房 了 吗 ？ 异 性 说 ： 结 婚 了 吗 ？ </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#长度：len(user_str)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">user_str</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>29
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># #第一个元素：user_str[0]</span>
+<span class="n">user_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;七&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 最后一个元素：user_str[-1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_str</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">user_str</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="c1">#其他编程语言写法</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>？
+？
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#倒数第二个元素：user_str[-2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_str</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user_str</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">user_str</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="c1">#其他编程语言写法</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>吗
+吗
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>python切片语法</strong>：<code>[start_index:end_index:step]</code> （<strong>end_index取不到</strong>）</p>
+<p>eg:<code>str[1:4]</code> 取str[1]、str[2]、str[3]</p>
+<p>eg:<code>str[2:]</code> 取下标为2开始到最后的元素</p>
+<p>eg:<code>str[2:-1]</code> 取下标为2～到倒数第二个元素（end_index取不到）</p>
+<p>eg:<code>str[1:6:2]</code> 隔着取～str[1]、str[3]、str[5]（案例会详细说）</p>
+<p>eg:<code>str[::-1]</code> 逆向输出（案例会详细说）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">it_str</span><span class="o">=</span><span class="s2">&quot;我爱编程，编程爱它，它是程序，程序是谁？&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># eg:取“编程爱它” it_str[5:9]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">11</span><span class="p">])</span> <span class="c1"># end_index用-xx也一样</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">11</span><span class="p">])</span><span class="c1"># start_index用-xx也可以</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>编程爱它
+编程爱它
+编程爱它
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># eg:取“编程爱它，它是程序，程序是谁？” it_str[5:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span><span class="c1"># 不写默认取到最后一个</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>编程爱它，它是程序，程序是谁？
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># eg:一个隔一个跳着取（&quot;我编，程它它程，序谁&quot;） it_str[0::2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span><span class="c1"># step=△index（eg:0,1,2,3。这里的step=&gt; 2-0 =&gt; 间隔1）</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>我编，程它它程，序谁
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># eg:倒序输出 it_str[::-1]</span>
+<span class="c1"># end_index不写默认是取到最后一个，是正取（从左往右）还是逆取（从右往左），就看step是正是负</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="c1"># 等价于上一个</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>？谁是序程，序程是它，它爱程编，程编爱我
+？谁是序程，序程是它，它爱程编，程编爱我
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.CSharp">2.2.CSharp<a class="anchor-link" href="#2.2.CSharp">&#182;</a></h3><p>这次为了更加形象对比，一句一句翻译成C#</p>
+<p>有没有发现规律，<code>user_str[user_str.Length-1]</code>==&gt; -1是最后一个</p>
+<p><code>user_str[user_str.Length-2]</code>==&gt; -2是最后第二个</p>
+<p>python的切片其实就是在这方面简化了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+//# # 字符串遍历、下标、切片
+//# user_str=&quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;
+var user_str = &quot;七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？&quot;;
+
+//# #遍历
+//# for item in user_str:
+//#     print(item,end=&quot; &quot;)
+foreach (var item in user_str)
+{
+    Console.Write(item);
+}
+
+//# #长度：len(user_str)
+//# print(len(user_str))
+Console.WriteLine(user_str.Length);
+
+//# #第一个元素：user_str[0]
+//# print(user_str[0])
+Console.WriteLine(user_str[0]);
+
+//# #最后一个元素：user_str[-1]
+//# print(user_str[-1])
+//# print(user_str[len(user_str)-1])#其他编程语言写法
+Console.WriteLine(user_str[user_str.Length - 1]);
+//
+//# #倒数第二个元素：user_str[-2]
+//# print(user_str[-2])
+Console.WriteLine(user_str[user_str.Length - 2]);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>七大姑曰：工作了吗？八大姨问：买房了吗？异性说：结婚了吗？29
+七
+？
+吗
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其实你用<code>Pytho</code>n跟其他语言对比反差更大，<code>net</code>真的很强大了。</p>
+<p>补充（对比看就清楚<code>Python</code>的<code>step</code>为什么是2了，i+=2==&gt;2）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+//# 切片:[start_index:end_index:step] （end_index取不到）
+//# eg:str[1:4] 取str[1]、str[2]、str[3]
+//# eg:str[2:] 取下标为2开始到最后的元素
+//# eg:str[2:-1] 取下标为2～到倒数第二个元素（end_index取不到）
+//# eg:str[1:6:2] 隔着取～str[1]、str[3]、str[5]（案例会详细说）
+//# eg:str[::-1] 逆向输出（案例会详细说，）
+//
+var it_str = &quot;我爱编程，编程爱它，它是程序，程序是谁？&quot;;
+//
+//#eg:取“编程爱它” it_str[5:9]
+//            print(it_str[5:9])
+//            print(it_str[5:-11]) #end_index用-xx也一样
+//            print(it_str[-15:-11])#start_index用-xx也可以
+
+//Substring(int startIndex, int length)
+Console.WriteLine(it_str.Substring(5, 4));//第二个参数是长度
+
+//
+//#eg:取“编程爱它，它是程序，程序是谁？” it_str[5:]
+//            print(it_str[5:])#不写默认取到最后一个
+Console.WriteLine(it_str.Substring(5));//不写默认取到最后一个
+
+//#eg:一个隔一个跳着取（&quot;我编，程它它程，序谁&quot;） it_str[0::2]
+//            print(it_str[0::2])#step=△index（eg:0,1,2,3。这里的step=&gt; 2-0 =&gt; 间隔1）
+
+//这个我第一反应是用linq ^_^
+for (int i = 0; i &lt; it_str.Length; i += 2)//对比看就清除Python的step为什么是2了，i+=2==》2
+{
+    Console.Write(it_str[i]);
+}
+
+Console.WriteLine(&quot;\n倒序：&quot;);
+//#eg:倒序输出 it_str[::-1]
+//# end_index不写默认是取到最后一个，是正取（从左往右）还是逆取（从右往左），就看step是正是负
+//            print(it_str[::-1])
+//            print(it_str[-1::-1])#等价于上一个
+for (int i = it_str.Length - 1; i &gt;= 0; i--)
+{
+    Console.Write(it_str[i]);
+}
+//其实可以用Linq：Console.WriteLine(new string(it_str.ToCharArray().Reverse().ToArray()));
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>编程爱它
+编程爱它，它是程序，程序是谁？
+我编，程它它程，序谁
+倒序：
+？谁是序程，序程是它，它爱程编，程编爱我</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.Python&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;">3.Python&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;<a class="anchor-link" href="#3.Python&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;">&#182;</a></h2><h3 id="3.1.Python&#26597;&#25214;">3.1.Python&#26597;&#25214;<a class="anchor-link" href="#3.1.Python&#26597;&#25214;">&#182;</a></h3><p><code>find</code>,<code>rfind</code>,<code>index</code>,<code>rindex</code></p>
+<p>Python查找 <strong>推荐</strong>你用<code>find</code>和<code>rfind</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span> <span class="o">=</span> <span class="s2">&quot;ABCDabcdefacddbdf&quot;</span>
+<span class="c1"># 查找:find,rfind,index,rindex</span>
+<span class="c1"># xxx.find(str, start, end)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">))</span><span class="c1">#从左往右</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">))</span><span class="c1">#从右往左</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;dnt&quot;</span><span class="p">))</span><span class="c1">#find和rfind找不到就返回-1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+11
+-1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># index和rindex用法和find一样，只是找不到会报错（以后用find系即可）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;dnt&quot;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-cc6e22ad9acc&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># index和rindex用法和find一样，只是找不到会报错（以后用find系即可）</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>print<span class="ansi-blue-fg">(</span>test_str<span class="ansi-blue-fg">.</span>index<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;dnt&#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: substring not found</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2.Python&#35745;&#25968;">3.2.Python&#35745;&#25968;<a class="anchor-link" href="#3.2.Python&#35745;&#25968;">&#182;</a></h3><p>python：<code>xxx.count(str, start, end)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 计数:count</span>
+<span class="c1"># xxx.count(str, start, end)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">))</span><span class="c1">#4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">))</span><span class="c1">#2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4
+2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.3.Python&#26367;&#25442;">3.3.Python&#26367;&#25442;<a class="anchor-link" href="#3.3.Python&#26367;&#25442;">&#182;</a></h3><p>Python：<code>xxx.replace(str1, str2, 替换次数)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 替换:replace</span>
+<span class="c1"># xxx.replace(str1, str2, 替换次数)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">))</span><span class="c1">#并没有改变原字符串，只是生成了一个新的字符串</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABCDabcdefacddbdf
+ABCDaBcdefacddBdf
+ABCDabcdefacddbdf
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># replace可以指定替换几次</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="c1">#ABCDaBcdefacddbdf</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABCDaBcdefacddbdf
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.4.Python&#20998;&#21106;">3.4.Python&#20998;&#21106;<a class="anchor-link" href="#3.4.Python&#20998;&#21106;">&#182;</a></h3><p><code>split</code>（按指定字符分割）,<code>splitlines</code>(按行分割)</p>
+<p><code>partition</code>(以str分割成三部分,str前，str和str后),<code>rpartition</code>（从右边开始）</p>
+<p>说下 <strong>split的切片用法</strong>：<code>print(test_input.split(" ",3))</code> 在第三个空格处切片，后面的不切了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 分割:split（按指定字符分割）,splitlines(按行分割),partition(以str分割成三部分,str前，str和str后),rpartition</span>
+<span class="n">test_list</span><span class="o">=</span><span class="n">test_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="c1">#a有两个，按照a分割，那么会分成三段，返回类型是列表（List），并且返回结果中没有a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;ABCD&#39;, &#39;bcdef&#39;, &#39;cddbdf&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_input</span><span class="o">=</span><span class="s2">&quot;hi my name is dnt&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span> <span class="c1">#返回列表格式（后面会说）[&#39;hi&#39;, &#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;dnt&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="c1">#在第三个空格处切片，后面的不管了</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;hi&#39;, &#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;dnt&#39;]
+[&#39;hi&#39;, &#39;my&#39;, &#39;name&#39;, &#39;is dnt&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>继续说说<code>splitlines</code>(按行分割)，和<code>split("\n")</code>的区别：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># splitlines()按行分割，返回类型为List</span>
+<span class="n">test_line_str</span><span class="o">=</span><span class="s2">&quot;abc</span><span class="se">\n</span><span class="s2">bca</span><span class="se">\n</span><span class="s2">cab</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_line_str</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span><span class="c1">#[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_line_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span><span class="c1">#看出区别了吧：[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;, &#39;&#39;]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;]
+[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;, &#39;&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># splitlines(按行分割)，和split(&quot;\n&quot;)的区别没看出来就再来个案例</span>
+<span class="n">test_line_str2</span><span class="o">=</span><span class="s2">&quot;abc</span><span class="se">\n</span><span class="s2">bca</span><span class="se">\n</span><span class="s2">cab</span><span class="se">\n</span><span class="s2">LLL&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_line_str2</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span><span class="c1">#[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;, &#39;LLL&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_line_str2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span><span class="c1">#再提示一下，最后不是\n就和上面一样效果</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;, &#39;LLL&#39;]
+[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;, &#39;LLL&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>扩展：<code>split()</code>，默认按 <strong>空字符</strong>切割(<code>空格、\t、\n</code>等等，不用担心返回<code>''</code>)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 扩展：split()，默认按空字符切割(空格、\t、\n等等，不用担心返回&#39;&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi my name is dnt</span><span class="se">\t\n</span><span class="s2">  m</span><span class="se">\n\t\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;hi&#39;, &#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;dnt&#39;, &#39;m&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>最后说一下<code>partition</code>和<code>rpartition</code>: 返回是元祖类型（后面会说的）</p>
+<p>方式和find一样，找到第一个匹配的就罢工了【<strong>注意一下没找到的情况</strong>】</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># partition(以str分割成三部分,str前，str和str后)</span>
+<span class="c1"># 返回是元祖类型（后面会说的）,方式和find一样，找到第一个匹配的就罢工了【注意一下没找到的情况】</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">))</span><span class="c1">#(&#39;ABCDab&#39;, &#39;cd&#39;, &#39;efacddbdf&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s2">&quot;cd&quot;</span><span class="p">))</span><span class="c1">#(&#39;ABCDabcdefa&#39;, &#39;cd&#39;, &#39;dbdf&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;感觉自己萌萌哒&quot;</span><span class="p">))</span><span class="c1">#没找到：(&#39;ABCDabcdefacddbdf&#39;, &#39;&#39;, &#39;&#39;)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(&#39;ABCDab&#39;, &#39;cd&#39;, &#39;efacddbdf&#39;)
+(&#39;ABCDabcdefa&#39;, &#39;cd&#39;, &#39;dbdf&#39;)
+(&#39;ABCDabcdefacddbdf&#39;, &#39;&#39;, &#39;&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.5.Python&#23383;&#31526;&#20018;&#36830;&#25509;">3.5.Python&#23383;&#31526;&#20018;&#36830;&#25509;<a class="anchor-link" href="#3.5.Python&#23383;&#31526;&#20018;&#36830;&#25509;">&#182;</a></h3><p><strong>join</strong> :<code>"-".join(test_list)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 连接：join</span>
+<span class="c1"># separat.join(xxx)</span>
+<span class="c1"># 错误用法：xxx.join(&quot;-&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_list</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABCD-bcdef-cddbdf
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.6.Python&#22836;&#23614;&#21028;&#26029;">3.6.Python&#22836;&#23614;&#21028;&#26029;<a class="anchor-link" href="#3.6.Python&#22836;&#23614;&#21028;&#26029;">&#182;</a></h3><p><code>startswith</code>（以。。。开头）,<code>endswith</code>（以。。。结尾）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 头尾判断:startswith（以。。。开头）,endswith（以。。。结尾）</span>
+<span class="c1"># test_str.startswith（以。。。开头）</span>
+<span class="n">start_end_str</span><span class="o">=</span><span class="s2">&quot;http://www.baidu.net&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">start_end_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">start_end_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">start_end_str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.com&quot;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.7.Python&#22823;&#23567;&#20889;&#31995;">3.7.Python&#22823;&#23567;&#20889;&#31995;<a class="anchor-link" href="#3.7.Python&#22823;&#23567;&#20889;&#31995;">&#182;</a></h3><p><code>lower</code>(字符串转换为小写),<code>upper</code>(字符串转换为大写)</p>
+<p><code>title</code>(单词首字母大写),<code>capitalize</code>(第一个字符大写，其他变小写)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 大小写系:lower(字符串转换为小写),upper(字符串转换为大写)</span>
+<span class="c1"># title(单词首字母大写),capitalize(第一个字符大写，其他变小写)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span><span class="c1">#ABCDABCDEFACDDBDF</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="c1">#abcdabcdefacddbdf</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span><span class="c1">#第一个字符大写，其他变小写</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABCDabcdefacddbdf
+ABCDABCDEFACDDBDF
+abcdabcdefacddbdf
+Abcdabcdefacddbdf
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.8.Python&#26684;&#24335;&#31995;&#21015;">3.8.Python&#26684;&#24335;&#31995;&#21015;<a class="anchor-link" href="#3.8.Python&#26684;&#24335;&#31995;&#21015;">&#182;</a></h3><p><code>lstrip</code>（去除左边空格）,<code>rstrip</code>（去除右边空格）</p>
+<p><strong><code>strip</code></strong> （去除两边空格）美化输出系列：<code>ljust</code>,<code>rjust</code>,<code>center</code></p>
+<p><code>ljust，rjust，center</code>这些就不说了，python经常在linux终端中输出，所以这几个用的比较多</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 格式系列：lstrip（去除左边空格）,rstrip（去除右边空格）,strip（去除两边空格）美化输出系列：ljust,rjust,center</span>
+<span class="n">strip_str</span><span class="o">=</span><span class="s2">&quot; I Have a Dream &quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">strip_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;|&quot;</span><span class="p">)</span><span class="c1">#我加 | 是为了看清后面空格，没有别的用处</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">strip_str</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">strip_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+
+<span class="c1">#这个就是格式化输出，就不讲了</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I Have a Dream|
+I Have a Dream |
+ I Have a Dream|
+ABCDabcdefacddbdf                                 
+                                 ABCDabcdefacddbdf
+                ABCDabcdefacddbdf                 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.9.Python&#39564;&#35777;&#31995;&#21015;">3.9.Python&#39564;&#35777;&#31995;&#21015;<a class="anchor-link" href="#3.9.Python&#39564;&#35777;&#31995;&#21015;">&#182;</a></h3><p><code>isalpha</code>（是否是纯字母）,<code>isalnum</code>（是否是数字|字母）</p>
+<p><code>isdigit</code>（是否是纯数字）,<code>isspace</code>（是否是纯空格）</p>
+<p>注意~ <code>test_str5=" \t \n "</code> # <strong>isspace() ==&gt;true</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 验证系列:isalpha（是否是纯字母）,isalnum（是否是数字|字母）,isdigit（是否是纯数字）,isspace（是否是纯空格）</span>
+<span class="c1"># 注意哦~ test_str5=&quot; \t \n &quot; #isspace() ==&gt;true</span>
+
+<span class="n">test_str2</span><span class="o">=</span><span class="s2">&quot;Abcd123&quot;</span>
+<span class="n">test_str3</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span>
+<span class="n">test_str4</span><span class="o">=</span><span class="s2">&quot;  </span><span class="se">\t</span><span class="s2">&quot;</span>     <span class="c1">#isspace() ==&gt;true</span>
+<span class="n">test_str5</span><span class="o">=</span><span class="s2">&quot;  </span><span class="se">\t</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="c1">#isspace() ==&gt;true</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="c1">#是否是纯字母</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="c1">#是否是数字|字母</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="c1">#是否是纯数字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span> <span class="c1">#是否是纯空格</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str2</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="c1">#是否是数字和字母组成</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str2</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="c1">#是否是纯数字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str3</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="c1">#是否是纯数字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str5</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span> <span class="c1">#是否是纯空格</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str4</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span> <span class="c1">#是否是纯空格</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Python&#34917;&#20805;">Python&#34917;&#20805;<a class="anchor-link" href="#Python&#34917;&#20805;">&#182;</a></h3><p>像这些方法练习用<code>ipython3</code>就好了（<code>sudo apt-get install ipython3</code>）</p>
+<p>code的话需要一个个的print，比较麻烦（我这边因为需要写文章，所以只能一个个code）</p>
+<p><img src="../../../images/python/2018-06-01/ipython3.png" alt="图片"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.CSharp&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;">4.CSharp&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;<a class="anchor-link" href="#4.CSharp&#23383;&#31526;&#20018;&#26041;&#27861;&#31995;&#21015;">&#182;</a></h2><h3 id="4.1.&#26597;&#25214;">4.1.&#26597;&#25214;<a class="anchor-link" href="#4.1.&#26597;&#25214;">&#182;</a></h3><p><code>index0f</code>就相当于python里面的<code>find</code></p>
+<p><code>LastIndexOf</code> ==&gt; <code>rfind</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var test_str = &quot;ABCDabcdefacddbdf&quot;;
+
+//# # 查找:find,rfind,index,rindex
+//# # xxx.find(str, start, end)
+//# print(test_str.find(&quot;cd&quot;))#从左往右
+Console.WriteLine(test_str.IndexOf(&#39;a&#39;));//4
+Console.WriteLine(test_str.IndexOf(&quot;cd&quot;));//6
+
+//# print(test_str.rfind(&quot;cd&quot;))#从右往左
+Console.WriteLine(test_str.LastIndexOf(&quot;cd&quot;));//11
+
+//# print(test_str.find(&quot;dnt&quot;))#find和rfind找不到就返回-1
+Console.WriteLine(test_str.IndexOf(&quot;dnt&quot;));//-1
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4
+6
+11
+-1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.&#35745;&#25968;">4.2.&#35745;&#25968;<a class="anchor-link" href="#4.2.&#35745;&#25968;">&#182;</a></h3><p>这个真用基础来解决的话，两种方法：</p>
+<p>第一种自己变形一下：(原字符串长度 - 替换后的长度) / 字符串长度</p>
+<div class="highlight"><pre><span></span><span class="c1">//# # 计数:count</span>
+<span class="c1">//# # xxx.count(str, start, end)</span>
+<span class="c1">// print(test_str.count(&quot;d&quot;))#4</span>
+<span class="c1">// print(test_str.count(&quot;cd&quot;))#2</span>
+<span class="c1">// 第一反应，字典、正则、linq，后来想怎么用基础知识解决，于是有了这个~(原字符串长度-替换后的长度)/字符串长度</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test_str</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="n">test_str</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">).</span><span class="n">Length</span><span class="p">);</span><span class="c1">//统计单个字符就简单了</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">test_str</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="n">test_str</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;cd&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">).</span><span class="n">Length</span><span class="p">)</span> <span class="p">/</span> <span class="s">&quot;cd&quot;</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test_str</span><span class="p">);</span><span class="c1">//不用担心原字符串改变（python和C#都是有字符串不可变性的）</span>
+</pre></div>
+<p>字符串统计另一种方法(<a href="https://github.com/dunitian/LoTCodeBase/tree/master/NetCode/2.面向对象/4.字符串" target="_blank">就用index</a>)</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">index</span> <span class="p">!=</span> <span class="p">-</span><span class="m">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">count</span><span class="p">++;</span>
+    <span class="n">index</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="p">+</span> <span class="m">3</span><span class="p">);</span><span class="c1">//index指向abc的后一位</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.3.&#26367;&#25442;">4.3.&#26367;&#25442;<a class="anchor-link" href="#4.3.&#26367;&#25442;">&#182;</a></h3><p>替换指定次数的功能有点业余，就不说了，你可以自行思考哦~</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var test_str = &quot;ABCDabcdefacddbdf&quot;;
+Console.WriteLine(test_str.Replace(&quot;b&quot;, &quot;B&quot;));
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABCDaBcdefacddBdf
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.4.&#20998;&#21106;">4.4.&#20998;&#21106;<a class="anchor-link" href="#4.4.&#20998;&#21106;">&#182;</a></h3><p><code>split</code>里面很多重载方法，可以自己去查看下</p>
+<p>eg:<code>Split("\n",StringSplitOptions.RemoveEmptyEntries)</code></p>
+<p>再说一下这个：<code>test_str.Split('a');</code> //返回数组</p>
+<p>如果要和Python一样返回列表==》<code>test_str.Split('a').ToList();</code> 【需要引用linq的命名空间哦】</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">test_array</span> <span class="p">=</span> <span class="n">test_str</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span><span class="c1">//返回数组（如果要返回列表==》test_str.Split(&#39;a&#39;).ToList();）</span>
+<span class="kt">var</span> <span class="n">test_input</span> <span class="p">=</span> <span class="s">&quot;hi my name is dnt&quot;</span><span class="p">;</span>
+<span class="c1">//# print(test_input.split(&quot; &quot;)) #返回列表格式（后面会说）[&#39;hi&#39;, &#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;dnt&#39;]</span>
+<span class="n">test_input</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="c1">//# 按行分割，返回类型为List</span>
+<span class="kt">var</span> <span class="n">test_line_str</span> <span class="p">=</span> <span class="s">&quot;abc\nbca\ncab\n&quot;</span><span class="p">;</span>
+<span class="c1">//# print(test_line_str.splitlines())#[&#39;abc&#39;, &#39;bca&#39;, &#39;cab&#39;]</span>
+<span class="n">test_line_str</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">,</span> <span class="n">StringSplitOptions</span><span class="p">.</span><span class="n">RemoveEmptyEntries</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.5.&#36830;&#25509;">4.5.&#36830;&#25509;<a class="anchor-link" href="#4.5.&#36830;&#25509;">&#182;</a></h3><p><strong><code>string.Join(分隔符,数组)</code></strong></p>
+<div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">test_array</span><span class="p">));</span><span class="c1">//test_array是数组 ABCD-bcdef-cddbdf</span>
+</pre></div>
+<h3 id="4.6.&#22836;&#23614;&#21028;&#26029;">4.6.&#22836;&#23614;&#21028;&#26029;<a class="anchor-link" href="#4.6.&#22836;&#23614;&#21028;&#26029;">&#182;</a></h3><p><code>StartsWith</code>（以。。。开头）,<code>EndsWith</code>（以。。。结尾）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var start_end_str = &quot;http://www.baidu.net&quot;;
+//# print(start_end_str.startswith(&quot;https://&quot;) or start_end_str.startswith(&quot;http://&quot;))
+System.Console.WriteLine(start_end_str.StartsWith(&quot;https://&quot;) || start_end_str.StartsWith(&quot;http://&quot;));
+//# print(start_end_str.endswith(&quot;.com&quot;))
+System.Console.WriteLine(start_end_str.EndsWith(&quot;.com&quot;));
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.7.&#22823;&#23567;&#20889;&#31995;">4.7.&#22823;&#23567;&#20889;&#31995;<a class="anchor-link" href="#4.7.&#22823;&#23567;&#20889;&#31995;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">//# print(test_str.upper())#ABCDABCDEFACDDBDF</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test_str</span><span class="p">.</span><span class="n">ToUpper</span><span class="p">());</span>
+<span class="c1">//# print(test_str.lower())#abcdabcdefacddbdf</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test_str</span><span class="p">.</span><span class="n">ToLower</span><span class="p">());</span>
+</pre></div>
+<h3 id="4.8.&#26684;&#24335;&#21270;&#31995;">4.8.&#26684;&#24335;&#21270;&#31995;<a class="anchor-link" href="#4.8.&#26684;&#24335;&#21270;&#31995;">&#182;</a></h3><p><code>Tirm</code>很强大，除了去空格还可以去除你想去除的任意字符</p>
+<p>net里面<code>string.Format</code>各种格式化输出，可以参考,这边就不讲了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var strip_str = &quot; I Have a Dream &quot;;
+//# print(strip_str.strip()+&quot;|&quot;)#我加 | 是为了看清后面空格，没有别的用处
+Console.WriteLine(strip_str.Trim() + &quot;|&quot;);
+//# print(strip_str.lstrip()+&quot;|&quot;)
+Console.WriteLine(strip_str.TrimStart() + &quot;|&quot;);
+//# print(strip_str.rstrip()+&quot;|&quot;)
+Console.WriteLine(strip_str.TrimEnd() + &quot;|&quot;);
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I Have a Dream|
+I Have a Dream |
+ I Have a Dream|
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.9.&#39564;&#35777;&#31995;&#21015;">4.9.&#39564;&#35777;&#31995;&#21015;<a class="anchor-link" href="#4.9.&#39564;&#35777;&#31995;&#21015;">&#182;</a></h3><p><code>string.IsNullOrEmpty</code> 和 <code>string.IsNullOrWhiteSpace</code> 是系统自带的</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+var test_str4 = &quot;  \t&quot;;
+var test_str5 = &quot;  \t \n &quot;; //#isspace() ==&gt;true
+// string.IsNullOrEmpty 和 string.IsNullOrWhiteSpace 是系统自带的，其他的你需要自己封装一个扩展类
+Console.WriteLine(string.IsNullOrEmpty(test_str4)); //false
+Console.WriteLine(string.IsNullOrWhiteSpace(test_str4));//true
+Console.WriteLine(string.IsNullOrEmpty(test_str5));//false
+Console.WriteLine(string.IsNullOrWhiteSpace(test_str5));//true
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+True
+False
+True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其他的你需要自己封装一个扩展类（eg：<a href="https://github.com/dunitian/LoTCodeBase/blob/master/NetCode/5.逆天类库/LoTLibrary/Validation/ValidationHelper.cs" target="_blank">简单封装</a>）</p>
+<div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text.RegularExpressions</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">ValidationHelper</span>
+<span class="p">{</span>
+    <span class="cp">#region 常用验证</span>
+
+    <span class="cp">#region 集合系列</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断集合是否有数据</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;list&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">ExistsData</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">list</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">b</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">list</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">list</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">b</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span> 
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region Null判断系列</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断是否为空或Null</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsNullOrWhiteSpace</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">objStr</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断类型是否为可空类型</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;theType&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsNullableType</span><span class="p">(</span><span class="n">Type</span> <span class="n">theType</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">theType</span><span class="p">.</span><span class="n">IsGenericType</span> <span class="p">&amp;&amp;</span> <span class="n">theType</span><span class="p">.</span><span class="n">GetGenericTypeDefinition</span><span class="p">().</span><span class="n">Equals</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Nullable</span><span class="p">&lt;&gt;)));</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 数字字符串检查</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 是否数字字符串(包括小数)</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;输入字符串&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsNumber</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^\d+(\.\d+)?$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 是否是浮点数</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;输入字符串&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsDecimal</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^(-?\d+)(\.\d+)?$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 业务常用</span>
+
+    <span class="cp">#region 中文检测</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 检测是否有中文字符</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsZhCN</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">&quot;[\u4e00-\u9fa5]&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 邮箱验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断邮箱地址是否正确</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsEmail</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region IP系列验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 是否为ip</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsIP</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;  </span>
+    <span class="c1">/// 判断输入的字符串是否是表示一个IP地址  </span>
+    <span class="c1">/// &lt;/summary&gt;  </span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;被比较的字符串&lt;/param&gt;  </span>
+    <span class="c1">/// &lt;returns&gt;是IP地址则为True&lt;/returns&gt;  </span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsIPv4</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span><span class="p">[]</span> <span class="n">IPs</span> <span class="p">=</span> <span class="n">objStr</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">IPs</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">IPs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">@&quot;^\d+$&quot;</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Convert</span><span class="p">.</span><span class="n">ToUInt16</span><span class="p">(</span><span class="n">IPs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">&gt;</span> <span class="m">255</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断输入的字符串是否是合法的IPV6 地址  </span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;input&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsIPV6</span><span class="p">(</span><span class="kt">string</span> <span class="n">input</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">input</span><span class="p">;</span>
+        <span class="kt">string</span><span class="p">[]</span> <span class="n">strs</span> <span class="p">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;:&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strs</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">8</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">GetStrCount</span><span class="p">(</span><span class="s">&quot;::&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s">@&quot;^([\da-f]{1,4}:){7}[\da-f]{1,4}$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s">@&quot;^([\da-f]{1,4}:){0,5}::([\da-f]{1,4}:){0,5}[\da-f]{1,4}$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 网址系列验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 验证网址是否正确（http:或者https:）【后期添加 // 的情况】</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;地址&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsWebUrl</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?|https://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 判断输入的字符串是否是一个超链接  </span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsURL</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">pattern</span> <span class="p">=</span> <span class="s">@&quot;^[a-zA-Z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="n">pattern</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 邮政编码验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 验证邮政编码是否正确</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;输入字符串&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsZipCode</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;\d{6}&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 电话+手机验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 验证手机号是否正确</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;手机号&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsMobile</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^13[0-9]{9}|15[012356789][0-9]{8}|18[0123456789][0-9]{8}|147[0-9]{8}$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 匹配3位或4位区号的电话号码，其中区号可以用小括号括起来，也可以不用，区号与本地号间可以用连字号或空格间隔，也可以没有间隔   </span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsPhone</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">&quot;^\\(0\\d{2}\\)[- ]?\\d{8}$|^0\\d{2}[- ]?\\d{8}$|^\\(0\\d{3}\\)[- ]?\\d{7}$|^0\\d{3}[- ]?\\d{7}$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region 字母或数字验证</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 是否只是字母或数字</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;objStr&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsAbcOr123</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">objStr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Regex</span><span class="p">.</span><span class="n">IsMatch</span><span class="p">(</span><span class="n">objStr</span><span class="p">,</span> <span class="s">@&quot;^[0-9a-zA-Z\$]+$&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#endregion</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
