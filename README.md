@@ -12,7 +12,7 @@
 
 <p><a href="./python/base/pop/1.base.md" target="_blank">1.Python3 与 C# 基础语法对比（就当Python和C#基础的普及吧）</a></p>
 
-<a href="https://www.cnblogs.com/dotnetcrazy/p/9114691.html" target="_blank">2.Python3 与 C# 基础语法对比（String专栏）</a>
+<a href="./python/base/pop/2.str.md" target="_blank">2.Python3 与 C# 基础语法对比（String专栏）</a>
 
 <a href="https://www.cnblogs.com/dotnetcrazy/p/9155310.html" target="_blank">3.Python3 与 C# 基础语法对比（List、Tuple、Dict专栏）</a>
 
