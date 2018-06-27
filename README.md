@@ -15,9 +15,9 @@
 
 <a href="./python/base/pop/2.str.md" target="_blank">2.Python3 与 C# 基础语法对比（String专栏）</a>
 
-<a href="./python/base/pop/3.list_tuple_dict_set.md" target="_blank">3.Python3 与 C# 基础语法对比（List、Tuple、Dict专栏）</a>
+<a href="./python/base/pop/3.list_tuple_dict_set.md" target="_blank">3.Python3 与 C# 基础语法对比（List、Tuple、Dict、Set专栏）</a>
 
-<a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html" target="_blank">4.Python3 与 C# 基础语法对比（Function专栏）</a>
+<a href="./python/base/pop/4.func.md" target="_blank">4.Python3 与 C# 基础语法对比（Function专栏）</a>
 
 ### 1.2.OOP
 
