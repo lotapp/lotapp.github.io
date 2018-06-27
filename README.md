@@ -5,6 +5,8 @@
         - [1.3.Except](#13except)
 - [NetCore](#netcore)
 
+<p><a href="https://www.cnblogs.com/dotnetcrazy">逆天的博客地址</a></p>
+
 # Python
 
 ## 1.Base
