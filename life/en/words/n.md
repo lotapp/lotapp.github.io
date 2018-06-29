@@ -75,7 +75,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `My friend gave me three chickens last week`<br/>上个星期我的朋友给了我三只小鸡
 
-`The chickens are very cute`<br/>那些鸡肉很可爱
+`The chickens are very cute`<br/>那些小鸡很可爱
 
 `My son likes the chickens very much`<br/>我的儿子非常喜欢那些小鸡
 
