@@ -165,7 +165,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 **12`goat`** [ɡəʊt] n.山羊
 
-`goat's milk' 羊奶
+`goat's milk` 羊奶
 
 **`Let me go! You old goat!`**<br/>让我走！你个老色狼！
 
