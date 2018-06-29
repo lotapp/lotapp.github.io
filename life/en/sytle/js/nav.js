@@ -6,7 +6,7 @@ $(function () {
     });
     // 生成目录索引列表
     var temp_html = '<a name="dnttop"></a><div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title">目录</h4></div><div class="panel-body">{dntnav}</div></div>';
-    var h_list = $('.container h1,.container h2,.container h3,.container h4');//这边你可以自行修改
+    var h_list = $('.container h1,.container h2,.container h3');//这边你可以自行修改
 
     if (h_list.length > 0) {
         var content = '<nav>';
@@ -23,8 +23,6 @@ $(function () {
             }
             else if (targetName == 'h3') {
                 li2_content = '<li style="padding-left: 1em;"><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
-            } else {
-                li2_content = '<li style="padding-left: 1.5em;"><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
             }
             content += li2_content;
         }
