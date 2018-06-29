@@ -179,6 +179,6 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `The Silence of the Lambs`<br/> 沉默的羔羊
 
-扩充：`Python`里面的`匿名函数`用`lambda`前缀是一样的哦
+扩充：`Python`里面的 **匿名函数**用`lambda`前缀是一样的哦
 
 ---
