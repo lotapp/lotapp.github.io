@@ -182,3 +182,5 @@ eg：`daddy` 爹地 `mommy` 妈咪
 扩充：`Python`里面的 **匿名函数**用`lambda`前缀是一样的哦
 
 ---
+
+**14`lion`** /li‧on/ ['laɪən] n.狮子
