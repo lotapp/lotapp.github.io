@@ -1,6 +1,6 @@
 $(function () {
     //发音
-    $('code').attr('title', '发音请单击').click(function () {
+    $('.container').on("click", "code", function () {
         // console.log($(this).text());
         $('body').append('<audio src="http://dict.youdao.com/dictvoice?audio=' + $(this).text() + '" autoplay>你的浏览器不支持</audio>');
     });
