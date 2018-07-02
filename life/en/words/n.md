@@ -177,10 +177,74 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `XiaoMing is like a lamb`<br/>小明就像一头小羔羊
 
-`The Silence of the Lambs`<br/> 沉默的羔羊
+`The Silence of the Lambs`<br/>沉默的羔羊
 
 扩充：`Python`里面的 **匿名函数**用`lambda`前缀是一样的哦
 
 ---
 
 **14`lion`** /li‧on/ ['laɪən] n.狮子
+
+...
+
+---
+
+**43`dinosaur`** /di‧no‧saur/ ['daɪnə.sɔː(r)] n.恐龙
+
+`Boys usually likes dinosaur`<br/>男孩子通常喜欢收集恐龙
+
+`If you want to see dinosaurs,go to Beijing Museum of Natural History.`<br/>如果你想要去看恐龙，可以去北京自然博物馆
+
+---
+
+**44`ant`** [ænt] n.蚂蚁
+
+`Ants live in large groups.`<br/>蚂蚁成群结队的生活
+
+`I hate to see ants in my house`<br/>我讨厌在我的家里看到蚂蚁
+
+---
+
+**55`spider`** ['spaɪdə(r)] n.蜘蛛
+
+`Many girls are afraid of apiders`<br/>很多女孩害怕蜘蛛
+
+`Spider-Man`<br/>蜘蛛侠
+
+---
+
+**56`snail`** [sneɪl] n.蜗牛
+
+`The snail came out of its shell`<br/>那只蜗牛从它的壳里出来了
+
+`The old woman crossed the street at a snail's pace.`<br/>那位老太太慢慢的穿过了马路
+
+---
+
+**57`cockroach`** /cock‧roach/ [ˈkɒkˌroʊtʃ] n.蟑螂
+
+简写：`roach`
+
+`I hate cockroaches. They are so disgustig.`<br/>
+
+---
+
+**58`bird`** [bɜː(r)d] n.鸟
+
+**`The early bird catches the worm`**<br/>早起的鸟儿有虫吃
+
+`You are an early bird`<br/>你起的真早啊
+
+`A little bird told me that you've got engaged.`<br/>我听说你订婚[en‧gaged]了
+
+---
+
+**59`parrot`** /par‧rot/ ['pærət] n.鹦鹉
+
+`I have a parrot named Henry`<br/>我有一只名字叫Henry的鹦鹉
+
+``<br/>
+
+---
+
+``<br/>
