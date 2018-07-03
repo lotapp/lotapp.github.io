@@ -185,7 +185,69 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 **14`lion`** /li‧on/ ['laɪən] n.狮子
 
+`Mark is as brave as a lion`<br/>Mark像一头狮子一样勇敢
+
+`Lion King` 狮子王
+
+**知识扩展**：
+
+**`lioness`** /li‧on‧ess/ ['laɪənes] n.母狮子
+
+**ness** 一般指的是女性和雌性
+
+---
+
+**15`tiger`** /ti‧ger/ [ˈtaɪɡə(r)] n.狮子
+
+`I saw two tigers in the zoo today`<br/>我今天在动物园看到两个老虎
+
+**`a paper tiger`**<br/>纸老虎
+
+**知识扩展**：
+
+**`tigress`** /ti‧gress/ [ˈtaɪɡrəs] n.母老虎
+
+---
+
+**16`leopard`** /leop‧ard/ [ˈlepə(r)d] n.豹子
+
+**`A leopard can't change its spots`**<br/>本性难移（狗改不了吃屎）
+
+---
+
+**17`wolf`** [wʊlf] n.狼
+
+**`He is a wolf in sheep's clothing`**<br/>一只披着羊皮的狼
+
+`Wolf Totem` 狼图腾
+
+---
+
+**18`zebra`** /ze‧bra/ [ˈzibrə] n.斑马
+
+`Look! There is a zebra !`<br/>看！那有一只斑马！
+
+**`Zebra crossing`** 斑马线
+
+---
+
+**19`bear`**  [beə(r)] n.熊
+
+**`bear market`** 熊市<br/>**`bull market`** 牛市
+
 ...
+
+---
+
+
+---
+
+
+---
+
+
+---
+
 
 ---
 
@@ -243,8 +305,52 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `I have a parrot named Henry`<br/>我有一只名字叫Henry的鹦鹉
 
-``<br/>
+`The parrot can say 'Good morning' and 'Good night'`<br/>
+
+---
+**60`magpie`** /mag‧pie/ [ˈmæɡpaɪ] n.喜鹊，爱收集或贮藏东西的人，爱饶舌的人
+
+`Magpies are common birds birds in China.`<br/>喜鹊在中国是常见的鸟类
+
+`She is quite a magpie`<br/>她是爱收藏（爱饶舌）的人
 
 ---
 
-``<br/>
+**61`sparrow`** /spar‧row/ ['spærəʊ] n.麻雀
+
+`There are several sparrows twittering outside my window.`<br/>有几只麻雀在我窗户外面叽叽喳喳的叫
+
+**知识扩展**
+
+讲`rooster`的时候提过，一般来讲：（这边音标`p`读成`b`音标了）
+
+音标 **s**的后面有 **清辅音**，读起来的感觉像其对应的 **浊辅音**
+
+`There are`，`There is` 属于There be句型，翻译成有
+
+---
+
+**62`swallow`** /swal‧low/ ['swɒləʊ] n.燕子 v.咽下，吞下
+
+`One swallow does not make a summer.`<br/>一燕不成夏
+
+---
+
+**63`dove`** [dʌv] n.鸽子
+
+`dove of peace`<br/>和平鸽
+
+---
+
+**64`crow`** [krəʊ] n.乌鸦
+
+`She thinks something bad is going to happen because she saw a crow this morning.`<br/>她觉得有不好的事情要发生了，因为她今天早上看见了一只乌鸦
+
+**65`owl`** [aʊl] n.猫头鹰
+
+`An owl usually sleeps with one eye open and the other closed.`<br/>猫头鹰通常一只眼睛睁着一只眼睛闭着睡觉
+
+**`a night owl`**<br/>夜猫子
+
+---
+
