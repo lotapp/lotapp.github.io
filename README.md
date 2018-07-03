@@ -1,11 +1,11 @@
+<a href="https://www.cnblogs.com/dotnetcrazy">逆天的博客地址</a>
+
 - [Python](#python)
     - [1.Base](#1base)
         - [1.1.POP](#11pop)
         - [1.2.OOP](#12oop)
-        - [1.3.Except](#13except)
-- [NetCore](#netcore)
-
-<p><a href="https://www.cnblogs.com/dotnetcrazy">逆天的博客地址</a></p>
+        - [1.3.Ext](#13ext)
+        - [1.4.Except](#14except)
 
 # Python
 
@@ -29,9 +29,13 @@
 
 <a href="./python/base/oop/3.异常相关.md" target="_blank">3.Python3 与 C# 面向对象之～异常相关</a>
 
-### 1.3.Except
-<p><a href="https://www.cnblogs.com/dotnetcrazy/p/9192089.html" target="_blank">Python3调试过程中的异常汇总</a></p>
+### 1.3.Ext
+
+<a href="./python/base/module/模块专题.md" target="_blank">1.Python3 与 C# 扩展之～模块专栏</a>
+
+
+### 1.4.Except
+
+<a href="https://www.cnblogs.com/dotnetcrazy/p/9192089.html" target="_blank">Python3调试过程中的异常汇总</a>
 
 ---
-
-# NetCore
