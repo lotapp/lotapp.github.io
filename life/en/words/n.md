@@ -354,3 +354,71 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
+**66`eagle`** /ea‧gle/ [ˈiːɡ(ə)l] n.鹰
+
+`An eagle is flying in the sky.`<br/>一只老鹰在天空中飞
+
+`The teacher's eagle eye was always on us.`<br/>老师敏锐的目光一直盯着我们
+
+`Hotel California --- Eagles`<br/>老鹰乐队《Hotel California》
+
+---
+
+**67`bee`** [bi:] n.蜜蜂
+
+`John is as busy as a bee.`<br/>约翰像蜜蜂一样忙
+
+`I was stung by a bee`<br/>我被一只蜜蜂盯了
+
+**知识扩展**：
+
+**`bumblebee`** /bum‧ble‧bee/ ['bʌmb(ə)l.biː] n.大黄蜂
+
+---
+
+**68`dragonfly`** /drag‧on‧fly/ ['dræɡənflaɪ] n.蜻蜓
+
+`There are many dragonflies flying over the river`<br/>在河上空有很多蜻蜓在飞
+
+**知识扩展**：
+
+**`dragon`** /drag‧on/ ['dræɡən] n.龙
+
+`Dragon Boat Festival`<br/>端午节
+
+`There be`句型，解释为：**有**
+
+---
+
+**69`butterfly`** /but‧ter‧fly/ ['bʌtəflaɪ] n.蝴蝶
+
+`I saw many beautiful butterflies in Melbourne Zoo.`<br/>在墨尔本动物园我看到了很多漂亮的蝴蝶
+
+**`the Butterfly Effect`**<br/>蝴蝶效应
+
+---
+
+**70`fly`** [fleɪl] n.苍蝇
+
+`In summer you can see many files near river.`<br/>在河的附近你可以看见很多苍蝇
+
+`My dog wouldn't hurt a fly.`<br/>我的狗都不会伤害一只苍蝇
+
+---
+
+**71`mosquito`** /mos‧qui‧to/ [məˈskiːtoʊ] n.蚊子
+
+`I was bitten by a mosquito.`<br/>我被一只蚊子咬了
+
+`There is one thing I dont't like about summer too many mosquitoes.`<br/>关于夏天我有一件事情我不太喜欢，就是蚊子太多了
+
+---
+
+**72`bat`** [bæt] n.蝙蝠，球棒
+
+`A bat can fly around at night`<br/>蝙蝠在夜晚可以到处飞
+
+**`Batman`** 蝙蝠侠
+
+---
+
