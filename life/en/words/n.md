@@ -422,3 +422,140 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
+**73`seagull`** /sea‧gull/ ['siː.ɡʌl] n.海鸥
+
+`Seagulls live near the sea.`<br/>海鸥生活在海边
+
+**74`fish`** [fɪʃ] n.鱼
+
+`fish and chips`<br/>炸鱼加炸薯条（英国快餐）
+
+`a big fish in a little pond`<br/>在小池塘里的大鱼
+
+**`a cold fish`**<br/>一个冷漠的人
+
+**知识扩展**：
+
+复数：`fish`、`fishes` (做种类的时候可数)
+
+---
+
+**75`tuna`** /tu‧na/ ['tjuːnə] n.金枪鱼
+
+`tuna fish sandwich`<br/>金枪鱼三明治（sand‧wich）
+
+---
+
+**76`dolphin`** /dol‧phin/ [ˈdɒlfɪn] n.海豚
+
+**`a dolphin show`**<br/>海豚表演
+
+`The dolphin is a smart animal`<br/>海豚是一种聪明(smart)的动物
+
+---
+
+**77`whale`** [weɪl] n.鲸
+
+`The whale is not a fish`<br/>鲸不是鱼
+
+`The whale is a kind of mammal`<br/>鲸是一种哺乳动物
+
+---
+
+**78`seal`** [siːl] n.海豹 v.封闭
+
+**`sea lion`** [si: ˈlaiən] n.海狮
+
+`Do you know a sea lion is a large type of seal?`<br/>你知道海狮是一类大型的海豹吗？
+
+`There are sea lions and dolphins in Beijing Oceanarium.`<br/>北京海洋馆里有海狮和海豚
+
+**知识扩展：**
+
+`ocean` /o‧cean/ ['əʊʃ(ə)n] n.海洋
+
+`oceanarium` /o‧cean‧at‧ri‧um/ [.əʊʃə'neəriəm] n.海洋馆
+
+---
+
+**79`sea horse`** /sea‧horse/ [ˈsiːˌhɔː(r)s] n.海马
+
+`A sea horse has a head that looks like the head of a horse`<br/>海马有一个像马一样的头
+
+**80`turtle`** /tur‧tle/ [ˈtɜr(r)t(ə)l] n.海龟
+
+`tortoise` /tor‧toise/ [ˈtɔː(r)təs] n.陆龟
+
+`That tortoise is fifty years old,but it looks so small`<br/>那只陆龟已经有50岁了，但是它看起来很小
+
+---
+
+**81`shrimp`** [ʃrɪmp] n.小虾
+
+`Do you know a shrimp has ten legs?`<br/>你知道一只虾有十条腿吗？
+
+---
+
+**82`lobster`** /lob‧ster/ [ˈlɒbstə(r)] n.龙虾（读音有点像：老不死的）
+
+`I bought several live lobsters. They are so expensive.`<br/>我买了几只活龙虾。它们太贵了
+
+---
+
+**83`crab`** [kræb] n.蟹
+
+`Don't touch the crab! It has two powerful claws.`<br/>你别碰那只螃蟹！它有两只强壮的钳子。
+
+---
+
+**84`jellyfish`** /jel‧ly‧fish/ ['dʒeli.fɪʃ] n.水母
+
+`A jellyfish is swimming after you.`<br/>一只水母在你身后游泳
+
+`I can see though the jellyfish.It's so funny!`<br/>我能看透那只水母。这真好玩！
+
+可以这样去记忆：`jelly` 果冻 `fish` 鱼
+
+---
+
+**85`starfish`** /star‧fish/ ['stɑː(r).fɪʃ] n.海星
+
+`I found a starfish on the beach.`<br/>我在沙滩上找到了一只海星
+
+**知识扩展：**
+
+复数：`starfish`
+
+可以这样去记忆：`star` 星星 `fish` 鱼
+
+---
+
+**86.`squid`** [skwɪd] n.鱿鱼，乌贼
+
+`I've never seen a live squid before.`<br/>我以前从来没有见过一只活的鱿鱼
+
+---
+
+**87`walrus`** /wal‧rus/ ['wɔːlrəs] n.海象
+
+`A walrus also has two long teeth called tusks.`<br/>一只海象也有两只长长的牙齿被称作海象牙
+
+---
+
+**88`shark`** [ʃɑːk] n.鲨鱼
+
+`a great white shark`<br/>一只大白鲨
+
+`The movie Jaws is about a man-eating`<br/>Jaws这部电影讲的是一个吃人的鲨鱼
+
+---
+
+**89`octopus`** /oc‧to‧pus/  ['ɒktəpəs] n.章鱼
+
+`There was an amazing octopus during the World Cup in 2010.`<br/>在2010年的世界杯期间有一只令人惊讶的章鱼
+
+**知识扩展**：
+
+章鱼有8只爪子，`octo`，那`october`为什么是十月呢？
+
+以前古罗马只有10个月份，后来人后加了两个月份在开头，所以`october`变成了十月
