@@ -1,0 +1,4679 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>基础衍生</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
+
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>本文适应人群：<code>C#</code> or <code>Python3</code> 基础巩固</p>
+<p>代码裤子： <a href="https://github.com/lotapp/BaseCode/tree/maste">https://github.com/lotapp/BaseCode/tree/maste</a></p>
+<p>在线编程： <a href="https://mybinder.org/v2/gh/lotapp/BaseCode/master">https://mybinder.org/v2/gh/lotapp/BaseCode/master</a></p>
+<p>在线预览： <a href="http://github.lesschina.com/python/base/module/模块专题.html">http://github.lesschina.com/python/base/module/模块专题.html</a></p>
+<p>马上快期末考试了，老师蜜月也回来了，于是有了一场跨季度的复习讲课了：</p>
+<h2 id="1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;">1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;<a class="anchor-link" href="#1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;">&#182;</a></h2><h3 id="1.1.if-&#21028;&#26029;&#26465;&#20214;&#30456;&#20851;">1.1.if &#21028;&#26029;&#26465;&#20214;&#30456;&#20851;<a class="anchor-link" href="#1.1.if-&#21028;&#26029;&#26465;&#20214;&#30456;&#20851;">&#182;</a></h3><p><code>None、""、0、[]、{}</code> ==&gt; 假</p>
+<p><code>1、" "、[None,""]、{"":None}</code> ==&gt; 真</p>
+<p>小明可高兴了，前几天被打击的面目全非，这几天老师回来了，又可以大发神威了，于是抢先提交demo：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># None</span>
+<span class="k">if</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 0为False</span>
+<span class="k">if</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 空字符串</span>
+<span class="k">if</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 空列表为False</span>
+<span class="k">if</span> <span class="p">[]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 空字典为False</span>
+<span class="k">if</span> <span class="p">{}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>False
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1为True</span>
+<span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 含空格</span>
+<span class="k">if</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>老师微带笑容的看了小明一眼，然后接着讲if的扩展</p>
+<h3 id="1.2.&#19977;&#20803;&#34920;&#36798;&#31526;">1.2.&#19977;&#20803;&#34920;&#36798;&#31526;<a class="anchor-link" href="#1.2.&#19977;&#20803;&#34920;&#36798;&#31526;">&#182;</a></h3><p>eg:<code>max = a if a &gt; b else b</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="nb">max</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="nb">max</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
+<span class="nb">max</span> <span class="o">=</span> <span class="nb">max</span> <span class="k">if</span> <span class="nb">max</span> <span class="o">&gt;</span> <span class="n">c</span> <span class="k">else</span> <span class="n">c</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 上面的那个还有一种简写（不推荐）</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="nb">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">c</span> <span class="k">else</span> <span class="n">c</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.&#23383;&#31526;&#20018;&#21644;&#32534;&#30721;">1.2.&#23383;&#31526;&#20018;&#21644;&#32534;&#30721;<a class="anchor-link" href="#1.2.&#23383;&#31526;&#20018;&#21644;&#32534;&#30721;">&#182;</a></h3><p>在<code>Python3.x</code>版本中，字符串是以<code>Unicode</code>编码的</p>
+<p>对于单个字符的编码，Python提供了<code>ord()</code>函数获取字符的整数表示，<code>chr()</code>函数把编码转换为对应的字符</p>
+<p>小潘对这块有所研究，把小明按在桌上然后抢先提交demo：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>68</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;毒&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>27602</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">chr</span><span class="p">(</span><span class="mi">68</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;D&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">chr</span><span class="p">(</span><span class="mi">27602</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;毒&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>65
+90
+97
+122
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>老师补充讲解道：</p>
+<p>编码：<code>encode()</code> 解码：<code>decode()</code></p>
+<p>url相关的可以用：</p>
+<p><code>urllib.parse.quote()</code> and <code>urllib.parse.unquote()</code></p>
+<p><code>urllib.parse.urlencode()</code> 可以直接对一个<code>key-value</code>进行<code>url</code>编码</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># encode() and decode()</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;毒逆天&quot;</span>
+
+<span class="n">name_encode</span><span class="o">=</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">name_encode</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">name_encode</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>b&#39;\xe6\xaf\x92\xe9\x80\x86\xe5\xa4\xa9&#39;
+毒逆天
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 需要导入urlib.parse</span>
+
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_str</span><span class="o">=</span><span class="s2">&quot;淡定&quot;</span>
+
+<span class="c1"># 对字符串进行url编码和解码</span>
+<span class="n">test_str_enode</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">test_str</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test_str_enode</span><span class="p">)</span>
+
+<span class="c1"># urllib.parse.quote() 解码</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">test_str_enode</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>%E6%B7%A1%E5%AE%9A
+淡定
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># urlencode 可以直接对一个key-value进行编码</span>
+
+<span class="n">test_dict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;毒逆天&quot;</span><span class="p">,</span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="mi">23</span><span class="p">}</span>
+
+<span class="n">encode_str</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">encode_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">encode_str</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>name=%E6%AF%92%E9%80%86%E5%A4%A9&amp;age=23
+name=毒逆天&amp;age=23
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.3.&#20540;&#21028;&#26029;&#21644;&#22320;&#22336;&#21028;&#26029;">1.3.&#20540;&#21028;&#26029;&#21644;&#22320;&#22336;&#21028;&#26029;<a class="anchor-link" href="#1.3.&#20540;&#21028;&#26029;&#21644;&#22320;&#22336;&#21028;&#26029;">&#182;</a></h3><p>小明不乐意了，你个小潘总是抢我的风头，看完标题就刷刷的在黑板上写下了如下知识点：</p>
+<p><strong>is 是比较两个引用是否指向了同一个对象</strong>（<code>id()</code>得到的地址一样则相同）</p>
+<p><strong>== 是比较两个对象的值是否相等</strong></p>
+<p>在之前讲Dict的时候提了一下可变和不可变类型：<a href="https://www.cnblogs.com/dotnetcrazy/p/9155310.html#5.2.增加和修改" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9155310.html#5.2.增加和修改</a></p>
+<p>Func里面又系统的说了一下：<a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html#4.5.可变类型和不可变类型" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9175950.html#4.5.可变类型和不可变类型</a></p>
+<p>对于可变不可变系列就不去复述了，下面再来几个案例看看 <strong>值判断</strong>和 <strong>地址判断</strong>的概念</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 可变类型 ################ </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># id不一样，那is肯定不一样了</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888007624
+140261888131720
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a和b是否指向同一个地址</span>
+<span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a和b的值是否相同</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 开始变化了 ################ </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 让a指向b的地址</span>
+<span class="n">a</span><span class="o">=</span><span class="n">b</span>
+
+<span class="c1"># a和b的id一样了</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888131720
+140261888131720
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a和b是否指向同一个地址</span>
+<span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a和b的值是否相同</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 不可变类型 ################ </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="c1"># id一样</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>93841976420896
+93841976420896
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[33]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 但是你要注意，不是所有不可变类型都这样的</span>
+
+<span class="n">f1</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="n">f2</span><span class="o">=</span><span class="mf">1.2</span>
+
+<span class="c1"># 声明两个相同值的浮点型变量，查看它们的id，发现它们并不是指向同个内存地址(这点和int类型不同)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">f1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">f2</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261931805744
+140261931805864
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 这个就不一样了</span>
+<span class="c1"># 这方面涉及Python内存管理机制，Python对int类型和较短的字符串进行了缓存</span>
+<span class="c1"># 无论声明多少个值相同的变量，实际上都指向同个内存地址，其他的就没这福利咯～</span>
+
+<span class="n">f1</span> <span class="ow">is</span> <span class="n">f2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f1</span> <span class="o">==</span> <span class="n">f2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.Python&#24635;&#32467;&#20043;for&#31995;&#21015;">2.Python&#24635;&#32467;&#20043;for&#31995;&#21015;<a class="anchor-link" href="#2.Python&#24635;&#32467;&#20043;for&#31995;&#21015;">&#182;</a></h2><p>之前说for总是零零散散的，现在基础都讲完了，来个小汇总：</p>
+<h3 id="2.1.Base">2.1.Base<a class="anchor-link" href="#2.1.Base">&#182;</a></h3><p><strong>能够被for循环遍历的，就是可迭代的</strong></p>
+<p>For基础系：<a href="https://www.cnblogs.com/dotnetcrazy/p/9102030.html#9.1.Python" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9102030.html#9.1.Python</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 类似于for(int i=0;i&lt;5;i++)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#while循环一般通过数值是否满足来确定循环的条件</span>
+<span class="c1">#for循环一般是对能保存多个数据的变量，进行遍历</span>
+
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ#mmd&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="s1">&#39;#&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="c1">#另一种写法：print(&quot;%s&quot;%i,end=&quot;&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> end ...&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://pan.baidu.com/s/1weaF2DGsgDzAcniRzNqfyQ
+ end ...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 你期望的结果是：i = 5</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;没有找到&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>i = 5
+没有找到
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 当迭代的对象迭代完并为空时，位于else的子句将执行</span>
+<span class="c1"># 而如果在for循环中含有break时则直接终止循环，并不会执行else子句</span>
+<span class="c1"># 正确写法如下：</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;没有找到&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>i = 5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 遍历一个字典</span>
+
+<span class="n">test_dict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span><span class="s2">&quot;Age&quot;</span><span class="p">:</span><span class="mi">23</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">test_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;key:</span><span class="si">%s</span><span class="s2">,value:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>key:Name,value:小明
+key:Age,value:23
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.&#21015;&#34920;&#29983;&#25104;&#24335;">2.2.&#21015;&#34920;&#29983;&#25104;&#24335;<a class="anchor-link" href="#2.2.&#21015;&#34920;&#29983;&#25104;&#24335;">&#182;</a></h3><p>如果下面知识点还不熟悉的，看看之前讲的～列表生成式：<a href="https://www.cnblogs.com/dotnetcrazy/p/9155310.html#1.9.列表生成式" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9155310.html#1.9.列表生成式</a></p>
+<p><strong>简写</strong>：<code>list(range(1, 11))</code>
+<strong>全写</strong>：<code>[x for x in range(1,11)]</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1~10的平方列表</span>
+<span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[44]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1~10之间的偶数</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[45]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[2, 4, 6, 8, 10]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 数学里面的全排列</span>
+<span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">&#39;ABC&#39;</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="s1">&#39;AB&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[46]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;AA&#39;, &#39;AB&#39;, &#39;BA&#39;, &#39;BB&#39;, &#39;CA&#39;, &#39;CB&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 数学里面的坐标轴</span>
+<span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[47]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, 1),
+ (1, 2),
+ (1, 3),
+ (2, 1),
+ (2, 2),
+ (2, 3),
+ (3, 1),
+ (3, 2),
+ (3, 3),
+ (4, 1),
+ (4, 2),
+ (4, 3)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># (x,y,z) 一般三个嵌套就上天了</span>
+<span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[48]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1, 1, 1),
+ (1, 1, 2),
+ (1, 2, 1),
+ (1, 2, 2),
+ (1, 3, 1),
+ (1, 3, 2),
+ (2, 1, 1),
+ (2, 1, 2),
+ (2, 2, 1),
+ (2, 2, 2),
+ (2, 3, 1),
+ (2, 3, 2),
+ (3, 1, 1),
+ (3, 1, 2),
+ (3, 2, 1),
+ (3, 2, 2),
+ (3, 3, 1),
+ (3, 3, 2),
+ (4, 1, 1),
+ (4, 1, 2),
+ (4, 2, 1),
+ (4, 2, 2),
+ (4, 3, 1),
+ (4, 3, 2)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.3.&#25193;&#23637;">2.3.&#25193;&#23637;<a class="anchor-link" href="#2.3.&#25193;&#23637;">&#182;</a></h3><p><strong>如果要对list实现类似C#或者java那样的下标循环怎么办？</strong></p>
+<p>Python内置的<code>enumerate</code>函数可以把一个list变成<code>索引-元素</code>对，这样就可以在for循环中同时迭代<code>索引和元素本身</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 A
+1 B
+2 C
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.Python&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">3.Python&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;<a class="anchor-link" href="#3.Python&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">&#182;</a></h2><p>看到标题小明和小潘就楞了，老师当时没讲解啊，然后两个人眼巴巴的看着老师讲解：</p>
+<p>官方文档：<a href="https://docs.python.org/3/library/copy.html" target="_blank">https://docs.python.org/3/library/copy.html</a></p>
+<h3 id="3.1.&#36171;&#20540;">3.1.&#36171;&#20540;<a class="anchor-link" href="#3.1.&#36171;&#20540;">&#182;</a></h3><p>通过<code>=</code>来实现，就是把地址拷贝了一份，比如 <code>a = b</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261661137352
+140261661137352
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 再验证</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 都增加了一个3，说明的确指向同一个内存地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 2, 3]
+[1, 2, 2, 3]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2.&#28145;&#25335;&#36125;deepcopy">3.2.&#28145;&#25335;&#36125;deepcopy<a class="anchor-link" href="#3.2.&#28145;&#25335;&#36125;deepcopy">&#182;</a></h3><p>导入<code>copy</code>模块，调用<code>deepcopy</code>方法</p>
+<p>如果有嵌套引用的情况，直接递归拷贝</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># 指向了不同的内存地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888134856
+140261661169608
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 再验证一下</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># b不变，说明的确指向不同的内存地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 2, 3]
+[1, 2, 2]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 开始变化了 ################ </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 之前讲了嵌套列表，我们来验证一下</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">c</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># 发现地址都不一样</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888867144
+140261888134856
+140261888132936
+140261888007816
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 直观的验证一下</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">666</span><span class="p">)</span>
+
+<span class="c1"># 深拷贝的确是深拷贝</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, [1, 2, 2, 666]]
+[1, 2, 3, [1, 2, 2]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.3.&#27973;&#25335;&#36125;copy">3.3.&#27973;&#25335;&#36125;copy<a class="anchor-link" href="#3.3.&#27973;&#25335;&#36125;copy">&#182;</a></h3><p>copy只是简单拷贝，如果拷贝内容里面还有引用之类的，他是不管的</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># 指向了不同的内存地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261661169672
+140261661170568
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 开始变化了 ################ </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 之前讲了嵌套列表，我们来验证一下</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">]</span>
+
+<span class="n">c</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># 第一层地址不一样</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888133576
+140261661169672
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 验证一下</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="c1"># 第一层指向的不同地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, [1, 2, 2], 111]
+[1, 2, 3, [1, 2, 2]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 如果里面还有引用，那么就不管了</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261931679048
+140261931679048
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 验证一下</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">666</span><span class="p">)</span>
+
+<span class="c1"># 内部引用的确没copy新地址</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, [1, 2, 2, 666], 111]
+[1, 2, 3, [1, 2, 2, 666]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.4.&#30693;&#35782;&#25193;&#23637;">3.4.&#30693;&#35782;&#25193;&#23637;<a class="anchor-link" href="#3.4.&#30693;&#35782;&#25193;&#23637;">&#182;</a></h3><p><strong>如果拷贝的对象是不可变类型，不管深拷贝和浅拷贝以及赋值都是地址引用</strong></p>
+<p>需要注意的是：Python和Net对于值类型处理是不一样的（管理方式不一样导致的）</p>
+<p>==&gt;<code>NET中值类型默认是深拷贝的，而对于引用类型，默认实现的是浅拷贝</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">a</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888067984
+140261888067984
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261661133488
+140261661133488
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>140261888067984
+140261888067984
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;<a class="anchor-link" href="#4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">&#182;</a></h2><p>小明听懂了Python的深拷贝和浅拷贝后，本着学以致用的原则，写下了C#的实现：</p>
+<p>先声明一下，本机环境是Ubuntu + NetCore，欢迎贴Code补充</p>
+<h3 id="4.1.&#36171;&#20540;">4.1.&#36171;&#20540;<a class="anchor-link" href="#4.1.&#36171;&#20540;">&#182;</a></h3><p>Code：<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/deepcopy" target="_blank">https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/deepcopy</a></p>
+<p>赋值方法和<code>Python</code>一样，直接赋值即可</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span> <span class="p">};</span>
+<span class="kt">var</span> <span class="n">list2</span> <span class="p">=</span> <span class="n">list1</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+
+// Python一样，直接赋值即可
+var list1 = new List&lt;int&gt;() { 1, 2, 2 };
+var list2 = list1;
+
+// 验证一下
+list1.Add(3);//我们修改一下list1，list2也就跟着就改变了
+
+foreach (var item in list1)
+{
+    Console.Write(item + &quot; &quot;);
+}
+Console.WriteLine();
+foreach (var item in list2)
+{
+    Console.Write(item + &quot; &quot;);
+}
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 2 2 3 
+1 2 2 3 </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2&#20540;&#31867;&#22411;&#40664;&#35748;&#28145;&#25335;&#36125;">4.2&#20540;&#31867;&#22411;&#40664;&#35748;&#28145;&#25335;&#36125;<a class="anchor-link" href="#4.2&#20540;&#31867;&#22411;&#40664;&#35748;&#28145;&#25335;&#36125;">&#182;</a></h3><p>NetCore深拷贝相关的<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.collections.generic.list-1.copyto?view=netcore-2.1" target="_blank">官方文档</a> <code>public void CopyTo (T[] array);</code></p>
+<p>简单类型用<strong>最简单的方式</strong>就能实现深拷贝了：</p>
+<p>官方的CopyTo在这里和这个效果一样，但是比较麻烦，这边就不贴了（Code里面贴了）</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list3</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span> <span class="p">};</span>
+<span class="kt">var</span> <span class="n">list4</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="n">list3</span><span class="p">);</span>
+
+<span class="c1">// 验证一下</span>
+<span class="n">list3</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list3</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span> <span class="p">+</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list4</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span> <span class="p">+</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>1 2 2 3 
+1 2 2</code></pre>
+<h3 id="4.3.&#24341;&#29992;&#31867;&#22411;&#40664;&#35748;&#27973;&#25335;&#36125;">4.3.&#24341;&#29992;&#31867;&#22411;&#40664;&#35748;&#27973;&#25335;&#36125;<a class="anchor-link" href="#4.3.&#24341;&#29992;&#31867;&#22411;&#40664;&#35748;&#27973;&#25335;&#36125;">&#182;</a></h3><p><strong>对于<code>List&lt;T&gt;</code>再复杂点的，上面的方式就变成浅拷贝了：(类似于Python的Copy.Copy)</strong></p>
+<p>官方的CopyTo在这里和这个效果一样，但是比较麻烦，这边就不贴了（Demo里面贴了）</p>
+<p>定义一个Student</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Student</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="err">$</span><span class="s">&quot;Name:{Name},Age:{Age}&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<hr>
+<p>浅拷贝Demo：</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list5</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;(){</span>
+    <span class="k">new</span> <span class="n">Student</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小张&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">22</span> <span class="p">},</span>
+    <span class="k">new</span> <span class="n">Student</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小明&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">}</span>
+    <span class="p">};</span>
+<span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小潘&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">};</span>
+<span class="n">list5</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+<span class="c1">// 浅拷贝一份</span>
+<span class="kt">var</span> <span class="n">list6</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Student</span><span class="p">&gt;(</span><span class="n">list5</span><span class="p">);</span>
+
+<span class="c1">// 浅拷贝测试</span>
+<span class="c1">// 我们修改一下list5，list6没有跟着改变，说明第一层的地址的确不一样</span>
+<span class="n">list5</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Student</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小胖&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">24</span> <span class="p">});</span>
+<span class="c1">// 当我们修改小潘同学的年龄时，大家都变了，说明真的只是浅拷贝</span>
+<span class="n">p</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="m">24</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list5</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=============&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list6</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>Name:小张,Age:22
+Name:小明,Age:23
+Name:小潘,Age:24
+Name:小胖,Age:24
+=============
+Name:小张,Age:22
+Name:小明,Age:23
+Name:小潘,Age:24</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.4.&#31616;&#21333;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;">4.4.&#31616;&#21333;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;<a class="anchor-link" href="#4.4.&#31616;&#21333;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;">&#182;</a></h3><p>对于<code>List&lt;T&gt;</code>的深拷贝场景，其实项目中还是蛮常见的,那深拷贝怎么搞呢？</p>
+<p>先来一个简单的实现方式，需要<code>T</code>实现<code>ICloneable</code>接口才行：</p>
+<p>定义一个Person类</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">ICloneable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">//实现ICloneable的Clone方法</span>
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">base</span><span class="p">.</span><span class="n">MemberwiseClone</span><span class="p">();</span><span class="c1">//调用父类方法即可</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="err">$</span><span class="s">&quot;Name:{Name},Age:{Age}&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>给<code>List&lt;T&gt;</code>定义一个扩展方法：（温馨提醒：扩展方法所在的类必须是static Class哦）</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">ListExt</span>
+<span class="p">{</span>
+    <span class="c1">// 只要T实现了ICloneable接口就可以了</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">DeepCopy</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">list</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">ICloneable</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">list</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">item</span><span class="p">.</span><span class="n">Clone</span><span class="p">()).</span><span class="n">ToList</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>来个调用加验证：</p>
+<div class="highlight"><pre><span></span><span class="cp">#region 引用类型深拷贝-简单实现方式</span>
+
+<span class="kt">var</span> <span class="n">oldList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;(){</span>
+    <span class="k">new</span> <span class="nf">Person</span><span class="p">(){</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;小明&quot;</span><span class="p">,</span><span class="n">Age</span><span class="p">=</span><span class="m">23</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Person</span><span class="p">(){</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;小张&quot;</span><span class="p">,</span><span class="n">Age</span><span class="p">=</span><span class="m">22</span><span class="p">},</span>
+<span class="p">};</span>
+<span class="kt">var</span> <span class="n">xiaoPan</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小潘&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">};</span>
+<span class="n">oldList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">xiaoPan</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">newList</span> <span class="p">=</span> <span class="n">oldList</span><span class="p">.</span><span class="n">DeepCopy</span><span class="p">();</span>
+
+<span class="c1">//测试</span>
+<span class="n">oldList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小胖&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">});</span>
+<span class="n">xiaoPan</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="m">24</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">oldList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;========&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">newList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endregion</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>Name:小明,Age:23
+Name:小张,Age:22
+Name:小潘,Age:24
+Name:小胖,Age:23
+========
+Name:小明,Age:23
+Name:小张,Age:22
+Name:小潘,Age:23</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.5.&#24207;&#21015;&#21270;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;&#65288;&#24120;&#29992;&#65289;">4.5.&#24207;&#21015;&#21270;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;&#65288;&#24120;&#29992;&#65289;<a class="anchor-link" href="#4.5.&#24207;&#21015;&#21270;&#26041;&#24335;&#23454;&#29616;&#28145;&#25335;&#36125;&#65288;&#24120;&#29992;&#65289;">&#182;</a></h3><p>利用<code>System.Runtime.Serialization</code>序列化与反序列化实现深拷贝</p>
+<p>先定义一个Teacher类（别忘记加 <strong><code>Serializable</code></strong> 的标签）</p>
+<div class="highlight"><pre><span></span><span class="na">[Serializable]</span>
+<span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Teacher</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="err">$</span><span class="s">&quot;Name:{Name},Age:{Age}&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>添加一个扩展方法：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">ListExt</span>
+<span class="p">{</span>
+    <span class="c1">// 利用System.Runtime.Serialization序列化与反序列化实现深拷贝</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">DeepCopy2</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">T</span> <span class="n">obj</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MemoryStream</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">formatter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BinaryFormatter</span><span class="p">();</span>
+            <span class="n">formatter</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
+            <span class="n">stream</span><span class="p">.</span><span class="n">Seek</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">SeekOrigin</span><span class="p">.</span><span class="n">Begin</span><span class="p">);</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">formatter</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="cp">#region 引用类型深拷贝-序列化实现</span>
+
+<span class="kt">var</span> <span class="n">oldTestList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Teacher</span><span class="p">&gt;(){</span>
+    <span class="k">new</span> <span class="nf">Teacher</span><span class="p">(){</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;小明&quot;</span><span class="p">,</span><span class="n">Age</span><span class="p">=</span><span class="m">23</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Teacher</span><span class="p">(){</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;小张&quot;</span><span class="p">,</span><span class="n">Age</span><span class="p">=</span><span class="m">22</span><span class="p">},</span>
+<span class="p">};</span>
+<span class="kt">var</span> <span class="n">s</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小潘&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">};</span>
+<span class="n">oldTestList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">newTestList</span> <span class="p">=</span> <span class="n">oldTestList</span><span class="p">.</span><span class="n">DeepCopy2</span><span class="p">();</span>
+
+<span class="c1">//测试</span>
+<span class="n">oldTestList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Teacher</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;小胖&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">23</span> <span class="p">});</span>
+<span class="n">s</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="m">24</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">oldTestList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;========&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">newTestList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endregion</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>Name:小明,Age:23
+Name:小张,Age:22
+Name:小潘,Age:24
+Name:小胖,Age:23
+========
+Name:小明,Age:23
+Name:小张,Age:22
+Name:小潘,Age:23</code></pre>
+<p>因为主要是说Python，Net只是简单提一下，这边就先到这里了</p>
+<p>不尽兴可以看看<a href="https://www.cnblogs.com/zhili/p/DeepCopy.html" target="_blank">这篇文章</a>，讲得还是挺全面的</p>
+<p>我们接着来对比学习～</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.Python&#29983;&#25104;&#22120;">5.Python&#29983;&#25104;&#22120;<a class="anchor-link" href="#5.Python&#29983;&#25104;&#22120;">&#182;</a></h2><p>一看到标题小明又懵圈了，但是看到大家好像都知道的样子心想道：“我是不是又睡过一节课啊？”</p>
+<p><a href="#2.2.列表生成式" target="_blank">之前有讲列表生成式</a>，这边说说生成器</p>
+<p>通过列表生成式，我们可以简单并直接的创建一个列表，但是当数据有一定的规律而且又很大的时候，使用列表就有点浪费资源了</p>
+<p>如果列表元素可以按照某种算法推算出来，这样就不必创建完整的list，从而节省大量的资源</p>
+<h3 id="5.1.&#31616;&#21333;&#26041;&#24335;">5.1.&#31616;&#21333;&#26041;&#24335;<a class="anchor-link" href="#5.1.&#31616;&#21333;&#26041;&#24335;">&#182;</a></h3><p><strong>在Python中，这种一边循环一边计算的机制，称为生成器：generator</strong></p>
+<p>先看一个简单的生成器案例：（<strong>只要把一个列表生成式的<code>[]</code>改成<code>()</code></strong> ，就创建了一个<code>generator</code>了）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 列表生成式</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[69]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 生成器写法（Python2.x系列是用xrange）</span>
+<span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[70]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;generator object &lt;genexpr&gt; at 0x7f9144023200&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>遍历方式可以用之前的<code>for</code>循环来遍历（推荐）</p>
+<p>也可以用<code>next()</code>或者<code>__next__()</code>方法来遍历。</p>
+<p><code>generator</code>保存的是算法，每次调用<code>next(xxx)</code>或者<code>__next__()</code>，就计算出下一个元素的值，直到计算到最后一个元素</p>
+<p>当没有更多的元素时，抛出<code>StopIteration</code>的异常</p>
+<p>最新的Python3.7在这方面有所优化：<a href="https://www.python.org/dev/peps/pep-0479" target="_blank">https://www.python.org/dev/peps/pep-0479</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># for来遍历（推荐）</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span> <span class="c1">#通过__next__也一样取下一个</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">StopIteration</span>                             Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-72-9897a9148994&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span> print<span class="ansi-blue-fg">(</span>next<span class="ansi-blue-fg">(</span>g<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> print<span class="ansi-blue-fg">(</span>next<span class="ansi-blue-fg">(</span>g<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg"> </span>print<span class="ansi-blue-fg">(</span>next<span class="ansi-blue-fg">(</span>g<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     14</span> print<span class="ansi-blue-fg">(</span>next<span class="ansi-blue-fg">(</span>g<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">StopIteration</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.2.yield&#26041;&#24335;">5.2.yield&#26041;&#24335;<a class="anchor-link" href="#5.2.yield&#26041;&#24335;">&#182;</a></h3><p>如果推算的算法比较复杂，用类似列表生成式的for循环无法实现时，还可以用函数来实现</p>
+<p>这时候就需要用到<code>yield</code>了，像最经典的斐波拉契数列，这次用一波生成器来对比实现下：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 递归方式：求第30个数是多少</span>
+
+<span class="c1"># 1、1、2、3、5、8、13、21、34...</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fib</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[73]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>832040</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 在讲yield方式之前先用循环实现一下</span>
+
+<span class="k">def</span> <span class="nf">fibona</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">fibona</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+10946
+17711
+28657
+46368
+75025
+121393
+196418
+317811
+514229
+832040
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for循环实现</span>
+
+<span class="k">def</span> <span class="nf">fibona</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="c1"># [0,n)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">fibona</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+10946
+17711
+28657
+46368
+75025
+121393
+196418
+317811
+514229
+832040
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>a, b = b, a + b</code> 之前交换两数的时候提过</p>
+<p>这个相当于==&gt;</p>
+<div class="highlight"><pre><span></span><span class="n">temp_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">temp_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">temp_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+<p>要把<code>fibona</code>函数变成<code>generator</code>，只需要把<code>print(b)</code>改为<code>yield b</code>就可以了：</p>
+<p><strong><code>generator</code>在执行过程中，遇到<code>yield</code>就中断，下次又继续执行到<code>yield</code>停下了，一直到最后</strong></p>
+<p>生成器的特点：</p>
+<ol>
+<li>节约内存</li>
+<li>迭代到下一次的调用时，所使用的参数都是第一次所保留下的（所有函数调用的参数都是第一次所调用时保留的，而不是新创建的）</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 改成生成器比较简单，直接换输出为yield</span>
+
+<span class="k">def</span> <span class="nf">fibona</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="c1"># [0,n)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">b</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 看看是不是生成器</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">fibona</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">g</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[77]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;generator object fibona at 0x7f91367b5830&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 遍历输出（基本上都会用for来遍历）</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+10946
+17711
+28657
+46368
+75025
+121393
+196418
+317811
+514229
+832040
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>对于函数改成的generator来说，遇到return语句或者执行到函数体最后一行语句，就是结束generator的循环的时候</p>
+<p>小明总结如下：</p>
+<ol>
+<li><p><strong>在Python中，这种一边循环一边计算的机制称为生成器：generator</strong></p>
+</li>
+<li><p><strong>每一个生成器都是一个迭代器（迭代器不一定是生成器）</strong></p>
+</li>
+<li><p><strong>如果一个函数包含yield关键字，这个函数就会变为一个生成器</strong></p>
+</li>
+<li><p><strong>生成器并不会一次返回所有结果，而是每次遇到yield关键字后返回相应结果，并保留函数当前的运行状态，等待下一次的调用</strong></p>
+</li>
+<li><p><strong>由于生成器也是一个迭代器，那么它就支持next用方法来获取下一个值（我们平时用for来遍历它）</strong></p>
+</li>
+</ol>
+<p>推荐一篇文章，总结的很全了：（<a href="https://www.cnblogs.com/python-life/articles/4549996.html" target="_blank">yield用法总结</a>）</p>
+<h3 id="5.3.&#25193;&#23637;&#20043;&#65374;send(msg)&#26041;&#27861;&#65306;">5.3.&#25193;&#23637;&#20043;&#65374;<code>send(msg)</code>&#26041;&#27861;&#65306;<a class="anchor-link" href="#5.3.&#25193;&#23637;&#20043;&#65374;send(msg)&#26041;&#27861;&#65306;">&#182;</a></h3><p>其实<code>__next__()</code>和<code>send()</code>在一定意义上作用是相似的，区别是<code>send()</code>可以传递yield表达式的值进去</p>
+<p>而<code>__next__()</code>不 能传递特定的值。我们可以看做<code>x.__next__()</code> 和 <code>x.send(None)</code> 作用是一样的</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 来个案例：</span>
+<span class="k">def</span> <span class="nf">test_send</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">g</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[79]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;generator object test_send at 0x7f91367e6410&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 定义一个列表</span>
+<span class="n">test_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 把第一次yield的值放在列表中</span>
+<span class="n">test_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="fm">__next__</span><span class="p">())</span>
+
+<span class="c1"># 把list传给tmp并打印（可以理解为把表达式右边的 yield i 暂时换成了 test_list）</span>
+<span class="c1"># out的内容是yield返回的值</span>
+<span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">test_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[80]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 以防你们看不懂，来个简单案例</span>
+<span class="c1"># 你传啥print(tmp)就给你打印啥</span>
+<span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;你好啊&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>你好啊
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[81]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>注意一种情况，<code>generator</code>刚启动的时候，要么不传，要么只能传<code>None</code></p>
+<p>解决：要么一开始<code>send(None)</code>要么一开始先调用一下<code>__next()__</code> or <code>next()</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 注意一种情况，generator刚启动的时候，要么不传，要么只能传None</span>
+<span class="k">def</span> <span class="nf">test_send</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span> <span class="c1"># TypeError: can&#39;t send non-None value to a just-started generator</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-82-2e891aa5dd81&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> 
+<span class="ansi-green-intense-fg ansi-bold">      8</span> g <span class="ansi-blue-fg">=</span> test_send<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 9</span><span class="ansi-red-fg"> </span>g<span class="ansi-blue-fg">.</span>send<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;dog&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># TypeError: can&#39;t send non-None value to a just-started generator</span>
+
+<span class="ansi-red-fg">TypeError</span>: can&#39;t send non-None value to a just-started generator</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 解决：要么一开始send(None)要么一开始先调用一下__next()__ or next()</span>
+<span class="k">def</span> <span class="nf">test_send</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[83]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.4.&#25193;&#23637;&#20043;&#65374;return&#21644;break&#30340;&#35828;&#26126;">5.4.&#25193;&#23637;&#20043;&#65374;<code>return</code>&#21644;<code>break</code>&#30340;&#35828;&#26126;<a class="anchor-link" href="#5.4.&#25193;&#23637;&#20043;&#65374;return&#21644;break&#30340;&#35828;&#26126;">&#182;</a></h3><p>在一个<code>generator</code>函数中，如果没有<code>return</code>则默认执行至函数完毕</p>
+<p>如果在执行过程中<code>return</code>或者<code>break</code>则直接抛出<code>StopIteration</code>终止迭代</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># break案例</span>
+<span class="k">def</span> <span class="nf">test_send</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">yield</span> <span class="n">i</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># return案例</span>
+<span class="k">def</span> <span class="nf">test_send</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;i==2&quot;</span>
+        <span class="k">yield</span> <span class="n">i</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>用<code>for</code>循环调用<code>generator</code>时，发现拿不到<code>generator</code>的<code>return</code>语句的返回值</strong></p>
+<p><strong>如果想要拿到返回值，必须捕获<code>StopIteration</code>错误，返回值包含在<code>StopIteration的value</code>中</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 上面return的返回值怎么拿呢？</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">test_send</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">break</span> <span class="c1"># 一定要加break，别忘了你在死循环里呢</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+i==2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.5.&#25193;&#23637;&#20043;&#65374;&#21327;&#31243;yield&#23454;&#29616;&#22810;&#20219;&#21153;&#35843;&#24230;">5.5.&#25193;&#23637;&#20043;&#65374;&#21327;&#31243;<code>yield</code>&#23454;&#29616;&#22810;&#20219;&#21153;&#35843;&#24230;<a class="anchor-link" href="#5.5.&#25193;&#23637;&#20043;&#65374;&#21327;&#31243;yield&#23454;&#29616;&#22810;&#20219;&#21153;&#35843;&#24230;">&#182;</a></h3><p>这个场景还是很常见的，比如C#的单线程实现多任务用的就可以使用yield</p>
+<p>再比如<strong>生产消费</strong>这个经典案例：（<a href="https://www.cnblogs.com/fangyuan1004/p/4571304.html" target="_blank">参考</a>）</p>
+<p><strong>生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，切换回生产者继续生产</strong></p>
+<p>Python对协程的支持是通过generator实现的</p>
+<p>在generator中，我们不但可以通过for循环来迭代，还可以不断调用<code>__next__()</code>获取由<code>yield</code>语句返回的下一个值。</p>
+<p>因为Python的<code>yield</code><strong>不但可以返回一个值，它还可以接收调用者发出的参数</strong>(通过<code>send</code>方法),所以就happy了</p>
+<p>我们举个简单的demo来看看：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">consumer</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="k">yield</span>
+        <span class="c1"># !None就变成真了</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消费者:&quot;</span><span class="p">,</span><span class="n">tmp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 创建消费者</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">consumer</span><span class="p">()</span>
+<span class="c1"># 启动消费者</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1"># 生产数据，并提交给消费者</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;小潘&quot;</span><span class="p">)</span>
+<span class="c1"># 生产结束，通知消费者结束，抛出StopIteration异常</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># 使用c.close()可以避免异常</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>消费者: 小明
+消费者: 小潘
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">StopIteration</span>                             Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-88-bcc0083d4089&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> c<span class="ansi-blue-fg">.</span>send<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;小潘&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> <span class="ansi-red-fg"># 生产结束，通知消费者结束，抛出StopIteration异常</span>
+<span class="ansi-green-fg">----&gt; 9</span><span class="ansi-red-fg"> </span>c<span class="ansi-blue-fg">.</span>send<span class="ansi-blue-fg">(</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># 使用c.close()可以避免异常</span>
+
+<span class="ansi-red-fg">StopIteration</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>执行流程</strong>：</p>
+<ol>
+<li>创建协程对象（消费者）后，必须使用<code>send(None)</code>或<code>__next__()</code>启动</li>
+<li>协程在执行yield后让出执行绪，等待消息</li>
+<li>调用方发送<code>send(msg)</code>消息，协程恢复执行，将接收到的数据保存并执行后续流程</li>
+<li>再次循环到yield，协程返回前面的处理结果，并再次让出执行绪</li>
+<li>直到关闭或被引发异常</li>
+</ol>
+<p>补全demo：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">consumer</span><span class="p">():</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">status</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消费者已经睡觉了...&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消费者：获得商品</span><span class="si">%s</span><span class="s2">号...&quot;</span> <span class="o">%</span> <span class="n">tmp</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;ok&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">produce</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="c1"># 启动消费者</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;生产者：出产商品</span><span class="si">%s</span><span class="s2">号...&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="c1"># 生产商品，并提交给消费者</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;生产者：生产者消费状态: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">status</span><span class="p">)</span>
+    <span class="c1"># c.send(None) 执行这个会引发StopIteration</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 使用close就可以避免了(手动关闭生成器函数，后面的调用会直接返回StopIteration异常)</span>
+
+
+<span class="c1"># 创建消费者</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">consumer</span><span class="p">()</span>
+<span class="n">produce</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>生产者：出产商品1号...
+消费者：获得商品1号...
+生产者：生产者消费状态: ok
+生产者：出产商品2号...
+消费者：获得商品2号...
+生产者：生产者消费状态: ok
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 更多可以查看帮助文档</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">yield</span>
+<span class="n">help</span><span class="p">(</span><span class="n">test</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on generator object:
+
+test = class generator(object)
+ |  Methods defined here:
+ |  
+ |  __del__(...)
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  close(...)
+ |      close() -&gt; raise GeneratorExit inside generator.
+ |  
+ |  send(...)
+ |      send(arg) -&gt; send &#39;arg&#39; into generator,
+ |      return next yielded value or raise StopIteration.
+ |  
+ |  throw(...)
+ |      throw(typ[,val[,tb]]) -&gt; raise exception in generator,
+ |      return next yielded value or raise StopIteration.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  gi_code
+ |  
+ |  gi_frame
+ |  
+ |  gi_running
+ |  
+ |  gi_yieldfrom
+ |      object being iterated by yield from, or None
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.Python&#36845;&#20195;&#22120;">6.Python&#36845;&#20195;&#22120;<a class="anchor-link" href="#6.Python&#36845;&#20195;&#22120;">&#182;</a></h2><p>看到迭代器小明老高兴了，心想着一会写个C#版的觉得可以收获一大群眼球～</p>
+<p>在说迭代器前先说下<strong>可迭代(Iterable)</strong>（<a href="#5.2.yield方式" target="_blank">yield基础点我</a>）：</p>
+<p>在Python中，能通过for循环遍历的都是可以迭代的，比如 <strong><code>str、tuple、list、dict、set、生成器</code></strong>等等</p>
+<p>也可以通过 <strong><code>isinstance(xxx,Iterable)</code></strong> 方法判断一下是否迭代：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Iterable</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;mmd&quot;</span><span class="p">,</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[92]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[93]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">([],</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[94]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">({},</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[95]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[96]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Iterable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[97]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>迭代器是一定可以迭代的，怎么判断是迭代器呢？</p>
+<p>可以使用<code>next</code>方法的或者通过<code>isinstance(xxx,Iterator)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="nb">next</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-98-f5f8ac9a8550&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> a<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> 
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>next<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;list&#39; object is not an iterator</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Iterator</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">([],</span><span class="n">Iterator</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[100]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span><span class="n">Iterator</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[101]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>生成器都是<code>Iterator</code>对象，但<code>list、dict、str</code>虽然是<code>Iterable</code>，却不是<code>Iterator</code></p>
+<p>把<code>list、dict、str</code>等<code>Iterable</code>变成<code>Iterator</code>可以使用<strong><code>iter()</code></strong>函数：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[102]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;list_iterator at 0x7f913675d4a8&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">([]),</span><span class="n">Iterator</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[103]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">({}),</span><span class="n">Iterator</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[104]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python的<code>Iterator</code>对象表示的是一个数据流，<code>Iterator</code>对象可以被<code>next()</code>or<code>__next__()</code>函数调用并不断返回下一个数据,直到没有数据时抛出<code>StopIteration</code>错误</p>
+<p>可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过<code>next</code>函数实现按需计算下一个数据，所以<code>Iterator</code>的计算是惰性的，只有在需要返回下一个数据时它才会计算。</p>
+<p><code>Iterator</code>甚至可以表示一个无限大的数据流，而<code>list</code>等则不行</p>
+<p>小明总结了一下老师讲解的知识点：</p>
+<ol>
+<li><p><strong>可以<code>for</code>循环的对象都是<code>Iterable</code>类型</strong></p>
+</li>
+<li><p><strong>可以使用<code>next()</code>or<code>__next__()</code>函数的对象都是<code>Iterator</code>类型</strong></p>
+</li>
+<li><p><strong>集合数据类型如list、dict、str等是<code>Iterable</code>，可以通过<code>iter()</code>函数获得一个<code>Iterator</code>对象</strong></p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.CSharp&#36845;&#20195;&#22120;">7.CSharp&#36845;&#20195;&#22120;<a class="anchor-link" href="#7.CSharp&#36845;&#20195;&#22120;">&#182;</a></h2><p>其实<strong>迭代器（<code>iterator</code>）</strong>就是为了更简单的创建枚举器（<code>enumerator</code>）和可枚举类型（<code>enumerator type</code>）的方式</p>
+<h3 id="7.1.IEnumerator-&#21644;-IEnumerable">7.1.<code>IEnumerator</code> &#21644; <code>IEnumerable</code><a class="anchor-link" href="#7.1.IEnumerator-&#21644;-IEnumerable">&#182;</a></h3><p>通俗话讲：</p>
+<p><strong>能不能<code>foreach</code>就看你遍历对象有没有实现<code>IEnumerable</code>，就说明你是不是一个<code>可枚举类型</code>（<code>enumerator type</code>）</strong></p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IEnumerable</span>
+<span class="p">{</span>
+    <span class="n">IEnumerator</span> <span class="nf">GetEnumerator</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>是不是个枚举器（<code>enumerator</code>）就看你实现了<code>IEnumerator</code>接口没</strong></p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IEnumerator</span>
+<span class="p">{</span>
+    <span class="kt">object</span> <span class="n">Current</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="nf">MoveNext</span><span class="p">();</span>
+
+    <span class="k">void</span> <span class="nf">Reset</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>最明显的区别：它们两个遍历方式不一样</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// 枚举器遍历</span>
+<span class="kt">var</span> <span class="n">tmp</span> <span class="p">=</span> <span class="n">FibonaByIEnumerator</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">MoveNext</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 可枚举类型遍历</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">FibonaByIEnumerable</span><span class="p">(</span><span class="m">30</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<hr>
+<p>这个我们在2年前就说过，这边简单提一下（<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.collections.ienumerator?view=netcore-2.1" target="_blank">官方文档</a>）(<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/Enumerator" target="_blank">Demo</a>)</p>
+<p>MyEnumerator文件：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyEnumerator</span> <span class="p">:</span> <span class="n">IEnumerator</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 需要遍历的数组</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">array</span><span class="p">;</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 有效数的个数</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">MyEnumerator</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">array</span> <span class="p">=</span> <span class="n">array</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">count</span> <span class="p">=</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 当前索引（线moveNext再获取index，用-1更妥）</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">object</span> <span class="n">Current</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 移位</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">MoveNext</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(++</span><span class="n">index</span> <span class="p">&lt;</span> <span class="n">count</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 重置</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Reset</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">index</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>MyArray.cs文件</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MyArray</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 数组容量</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[</span><span class="m">4</span><span class="p">];</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 数组元素个数</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 当前数组的长度</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Length</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 添加元素</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;str&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="n">MyArray</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//要溢出的时候扩容</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="p">==</span> <span class="n">array</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span><span class="p">[]</span> <span class="n">newArray</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[</span><span class="m">2</span> <span class="p">*</span> <span class="n">array</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+            <span class="n">array</span><span class="p">.</span><span class="n">CopyTo</span><span class="p">(</span><span class="n">newArray</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+            <span class="n">array</span> <span class="p">=</span> <span class="n">newArray</span><span class="p">;</span><span class="c1">//array重新指向</span>
+        <span class="p">}</span>
+        <span class="n">array</span><span class="p">[</span><span class="n">count</span><span class="p">++]</span> <span class="p">=</span> <span class="n">str</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 移除某一项</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;i&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="n">MyArray</span> <span class="nf">RemoveAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">count</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">j</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">count</span><span class="p">--;</span><span class="c1">//少了一个元素所以--</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 索引器</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;index&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="k">this</span><span class="p">[</span><span class="kt">int</span> <span class="n">index</span><span class="p">]</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>MyArrayExt.cs文件:</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MyArray</span><span class="p">:</span> <span class="n">IEnumerable</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 枚举器方法</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="n">IEnumerator</span> <span class="nf">GetEnumerator</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">MyEnumerator</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">array</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用:</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">MyArray</span> <span class="n">array</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyArray</span><span class="p">();</span>
+    <span class="n">array</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;~&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;这&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;是&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;一&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;个&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;测&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;试&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;。&quot;</span><span class="p">).</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">3</span><span class="p">).</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">6</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>结果:</p>
+
+<pre><code>这是一测试
+这是一测试</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.2.yield&#26041;&#24335;">7.2.yield&#26041;&#24335;<a class="anchor-link" href="#7.2.yield&#26041;&#24335;">&#182;</a></h3><p>注意一下，C#是用<code>yield return xxx</code>，Python是用<code>yield xxx</code>关键字</p>
+<p>还记得开头说的那句话吗？</p>
+<blockquote><p>其实迭代器（iterator）就是为了更简单的创建枚举器（enumerator）和可枚举类型（enumerator type）的方式</p>
+</blockquote>
+<p>如果<strong>枚举器和可枚举类型</strong>还是不理解（<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/IteratorDemo" target="_blank">举个例子</a>）就懂了：（从遍历方式就看出区别了）</p>
+<p>定义一个斐波拉契函数，返回可枚举类型</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 返回一个可枚举类型</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">FibonaByIEnumerable</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+        <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">FibonaByIEnumerable</span><span class="p">(</span><span class="m">30</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<hr>
+<p>定义一个斐波拉契函数，返回一个枚举器</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 返回一个枚举器</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">FibonaByIEnumerator</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+        <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用一下：</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">tmp</span> <span class="p">=</span> <span class="n">FibonaByIEnumerator</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">MoveNext</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>利用<code>yield</code>轻轻松松就创建了<code>枚举器和可枚举类型</code></p>
+<p>扩充一下：<strong><code>Python</code>退出迭代器用<code>yield return</code> 或者 <code>yield break</code>，C#也是一样的</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="8.&#38381;&#21253;">8.&#38381;&#21253;<a class="anchor-link" href="#8.&#38381;&#21253;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="9.&#35013;&#39280;&#22120;">9.&#35013;&#39280;&#22120;<a class="anchor-link" href="#9.&#35013;&#39280;&#22120;">&#182;</a></h2><h2 id="9.1.">9.1.<a class="anchor-link" href="#9.1.">&#182;</a></h2><h2 id="9.2.&#31867;&#35013;&#39280;&#22120;">9.2.&#31867;&#35013;&#39280;&#22120;<a class="anchor-link" href="#9.2.&#31867;&#35013;&#39280;&#22120;">&#182;</a></h2>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>

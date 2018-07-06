@@ -4,7 +4,7 @@
     - [1.Base](#1base)
         - [1.1.POP](#11pop)
         - [1.2.OOP](#12oop)
-        - [1.3.Ext](#13ext)
+        - [1.3.EXT](#13ext)
         - [1.4.Except](#14except)
 
 # Python
@@ -29,9 +29,10 @@
 
 <a href="./python/base/oop/3.异常相关.md" target="_blank">3.Python3 与 C# 面向对象之～异常相关</a>
 
-### 1.3.Ext
+### 1.3.EXT
 
 <a href="./python/base/module/模块专题.md" target="_blank">1.Python3 与 C# 扩展之～模块专栏</a>
+<a href="./python/base/ext/基础衍生.md" target="_blank">2.Python3 与 C# 扩展之～基础衍生</a>
 
 <a href="https://www.cnblogs.com/dotnetcrazy/p/9111200.html" target="_blank">用Python3、NetCore、Shell分别开发一个Ubuntu版的定时提醒（附NetCore跨平台两种发布方式）</a>
 
