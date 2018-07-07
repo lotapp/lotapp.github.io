@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>逸鹏说英语</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container">
+    <div class="table-responsive">
+      <h1 id="ps-base">1.PS Base</h1>
+      <h2 id="色彩">1.1.色彩</h2>
+      <h3 id="hsb-基于人眼">1.1.1.
+        <code>HSB</code> ~ 基于人眼</h3>
+      <p>色相
+        <code>H</code>
+      </p>
+      <p>饱和度
+        <code>S</code>
+      </p>
+      <p>明度
+        <code>B</code>
+      </p>
+      <h3 id="rgb-光的三原色">1.1.2.
+        <code>RGB</code> ~ 光的三原色</h3>
+      <p>
+        <code>red</code>：
+        <code>255. 0. 0</code>
+      </p>
+      <p>
+        <code>green</code>：
+        <code>0. 255. 0</code>
+      </p>
+      <p>
+        <code>blue</code>：
+        <code>0. 0. 255</code>
+      </p>
+      <p>
+        <code>white</code>：
+        <code>255. 255. 255</code>
+      </p>
+      <p>
+        <code>black</code>：
+        <code>0. 0. 0</code>
+      </p>
+      <p>
+        <code>中性灰</code>：
+        <code>128. 128. 128</code>（当所有数值一样，无色相，灰度，深灰浅灰区别）</p>
+      <h3 id="cmyk-印刷色">1.1.3.
+        <code>CMYK</code> ~ 印刷色</h3>
+      <p>青
+        <code>（c）</code>, 按
+        <code>%</code> 划分，</p>
+      <p>品红
+        <code>（M）</code>
+      </p>
+      <p>黄
+        <code>（Y）</code>
+      </p>
+      <p>配不出
+        <code>100%</code>的黑，黑（K）：黑色染料</p>
+      <p>
+        <code>黑色</code>：
+        <code>C:0 M:0 Y:0 K:100%</code>
+      </p>
+      <p>
+        <code>RGB</code>为加色模式：</p>
+      <p>
+        <code>R+G=Y</code>
+      </p>
+      <p>
+        <code>R+B=M</code>
+      </p>
+      <p>
+        <code>G+B=C</code>
+      </p>
+      <p>
+        <code>R+G+B=WHITE</code>
+      </p>
+      <p>
+        <code>CMYK</code>为减色模式：</p>
+      <h3 id="lab-大自然">1.1.4.
+        <code>LAB</code> ~ 大自然</h3>
+      <p>
+        <code>LAB</code>是理论推出来，可能不存在，其颜色之多 就像大自然中的颜色</p>
+      <hr>
+      <h3 id="扩展做印刷文档时rgb与cmyk转换">扩展：做印刷文档时，
+        <code>RGB</code>与
+        <code>CMYK</code>转换</h3>
+      <ol>
+        <li>
+          <p>新建文档，RGB模式，分辨率300PPI</p>
+        </li>
+        <li>设置勾选
+          <code>工作中的 CMYK 预览</code>
+          <ul>
+            <li>
+              <strong>溢色</strong>：颜色可看，无法印刷出来</li>
+            <li>在
+              <code>RGB</code>模式下工作，用
+              <code>CMYK</code>模式去预览，打印时就不会出现溢色现象</li>
+          </ul>
+        </li>
+        <li>
+          <p>识色时要避免选用
+            <strong>溢色</strong>（如红色：255.0.0等），会有
+            <code>!</code>提醒</p>
+        </li>
+        <li>
+          <p>完成后转
+            <code>CMYK</code>模式出片。</p>
+        </li>
+      </ol>
+      <p>但很多工作会直接新建文档CMYK模式，eg:300PPI</p>
+      <hr>
+      <h2 id="分辨率">1.2.分辨率</h2>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./en/sytle/js/nav.min.js" async></script>
+</body>
+
+</html>
