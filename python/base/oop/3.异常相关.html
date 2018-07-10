@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
-<title>3.异常相关</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
-<script src="../../../style/js/mynav.min.js" async></script>
-
+<head>
+    <meta charset="utf-8" />
+    <title>3.异常相关</title>
+    <script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+    <script src="../../../style/js/mynav.min.js" async></script>
 </head>
+
 <body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+        <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.&#24322;&#24120;">1.&#24322;&#24120;<a class="anchor-link" href="#1.&#24322;&#24120;">&#182;</a></h2><h3 id="1.1-try...except">1.1 try...except<a class="anchor-link" href="#1.1-try...except">&#182;</a></h3><p>又到了开新课的时候了，小明同学这次提前预习了知识，乘着老师还没来就在黑板上写下了这段Code：</p>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <h2 id="1.&#24322;&#24120;">1.&#24322;&#24120;
+                            <a class="anchor-link" href="#1.&#24322;&#24120;">&#182;</a>
+                        </h2>
+                        <h3 id="1.1-try...except">1.1 try...except
+                            <a class="anchor-link" href="#1.1-try...except">&#182;</a>
+                        </h3>
+                        <p>又到了开新课的时候了，小明同学这次提前预习了知识，乘着老师还没来就在黑板上写下了这段Code：</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[1]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>  <span class="c1"># ZeroDivisionError: division by zero</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
@@ -35,47 +45,55 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>division by zero
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.2-try...except...else...finally">1.2 try...except...else...finally<a class="anchor-link" href="#1.2-try...except...else...finally">&#182;</a></h3><p>小潘同学刚进来就看见了，自语道：“<code>try...except</code>捕获异常谁不会？就会这么屁点东西还好意思秀，切～ 我给你把 <strong>格式</strong>补全”</p>
-<p>于是乘着小明上厕所的时候，擦掉小明的Code，自己写了一段高大上的Code：</p>
+                <div class="output_wrapper">
+                    <div class="output">
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 异常捕获全格式</span>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>division by zero
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <h3 id="1.2-try...except...else...finally">1.2 try...except...else...finally
+                            <a class="anchor-link" href="#1.2-try...except...else...finally">&#182;</a>
+                        </h3>
+                        <p>小潘同学刚进来就看见了，自语道：“
+                            <code>try...except</code>捕获异常谁不会？就会这么屁点东西还好意思秀，切～ 我给你把
+                            <strong>格式</strong>补全”</p>
+                        <p>于是乘着小明上厕所的时候，擦掉小明的Code，自己写了一段高大上的Code：</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[2]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 异常捕获全格式</span>
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">eval</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
@@ -95,55 +113,65 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
+</pre>
+                            </div>
 
-</div>
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
+                <div class="output_wrapper">
+                    <div class="output">
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>except: division by zero
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>except: division by zero
 finally：小明是傻子～
 ----------
 小明啊小明你调坑里了～
 else：没有异常就奖励100块～
 finally：小明是傻子～
 </pre>
-</div>
-</div>
+                            </div>
+                        </div>
 
-</div>
-</div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>这时候小明和老师一起进来了，同学们隐约间都听到小明的自夸声：“老师，我可好了，提前预习并且还写了个demo在黑板上呢～”</p>
-<p>老师一进门看着黑板就笑了，同学们也笑成一片。小明心想，咦～难道我写错了？定眼一看黑板，气呼呼的回座位了</p>
-<p><code>else</code>可以不写，不过我们 <strong>基本上还是会写的，毕竟可以知道是真的没有错误，而不是屏蔽了错误</strong></p>
-<h3 id="1.3-&#22810;&#20010;&#24322;&#24120;&#22788;&#29702;">1.3 &#22810;&#20010;&#24322;&#24120;&#22788;&#29702;<a class="anchor-link" href="#1.3-&#22810;&#20010;&#24322;&#24120;&#22788;&#29702;">&#182;</a></h3><p>老师很欣慰，觉得这个班真有意思，大家学习空前热情，为了照顾小明，老师反问道：“有谁知道 <strong>多个异常怎么处理</strong>？”</p>
-<p>小明飞快的举手并把黑板上内容擦完，写下了如下代码：</p>
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>这时候小明和老师一起进来了，同学们隐约间都听到小明的自夸声：“老师，我可好了，提前预习并且还写了个demo在黑板上呢～”</p>
+                        <p>老师一进门看着黑板就笑了，同学们也笑成一片。小明心想，咦～难道我写错了？定眼一看黑板，气呼呼的回座位了</p>
+                        <p>
+                            <code>else</code>可以不写，不过我们
+                            <strong>基本上还是会写的，毕竟可以知道是真的没有错误，而不是屏蔽了错误</strong>
+                        </p>
+                        <h3 id="1.3-&#22810;&#20010;&#24322;&#24120;&#22788;&#29702;">1.3 &#22810;&#20010;&#24322;&#24120;&#22788;&#29702;
+                            <a class="anchor-link" href="#1.3-&#22810;&#20010;&#24322;&#24120;&#22788;&#29702;">&#182;</a>
+                        </h3>
+                        <p>老师很欣慰，觉得这个班真有意思，大家学习空前热情，为了照顾小明，老师反问道：“有谁知道
+                            <strong>多个异常怎么处理</strong>？”</p>
+                        <p>小明飞快的举手并把黑板上内容擦完，写下了如下代码：</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多个异常捕获</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[3]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 多个异常捕获</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">xiaopan</span><span class="p">)</span>  <span class="c1"># NameError: name &#39;xiaopan&#39; is not defined</span>
@@ -155,52 +183,64 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>name &#39;xiaopan&#39; is not defined
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>老师问了小明一声，有几个输出？</p>
-<p>小明骄傲的说道：“两个，我写了两个异常处理，当然都执行了”</p>
-<p>同学们又笑了，小潘调侃的说了句：“一看就知道去年C#没好好学，这不都一样嘛，<strong>遇到异常下面代码还执行吗</strong>？用脑子好好想想”</p>
-<p>当我们认为某些代码可能会出错时，就可以用<code>try</code>来运行这段代码，如果执行出错，则后续代码不会继续执行，而是直接跳转至<code>except</code>语句块，执行完<code>except</code>后，如果有<code>finally</code>语句块，则执行finally语句块</p>
-<p>小明又尴尬了。。。</p>
-<h3 id="1.4-&#22810;&#24322;&#24120;&#31616;&#20889;">1.4 &#22810;&#24322;&#24120;&#31616;&#20889;<a class="anchor-link" href="#1.4-&#22810;&#24322;&#24120;&#31616;&#20889;">&#182;</a></h3><p>老师再次帮小明圆了个场：“已经很不简单了，就是最后小得意的时候口误了，那小明同学你知道Python里面多异常有个便捷写法吗？”</p>
-<p>小明赶紧拿起粉笔刷刷刷的写完，然后说道：“<strong>of course</strong>”</p>
+                <div class="output_wrapper">
+                    <div class="output">
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多个异常捕获的简写(注意哦，是元组哦)</span>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>name &#39;xiaopan&#39; is not defined
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>老师问了小明一声，有几个输出？</p>
+                        <p>小明骄傲的说道：“两个，我写了两个异常处理，当然都执行了”</p>
+                        <p>同学们又笑了，小潘调侃的说了句：“一看就知道去年C#没好好学，这不都一样嘛，
+                            <strong>遇到异常下面代码还执行吗</strong>？用脑子好好想想”</p>
+                        <p>当我们认为某些代码可能会出错时，就可以用
+                            <code>try</code>来运行这段代码，如果执行出错，则后续代码不会继续执行，而是直接跳转至
+                            <code>except</code>语句块，执行完
+                            <code>except</code>后，如果有
+                            <code>finally</code>语句块，则执行finally语句块</p>
+                        <p>小明又尴尬了。。。</p>
+                        <h3 id="1.4-&#22810;&#24322;&#24120;&#31616;&#20889;">1.4 &#22810;&#24322;&#24120;&#31616;&#20889;
+                            <a class="anchor-link" href="#1.4-&#22810;&#24322;&#24120;&#31616;&#20889;">&#182;</a>
+                        </h3>
+                        <p>老师再次帮小明圆了个场：“已经很不简单了，就是最后小得意的时候口误了，那小明同学你知道Python里面多异常有个便捷写法吗？”</p>
+                        <p>小明赶紧拿起粉笔刷刷刷的写完，然后说道：“
+                            <strong>of course</strong>”</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[4]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 多个异常捕获的简写(注意哦，是元组哦)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">xiaopan</span><span class="p">)</span>  <span class="c1"># NameError: name &#39;xiaopan&#39; is not defined</span>
@@ -211,53 +251,62 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>name &#39;xiaopan&#39; is not defined
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>老师赶紧夸了夸小明，心想，哎呦喂终于把这难缠的家伙弄回座位了。</p>
-<p>小明走前还不忘说一句：“简写的时候注意格式哦，是 <strong>元组</strong> 不是逗号分隔”</p>
-<p>老师这堂课很轻松，大家都预习了而且内容也比较简单。</p>
-<p>接着以提问的方式问道：“小潘同学，你知道异常的基类是什么吗？如果要捕获所有异常该怎么做呢？”</p>
-<p>小潘站起来说道：“是<code>BaseException</code>”</p>
-<p>老师扩充道：“所有的错误类型都继承自<code>BaseException</code>，所以在使用<code>except</code>时需要注意的是，它不但捕获该类型的错误，还把其子类也一起捕获了”</p>
-<p>所以一般在捕获异常的时候 <strong>把子类异常放在前面，父类放在后面</strong></p>
-<p>看如下代码：</p>
+                <div class="output_wrapper">
+                    <div class="output">
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>name &#39;xiaopan&#39; is not defined
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>老师赶紧夸了夸小明，心想，哎呦喂终于把这难缠的家伙弄回座位了。</p>
+                        <p>小明走前还不忘说一句：“简写的时候注意格式哦，是
+                            <strong>元组</strong> 不是逗号分隔”</p>
+                        <p>老师这堂课很轻松，大家都预习了而且内容也比较简单。</p>
+                        <p>接着以提问的方式问道：“小潘同学，你知道异常的基类是什么吗？如果要捕获所有异常该怎么做呢？”</p>
+                        <p>小潘站起来说道：“是
+                            <code>BaseException</code>”</p>
+                        <p>老师扩充道：“所有的错误类型都继承自
+                            <code>BaseException</code>，所以在使用
+                            <code>except</code>时需要注意的是，它不但捕获该类型的错误，还把其子类也一起捕获了”</p>
+                        <p>所以一般在捕获异常的时候
+                            <strong>把子类异常放在前面，父类放在后面</strong>
+                        </p>
+                        <p>看如下代码：</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[5]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>  <span class="c1"># ZeroDivisionError: division by zero</span>
     <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
@@ -268,48 +317,55 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>base: division by zero
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>如果把父类放第一个，那么<code>ZeroDivisionError</code>永远也不会被执行了，其实你如果装了 <strong>代码规范提示</strong>插件会提示你的</p>
-<p>可以参考我之前写的 <a href="https://www.cnblogs.com/dotnetcrazy/p/9095793.html" target="_blank">vscode设置python3调试环境的扩充部分</a></p>
-<p>来个通用异常捕获的简写（官方不推荐使用简写）：</p>
+                <div class="output_wrapper">
+                    <div class="output">
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 直接except就行了</span>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>base: division by zero
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>如果把父类放第一个，那么
+                            <code>ZeroDivisionError</code>永远也不会被执行了，其实你如果装了
+                            <strong>代码规范提示</strong>插件会提示你的</p>
+                        <p>可以参考我之前写的
+                            <a href="https://www.cnblogs.com/dotnetcrazy/p/9095793.html" target="_blank">vscode设置python3调试环境的扩充部分</a>
+                        </p>
+                        <p>来个通用异常捕获的简写（官方不推荐使用简写）：</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[6]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 直接except就行了</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
@@ -320,50 +376,62 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>屏蔽错误
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>老师继续讲到，我们来看一个场景，现在很多在线编辑器，你在他们那些编辑框里写下了代码也是有异常抛出的，这是怎么处理的呢？</p>
-<p>微软有开源代码编辑器比较受欢迎（VSCode的一部分）：<a href="https://microsoft.github.io/monaco-editor" target="_blank">monaco-editor</a></p>
-<p>提示一下，如果真的要做在线编辑器，记得考虑一下<code>fork炸弹</code>，这个其实也是很老的东西了，程序员基本上都应该接触过了</p>
-<h3 id="1.5-&#25243;&#20986;&#24322;&#24120;">1.5 &#25243;&#20986;&#24322;&#24120;<a class="anchor-link" href="#1.5-&#25243;&#20986;&#24322;&#24120;">&#182;</a></h3><p>我们继续，像C#是用<code>thorw</code>抛出异常，那Python怎么 <code>捕获异常后再抛出</code> 呢？怎么<code>自定义异常</code> 呢？</p>
-<p>继续往下看：</p>
+                <div class="output_wrapper">
+                    <div class="output">
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 捕获异常后再丢出，eg：在线运行的用户Code</span>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>屏蔽错误
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>老师继续讲到，我们来看一个场景，现在很多在线编辑器，你在他们那些编辑框里写下了代码也是有异常抛出的，这是怎么处理的呢？</p>
+                        <p>微软有开源代码编辑器比较受欢迎（VSCode的一部分）：
+                            <a href="https://microsoft.github.io/monaco-editor" target="_blank">monaco-editor</a>
+                        </p>
+                        <p>提示一下，如果真的要做在线编辑器，记得考虑一下
+                            <code>fork炸弹</code>，这个其实也是很老的东西了，程序员基本上都应该接触过了</p>
+                        <h3 id="1.5-&#25243;&#20986;&#24322;&#24120;">1.5 &#25243;&#20986;&#24322;&#24120;
+                            <a class="anchor-link" href="#1.5-&#25243;&#20986;&#24322;&#24120;">&#182;</a>
+                        </h3>
+                        <p>我们继续，像C#是用
+                            <code>thorw</code>抛出异常，那Python怎么
+                            <code>捕获异常后再抛出</code> 呢？怎么
+                            <code>自定义异常</code> 呢？</p>
+                        <p>继续往下看：</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[7]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 捕获异常后再丢出，eg：在线运行的用户Code</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>  <span class="c1"># ZeroDivisionError: division by zero</span>
@@ -374,34 +442,35 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>division by zero
 </pre>
-</div>
-</div>
+                            </div>
 
-<div class="output_area">
+                        </div>
+                    </div>
+                </div>
 
-<div class="prompt"></div>
+                <div class="output_wrapper">
+                    <div class="output">
 
 
-<div class="output_subarea output_text output_error">
-<pre>
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>division by zero
+</pre>
+                            </div>
+                        </div>
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_text output_error">
+                                <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
 <span class="ansi-green-fg">&lt;ipython-input-7-15f01346e2d8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
@@ -417,19 +486,20 @@ finally：小明是傻子～
 <span class="ansi-green-intense-fg ansi-bold">      6</span>         print<span class="ansi-blue-fg">(</span>ex<span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># 写个日志，回头出问题可以深究</span>
 
 <span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
-</div>
-</div>
+                            </div>
+                        </div>
 
-</div>
-</div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 抛出自定义异常</span>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[8]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="c1"># 抛出自定义异常</span>
 <span class="k">class</span> <span class="nc">DntException</span><span class="p">(</span><span class="ne">BaseException</span><span class="p">):</span>
     <span class="k">pass</span>
 
@@ -448,23 +518,24 @@ finally：小明是傻子～
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
+</pre>
+                            </div>
 
-</div>
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
+                <div class="output_wrapper">
+                    <div class="output">
 
 
-<div class="output_subarea output_text output_error">
-<pre>
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_text output_error">
+                                <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">DntException</span>                              Traceback (most recent call last)
 <span class="ansi-green-fg">&lt;ipython-input-8-7c9dec6ec225&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
@@ -487,37 +558,44 @@ finally：小明是傻子～
 <span class="ansi-green-intense-fg ansi-bold">     10</span>         print<span class="ansi-blue-fg">(</span>num<span class="ansi-blue-fg">)</span>
 
 <span class="ansi-red-fg">DntException</span>: num must&gt;0</pre>
-</div>
-</div>
+                            </div>
+                        </div>
 
-</div>
-</div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>异常这一块基本上讲完了（<code>logging</code>模块后面会说）有什么补充的可以说的^_^</p>
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>异常这一块基本上讲完了（
+                            <code>logging</code>模块后面会说）有什么补充的可以说的^_^</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.5-C#&#24322;&#24120;">1.6 C#&#24322;&#24120;<a class="anchor-link" href="#1.5-C#&#24322;&#24120;">&#182;</a></h3><p>小明又进行了C#的代码转换，怎么看都觉得还是C#简单啊，根本不用说啥，代码一贴就秒懂了。。。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <h3 id="1.5-C#&#24322;&#24120;">1.6 C#&#24322;&#24120;
+                            <a class="anchor-link" href="#1.5-C#&#24322;&#24120;">&#182;</a>
+                        </h3>
+                        <p>小明又进行了C#的代码转换，怎么看都觉得还是C#简单啊，根本不用说啥，代码一贴就秒懂了。。。</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+                    </div>
+                </div>
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[1]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
 try
 {
     Convert.ToInt32(&quot;mmd&quot;);
@@ -527,37 +605,39 @@ catch (Exception ex)
     // Input string was not in a correct format
     Console.WriteLine(ex.Message);
 }
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Input string was not in a correct format.
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
+                <div class="output_wrapper">
+                    <div class="output">
+
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>Input string was not in a correct format.
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing code_cell rendered">
+                <div class="input">
+                    <div class="prompt input_prompt">In&nbsp;[2]:</div>
+                    <div class="inner_cell">
+                        <div class="input_area">
+                            <div class=" highlight hl-ipython3">
+                                <pre><span></span><span class="o">%%</span><span class="k">script</span> csharp
 //抛出自定义异常
 try
 {
@@ -567,37 +647,40 @@ catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>出错了啊
 </pre>
-</div>
-</div>
+                            </div>
 
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>你可以自定义异常类，继承Exception即可，对了C#里面也是有finally的</p>
-<div class="highlight"><pre><span></span><span class="k">try</span>
+                <div class="output_wrapper">
+                    <div class="output">
+
+
+                        <div class="output_area">
+
+                            <div class="prompt"></div>
+
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                                <pre>出错了啊
+</pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell border-box-sizing text_cell rendered">
+                <div class="prompt input_prompt">
+                </div>
+                <div class="inner_cell">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                        <p>你可以自定义异常类，继承Exception即可，对了C#里面也是有finally的</p>
+                        <div class="highlight">
+                            <pre><span></span><span class="k">try</span>
 <span class="p">{</span>
     <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="p">(</span><span class="s">&quot;出错了啊&quot;</span><span class="p">);</span>
     <span class="c1">//Convert.ToInt32(&quot;mmd&quot;);</span>
@@ -611,18 +694,19 @@ catch (Exception ex)
 <span class="p">{</span>
     <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;finally&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-</pre></div>
-<p>现在一些需要finally的地方基本上都被using(){}接管了，所以特定场景会使用</p>
-<p>先这样了</p>
+</pre>
+                        </div>
+                        <p>现在一些需要finally的地方基本上都被using(){}接管了，所以特定场景会使用</p>
+                        <p>先这样了</p>
 
-</div>
-</div>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
 
- 
+
 
 
 </html>

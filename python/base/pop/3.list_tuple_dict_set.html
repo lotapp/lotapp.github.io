@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>3.list_tuple_dict_set</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
+<title>3.list_tuple_dict_set</title>
+<script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
 <script src="../../../style/js/mynav.min.js" async></script>
-
 </head>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -18,6 +17,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Code：<a href="https://github.com/lotapp/BaseCode" target="_blank">https://github.com/lotapp/BaseCode</a></p>
 <p><strong>多图旧版</strong>：<a href="https://www.cnblogs.com/dunitian/p/9156097.html" target="_blank">https://www.cnblogs.com/dunitian/p/9156097.html</a></p>
+<p><strong>在线预览</strong>：<a href="http://github.lesschina.com/python/base/pop/3.list_tuple_dict_set.html" target="_blank">http://github.lesschina.com/python/base/pop/3.list_tuple_dict_set.html</a></p>
 <p>今天说说<code>List、Tuple、Dict、Set</code>。POP部分还有一些如Func、IO（也可以放OOP部分说）然后就说说面向对象吧。</p>
 <p>先吐槽一下：Python面向对象真心需要规范，不然太容易走火入魔了 -_-!!! 汗，下次再说。。。</p>
 <h2 id="1.Python&#21015;&#34920;&#30456;&#20851;">1.Python&#21015;&#34920;&#30456;&#20851;<a class="anchor-link" href="#1.Python&#21015;&#34920;&#30456;&#20851;">&#182;</a></h2><h3 id="1.1.&#21015;&#34920;&#23450;&#20041;&#12289;&#36941;&#21382;">1.1.&#21015;&#34920;&#23450;&#20041;&#12289;&#36941;&#21382;<a class="anchor-link" href="#1.1.&#21015;&#34920;&#23450;&#20041;&#12289;&#36941;&#21382;">&#182;</a></h3><p><code>info_list=[]</code> #空列表</p>
@@ -4190,8 +4190,8 @@ class set(object)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>age
-name
+<pre>name
+age
 </pre>
 </div>
 </div>
@@ -4271,7 +4271,7 @@ name
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;age&#39;, &#39;add&#39;, &#39;name&#39;}
+<pre>{&#39;name&#39;, &#39;add&#39;, &#39;age&#39;}
 </pre>
 </div>
 </div>
@@ -4304,7 +4304,7 @@ name
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;age&#39;, 1, 3, &#39;add&#39;, 4, &#39;name&#39;}
+<pre>{1, &#39;name&#39;, 3, 4, &#39;add&#39;, &#39;age&#39;}
 </pre>
 </div>
 </div>
@@ -4336,7 +4336,7 @@ name
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;age&#39;, 1, 3, &#39;add&#39;, 4, 6, &#39;name&#39;, 7, 9}
+<pre>{1, &#39;name&#39;, 3, 4, 6, 7, 9, &#39;add&#39;, &#39;age&#39;}
 </pre>
 </div>
 </div>
@@ -4369,7 +4369,7 @@ name
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;age&#39;, 1, 3, &#39;add&#39;, 4, 6, &#39;name&#39;, 7, 9, &#39;v&#39;, &#39;e&#39;, &#39;o&#39;, &#39;L&#39;}
+<pre>{1, &#39;name&#39;, 3, 4, &#39;o&#39;, 6, 7, &#39;L&#39;, 9, &#39;add&#39;, &#39;v&#39;, &#39;e&#39;, &#39;age&#39;}
 </pre>
 </div>
 </div>
@@ -4380,7 +4380,7 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################### 删除系列 ###########################</span>
@@ -4393,7 +4393,7 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 删除元素</span>
@@ -4418,7 +4418,7 @@ name
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-14-1d51a9949e6e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-15-1d51a9949e6e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># 删除元素</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>my_set<span class="ansi-blue-fg">.</span>remove<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;mmd&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># 不存在则报错</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> print<span class="ansi-blue-fg">(</span>my_set<span class="ansi-blue-fg">)</span>
@@ -4433,7 +4433,7 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 删除 name</span>
@@ -4447,46 +4447,10 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_set</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1, 3, 4, 6, 7, 9, &#39;L&#39;, &#39;add&#39;, &#39;age&#39;, &#39;e&#39;, &#39;o&#39;, &#39;v&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pop删除</span>
-<span class="c1"># pop一般不用，说法不一，有些说删除第一个有些说随机</span>
-<span class="c1"># 了解就好了，不用管pop（全数字的时候，我测试的确删的是第一个）</span>
-<span class="n">my_set</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_set</span>
 </pre></div>
 
 </div>
@@ -4505,7 +4469,7 @@ name
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;age&#39;</pre>
+<pre>{1, 3, 4, 6, 7, 9, &#39;L&#39;, &#39;add&#39;, &#39;age&#39;, &#39;e&#39;, &#39;o&#39;, &#39;v&#39;}</pre>
 </div>
 
 </div>
@@ -4519,7 +4483,10 @@ name
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pop删除</span>
+<span class="c1"># pop一般不用，说法不一，有些说删除第一个有些说随机</span>
+<span class="c1"># 了解就好了，不用管pop（全数字的时候，我测试的确删的是第一个）</span>
+<span class="n">my_set</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -4538,7 +4505,7 @@ name
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{1, 3, 4, 6, 7, 9, &#39;L&#39;, &#39;add&#39;, &#39;e&#39;, &#39;o&#39;, &#39;v&#39;}</pre>
+<pre>1</pre>
 </div>
 
 </div>
@@ -4550,20 +4517,6 @@ name
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 清空</span>
-<span class="n">my_set</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_set</span>
@@ -4579,7 +4532,54 @@ name
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{3, 4, 6, 7, 9, &#39;L&#39;, &#39;add&#39;, &#39;age&#39;, &#39;e&#39;, &#39;o&#39;, &#39;v&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 清空</span>
+<span class="n">my_set</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_set</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -4596,7 +4596,7 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 有就删除，没有也不会报错</span>
@@ -4624,9 +4624,31 @@ name
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#利用运算符+set 实现数学方面的扩展</span>
 <span class="n">set1</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">set2</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{1, 2, 5}
+{2, 4, 6}
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -4636,7 +4658,7 @@ name
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 交集</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 交集 A∩B={x|x∈A,且x∈B}</span>
 <span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span>
 </pre></div>
 
@@ -4670,7 +4692,7 @@ name
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 并集</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 并集 A∪B={x|x∈A,或x∈B}</span>
 <span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span>
 </pre></div>
 
@@ -4704,8 +4726,8 @@ name
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set方法实现交集</span>
-<span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 差集 A-B={x∣x∈A,且x∉B}</span>
+<span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span>
 </pre></div>
 
 </div>
@@ -4724,7 +4746,7 @@ name
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{2}</pre>
+<pre>{1, 5}</pre>
 </div>
 
 </div>
@@ -4738,8 +4760,8 @@ name
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set方法去重后的并集</span>
-<span class="n">set1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set方法实现交集</span>
+<span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4758,7 +4780,7 @@ name
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{1, 2, 4, 5, 6}</pre>
+<pre>{2}</pre>
 </div>
 
 </div>
@@ -4770,6 +4792,40 @@ name
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set方法去重后的并集</span>
+<span class="n">set1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{1, 2, 4, 5, 6}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 差集（把set1里面有的而set2里面没有的取出）</span>
@@ -4786,7 +4842,7 @@ name
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -4852,11 +4908,45 @@ name
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 子集（判断set3是否是set1的子集）</span>
 <span class="n">set3</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 父集（set1是否是set3的父集）</span>
+<span class="n">set1</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">set3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4889,8 +4979,8 @@ name
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 父集（set1是否是set3的父集）</span>
-<span class="n">set1</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">set3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 判断两个集合是否没有交集</span>
+<span class="n">set1</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">set4</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4923,8 +5013,8 @@ name
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 判断两个集合是否没有交集</span>
-<span class="n">set1</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">set4</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 反过来也一样</span>
+<span class="n">set4</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4957,8 +5047,23 @@ name
 <div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 反过来也一样</span>
-<span class="n">set4</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################### 补集的扩展 ###########################</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 补集</span>
+<span class="n">set3</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">set3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4971,13 +5076,79 @@ name
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 【大前提】set2是set3的一个子集（set3包含于set2）</span>
+<span class="n">set2</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">set3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 这时候求差集，就等于求补集</span>
+<span class="n">set3</span> <span class="o">-</span> <span class="n">set2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[39]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{0, 1, 3, 5, 7, 8, 9}</pre>
 </div>
 
 </div>
@@ -5336,10 +5507,16 @@ wechat
 </div>
 </div>
 </div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
+
 <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>.
 1
@@ -5347,8 +5524,10 @@ name
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -5358,9 +5537,11 @@ name
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># del(item)	        删除变量</span>
 <span class="c1"># del() or del xxx</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -5371,11 +5552,17 @@ name
 <span class="c1"># Python2里面有 cmp(1,2) ==&gt; -1 </span>
 <span class="c1"># cmp在比较字典数据时，先比较键，再比较值</span>
 </pre></div>
+
 </div>
 </div>
 </div>
+
 </div>
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>
