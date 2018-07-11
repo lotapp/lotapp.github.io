@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>LaTex in Markdown</title>
+<script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true }
+    }
+});
+</script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上次写了Markdown，这次用到了LaTex，也出一期（吐槽，工作量比Markdown高太多...）</p>
+<p>Markdown基础：<a href="https://www.cnblogs.com/dotnetcrazy/p/9180295.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9180295.html</a></p>
+<p>博客园LaTex开启：<a href="https://www.cnblogs.com/dotnetcrazy/p/9283971.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9283971.html</a></p>
+<p>在线预览：<a href="http://github.lesschina.com/python/ai/math/LaTex%20in%20Markdown.html" target="_blank">http://github.lesschina.com/python/ai/math/LaTex in Markdown.html</a></p>
+<h1 id="1.&#26679;&#24335;&#31995;&#21015;">1.&#26679;&#24335;&#31995;&#21015;<a class="anchor-link" href="#1.&#26679;&#24335;&#31995;&#21015;">&#182;</a></h1><h3 id="1.1.&#25442;&#34892;\\&#12289;&#31354;&#26684;\:">1.1.&#25442;&#34892;<code>\\</code>&#12289;&#31354;&#26684;<code>\:</code><a class="anchor-link" href="#1.1.&#25442;&#34892;\\&#12289;&#31354;&#26684;\:">&#182;</a></h3><p><code>$换行\\萌萌哒\:小明$</code></p>
+<p>$换行\\萌萌哒\:小明$</p>
+<hr>
+<h3 id="1.2.&#23621;&#20013;$$**$$">1.2.&#23621;&#20013;<code>$$**$$</code><a class="anchor-link" href="#1.2.&#23621;&#20013;$$**$$">&#182;</a></h3><p><code>$$萌萌哒$$</code></p>
+<p>$$萌萌哒$$</p>
+<hr>
+<h3 id="1.3.&#21152;&#31895;&#65288;mathbf&#65289;&#12289;&#26012;&#20307;&#65288;mathit&#65289;">1.3.&#21152;&#31895;&#65288;mathbf&#65289;&#12289;&#26012;&#20307;&#65288;mathit&#65289;<a class="anchor-link" href="#1.3.&#21152;&#31895;&#65288;mathbf&#65289;&#12289;&#26012;&#20307;&#65288;mathit&#65289;">&#182;</a></h3>
+<pre><code>$\mathbf{萌萌哒}$
+
+$\mathit{小明}$</code></pre>
+<p>$\mathbf{萌萌哒}$</p>
+<p>$\mathit{小明}$</p>
+<hr>
+<h3 id="1.4.&#22823;&#23567;">1.4.&#22823;&#23567;<a class="anchor-link" href="#1.4.&#22823;&#23567;">&#182;</a></h3>
+<pre><code>$\tiny 萌萌哒$
+
+$\scriptsize 萌萌哒$
+
+$\small 萌萌哒$
+
+$\normalsize 萌萌哒(正常)$
+
+$\large 萌萌哒$
+
+$\Large 萌萌哒$
+
+$\huge 萌萌哒$
+
+$\Huge 萌萌哒$</code></pre>
+<p>$\tiny 萌萌哒$</p>
+<p>$\scriptsize 萌萌哒$</p>
+<p>$\small 萌萌哒$</p>
+<p>$\normalsize 萌萌哒(正常)$</p>
+<p>$\large 萌萌哒$</p>
+<p>$\Large 萌萌哒$</p>
+<p>$\huge 萌萌哒$</p>
+<p>$\Huge 萌萌哒$</p>
+<p>如果是单行写，记得加换行符号：</p>
+
+<pre><code>$\tiny 萌萌哒\\$
+$\scriptsize 萌萌哒\\$
+$\small 萌萌哒\\$
+$\normalsize 萌萌哒(正常)\\$
+$\large 萌萌哒\\$
+$\Large 萌萌哒\\$
+$\huge 萌萌哒\\$
+$\Huge 萌萌哒\\$</code></pre>
+<h3 id="1.5.&#39068;&#33394;&#65288;&#26377;&#20123;&#32534;&#36753;&#22120;&#19981;&#25903;&#25345;&#65289;"><del>1.5.&#39068;&#33394;&#65288;&#26377;&#20123;&#32534;&#36753;&#22120;&#19981;&#25903;&#25345;&#65289;</del><a class="anchor-link" href="#1.5.&#39068;&#33394;&#65288;&#26377;&#20123;&#32534;&#36753;&#22120;&#19981;&#25903;&#25345;&#65289;">&#182;</a></h3>
+<pre><code>${\color[RGB]{255,0,0} Red}\\$
+${\color[RGB]{30,144,255} Dodg Blue}\\$
+${\color[RGB]{0,255,255} Aqua}\\$
+${\color[RGB]{255,165,0} Orange}\\$
+${\color[RGB]{255,69,0} Orange red}\\$
+${\color[RGB]{0,128,0} Green}\\$
+${\color[RGB]{128,128,128} Gray}\\$
+${\color[RGB]{255,0,255} Magenta}\\$
+${\color[RGB]{128,0,128} Purple}\\$
+${\color[RGB]{184,134,11} Dark Gold}$</code></pre>
+<p>${\color[RGB]{255,69,0} Orange red}$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#24120;&#29992;&#25968;&#23398;">2.&#24120;&#29992;&#25968;&#23398;<a class="anchor-link" href="#2.&#24120;&#29992;&#25968;&#23398;">&#182;</a></h2><h3 id="2.1.&#24120;&#29992;&#34920;&#36798;&#24335;">2.1.&#24120;&#29992;&#34920;&#36798;&#24335;<a class="anchor-link" href="#2.1.&#24120;&#29992;&#34920;&#36798;&#24335;">&#182;</a></h3><table>
+<thead><tr>
+<th>常用数学</th>
+<th>LaTex公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sqrt{ab}$</td>
+<td><code>$\sqrt{ab}$</code></td>
+</tr>
+<tr>
+<td>$\sqrt[n]{ab}$</td>
+<td><code>$\sqrt[n]{ab}$</code></td>
+</tr>
+<tr>
+<td>$\log_{a}{b}$</td>
+<td><code>$\log_{a}{b}$</code></td>
+</tr>
+<tr>
+<td>$\lg{ab}$</td>
+<td><code>$\lg{ab}$</code></td>
+</tr>
+<tr>
+<td>$a^{b}$</td>
+<td><code>$a^{b}$</code></td>
+</tr>
+<tr>
+<td>$a_{b}$</td>
+<td><code>$a_{b}$</code></td>
+</tr>
+<tr>
+<td>$x_a^b$</td>
+<td><code>$x_a^b$</code></td>
+</tr>
+<tr>
+<td>$\int$</td>
+<td><code>$\int$</code></td>
+</tr>
+<tr>
+<td>$\int_{a}^{b}$</td>
+<td><code>$\int_{a}^{b}$</code></td>
+</tr>
+<tr>
+<td>$\oint$</td>
+<td><code>$\oint$</code></td>
+</tr>
+<tr>
+<td>$\oint_a^b$</td>
+<td><code>$\oint_a^b$</code></td>
+</tr>
+<tr>
+<td>$\sum$</td>
+<td><code>$\sum$</code></td>
+</tr>
+<tr>
+<td>$\sum_a^b$</td>
+<td><code>$\sum_a^b$</code></td>
+</tr>
+<tr>
+<td>$\coprod$</td>
+<td><code>$\coprod$</code></td>
+</tr>
+<tr>
+<td>$\coprod_a^b$</td>
+<td><code>$\coprod_a^b$</code></td>
+</tr>
+<tr>
+<td>$\prod$</td>
+<td><code>$\prod$</code></td>
+</tr>
+<tr>
+<td>$\prod_a^b$</td>
+<td><code>$\prod_a^b$</code></td>
+</tr>
+<tr>
+<td>$\bigcap$</td>
+<td><code>$\bigcap$</code></td>
+</tr>
+<tr>
+<td>$\bigcap_a^b$</td>
+<td><code>$\bigcap_a^b$</code></td>
+</tr>
+<tr>
+<td>$\bigcup$</td>
+<td><code>$\bigcup$</code></td>
+</tr>
+<tr>
+<td>$\bigcup_a^b$</td>
+<td><code>$\bigcup_a^b$</code></td>
+</tr>
+<tr>
+<td>$\bigsqcup$</td>
+<td><code>$\bigsqcup$</code></td>
+</tr>
+<tr>
+<td>$\bigsqcup_a^b$</td>
+<td><code>$\bigsqcup_a^b$</code></td>
+</tr>
+<tr>
+<td>$\bigvee$</td>
+<td><code>$\bigvee$</code></td>
+</tr>
+<tr>
+<td>$\bigvee_a^b$</td>
+<td><code>$\bigvee_a^b$</code></td>
+</tr>
+<tr>
+<td>$\bigwedge$</td>
+<td><code>$\bigwedge$</code></td>
+</tr>
+<tr>
+<td>$\bigwedge_a^b$</td>
+<td><code>$\bigwedge_a^b$</code></td>
+</tr>
+<tr>
+<td>$\widetilde{ab}$</td>
+<td><code>$\widetilde{ab}$</code></td>
+</tr>
+<tr>
+<td>$\widehat{ab}$</td>
+<td><code>$\widehat{ab}$</code></td>
+</tr>
+<tr>
+<td>$\overleftarrow{ab}$</td>
+<td><code>$\overleftarrow{ab}$</code></td>
+</tr>
+<tr>
+<td>$\overrightarrow{ab}$</td>
+<td><code>$\overrightarrow{ab}$</code></td>
+</tr>
+<tr>
+<td>$\overbrace{ab}$</td>
+<td><code>$\overbrace{ab}$</code></td>
+</tr>
+<tr>
+<td>$\underbrace{ab}$</td>
+<td><code>$\underbrace{ab}$</code></td>
+</tr>
+<tr>
+<td>$\underline{ab}$</td>
+<td><code>$\underline{ab}$</code></td>
+</tr>
+<tr>
+<td>$\overline{ab}$</td>
+<td><code>$\overline{ab}$</code></td>
+</tr>
+<tr>
+<td>$\frac{ab}{cd}$</td>
+<td><code>$\frac{ab}{cd}$</code></td>
+</tr>
+<tr>
+<td>$\frac{\partial a}{\partial b}$</td>
+<td><code>$\frac{\partial a}{\partial b}$</code></td>
+</tr>
+<tr>
+<td>$\frac{\text{d}x}{\text{d}y}$</td>
+<td><code>$\frac{\text{d}x}{\text{d}y}$</code></td>
+</tr>
+<tr>
+<td>$\lim_{a \rightarrow b}$</td>
+<td><code>$\lim_{a \rightarrow b}$</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.&#38468;&#24405;&#65306;&#25968;&#23398;&#20844;&#24335;&#22823;&#20840;">2.2.&#38468;&#24405;&#65306;&#25968;&#23398;&#20844;&#24335;&#22823;&#20840;<a class="anchor-link" href="#2.2.&#38468;&#24405;&#65306;&#25968;&#23398;&#20844;&#24335;&#22823;&#20840;">&#182;</a></h3><table>
+<thead><tr>
+<th>数学公式</th>
+<th>LaTex公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\displaystyle\sum\limits_{i=0}^n i^3$</td>
+<td><code>$\displaystyle\sum\limits_{i=0}^n i^3$</code></td>
+</tr>
+<tr>
+<td>$\left(\begin{array}{c}a\\ b\end{array}\right)$</td>
+<td><code>$\left(\begin{array}{c}a\\ b\end{array}\right)$</code></td>
+</tr>
+<tr>
+<td>$\left(\frac{a^2}{b^3}\right)$</td>
+<td><code>$\left(\frac{a^2}{b^3}\right)$</code></td>
+</tr>
+<tr>
+<td>$\left.\frac{a^3}{3}\right\lvert_0^1$</td>
+<td><code>$\left.\frac{a^3}{3}\right\lvert_0^1$</code></td>
+</tr>
+<tr>
+<td>$\begin{bmatrix}a &amp; b \\c &amp; d \end{bmatrix}$</td>
+<td><code>$\begin{bmatrix}a &amp; b \\c &amp; d \end{bmatrix}$</code></td>
+</tr>
+<tr>
+<td>$\begin{cases}a &amp; x = 0\\b &amp; x &gt; 0\end{cases}$</td>
+<td><code>$\begin{cases}a &amp; x = 0\\b &amp; x &gt; 0\end{cases}$</code></td>
+</tr>
+<tr>
+<td>$\sqrt{\frac{n}{n-1} S}$</td>
+<td><code>$\sqrt{\frac{n}{n-1} S}$</code></td>
+</tr>
+<tr>
+<td>$\begin{pmatrix} \alpha&amp; \beta^{*}\\ \gamma^{*}&amp; \delta \end{pmatrix}$</td>
+<td><code>$\begin{pmatrix} \alpha&amp; \beta^{*}\\ \gamma^{*}&amp; \delta \end{pmatrix}$</code></td>
+</tr>
+<tr>
+<td>$A\:\xleftarrow{n+\mu-1}\:B$</td>
+<td><code>$A\:\xleftarrow{n+\mu-1}\:B$</code></td>
+</tr>
+<tr>
+<td>$B\:\xrightarrow[T]{n\pm i-1}\:C$</td>
+<td><code>$B\:\xrightarrow[T]{n\pm i-1}\:C$</code></td>
+</tr>
+<tr>
+<td>$\frac{1}{k}\log_2 c(f)\;$</td>
+<td><code>$\frac{1}{k}\log_2 c(f)\;$</code></td>
+</tr>
+<tr>
+<td>$\iint\limits_A f(x,y)\;$</td>
+<td><code>$\iint\limits_A f(x,y)\;$</code></td>
+</tr>
+<tr>
+<td>$x^n + y^n = z^n$</td>
+<td><code>$x^n + y^n = z^n$</code></td>
+</tr>
+<tr>
+<td>$E=mc^2$</td>
+<td><code>$E=mc^2$</code></td>
+</tr>
+<tr>
+<td>$e^{\pi i} - 1 = 0$</td>
+<td><code>$e^{\pi i} - 1 = 0$</code></td>
+</tr>
+<tr>
+<td>$p(x) = 3x^6$</td>
+<td><code>$p(x) = 3x^6$</code></td>
+</tr>
+<tr>
+<td>$3x + y =  12$</td>
+<td><code>$3x + y =  12$</code></td>
+</tr>
+<tr>
+<td>$\int_0^\infty \mathrm{e}^{-x}\,\mathrm{d}x$</td>
+<td><code>$\int_0^\infty \mathrm{e}^{-x}\,\mathrm{d}x$</code></td>
+</tr>
+<tr>
+<td>$\sqrt[n]{1+x+x^2+\ldots}$</td>
+<td><code>$\sqrt[n]{1+x+x^2+\ldots}$</code></td>
+</tr>
+<tr>
+<td>$\binom{x}{y} = \frac{x!}{y!(x-y)!}$</td>
+<td><code>$\binom{x}{y} = \frac{x!}{y!(x-y)!}$</code></td>
+</tr>
+<tr>
+<td>$\frac{\frac{1}{x}+\frac{1}{y}}{y-z}$</td>
+<td><code>$\frac{\frac{1}{x}+\frac{1}{y}}{y-z}$</code></td>
+</tr>
+<tr>
+<td>$f(x)=\frac{P(x)}{Q(x)}$</td>
+<td><code>$f(x)=\frac{P(x)}{Q(x)}$</code></td>
+</tr>
+<tr>
+<td>$\frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}}$</td>
+<td><code>$\frac{1+\frac{a}{b}}{1+\frac{1}{1+\frac{1}{a}}}$</code></td>
+</tr>
+<tr>
+<td>$\sum_{\substack{0\le i\le m\\ 0\lt j\lt n}} P(i,j)$</td>
+<td><code>$\sum_{\substack{0\le i\le m\\ 0\lt j\lt n}} P(i,j)$</code></td>
+</tr>
+<tr>
+<td>$\lim_{x \to \infty} \exp(-x) = 0$</td>
+<td><code>$\lim_{x \to \infty} \exp(-x) = 0$</code></td>
+</tr>
+<tr>
+<td>$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$</td>
+<td><code>$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.&#25968;&#23398;&#31526;&#21495;">3.&#25968;&#23398;&#31526;&#21495;<a class="anchor-link" href="#3.&#25968;&#23398;&#31526;&#21495;">&#182;</a></h2><h3 id="3.1.&#38598;&#21512;&#31995;&#21015;">3.1.&#38598;&#21512;&#31995;&#21015;<a class="anchor-link" href="#3.1.&#38598;&#21512;&#31995;&#21015;">&#182;</a></h3><table>
+<thead><tr>
+<th>运算符</th>
+<th>公式</th>
+<th>运算符</th>
+<th>公式</th>
+<th>运算符</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\emptyset$</td>
+<td><code>$\emptyset$</code></td>
+<td>$\in$</td>
+<td><code>$\in$</code></td>
+<td>$\notin$</td>
+<td><code>$\notin$</code></td>
+</tr>
+<tr>
+<td>$\subset$</td>
+<td><code>$\subset$</code></td>
+<td>$\supset$</td>
+<td><code>$\supset$</code></td>
+<td>$\subseteq$</td>
+<td><code>$\subseteq$</code></td>
+</tr>
+<tr>
+<td>$\nsubseteq$</td>
+<td><code>$\nsubseteq$</code></td>
+<td>$\nsupseteq$</td>
+<td><code>$\nsupseteq$</code></td>
+<td>$\nsubseteqq$</td>
+<td><code>$\nsubseteqq$</code></td>
+</tr>
+<tr>
+<td>$\nsupseteqq$</td>
+<td><code>$\nsupseteqq$</code></td>
+<td>$\subsetneq$</td>
+<td><code>$\subsetneq$</code></td>
+<td>$\supsetneq$</td>
+<td><code>$\supsetneq$</code></td>
+</tr>
+<tr>
+<td>$\subsetneqq$</td>
+<td><code>$\subsetneqq$</code></td>
+<td>$\supsetneqq$</td>
+<td><code>$\supsetneqq$</code></td>
+<td>$\varsubsetneq$</td>
+<td><code>$\varsubsetneq$</code></td>
+</tr>
+<tr>
+<td>$\varsupsetneq$</td>
+<td><code>$\varsupsetneq$</code></td>
+<td>$\varsubsetneqq$</td>
+<td><code>$\varsubsetneqq$</code></td>
+<td>$\varsupsetneqq$</td>
+<td><code>$\varsupsetneqq$</code></td>
+</tr>
+<tr>
+<td>$\bigcap$</td>
+<td><code>$\bigcap$</code></td>
+<td>$\bigcup$</td>
+<td><code>$\bigcup$</code></td>
+<td>$\bigvee$</td>
+<td><code>$\bigvee$</code></td>
+</tr>
+<tr>
+<td>$\bigwedge$</td>
+<td><code>$\bigwedge$</code></td>
+<td>$\biguplus$</td>
+<td><code>$\biguplus$</code></td>
+<td>$\bigsqcup$</td>
+<td><code>$\bigsqcup$</code></td>
+</tr>
+<tr>
+<td>$\Subset$</td>
+<td><code>$\Subset$</code></td>
+<td>$\Supset$</td>
+<td><code>$\Supset$</code></td>
+<td>$\subseteqq$</td>
+<td><code>$\subseteqq$</code></td>
+</tr>
+<tr>
+<td>$\supseteqq$</td>
+<td><code>$\supseteqq$</code></td>
+<td>$\sqsubset$</td>
+<td><code>$\sqsubset$</code></td>
+<td>$\sqsupset$</td>
+<td><code>$\sqsupset$</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3.2.&#24120;&#29992;&#31526;&#21495;">3.2.&#24120;&#29992;&#31526;&#21495;<a class="anchor-link" href="#3.2.&#24120;&#29992;&#31526;&#21495;">&#182;</a></h3><table>
+<thead><tr>
+<th>基本符号</th>
+<th>公式</th>
+<th>基本符号</th>
+<th>公式</th>
+<th>基本符号</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\cdot$</td>
+<td><code>$\cdot$</code></td>
+<td>$\vdots$</td>
+<td><code>$\vdots$</code></td>
+<td>$\grave{x}$</td>
+<td><code>$\grave{x}$</code></td>
+</tr>
+<tr>
+<td>$.$</td>
+<td><code>$.$</code></td>
+<td>$\ddots$</td>
+<td><code>$\ddots$</code></td>
+<td>$\breve{x}$</td>
+<td><code>$\breve{x}$</code></td>
+</tr>
+<tr>
+<td>$*$</td>
+<td><code>$*$</code></td>
+<td>$,$</td>
+<td><code>$,$</code></td>
+<td>$\dot{x}$</td>
+<td><code>$\dot{x}$</code></td>
+</tr>
+<tr>
+<td>$+$</td>
+<td><code>$+$</code></td>
+<td>$!$</td>
+<td><code>$!$</code></td>
+<td>$\widehat{xxx}$</td>
+<td><code>$\widehat{xxx}$</code></td>
+</tr>
+<tr>
+<td>$-$</td>
+<td><code>$-$</code></td>
+<td>$;$</td>
+<td><code>$;$</code></td>
+<td>$\ddot{x}$</td>
+<td><code>$\ddot{x}$</code></td>
+</tr>
+<tr>
+<td>$\times$</td>
+<td><code>$\times$</code></td>
+<td>$?$</td>
+<td><code>$?$</code></td>
+<td>$\check{x}$</td>
+<td><code>$\check{x}$</code></td>
+</tr>
+<tr>
+<td>$\div$</td>
+<td><code>$\div$</code></td>
+<td>$\colon$</td>
+<td><code>$\colon$</code></td>
+<td>$\ddot{x}$</td>
+<td><code>$\ddot{x}$</code></td>
+</tr>
+<tr>
+<td>$=$</td>
+<td><code>$=$</code></td>
+<td>$\acute{x}$</td>
+<td><code>$\acute{x}$</code></td>
+<td>$\tilde{x}$</td>
+<td><code>$\tilde{x}$</code></td>
+</tr>
+<tr>
+<td>$\neq$</td>
+<td><code>$\neq$</code></td>
+<td>$\bar{x}$</td>
+<td><code>$\bar{x}$</code></td>
+<td>$\hat{x}$</td>
+<td><code>$\hat{x}$</code></td>
+</tr>
+<tr>
+<td>$\dotsm$</td>
+<td><code>$\dotsm$</code></td>
+<td>$\vec{x}$</td>
+<td><code>$\vec{x}$</code></td>
+<td>$\dddot{x}$</td>
+<td><code>$\dddot{x}$</code></td>
+</tr>
+<tr>
+<td>$\dotso$</td>
+<td><code>$\dotso$</code></td>
+<td>$\widetilde{xxx}$</td>
+<td><code>$\widetilde{xxx}$</code></td>
+<td>$\backslash$</td>
+<td><code>$\backslash$</code></td>
+</tr>
+<tr>
+<td>$/$</td>
+<td><code>$/$</code></td>
+<td>$\bracevert$</td>
+<td><code>$\bracevert$</code></td>
+<td>$]$</td>
+<td><code>$]$</code></td>
+</tr>
+<tr>
+<td>$\smallsetminus$</td>
+<td><code>$\smallsetminus$</code></td>
+<td>$\lVert$</td>
+<td><code>$\lVert$</code></td>
+<td>$\lbrace$</td>
+<td><code>$\lbrace$</code></td>
+</tr>
+<tr>
+<td>$\arrowvert$</td>
+<td><code>$\arrowvert$</code></td>
+<td>$\rVert$</td>
+<td><code>$\rVert$</code></td>
+<td>$\rbrace$</td>
+<td><code>$\rbrace$</code></td>
+</tr>
+<tr>
+<td>$\lvert$</td>
+<td>$\lvert$</td>
+<td>$\lgroup$</td>
+<td><code>$\lgroup$</code></td>
+<td>$\langle$</td>
+<td><code>$\langle$</code></td>
+</tr>
+<tr>
+<td>$\lvert$</td>
+<td><code>$\lvert$</code></td>
+<td>$\rgroup$</td>
+<td><code>$\rgroup$</code></td>
+<td>$\rangle$</td>
+<td><code>$\rangle$</code></td>
+</tr>
+<tr>
+<td>$\rvert$</td>
+<td><code>$\rvert$</code></td>
+<td>$[$</td>
+<td><code>$[$</code></td>
+<td>$\lmoustache$</td>
+<td><code>$\lmoustache$</code></td>
+</tr>
+<tr>
+<td>$\rmoustache$</td>
+<td><code>$\rmoustache$</code></td>
+<td>$\lceil$</td>
+<td><code>$\lceil$</code></td>
+<td>$\rceil$</td>
+<td><code>$\rceil$</code></td>
+</tr>
+<tr>
+<td>$\lfloor$</td>
+<td><code>$\lfloor$</code></td>
+<td>$\rfloor$</td>
+<td><code>$\rfloor$</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3.3.&#24076;&#33098;&#23383;&#27597;&#34920;">3.3.&#24076;&#33098;&#23383;&#27597;&#34920;<a class="anchor-link" href="#3.3.&#24076;&#33098;&#23383;&#27597;&#34920;">&#182;</a></h3><table>
+<thead><tr>
+<th>字母</th>
+<th>公式</th>
+<th>字母</th>
+<th>公式</th>
+<th>字母</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td><code>$\alpha$</code></td>
+<td>$\beta$</td>
+<td><code>$\beta$</code></td>
+<td>$\chi$</td>
+<td><code>$\chi$</code></td>
+</tr>
+<tr>
+<td>$\delta$</td>
+<td><code>$\delta$</code></td>
+<td>$\Delta$</td>
+<td><code>$\Delta$</code></td>
+<td>$\epsilon$</td>
+<td><code>$\epsilon$</code></td>
+</tr>
+<tr>
+<td>$\eta$</td>
+<td><code>$\eta$</code></td>
+<td>$\Gamma$</td>
+<td><code>$\Gamma$</code></td>
+<td>$\iota$</td>
+<td><code>$\iota$</code></td>
+</tr>
+<tr>
+<td>$\kappa$</td>
+<td><code>$\kappa$</code></td>
+<td>$\lambda$</td>
+<td><code>$\lambda$</code></td>
+<td>$\Lambda$</td>
+<td><code>$\Lambda$</code></td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td><code>$\mu$</code></td>
+<td>$\nabla$</td>
+<td><code>$\nabla$</code></td>
+<td>$\nu$</td>
+<td><code>$\nu$</code></td>
+</tr>
+<tr>
+<td>$\omega$</td>
+<td><code>$\omega$</code></td>
+<td>$\Omega$</td>
+<td><code>$\Omega$</code></td>
+<td>$\phi$</td>
+<td><code>$\phi$</code></td>
+</tr>
+<tr>
+<td>$\Phi$</td>
+<td><code>$\Phi$</code></td>
+<td>$\pi$</td>
+<td><code>$\pi$</code></td>
+<td>$\Pi$</td>
+<td><code>$\Pi$</code></td>
+</tr>
+<tr>
+<td>$\psi$</td>
+<td><code>$\psi$</code></td>
+<td>$\Psi$</td>
+<td><code>$\Psi$</code></td>
+<td>$\rho$</td>
+<td><code>$\rho$</code></td>
+</tr>
+<tr>
+<td>$\sigma$</td>
+<td><code>$\sigma$</code></td>
+<td>$\Sigma$</td>
+<td><code>$\Sigma$</code></td>
+<td>$\tau$</td>
+<td><code>$\tau$</code></td>
+</tr>
+<tr>
+<td>$\theta$</td>
+<td><code>$\theta$</code></td>
+<td>$\Theta$</td>
+<td><code>$\Theta$</code></td>
+<td>$\upsilon$</td>
+<td><code>$\upsilon$</code></td>
+</tr>
+<tr>
+<td>$\varepsilon$</td>
+<td><code>$\varepsilon$</code></td>
+<td>$\varsigma$</td>
+<td><code>$\varsigma$</code></td>
+<td>$\vartheta$</td>
+<td><code>$\vartheta$</code></td>
+</tr>
+<tr>
+<td>$\xi$</td>
+<td><code>$\xi$</code></td>
+<td>$\zeta$</td>
+<td><code>$\zeta$</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3.4.&#20989;&#25968;&#20844;&#24335;&#34920;">3.4.&#20989;&#25968;&#20844;&#24335;&#34920;<a class="anchor-link" href="#3.4.&#20989;&#25968;&#20844;&#24335;&#34920;">&#182;</a></h3><table>
+<thead><tr>
+<th>函数</th>
+<th>公式</th>
+<th>函数</th>
+<th>公式</th>
+<th>函数</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sin$</td>
+<td><code>$\sin$</code></td>
+<td>$\sin^{-1}$</td>
+<td><code>$\sin^{-1}$</code></td>
+<td>$\inf$</td>
+<td><code>$\inf$</code></td>
+</tr>
+<tr>
+<td>$\cos$</td>
+<td><code>$\cos$</code></td>
+<td>$\cos^{-1}$</td>
+<td><code>$\cos^{-1}$</code></td>
+<td>$\arg$</td>
+<td><code>$\arg$</code></td>
+</tr>
+<tr>
+<td>$\tan$</td>
+<td><code>$\tan$</code></td>
+<td>$\tan^{-1}$</td>
+<td><code>$\tan^{-1}$</code></td>
+<td>$\det$</td>
+<td><code>$\det$</code></td>
+</tr>
+<tr>
+<td>$\sinh$</td>
+<td><code>$\sinh$</code></td>
+<td>$\sinh^{-1}$</td>
+<td><code>$\sinh^{-1}$</code></td>
+<td>$\dim$</td>
+<td><code>$\dim$</code></td>
+</tr>
+<tr>
+<td>$\cosh$</td>
+<td><code>$\cosh$</code></td>
+<td>$\cosh^{-1}$</td>
+<td><code>$\cosh^{-1}$</code></td>
+<td>$\gcd$</td>
+<td><code>$\gcd$</code></td>
+</tr>
+<tr>
+<td>$\tanh$</td>
+<td><code>$\tanh$</code></td>
+<td>$\tanh^{-1}$</td>
+<td><code>$\tanh^{-1}$</code></td>
+<td>$\hom$</td>
+<td><code>$\hom$</code></td>
+</tr>
+<tr>
+<td>$\csc$</td>
+<td><code>$\csc$</code></td>
+<td>$\exp$</td>
+<td><code>$\exp$</code></td>
+<td>$\ker$</td>
+<td><code>$\ker$</code></td>
+</tr>
+<tr>
+<td>$\sec$</td>
+<td><code>$\sec$</code></td>
+<td>$\lg$</td>
+<td><code>$\lg$</code></td>
+<td>$\Pr$</td>
+<td><code>$\Pr$</code></td>
+</tr>
+<tr>
+<td>$\cot$</td>
+<td><code>$\cot$</code></td>
+<td>$\ln$</td>
+<td><code>$\ln$</code></td>
+<td>$\sup$</td>
+<td><code>$\sup$</code></td>
+</tr>
+<tr>
+<td>$\coth$</td>
+<td><code>$\coth$</code></td>
+<td>$\log$</td>
+<td><code>$\log$</code></td>
+<td>$\deg$</td>
+<td><code>$\deg$</code></td>
+</tr>
+<tr>
+<td>$\hom$</td>
+<td><code>$\hom$</code></td>
+<td>$\log_{e}$</td>
+<td><code>$\log_{e}$</code></td>
+<td>$\injlim$</td>
+<td><code>$\injlim$</code></td>
+</tr>
+<tr>
+<td>$\arcsin$</td>
+<td><code>$\arcsin$</code></td>
+<td>$\log_{10}$</td>
+<td><code>$\log_{10}$</code></td>
+<td>$\varinjlim$</td>
+<td><code>$\varinjlim$</code></td>
+</tr>
+<tr>
+<td>$\arccos$</td>
+<td><code>$\arccos$</code></td>
+<td>$\lim$</td>
+<td><code>$\lim$</code></td>
+<td>$\varprojlim$</td>
+<td><code>$\varprojlim$</code></td>
+</tr>
+<tr>
+<td>$\det$</td>
+<td><code>$\det$</code></td>
+<td>$\liminf$</td>
+<td><code>$\liminf$</code></td>
+<td>$\varliminf$</td>
+<td><code>$\varliminf$</code></td>
+</tr>
+<tr>
+<td>$\arctan$</td>
+<td><code>$\arctan$</code></td>
+<td>$\limsup$</td>
+<td><code>$\limsup$</code></td>
+<td>$\projlim$</td>
+<td><code>$\projlim$</code></td>
+</tr>
+<tr>
+<td>$\textrm{arccsc}$</td>
+<td><code>$\textrm{arccsc}$</code></td>
+<td>$\max$</td>
+<td><code>$\max$</code></td>
+<td>$\varlimsup$</td>
+<td><code>$\varlimsup$</code></td>
+</tr>
+<tr>
+<td>$\textrm{arcsec}$</td>
+<td><code>$\textrm{arcsec}$</code></td>
+<td>$\min$</td>
+<td><code>$\min$</code></td>
+</tr>
+<tr>
+<td>$\textrm{arccot}$</td>
+<td><code>$\textrm{arccot}$</code></td>
+<td>$\infty$</td>
+<td><code>$\infty$</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3.5.&#29305;&#27530;&#31526;&#21495;-&#31661;&#22836;&#31995;&#21015;">3.5.&#29305;&#27530;&#31526;&#21495;-&#31661;&#22836;&#31995;&#21015;<a class="anchor-link" href="#3.5.&#29305;&#27530;&#31526;&#21495;-&#31661;&#22836;&#31995;&#21015;">&#182;</a></h3><hr>
+<table>
+<thead><tr>
+<th>箭头</th>
+<th>公式</th>
+<th>箭头</th>
+<th>公式</th>
+<th>箭头</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\uparrow$</td>
+<td><code>$\uparrow$</code></td>
+<td>$\longleftarrow$</td>
+<td><code>$\longleftarrow$</code></td>
+<td>$\downdownarrows$</td>
+<td><code>$\downdownarrows$</code></td>
+</tr>
+<tr>
+<td>$\downarrow$</td>
+<td><code>$\downarrow$</code></td>
+<td>$\longrightarrow$</td>
+<td><code>$\longrightarrow$</code></td>
+<td>$\upuparrows$</td>
+<td><code>$\upuparrows$</code></td>
+</tr>
+<tr>
+<td>$\updownarrow$</td>
+<td><code>$\updownarrow$</code></td>
+<td>$\rightarrow$</td>
+<td><code>$\rightarrow$</code></td>
+<td>$\rightharpoondown$</td>
+<td><code>$\rightharpoondown$</code></td>
+</tr>
+<tr>
+<td>$\Uparrow$</td>
+<td><code>$\Uparrow$</code></td>
+<td>$\leftarrow$</td>
+<td><code>$\leftarrow$</code></td>
+<td>$\downharpoonleft$</td>
+<td><code>$\downharpoonleft$</code></td>
+</tr>
+<tr>
+<td>$\Downarrow$</td>
+<td><code>$\Downarrow$</code></td>
+<td>$\mapsto$</td>
+<td><code>$\mapsto$</code></td>
+<td>$\rightharpoonup$</td>
+<td><code>$\rightharpoonup$</code></td>
+</tr>
+<tr>
+<td>$\Leftarrow$</td>
+<td><code>$\Leftarrow$</code></td>
+<td>$\nrightarrow$</td>
+<td><code>$\nrightarrow$</code></td>
+<td>$\downharpoonright$</td>
+<td><code>$\downharpoonright$</code></td>
+</tr>
+<tr>
+<td>$\Rightarrow$</td>
+<td><code>$\Rightarrow$</code></td>
+<td>$\nleftarrow$</td>
+<td><code>$\nleftarrow$</code></td>
+<td>$\upharpoonleft$</td>
+<td><code>$\upharpoonleft$</code></td>
+</tr>
+<tr>
+<td>$\Leftrightarrow$</td>
+<td><code>$\Leftrightarrow$</code></td>
+<td>$\rightrightarrows$</td>
+<td><code>$\rightrightarrows$</code></td>
+<td>$\upharpoonright$</td>
+<td><code>$\upharpoonright$</code></td>
+</tr>
+<tr>
+<td>$\nLeftrightarrow$</td>
+<td><code>$\nLeftrightarrow$</code></td>
+<td>$\leftleftarrows$</td>
+<td><code>$\leftleftarrows$</code></td>
+<td>$\leftharpoondown$</td>
+<td><code>$\leftharpoondown$</code></td>
+</tr>
+<tr>
+<td>$\nLeftarrow$</td>
+<td><code>$\nLeftarrow$</code></td>
+<td>$\rightleftarrows$</td>
+<td><code>$\rightleftarrows$</code></td>
+<td>$\leftharpoonup$</td>
+<td><code>$\leftharpoonup$</code></td>
+</tr>
+<tr>
+<td>$\nRightarrow$</td>
+<td><code>$\nRightarrow$</code></td>
+<td>$\leftrightarrows$</td>
+<td><code>$\leftrightarrows$</code></td>
+<td>$\hookleftarrow$</td>
+<td><code>$\hookleftarrow$</code></td>
+</tr>
+<tr>
+<td>$\Updownarrow$</td>
+<td><code>$\Updownarrow$</code></td>
+<td>$\curvearrowleft$</td>
+<td><code>$\curvearrowleft$</code></td>
+<td>$\hookrightarrow$</td>
+<td><code>$\hookrightarrow$</code></td>
+</tr>
+<tr>
+<td>$\circlearrowleft$</td>
+<td><code>$\circlearrowleft$</code></td>
+<td>$\curvearrowright$</td>
+<td><code>$\curvearrowright$</code></td>
+<td>$\rightleftharpoons$</td>
+<td><code>$\rightleftharpoons$</code></td>
+</tr>
+<tr>
+<td>$\circlearrowright$</td>
+<td><code>$\circlearrowright$</code></td>
+<td>$\Longleftarrow$</td>
+<td><code>$\Longleftarrow$</code></td>
+<td>$\leftrightharpoons$</td>
+<td><code>$\leftrightharpoons$</code></td>
+</tr>
+<tr>
+<td>$\Lleftarrow$</td>
+<td><code>$\Lleftarrow$</code></td>
+<td>$\Longrightarrow$</td>
+<td><code>$\Longrightarrow$</code></td>
+<td>$\looparrowleft$</td>
+<td><code>$\looparrowleft$</code></td>
+</tr>
+<tr>
+<td>$\Rrightarrow$</td>
+<td><code>$\Rrightarrow$</code></td>
+<td>$\longleftrightarrow$</td>
+<td><code>$\longleftrightarrow$</code></td>
+<td>$\looparrowright$</td>
+<td><code>$\looparrowright$</code></td>
+</tr>
+<tr>
+<td>$\nwarrow$</td>
+<td><code>$\nwarrow$</code></td>
+<td>$\Longleftrightarrow$</td>
+<td><code>$\Longleftrightarrow$</code></td>
+<td>$\rightsquigarrow$</td>
+<td><code>$\rightsquigarrow$</code></td>
+</tr>
+<tr>
+<td>$\swarrow$</td>
+<td><code>$\swarrow$</code></td>
+<td>$\longmapsto$</td>
+<td><code>$\longmapsto$</code></td>
+<td>$\Lsh$</td>
+<td><code>$\Lsh$</code></td>
+</tr>
+<tr>
+<td>$\searrow$</td>
+<td><code>$\searrow$</code></td>
+<td>$\rightarrowtail$</td>
+<td><code>$\rightarrowtail$</code></td>
+<td>$\Rsh$</td>
+<td><code>$\Rsh$</code></td>
+</tr>
+<tr>
+<td>$\nearrow$</td>
+<td><code>$\nearrow$</code></td>
+<td>$\leftarrowtail$</td>
+<td><code>$\leftarrowtail$</code></td>
+<td>$\multimap$</td>
+<td><code>$\multimap$</code></td>
+</tr>
+<tr>
+<td>$\twoheadleftarrow$</td>
+<td><code>$\twoheadleftarrow$</code></td>
+<td>$\twoheadrightarrow$</td>
+<td><code>$\twoheadrightarrow$</code></td>
+<td>$\leftrightsquigarrow$</td>
+<td><code>$\leftrightsquigarrow$</code></td>
+</tr>
+<tr>
+<td>$\leftrightarrow$</td>
+<td><code>$\leftrightarrow$</code></td>
+<td>$\nleftrightarrow$</td>
+<td><code>$\nleftrightarrow$</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.&#36870;&#22825;&#24120;&#29992;">4.&#36870;&#22825;&#24120;&#29992;<a class="anchor-link" href="#4.&#36870;&#22825;&#24120;&#29992;">&#182;</a></h2><p>逆天用到就添加进去（不定期更新）根据上面有的，这些其实都可以自己写出来的</p>
+<h3 id="4.1.&#20108;&#27425;&#26041;&#31243;&#27714;&#35299;">4.1.&#20108;&#27425;&#26041;&#31243;&#27714;&#35299;<a class="anchor-link" href="#4.1.&#20108;&#27425;&#26041;&#31243;&#27714;&#35299;">&#182;</a></h3>
+<pre><code>$\mathbf{a*x^2+b*x+c}$
+
+$$x={\frac{-b \pm \sqrt{b^2-4ac}}{2a}}$$ or $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</code></pre>
+<p>$\mathbf{a*x^2+b*x+c}$</p>
+<p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</p>
+<hr>
+<h3 id="4.2.&#30697;&#38453;&#31995;&#21015;">4.2.&#30697;&#38453;&#31995;&#21015;<a class="anchor-link" href="#4.2.&#30697;&#38453;&#31995;&#21015;">&#182;</a></h3>
+<pre><code>$$
+\begin{bmatrix}
+1&amp;0&amp;0 \\
+0&amp;1&amp;0 \\
+0&amp;0&amp;1
+\end{bmatrix}
+$$</code></pre>
+<p>$$
+\begin{bmatrix}
+1&amp;0&amp;0 \\
+0&amp;1&amp;0 \\
+0&amp;0&amp;1
+\end{bmatrix}
+$$</p>
+<hr>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
