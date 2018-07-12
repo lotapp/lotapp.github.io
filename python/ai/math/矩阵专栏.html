@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>矩阵专栏</title>
+<script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML" async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+  },
+  // Center justify equations in code and markdown cells. Elsewhere
+  // we use CSS to left justify single line equations in code cells.
+  displayAlign: 'center',
+  "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+  }
+});
+</script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#30697;&#38453;&#19987;&#26639;">2.&#30697;&#38453;&#19987;&#26639;<a class="anchor-link" href="#2.&#30697;&#38453;&#19987;&#26639;">&#182;</a></h2><p>吐槽一下：矩阵本身不难，但是矩阵的写作太蛋疼了 <code>(⊙﹏⊙)汗</code> 还好有<code>Numpy</code>，不然真的崩溃了...</p>
+<p><code>LaTex</code>有没有一个集成了很多常用<code>公式</code>以及<code>推导</code>或者含<code>题库</code>的在线编辑器？</p>
+<p>基础回顾：<a href="https://www.cnblogs.com/dotnetcrazy/p/9294292.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9294292.html</a></p>
+<h3 id="2.1.&#30697;&#38453;&#30340;&#23450;&#20041;">2.1.&#30697;&#38453;&#30340;&#23450;&#20041;<a class="anchor-link" href="#2.1.&#30697;&#38453;&#30340;&#23450;&#20041;">&#182;</a></h3><p><a href="https://baike.baidu.com/item/矩阵" target="_blank">https://baike.baidu.com/item/矩阵</a>：是一个按照长方阵列排列的复数或实数集合。</p>
+<p>通俗讲就是：<strong>把数排成m行n列后，然后用中括号把它们括住，这种形式的组合就是矩阵了</strong>～ eg：</p>
+<p>$\begin{bmatrix}
+&amp;a_{11}&amp;a_{12}&amp;a_{13}&amp;...&amp;a_{1n} \\
+&amp;a_{21}&amp;a_{22}&amp;a_{23}&amp;...&amp;a_{2n} \\
+&amp;a_{31}&amp;a_{32}&amp;a_{33}&amp;...&amp;a_{3n} \\
+&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+&amp;a_{m1}&amp;a_{m2}&amp;a_{m3}&amp;...&amp;a_{mn} \\
+\end{bmatrix}$</p>
+<p>比如上面这个示例就是一个<code>m × n</code>的矩阵（m行n列的矩阵），如果<code>m=n</code>那么就叫做<code>n阶方阵</code>，eg:</p>
+<p>$\begin{bmatrix}
+1&amp;2&amp;3 \\
+4&amp;5&amp;6 \\
+7&amp;8&amp;9
+\end{bmatrix}$</p>
+<p>这个就是<code>3阶</code>方阵</p>
+<hr>
+<p>如果回到中学，老师肯定都是通过<strong>一次方程组</strong>来引入矩阵（逆天的老师是这么讲的）：</p>
+<p>$\begin{cases}x_1+x_2=-1\\2x_1-x_2=4\\3x_1+5x_2=-7\\\end{cases}$ ==&gt;  $\begin{bmatrix}1&amp;1\\2&amp;-1\\3&amp;5\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}-1\\4\\-7\end{bmatrix}$</p>
+<p>如果你方程组都忘记怎么解的话...好吧还是说下吧：“比如这题，可以先把x2移到右边，这样x1就等于一个表达式了（x1=-x2-1），然后带入第二个表达式就可以解出x1和x2了，一次的其实两个表达式就可以解出了，剩下的你可以把值带进去验证一下”</p>
+<h3 id="2.2.&#30697;&#38453;&#30340;&#36816;&#31639;&#65288;&#21547;&#24130;&#36816;&#31639;&#65289;">2.2.&#30697;&#38453;&#30340;&#36816;&#31639;&#65288;&#21547;&#24130;&#36816;&#31639;&#65289;<a class="anchor-link" href="#2.2.&#30697;&#38453;&#30340;&#36816;&#31639;&#65288;&#21547;&#24130;&#36816;&#31639;&#65289;">&#182;</a></h3><h4 id="2.2.1.&#21152;&#12289;&#20943;">2.2.1.&#21152;&#12289;&#20943;<a class="anchor-link" href="#2.2.1.&#21152;&#12289;&#20943;">&#182;</a></h4><p>加减比较简单，就是<strong>对应元素相加减</strong> (只有<code>行列都相同的矩阵</code>才可以进行)</p>
+<p>就不用麻烦的<code>LaTex</code>一行行打了，咱们用更方便的 <strong><a href="https://en.wikipedia.org/wiki/NumPy" target="_blank">NumPy</a></strong> 来演示一下矩阵加法（不懂代码的直接看结果，不影响阅读的）</p>
+<p>扩展：<strong>矩阵的加法运算满足交换律：A + B = B + A</strong> (乘法不行)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 创建两个集合</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+-----
+[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加法</span>
+<span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1,  3,  5],
+       [ 7,  9, 11],
+       [13, 15, 17]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 和A+B相等</span>
+<span class="n">B</span> <span class="o">+</span> <span class="n">A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1,  3,  5],
+       [ 7,  9, 11],
+       [13, 15, 17]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 减法</span>
+<span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[1, 1, 1],
+       [1, 1, 1],
+       [1, 1, 1]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 变化来了 ################</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 之前说过 ”只有行列都相同的矩阵才可以进行“ 来验证一下</span>
+<span class="c1"># 创建一个2行3列的矩阵</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> 
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[0 1 2]
+ [3 4 5]]
+-----
+[[0 1]
+ [2 3]
+ [4 5]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2行3列的矩阵 + 3行2列的矩阵</span>
+<span class="n">C</span> <span class="o">+</span> <span class="n">D</span> <span class="c1"># 不同形状的矩阵不能进行加运算</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-8-bc97e29f7e31&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># 2行3列的矩阵 + 3行2列的矩阵</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>C <span class="ansi-blue-fg">+</span> D <span class="ansi-red-fg"># 不同形状的矩阵不能进行加运算</span>
+
+<span class="ansi-red-fg">ValueError</span>: operands could not be broadcast together with shapes (2,3) (3,2) </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">C</span> <span class="o">-</span> <span class="n">D</span> <span class="c1"># 不同形状的矩阵不能进行减运算</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-9-ca5169d0bf6c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>C <span class="ansi-blue-fg">-</span> D <span class="ansi-red-fg"># 不同形状的矩阵不能进行减运算</span>
+
+<span class="ansi-red-fg">ValueError</span>: operands could not be broadcast together with shapes (2,3) (3,2) </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.2.2.&#25968;&#20056;&#12289;&#25968;&#38500;">2.2.2.&#25968;&#20056;&#12289;&#25968;&#38500;<a class="anchor-link" href="#2.2.2.&#25968;&#20056;&#12289;&#25968;&#38500;">&#182;</a></h4><p>这个也比较简单，就是和<strong>每个元素相乘</strong>，eg:<code>2×A</code>，A原本的每一个元素都扩大了两倍</p>
+<p>数除其实就是乘以倒数（1/x）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 比如2×A，A原本的每一个元素都扩大了两倍</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="n">A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 2,  4,  6],
+       [ 8, 10, 12],
+       [14, 16, 18]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.5, 1. , 1.5],
+       [2. , 2.5, 3. ],
+       [3.5, 4. , 4.5]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.2.3.&#30697;&#38453;&#20056;&#27861;">2.2.3.&#30697;&#38453;&#20056;&#27861;<a class="anchor-link" href="#2.2.3.&#30697;&#38453;&#20056;&#27861;">&#182;</a></h4><p>矩阵乘法还是要用<code>LaTex</code>演示一下的，不然有些朋友可能还是觉得比较抽象：（大家有什么好用的LaTex在线编辑器可以推荐的）</p>
+<p>拿上面那个方程组来演示一下：</p>
+<p>$\begin{bmatrix}1&amp;1\\2&amp;-1\\3&amp;5\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix} ==&gt; \begin{cases}x_1+x_2\\2x_1-x_2\\3x_1+5x_2\end{cases}$</p>
+<p>稍微变化一下就更形象了：</p>
+<p>$\begin{bmatrix}1&amp;1\\2&amp;-1\\3&amp;5\end{bmatrix}\begin{bmatrix}x_1&amp;y_1\\x_2&amp;y_2\end{bmatrix} ==&gt; \begin{cases}x_1+x_2\\2x_1-x_2\\3x_1+5x_2\end{cases} \begin{cases}y_1+y_2\\2y_1-x_2\\3y_1+5y_2\end{cases}==&gt;\begin{bmatrix}x_1+x_2&amp;y_1+y_2\\2x_1-x_2&amp;2y_1-y_2\\3x_1+5x_2&amp;3y_1+5y_2\end{bmatrix}$</p>
+<p>举个简单的例子：A×B</p>
+<p>$\begin{bmatrix} 1&amp;2 \\3&amp;4 \end{bmatrix}\begin{bmatrix} 4&amp;3 \\2&amp;1 \end{bmatrix}=\begin{bmatrix} 1*4+2*2&amp;1*3+2*1 \\3*4+4*2&amp;3*3+4*1 \end{bmatrix}=\begin{bmatrix} 8&amp;5 \\20&amp;13 \end{bmatrix}$</p>
+<p>以后记不得怎么乘就自己推一下，值得注意的是：</p>
+<p><strong>两个矩阵的乘法仅当第一个矩阵A的列数(column)和另一个矩阵B的行数(row)相等才可以进行计算</strong></p>
+<p>你这样想就记得了：$\begin{bmatrix} 1&amp;2 \\3&amp;4 \end{bmatrix}\begin{bmatrix} x_1 \end{bmatrix} 还原成方程组就是这样\begin{cases}1*x_1+2*?\\3*x_1+4*?\end{cases}\\这是什么鬼？至少得这样吧：\begin{bmatrix} 1&amp;2 \\3&amp;4 \end{bmatrix}\begin{bmatrix} x_1 \\x_2 \end{bmatrix}$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 通过代码看一看</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2]
+ [3 4]]
+-----
+[[4 3]
+ [2 1]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 注意一下，Numpy里面的乘法默认是数乘</span>
+<span class="c1"># 如果是矩阵相乘可以使用dot()方法</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="c1"># 矩阵A×矩阵B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 8,  5],
+       [20, 13]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>程序验证了我们上面的运算结果，还得注意一下：</p>
+<p><code>A×B</code>和<code>B×A</code>是不一样的，eg：B×A</p>
+<p>$\begin{bmatrix} 4&amp;3 \\2&amp;1 \end{bmatrix}\begin{bmatrix} 1&amp;2 \\3&amp;4 \end{bmatrix}=\begin{bmatrix} 4*1+3*3&amp;4*2+3*4 \\2*1+1*3&amp;2*2+1*4 \end{bmatrix}=\begin{bmatrix} 13&amp;20 \\5&amp;8 \end{bmatrix}$</p>
+<p>如果你乘着乘着就忘记到底怎么乘，就把右边的矩阵换成x1,x2，然后就会了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2]
+ [3 4]]
+-----
+[[4 3]
+ [2 1]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># 矩阵B×矩阵A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[13, 20],
+       [ 5,  8]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 变化来了 ################</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 来验证一下”两个矩阵的乘法仅当第一个矩阵A的列数(column)和另一个矩阵D的行数(row)相等才可以进行计算“</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2]
+ [3 4]]
+-----
+[[0 1]
+ [2 3]
+ [4 5]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A有2列 D有3行</span>
+<span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="c1"># 不能乘</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-20-c1a9f22a6f8d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># A有2列 D有3行</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>A<span class="ansi-blue-fg">.</span>dot<span class="ansi-blue-fg">(</span>D<span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># 不能乘</span>
+
+<span class="ansi-red-fg">ValueError</span>: shapes (2,2) and (3,2) not aligned: 2 (dim 1) != 3 (dim 0)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 你反过来就符合A的列数=D的行数了</span>
+<span class="n">D</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 3,  4],
+       [11, 16],
+       [19, 28]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.2.4.&#24130;&#20056;&#12289;&#24130;&#36816;&#31639;">2.2.4.&#24130;&#20056;&#12289;&#24130;&#36816;&#31639;<a class="anchor-link" href="#2.2.4.&#24130;&#20056;&#12289;&#24130;&#36816;&#31639;">&#182;</a></h4><p>幂乘比较简单，就是<strong>每个元素开平方</strong>，不一定是方阵</p>
+<p>必须是方阵才能进行<a href="https://baike.baidu.com/item/幂运算" target="_blank">幂运算</a>，比如<code>A²=A×A</code>（矩阵相乘前提：<code>第一个矩阵A的行=第二个矩阵A的列==&gt;方阵</code>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2]
+ [3 4]]
+-----
+[[0 1 2]
+ [3 4 5]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 幂乘(每个元素开平方) </span>
+<span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1,  4],
+       [ 9, 16]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 幂乘(不一定是方阵) </span>
+<span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0,  1,  4],
+       [ 9, 16, 25]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">################ 方阵幂运算 ################</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A*A*A</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 37,  54],
+       [ 81, 118]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 不是方阵就over</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-27-73f04ef7b54c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># 不是方阵就over</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>np<span class="ansi-blue-fg">.</span>linalg<span class="ansi-blue-fg">.</span>matrix_power<span class="ansi-blue-fg">(</span>C<span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.6/site-packages/numpy/matrixlib/defmatrix.py</span> in <span class="ansi-cyan-fg">matrix_power</span><span class="ansi-blue-fg">(M, n)</span>
+<span class="ansi-green-intense-fg ansi-bold">    137</span>     M <span class="ansi-blue-fg">=</span> asanyarray<span class="ansi-blue-fg">(</span>M<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    138</span>     <span class="ansi-green-fg">if</span> M<span class="ansi-blue-fg">.</span>ndim <span class="ansi-blue-fg">!=</span> <span class="ansi-cyan-fg">2</span> <span class="ansi-green-fg">or</span> M<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">!=</span> M<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 139</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;input must be a square array&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> issubdtype<span class="ansi-blue-fg">(</span>type<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> N<span class="ansi-blue-fg">.</span>integer<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>         <span class="ansi-green-fg">raise</span> TypeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;exponent must be an integer&#34;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: input must be a square array</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>来个小结 + 扩展</strong>：</p>
+<p>矩阵的加法运算满足交换律：<code>A + B = B + A</code></p>
+<p>矩阵的乘法满足结合律和对矩阵加法的分配律：</p>
+<p>结合律：<code>(AB)C = A(BC)</code></p>
+<p>左分配律：<code>(A + B)C = AC + BC</code></p>
+<p>右分配律：<code>C(A + B) = CA + CB</code></p>
+<p>矩阵的乘法与数乘运算之间也满足类似结合律的规律；与转置之间则满足倒置的</p>
+<p>分配律：<code>c(A + B) = cA + cB</code></p>
+<p>结合律：<code>c(AB) = (cA)B = A(cB)</code></p>
+<p>矩阵乘法<strong>不满足交换律</strong> 一般来说，矩阵A及B的乘积AB存在，但BA不一定存在，即使存在，大多数时候<code>AB ≠ BA</code></p>
+<h3 id="2.3.&#29305;&#27530;&#30697;&#38453;">2.3.&#29305;&#27530;&#30697;&#38453;<a class="anchor-link" href="#2.3.&#29305;&#27530;&#30697;&#38453;">&#182;</a></h3><p>矩阵的转置满足分配律：</p>
+<p>$(A + B)^T = A^T + B^T$</p>
+<p>$(AB)^T = B^TA^T$</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
