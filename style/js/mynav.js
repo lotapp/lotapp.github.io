@@ -1,6 +1,6 @@
 $(function () {
     // 生成目录索引列表
-    var temp_html = '<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt"></div><div class="inner_cell"><div class="text_cell_render border-box-sizing rendered_html"><p><strong>文章汇总：<a href="https://lotapp.github.io" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9160514.html</a></strong></p>{dntnav}</div></div></div>';
+    var temp_html = '<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt"></div><div class="inner_cell"><div class="text_cell_render border-box-sizing rendered_html"><p><strong>文章汇总：<a href="http://github.lesschina.com/" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9160514.html</a></strong></p>{dntnav}</div></div></div>';
     var h_list = $('#notebook-container h1,#notebook-container h2,#notebook-container h3');//这边你可以自行修改
 
     if (h_list.length > 0) {
