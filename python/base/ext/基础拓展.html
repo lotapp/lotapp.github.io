@@ -16,6 +16,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>上次知识回顾：<a href="http://github.lesschina.com/python/base/ext/基础衍生.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9278573.html</a></p>
+<p>终于期末考试结束了，聪明的小明同学现在当然是美滋滋的过暑假了，左手一只瓜，右手一本书～正在给老乡小张同学拓展他研究多日的知识点</p>
 <h2 id="1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;">1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;<a class="anchor-link" href="#1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;">&#182;</a></h2><p>装饰器这次从<code>C#</code>开始引入，上次刚讲<code>迭代器模式</code>，这次把<code>装饰器模式</code>也带一波（纯Python方向的可以选择性跳过，也可以当扩展）</p>
 <p>其实通俗讲就是，<strong>给原有对象动态的添加一些额外的职责</strong>（毕竟动不动就改类你让其他调用的人咋办？也不符合开放封闭原则是吧～）</p>
 <p>举个简单的例子：(<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/Decorators" target="_blank">https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/Decorators</a>)</p>
@@ -172,6 +173,7 @@ add WeChatLogin
 add QQLogin
 add SinaLogin</code></pre>
 <hr>
+<p>其实还有很多用处，比如原有系统缓存这块当时考虑不到，现在并发来了，已经上线了，原有代码又不太敢大幅度修改，这时候装饰器就很方便的给某些功能添加点缓存、测试、日记等等系列功能</p>
 <p>实际场景说的已经很明白了，其他的自己摸索一下吧</p>
 
 </div>
@@ -181,8 +183,604 @@ add SinaLogin</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.Python&#35013;&#39280;&#22120;">2.Python&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.Python&#35013;&#39280;&#22120;">&#182;</a></h2><p>闭包如果忘了，可以<a href="https://www.cnblogs.com/dotnetcrazy/p/9278573.html#8.闭包" target="_blank">回顾</a>一下</p>
-<h3 id="2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">2.1.&#35013;&#39280;&#22120;&#24341;&#20837;<a class="anchor-link" href="#2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">&#182;</a></h3><h3 id="2.2.&#31867;&#35013;&#39280;&#22120;">2.2.&#31867;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.2.&#31867;&#35013;&#39280;&#22120;">&#182;</a></h3>
+<h2 id="2.Python&#35013;&#39280;&#22120;">2.Python&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.Python&#35013;&#39280;&#22120;">&#182;</a></h2><p>那Python怎么实现装饰器呢？小胖问道。</p>
+<p>小明屁颠屁颠的跑过去说道，通过闭包咯～（闭包如果忘了，可以<a href="https://www.cnblogs.com/dotnetcrazy/p/9278573.html#8.闭包" target="_blank">回顾</a>一下）</p>
+<h3 id="2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">2.1.&#35013;&#39280;&#22120;&#24341;&#20837;<a class="anchor-link" href="#2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">&#182;</a></h3><p>来看一个应用场景，以前老版本系统因为并发比较小，没考虑到缓存</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">getData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>在不修改原有代码的前提下咋办？我们参照C#和Java写下如下代码：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 添加一个闭包</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">()</span><span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">getData</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f1</span><span class="p">))</span>
+    <span class="n">f1</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;function&#39;&gt;
+给功能添加了缓存
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小张问道：“怎么也这么麻烦啊，C#的那个我就有点晕了，怎么Python也这样啊？”<code>f1 = cache(getData)</code> <code>f1()</code></p>
+<p>小明哈哈一笑道：“人生苦短，我用Python～这句话可不是随便说着玩的，来来来，看看Python的语法糖”：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@cache</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">getData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>给功能添加了缓存
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>其实</p>
+<div class="highlight"><pre><span></span><span class="nd">@cache</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">()</span>
+</pre></div>
+<p>等价于</p>
+<div class="highlight"><pre><span></span><span class="c1"># 把f1改成函数名字罢了。可以这么理解：getData重写指向了一个新函数</span>
+<span class="n">getData</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">getData</span><span class="p">)</span>
+</pre></div>
+<p>小张同学瞪了瞪眼睛，努力回想着以前的知识点，然后脱口而出：“这不是我们之前讲的<a href="https://www.cnblogs.com/dotnetcrazy/p/9202988.html#1.5-装饰器，让方法像属性那样便利" target="_blank">属性装饰器</a>吗？而且好方便啊，这完全符合开放封闭原则啊！“</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="c1"># 一般需要用到的属性都直接放在__init__里面了</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+
+    <span class="nd">@name.setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
+
+    <span class="nd">@age.setter</span>
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;age must &gt; 0&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;name:</span><span class="si">%s</span><span class="s2">,age:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">))</span>
+</pre></div>
+<p>小明也愣了愣，说道：”也对哦，你不说我都忘了，我们学习面向对象三大特性的时候经常用呢，怪不得这么熟悉呢“</p>
+<p>随后又嘀咕了一句：”我怎么不知道开放封闭原则...“</p>
+<p>小张嘲笑道：”这你都不知道？<strong>对扩展开放，对已经实现的代码封闭</strong>嘛～“</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 需要注意一点</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;装饰器开始装饰&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@cache</span> <span class="c1"># 当你写这个的时候，装饰器就开始装饰了，闭包里面的功能是你调用的时候执行</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>装饰器开始装饰
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.&#22810;&#20010;&#35013;&#39280;&#22120;">2.2.&#22810;&#20010;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.2.&#22810;&#20010;&#35013;&#39280;&#22120;">&#182;</a></h3><p>小明赶紧扯开话题，”咳咳，我们接下来我们接着讲装饰器"</p>
+<p>小张问道，像上面那个第三方登录的案例，想加多少加多少，Python怎么办呢？</p>
+<p>小明一笑而过～</p>
+<p>现在项目又升级了，要求每次调用都要打印一下日记信息，方便以后纠错，小张先用自己的理解打下了这段代码，然后像小明请教：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输出日记信息&quot;</span><span class="p">)</span>
+        <span class="n">cache</span><span class="p">(</span><span class="n">func</span><span class="p">)()</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+    
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">getData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>输出日记信息
+给功能添加了缓存
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小明刚美滋滋的喝着口口可乐呢，看到代码后一不小心喷了小张一脸，然后尴尬的说道：“Python又不是只能装饰一个装饰器，来看看我的代码”：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始装饰Log模块&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输出日记信息&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始装饰Cache模块&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@log</span>
+<span class="nd">@cache</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">getData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>开始装饰Cache模块
+开始装饰Log模块
+输出日记信息
+给功能添加了缓存
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小张耐心的看完了代码，然后说道：“咦，我发现它<strong>装饰的时候是从下往上装饰，执行的时候是从上往下</strong>啊？执行的时候程序本来就是从上往下，按照道理应该是从上往下装饰啊？”</p>
+<p>小明神秘的说道：“你猜啊～你可以把它理解为<strong>寄快递和拆快递</strong>”</p>
+<p>小张兴奋的跳起来了：</p>
+<p><strong>装饰器：装快递，先包装里面的物品，然后再加个盒子。执行装饰器：拆快递，先拆外面的包装再拆里面的</strong>～简直妙不可言啊</p>
+<h3 id="2.3.&#24102;&#21442;&#35013;&#39280;&#22120;">2.3.&#24102;&#21442;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.3.&#24102;&#21442;&#35013;&#39280;&#22120;">&#182;</a></h3><p>小明继续讲述他哥哥的血泪历史：</p>
+<p>需求时刻在变，系统使用范围更广了，为了不砸场子，抠门的老板决定每年多花5W在技术研发的硬件支持上，这下子技术部老开心了，想想以前前端只能通过CDN和HTTP请求来缓存，后端只能依赖页面缓存和数据库缓存就心塞，于是赶紧新增加一台Redis的云服务器。为了以后和现在缓存代码得变一变了，<strong>需要支持指定的缓存数据库</strong>：（如果不是维护别人搞的老项目，你这么玩保证被打死，开发的时候老老实实的工厂模式搞起）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以理解为，在原来的外面套了一层</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">cache_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;redis&quot;</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了Redis缓存&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
+            <span class="k">return</span> <span class="n">inner</span>
+        <span class="k">elif</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;memcache&quot;</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>  <span class="c1"># 默认页面缓存</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@cache</span><span class="p">(</span><span class="s2">&quot;redis&quot;</span><span class="p">)</span> <span class="c1"># 相当于是：getData = cache(”redis“)(getData)</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">getData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>给功能添加了Redis缓存
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小张很高兴，然后练了练手，然后质问小明道：”你是不是藏了一手！“</p>
+<p>代码如下：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="n">name_str</span><span class="p">,</span> <span class="n">pass_str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;欢迎登录：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_str</span><span class="p">)</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">login_out</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经退出登录&quot;</span><span class="p">)</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:data xxx&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">login_out</span><span class="p">()</span>
+    <span class="n">getData</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">login_in</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>login_out log_info...
+已经退出登录
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-7-c7235ff88461&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     23</span> 
+<span class="ansi-green-intense-fg ansi-bold">     24</span> <span class="ansi-green-fg">if</span> __name__ <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;__main__&#39;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 25</span><span class="ansi-red-fg">     </span>main<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-7-c7235ff88461&gt;</span> in <span class="ansi-cyan-fg">main</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     19</span> <span class="ansi-green-fg">def</span> main<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     20</span>     login_out<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg">     </span>getData<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     22</span>     print<span class="ansi-blue-fg">(</span>login_in<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;小明&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;xxx&#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     23</span> 
+
+<span class="ansi-red-fg">TypeError</span>: inner() takes 0 positional arguments but 1 was given</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.4.&#36890;&#29992;&#35013;&#39280;&#22120;">2.4.&#36890;&#29992;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.4.&#36890;&#29992;&#35013;&#39280;&#22120;">&#182;</a></h3><p>小明尴尬的笑了下，然后赶紧倾囊相授，定义一个<strong>通用的装饰器</strong>：（传参数就在外面套一层）</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="c1"># 可变参 + 关键字参数</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</pre></div>
+<p>这部分知识如果忘记了可以回顾一下，我们之前讲的函数系列：<a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html#2.3.关键字参数" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9175950.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="c1"># 可变参 + 关键字参数</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="n">name_str</span><span class="p">,</span> <span class="n">pass_str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;欢迎登录：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_str</span><span class="p">)</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">login_out</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经退出登录&quot;</span><span class="p">)</span>
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:data xxx&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">login_out</span><span class="p">()</span>
+    <span class="n">getData</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">login_in</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>login_out log_info...
+已经退出登录
+getData log_info...
+1:data xxx
+login_in log_info...
+欢迎登录：小明
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.">3.<a class="anchor-link" href="#3.">&#182;</a></h2>
 </div>
 </div>
 </div>
