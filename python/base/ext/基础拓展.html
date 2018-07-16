@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>基础拓展</title>
+<script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上次知识回顾：<a href="http://github.lesschina.com/python/base/ext/基础衍生.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9278573.html</a></p>
+<h2 id="1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;">1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;<a class="anchor-link" href="#1.NetCore&#35013;&#39280;&#22120;&#27169;&#24335;">&#182;</a></h2><p>装饰器这次从<code>C#</code>开始引入，上次刚讲<code>迭代器模式</code>，这次把<code>装饰器模式</code>也带一波（纯Python方向的可以选择性跳过，也可以当扩展）</p>
+<p>其实通俗讲就是，<strong>给原有对象动态的添加一些额外的职责</strong>（毕竟动不动就改类你让其他调用的人咋办？也不符合开放封闭原则是吧～）</p>
+<p>举个简单的例子：(<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/Decorators" target="_blank">https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/Decorators</a>)</p>
+<p>BaseComponent.cs</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 组件的抽象父类</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">BaseComponent</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 定义一个登录的抽象方法</span>
+    <span class="c1">/// 其他方法，这边省略</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">abstract</span> <span class="kt">string</span> <span class="nf">Login</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p>LoginComponent.cs</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 默认登录组件（账号+密码）</span>
+<span class="c1">/// 其他方法省略</span>
+<span class="c1">/// 友情提醒一下，抽象类里面可以定义非抽象方法</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginComponent</span> <span class="p">:</span> <span class="n">BaseComponent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">Login</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;默认账号密码登录&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>默认调用：</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LoginComponent</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">str</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Login</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<hr>
+<p>如果这时候平台需要添加微信第三方登录，怎么办？一般都是用继承来解决，其实还可以通过灵活的<code>装饰器</code>来解决：（好处可以自己体会）</p>
+<p>先定义一个通用装饰器（不一定针对登录，注册等等只要在BaseComponent中的都能用）</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 装饰器</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">BaseDecorator</span> <span class="p">:</span> <span class="n">BaseComponent</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="n">BaseComponent</span> <span class="n">_component</span><span class="p">;</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 构造函数</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;obj&quot;&gt;登录组件对象&lt;/param&gt;</span>
+    <span class="k">protected</span> <span class="nf">BaseDecorator</span><span class="p">(</span><span class="n">BaseComponent</span> <span class="n">obj</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_component</span> <span class="p">=</span> <span class="n">obj</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">Login</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">str</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_component</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">str</span> <span class="p">=</span> <span class="n">_component</span><span class="p">.</span><span class="n">Login</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>现在根据需求添加微信登录：（符合开放封闭原则）</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 默认登录组件（账号+密码）</span>
+<span class="c1">/// 其他方法省略</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">WeChatLoginDecorator</span> <span class="p">:</span> <span class="n">BaseDecorator</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">WeChatLoginDecorator</span><span class="p">(</span><span class="n">BaseComponent</span> <span class="n">obj</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 添加微信第三方登录</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">WeChatLogin</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;add WeChatLogin&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用：（原有系统该怎么用就怎么用，新系统可以使用装饰器来添加新功能）</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cp">#region 登录模块V2</span>
+    <span class="c1">// 实例化登录装饰器</span>
+    <span class="kt">var</span> <span class="n">loginDecorator</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WeChatLoginDecorator</span><span class="p">(</span><span class="k">new</span> <span class="n">LoginComponent</span><span class="p">());</span>
+    <span class="c1">// 原有的登录方法</span>
+    <span class="kt">var</span> <span class="n">str1</span> <span class="p">=</span> <span class="n">loginDecorator</span><span class="p">.</span><span class="n">Login</span><span class="p">();</span>
+    <span class="c1">// 现在新增的登录方法</span>
+    <span class="kt">var</span> <span class="n">str2</span> <span class="p">=</span> <span class="n">loginDecorator</span><span class="p">.</span><span class="n">WeChatLogin</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;{str1}\n{str2}&quot;</span><span class="p">);</span>
+    <span class="cp">#endregion</span>
+<span class="p">}</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>默认账号密码登录
+add WeChatLogin</code></pre>
+<hr>
+<p>如果再加入QQ和新浪登录的功能就再添加一个V3版本的装饰器，继承当时V2版本的登录即可（版本迭代特别方便）</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// 默认登录组件（账号+密码）</span>
+<span class="c1">/// 其他方法省略</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginDecoratorV3</span> <span class="p">:</span> <span class="n">WeChatLoginDecorator</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">LoginDecoratorV3</span><span class="p">(</span><span class="n">BaseComponent</span> <span class="n">obj</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 添加QQ登录</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">QQLogin</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;add QQLogin&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// 添加新浪登录</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">SinaLogin</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;add SinaLogin&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cp">#region 登录模块V3</span>
+    <span class="c1">// 实例化登录装饰器</span>
+    <span class="kt">var</span> <span class="n">loginDecoratorV3</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LoginDecoratorV3</span><span class="p">(</span><span class="k">new</span> <span class="n">LoginComponent</span><span class="p">());</span>
+    <span class="c1">// 原有的登录方法</span>
+    <span class="kt">var</span> <span class="n">v1</span> <span class="p">=</span> <span class="n">loginDecoratorV3</span><span class="p">.</span><span class="n">Login</span><span class="p">();</span>
+    <span class="c1">// 第二个版本迭代中的微信登录</span>
+    <span class="kt">var</span> <span class="n">v2</span> <span class="p">=</span> <span class="n">loginDecoratorV3</span><span class="p">.</span><span class="n">WeChatLogin</span><span class="p">();</span>
+    <span class="c1">// 新增的QQ和新浪登录</span>
+    <span class="kt">var</span> <span class="n">qqLogin</span> <span class="p">=</span> <span class="n">loginDecoratorV3</span><span class="p">.</span><span class="n">QQLogin</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">sinaLogin</span> <span class="p">=</span> <span class="n">loginDecoratorV3</span><span class="p">.</span><span class="n">SinaLogin</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;{v1}\n{v2}\n{qqLogin}\n{sinaLogin}&quot;</span><span class="p">);</span>
+    <span class="cp">#endregion</span>
+<span class="p">}</span>
+</pre></div>
+<p>结果：</p>
+
+<pre><code>默认账号密码登录
+add WeChatLogin
+add QQLogin
+add SinaLogin</code></pre>
+<hr>
+<p>实际场景说的已经很明白了，其他的自己摸索一下吧</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.Python&#35013;&#39280;&#22120;">2.Python&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.Python&#35013;&#39280;&#22120;">&#182;</a></h2><p>闭包如果忘了，可以<a href="https://www.cnblogs.com/dotnetcrazy/p/9278573.html#8.闭包" target="_blank">回顾</a>一下</p>
+<h3 id="2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">2.1.&#35013;&#39280;&#22120;&#24341;&#20837;<a class="anchor-link" href="#2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">&#182;</a></h3><h3 id="2.2.&#31867;&#35013;&#39280;&#22120;">2.2.&#31867;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.2.&#31867;&#35013;&#39280;&#22120;">&#182;</a></h3>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
