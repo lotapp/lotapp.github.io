@@ -186,11 +186,11 @@ add SinaLogin</code></pre>
 <h2 id="2.Python&#35013;&#39280;&#22120;">2.Python&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.Python&#35013;&#39280;&#22120;">&#182;</a></h2><p>那Python怎么实现装饰器呢？小胖问道。</p>
 <p>小明屁颠屁颠的跑过去说道，通过闭包咯～（闭包如果忘了，可以<a href="https://www.cnblogs.com/dotnetcrazy/p/9278573.html#8.闭包" target="_blank">回顾</a>一下）</p>
 <h3 id="2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">2.1.&#35013;&#39280;&#22120;&#24341;&#20837;<a class="anchor-link" href="#2.1.&#35013;&#39280;&#22120;&#24341;&#20837;">&#182;</a></h3><p>来看一个应用场景，以前老版本系统因为并发比较小，没考虑到缓存</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">getData</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -215,13 +215,13 @@ add SinaLogin</code></pre>
             <span class="n">func</span><span class="p">()</span><span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
     <span class="k">return</span> <span class="n">decorator</span>
 
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">f1</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">getData</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f1</span><span class="p">))</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">get_data</span><span class="p">)</span>
     <span class="n">f1</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f1</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -241,8 +241,8 @@ add SinaLogin</code></pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;function&#39;&gt;
-给功能添加了缓存
+<pre>给功能添加了缓存
+&lt;class &#39;function&#39;&gt;
 </pre>
 </div>
 </div>
@@ -255,7 +255,7 @@ add SinaLogin</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>小张问道：“怎么也这么麻烦啊，C#的那个我就有点晕了，怎么Python也这样啊？”<code>f1 = cache(getData)</code> <code>f1()</code></p>
+<p>小张问道：“怎么也这么麻烦啊，C#的那个我就有点晕了，怎么Python也这样啊？”<code>f1 = cache(get_data)</code> <code>f1()</code></p>
 <p>小明哈哈一笑道：“人生苦短，我用Python～这句话可不是随便说着玩的，来来来，看看Python的语法糖”：</p>
 
 </div>
@@ -267,20 +267,20 @@ add SinaLogin</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="nd">@cache</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">getData</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -315,11 +315,11 @@ add SinaLogin</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>其实</p>
 <div class="highlight"><pre><span></span><span class="nd">@cache</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">()</span>
 </pre></div>
 <p>等价于</p>
-<div class="highlight"><pre><span></span><span class="c1"># 把f1改成函数名字罢了。可以这么理解：getData重写指向了一个新函数</span>
-<span class="n">getData</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">getData</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="c1"># 把f1改成函数名字罢了。可以这么理解：get_data重写指向了一个新函数</span>
+<span class="n">get_data</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">get_data</span><span class="p">)</span>
 </pre></div>
 <p>小张同学瞪了瞪眼睛，努力回想着以前的知识点，然后脱口而出：“这不是我们之前讲的<a href="https://www.cnblogs.com/dotnetcrazy/p/9202988.html#1.5-装饰器，让方法像属性那样便利" target="_blank">属性装饰器</a>吗？而且好方便啊，这完全符合开放封闭原则啊！“</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -365,16 +365,16 @@ add SinaLogin</code></pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 需要注意一点</span>
 <span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;装饰器开始装饰&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="nd">@cache</span> <span class="c1"># 当你写这个的时候，装饰器就开始装饰了，闭包里面的功能是你调用的时候执行</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -419,26 +419,26 @@ add SinaLogin</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输出日记信息&quot;</span><span class="p">)</span>
         <span class="n">cache</span><span class="p">(</span><span class="n">func</span><span class="p">)()</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
     
 <span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="nd">@log</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">getData</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -484,28 +484,28 @@ add SinaLogin</code></pre>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始装饰Log模块&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输出日记信息&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始装饰Cache模块&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了缓存&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="nd">@log</span>
 <span class="nd">@cache</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">getData</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -547,6 +547,7 @@ add SinaLogin</code></pre>
 <p><strong>装饰器：装快递，先包装里面的物品，然后再加个盒子。执行装饰器：拆快递，先拆外面的包装再拆里面的</strong>～简直妙不可言啊</p>
 <h3 id="2.3.&#24102;&#21442;&#35013;&#39280;&#22120;">2.3.&#24102;&#21442;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.3.&#24102;&#21442;&#35013;&#39280;&#22120;">&#182;</a></h3><p>小明继续讲述他哥哥的血泪历史：</p>
 <p>需求时刻在变，系统使用范围更广了，为了不砸场子，抠门的老板决定每年多花5W在技术研发的硬件支持上，这下子技术部老开心了，想想以前前端只能通过CDN和HTTP请求来缓存，后端只能依赖页面缓存和数据库缓存就心塞，于是赶紧新增加一台Redis的云服务器。为了以后和现在缓存代码得变一变了，<strong>需要支持指定的缓存数据库</strong>：（如果不是维护别人搞的老项目，你这么玩保证被打死，开发的时候老老实实的工厂模式搞起）</p>
+<p><strong>带参数的装饰器一般都是用来记录logo日记比较多，自己开发知道debug模式，生产指定except模式等等</strong></p>
 
 </div>
 </div>
@@ -559,26 +560,22 @@ add SinaLogin</code></pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以理解为，在原来的外面套了一层</span>
 <span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">cache_name</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;redis&quot;</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;redis&quot;</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;给功能添加了Redis缓存&quot;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
-                    <span class="k">pass</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">func</span><span class="p">()</span>  <span class="c1"># 如果缓存失效则读取数据库获取新的数据</span>
-            <span class="k">return</span> <span class="n">inner</span>
-        <span class="k">elif</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;memcache&quot;</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">pass</span>  <span class="c1"># 默认页面缓存</span>
+            <span class="k">elif</span> <span class="n">cache_name</span> <span class="o">==</span> <span class="s2">&quot;memcache&quot;</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
     <span class="k">return</span> <span class="n">decorator</span>
 
-<span class="nd">@cache</span><span class="p">(</span><span class="s2">&quot;redis&quot;</span><span class="p">)</span> <span class="c1"># 相当于是：getData = cache(”redis“)(getData)</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
+<span class="nd">@cache</span><span class="p">(</span><span class="s2">&quot;redis&quot;</span><span class="p">)</span> <span class="c1"># 相当于是：get_data = cache(”redis“)(get_data)</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;直接数据库读取数据&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">getData</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -637,12 +634,12 @@ add SinaLogin</code></pre>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经退出登录&quot;</span><span class="p">)</span>
 
 <span class="nd">@log</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:data xxx&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">login_out</span><span class="p">()</span>
-    <span class="n">getData</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">get_data</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">login_in</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -678,15 +675,15 @@ add SinaLogin</code></pre>
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-c7235ff88461&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-7-dcb695819107&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">     23</span> 
 <span class="ansi-green-intense-fg ansi-bold">     24</span> <span class="ansi-green-fg">if</span> __name__ <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;__main__&#39;</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-fg">---&gt; 25</span><span class="ansi-red-fg">     </span>main<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">&lt;ipython-input-7-c7235ff88461&gt;</span> in <span class="ansi-cyan-fg">main</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-7-dcb695819107&gt;</span> in <span class="ansi-cyan-fg">main</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">     19</span> <span class="ansi-green-fg">def</span> main<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">     20</span>     login_out<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg">     </span>getData<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg">     </span>get_data<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">     22</span>     print<span class="ansi-blue-fg">(</span>login_in<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;小明&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;xxx&#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">     23</span> 
 
@@ -704,11 +701,12 @@ add SinaLogin</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.4.&#36890;&#29992;&#35013;&#39280;&#22120;">2.4.&#36890;&#29992;&#35013;&#39280;&#22120;<a class="anchor-link" href="#2.4.&#36890;&#29992;&#35013;&#39280;&#22120;">&#182;</a></h3><p>小明尴尬的笑了下，然后赶紧倾囊相授，定义一个<strong>通用的装饰器</strong>：（传参数就在外面套一层）</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="c1"># 可变参 + 关键字参数</span>
-    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+    <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="c1"># 签名下面一个案例就会讲</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;可变参 + 关键字参数&quot;&quot;&quot;</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">inner</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 </pre></div>
 <p>这部分知识如果忘记了可以回顾一下，我们之前讲的函数系列：<a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html#2.3.关键字参数" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9175950.html</a></p>
 
@@ -722,10 +720,10 @@ add SinaLogin</code></pre>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="c1"># 可变参 + 关键字参数</span>
-    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">inner</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 <span class="nd">@log</span>
 <span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="n">name_str</span><span class="p">,</span> <span class="n">pass_str</span><span class="p">):</span>
@@ -736,12 +734,12 @@ add SinaLogin</code></pre>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经退出登录&quot;</span><span class="p">)</span>
 
 <span class="nd">@log</span>
-<span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:data xxx&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">login_out</span><span class="p">()</span>
-    <span class="n">getData</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">get_data</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">login_in</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -764,7 +762,7 @@ add SinaLogin</code></pre>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>login_out log_info...
 已经退出登录
-getData log_info...
+get_data log_info...
 1:data xxx
 login_in log_info...
 欢迎登录：小明
@@ -780,6 +778,601 @@ login_in log_info...
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.5.&#25193;&#23637;&#34917;&#20805;">2.5.&#25193;&#23637;&#34917;&#20805;<a class="anchor-link" href="#2.5.&#25193;&#23637;&#34917;&#20805;">&#182;</a></h3><p>其实装饰器可以做很多事情，比如强制类型检测等，先看几个扩展：</p>
+<h4 id="1.&#35013;&#39280;&#22120;&#26041;&#27861;&#31614;&#21517;&#30340;&#38382;&#39064;">1.&#35013;&#39280;&#22120;&#26041;&#27861;&#31614;&#21517;&#30340;&#38382;&#39064;<a class="anchor-link" href="#1.&#35013;&#39280;&#22120;&#26041;&#27861;&#31614;&#21517;&#30340;&#38382;&#39064;">&#182;</a></h4><p>成也装饰器，败也装饰器，来个案例看看，装饰器装饰的函数真的就对原函数没点影响？</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 添加一个闭包</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;缓存尚未失效：直接返回缓存数据&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;获取数据&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;通过</span><span class="si">%d</span><span class="s2">直接数据库读取数据&quot;</span><span class="o">%</span><span class="k">id</span>)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 进行装饰</span>
+<span class="n">get_data</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">get_data</span><span class="p">)</span>
+<span class="c1"># 调用原有名称的函数</span>
+<span class="n">get_data</span><span class="p">(</span><span class="mi">110</span><span class="p">)</span>
+<span class="c1"># 发现虽然函数调用时候的名字没有变</span>
+<span class="c1"># 但是内部签名却变成了闭包里面的函数名了</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_data</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_data</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="c1"># print(get_data.__annotations__)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>缓存尚未失效：直接返回缓存数据
+wrapper
+None
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>发现虽然函数调用时候的名字没有变，但是内部签名却变成了闭包里面的函数名了！</p>
+<p>玩过逆向的人都知道，像你修改了apk文件，它看似一样，但签名就变了，得再处理才可能绕过原来的一些自效验的验证措施</p>
+<p>这边一样的道理，你写了一个装饰器作用在某个函数上，但是这个函数的重要的元信息比如名字、文档字符串、注解和参数签名都丢失了。</p>
+<p><code>functools</code>里面的<code>wraps</code>就帮我们干了这个事情（之前讲模块的时候引入了functools，随后讲衍生的时候用了里面的偏函数，这边讲讲<code>wraps</code>）</p>
+<p>上面代码改改：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+<span class="c1"># 添加一个闭包</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;缓存尚未失效：直接返回缓存数据&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;获取数据&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;通过</span><span class="si">%d</span><span class="s2">直接数据库读取数据&quot;</span><span class="o">%</span><span class="k">id</span>)
+
+<span class="c1"># 进行装饰</span>
+<span class="n">get_data</span> <span class="o">=</span> <span class="n">cache</span><span class="p">(</span><span class="n">get_data</span><span class="p">)</span>
+<span class="c1"># 调用原有名称的函数</span>
+<span class="n">get_data</span><span class="p">(</span><span class="mi">110</span><span class="p">)</span>
+<span class="c1"># 签名已然一致</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_data</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_data</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="c1"># print(get_data.__annotations__)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>缓存尚未失效：直接返回缓存数据
+get_data
+获取数据
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>另外：<code>@wraps</code>有一个重要特征是它能让你通过属性 <code>__wrapped__</code> 直接访问被包装函数，eg：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_data</span><span class="o">.</span><span class="n">__wrapped__</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>通过100直接数据库读取数据
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.&#35013;&#39280;&#22120;&#20256;&#21442;&#30340;&#25193;&#23637;&#65288;&#21487;&#20256;&#21487;&#19981;&#20256;&#65289;">2.&#35013;&#39280;&#22120;&#20256;&#21442;&#30340;&#25193;&#23637;&#65288;&#21487;&#20256;&#21487;&#19981;&#20256;&#65289;<a class="anchor-link" href="#2.&#35013;&#39280;&#22120;&#20256;&#21442;&#30340;&#25193;&#23637;&#65288;&#21487;&#20256;&#21487;&#19981;&#20256;&#65289;">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span><span class="p">,</span> <span class="n">partial</span>
+
+<span class="k">def</span> <span class="nf">logged</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">logged</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="n">logname</span> <span class="o">=</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="n">func</span><span class="o">.</span><span class="vm">__module__</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">logname</span><span class="p">)</span>
+    <span class="n">logmsg</span> <span class="o">=</span> <span class="n">message</span> <span class="k">if</span> <span class="n">message</span> <span class="k">else</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">logmsg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@logged</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nd">@logged</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;测试&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;读数据ing&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">get_data</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>get_data
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>读数据ing
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.&#31867;&#20013;&#23450;&#20041;&#35013;&#39280;&#22120;">3.&#31867;&#20013;&#23450;&#20041;&#35013;&#39280;&#22120;<a class="anchor-link" href="#3.&#31867;&#20013;&#23450;&#20041;&#35013;&#39280;&#22120;">&#182;</a></h4><p>在类里面定义装饰器很简单，但是你首先要确认它的使用方式。比如到底是作为一个实例方法还是类方法：（<strong>别忘记写<code>self</code>和<code>cls</code></strong>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+<span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># 实例方法</span>
+    <span class="k">def</span> <span class="nf">decorator1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;实例方法装饰器&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="c1"># 类方法</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">decorator2</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;类方法装饰器&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 装饰方式不一样</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+<span class="nd">@a</span><span class="o">.</span><span class="n">decorator1</span> <span class="c1"># 实例方法调用</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nd">@A</span><span class="o">.</span><span class="n">decorator2</span> <span class="c1"># 类方法调用</span>
+<span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 调用一下</span>
+<span class="n">test1</span><span class="p">()</span>
+<span class="n">test2</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>实例方法装饰器
+类方法装饰器
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>在涉及到继承的时候。 例如，假设你想让在A中定义的装饰器作用在子类B中。你需要像下面这样写：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="nd">@A.decorator2</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+<p>也就是说，装饰器要被定义成类方法并且你必须显式的使用父类名去调用它。</p>
+<p>你不能使用 <code>@B.decorator2</code> ，因为在方法定义时，这个类B还没有被创建。</p>
+<h4 id="4.&#31867;&#35013;&#39280;&#22120;">4.&#31867;&#35013;&#39280;&#22120;<a class="anchor-link" href="#4.&#31867;&#35013;&#39280;&#22120;">&#182;</a></h4><p>看这个之前，我们先来看看怎么把类当函数一样使用：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;让类对象能像函数一样调用的～魔法方法&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+    <span class="n">a</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>让类对象能像函数一样调用的～魔法方法
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>重载这些魔法方法一般会改变对象的内部行为。上面这个例子就让一个类对象拥有了被调用的行为。</p>
+<p>装饰器函数其实是这样一个接口约束，它必须接受一个<code>callable</code>对象作为参数，然后返回一个<code>callable</code>对象。</p>
+<p>在Python中一般<code>callable</code>对象都是函数，但也有例外。只要某个对象重写了 <code>__call__()</code> 方法，那么这个对象就是callable的</p>
+<p>用类来实现呢？<strong>我们可以让类的构造函数<code>__init__()</code>接受一个函数，然后重载<code>__call__()</code>并返回一个函数，也可以达到装饰器函数的效果</strong></p>
+<p>我们拿之前说的通用装饰器的例子继续说：（<em>一般来说装饰器就定义成方法，然后给需要添加的函数或者类方法添加就基本够用了</em>）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+<span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># @wraps(func) 访问不到，所以用这种方式</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kvs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kvs</span><span class="p">)</span>
+<span class="nd">@Log</span>
+<span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="n">name_str</span><span class="p">,</span> <span class="n">pass_str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;欢迎登录：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name_str</span><span class="p">)</span>
+
+<span class="nd">@Log</span>
+<span class="k">def</span> <span class="nf">login_out</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已经退出登录&quot;</span><span class="p">)</span>
+
+<span class="nd">@Log</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:data xxx&quot;</span> <span class="o">%</span> <span class="nb">id</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">login_out</span><span class="p">()</span>
+    <span class="n">get_data</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">login_in</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>login_out log_info...
+已经退出登录
+get_data log_info...
+1:data xxx
+login_in log_info...
+欢迎登录：小明
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>对类进行装饰的测试：（以上一个案例为例）</p>
+<p>装饰实例方法的时候容易出现莫名其妙的错误，所以一般加上get方法（反射系列的稍后会讲）</p>
+<p><code>eg：show() missing 1 required positional argument: 'self'</code></p>
+<p>完整写法：（你可以去除<code>__get__</code>试试）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">types</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+
+<span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># @wraps(func) 访问不到，所以用这种方式</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kvs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> log_info...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kvs</span><span class="p">)</span>
+
+    <span class="c1"># 装饰实例方法的时候容易出现莫名其妙的错误，所以一般加上get方法</span>
+    <span class="c1"># eg：show() missing 1 required positional argument: &#39;self&#39;</span>
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LoginComponent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="nd">@Log</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;实例方法&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;欢迎你：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="nd">@Log</span>  <span class="c1"># 写在下面（&quot;从下往上装，从上往下拆&quot;）</span>
+    <span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;类方法&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;登录ing&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@Log</span>
+    <span class="k">def</span> <span class="nf">show_news</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;静态方法&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今天的新闻是...&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">LoginComponent</span><span class="o">.</span><span class="n">login_in</span><span class="p">()</span>
+    <span class="n">LoginComponent</span><span class="o">.</span><span class="n">show_news</span><span class="p">()</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">LoginComponent</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">)</span>
+    <span class="n">login</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>login_in log_info...
+登录ing
+show_news log_info...
+今天的新闻是...
+show log_info...
+欢迎你：小明
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更多的可以参考如下链接：</p>
+<p><a href="https://blog.csdn.net/jyfu2_12/article/details/76283670" target="_blank">详解Python装饰器</a></p>
+<p><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c09/p09_define_decorators_as_classes.html" target="_blank">将装饰器定义为类</a></p>
+<p><a href="https://blog.csdn.net/yaokai_assultmaster/article/details/70256621" target="_blank">Python中的__init__()和__call__()函数</a></p>
+<p><a href="https://blog.csdn.net/nextdoor6/article/details/53502353" target="_blank">python中装饰器的使用和类装饰器在类中方法的使用</a></p>
+<hr>
 <h2 id="3.">3.<a class="anchor-link" href="#3.">&#182;</a></h2>
 </div>
 </div>
