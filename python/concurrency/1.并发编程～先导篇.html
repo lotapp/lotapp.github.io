@@ -22,6 +22,7 @@
 <li><strong>你了解<code>僵尸进程</code>和<code>孤儿进程</code>的悲催生产史吗？<code>孤儿找干爹</code>，<code>僵尸送往生</code>想知道不？</strong></li>
 <li><strong>想知道创建子进程后怎么<code>李代桃僵</code>吗？<code>ps aux | grep xxx</code>的背后到底隐藏了什么？</strong></li>
 <li><strong>你了解Linux磁盘中p类型的文件到底是个啥吗？</strong></li>
+<li><strong>为什么要realase发布而不用debug直接部署?这背后的性能相差几何？</strong></li>
 <li><strong>还有更多进程间的<code>密密私语</code>等着你来查看哦～</strong></li>
 </ol>
 <p>关于帮助文档的说明：</p>
@@ -57,7 +58,9 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.&#36827;&#31243;&#30456;&#20851;">2.&#36827;&#31243;&#30456;&#20851;<a class="anchor-link" href="#2.&#36827;&#31243;&#30456;&#20851;">&#182;</a></h2><h3 id="2.1.fork&#24341;&#20837;">2.1.fork&#24341;&#20837;<a class="anchor-link" href="#2.1.fork&#24341;&#20837;">&#182;</a></h3><p>(linux/unix)操作系统提供了一个<code>fork()</code>系统调用。普通的函数调用，调用一次，返回一次，但是<code>fork()</code><strong>一次调用，两次返回</strong>。</p>
+<h2 id="2.&#36827;&#31243;&#30456;&#20851;">2.&#36827;&#31243;&#30456;&#20851;<a class="anchor-link" href="#2.&#36827;&#31243;&#30456;&#20851;">&#182;</a></h2><p>示例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux</a></p>
+<h3 id="2.1.fork&#24341;&#20837;">2.1.fork&#24341;&#20837;<a class="anchor-link" href="#2.1.fork&#24341;&#20837;">&#182;</a></h3><p>示例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/base" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/base</a></p>
+<p>(linux/unix)操作系统提供了一个<code>fork()</code>系统调用。普通的函数调用，调用一次，返回一次，但是<code>fork()</code><strong>一次调用，两次返回</strong>。</p>
 <p>因为操作系统自动把父进程复制了一份，分别在父进程和子进程内返回。为了便于区分，操作系统是这样做的：<strong>子进程永远返回0，而父进程返回子进程的ID</strong></p>
 <p>查看下帮助文档：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -206,7 +209,8 @@ systemd<span class="o">(</span><span class="m">1</span><span class="o">)</span>�
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;">2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;<a class="anchor-link" href="#2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;">&#182;</a></h3><p>先看看定义：</p>
+<h3 id="2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;">2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;<a class="anchor-link" href="#2.2.&#20725;&#23608;&#36827;&#31243;&#21644;&#23396;&#20799;&#36827;&#31243;">&#182;</a></h3><p>示例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/base" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/base</a></p>
+<p>先看看定义：</p>
 <p><strong><a href="https://baike.baidu.com/item/孤儿进程" target="_blank">孤儿进程</a></strong> ：一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。</p>
 <p><strong><a href="https://baike.baidu.com/item/僵尸进程" target="_blank">僵尸进程</a></strong> ：一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵死进程。</p>
 <p>通俗讲就是：</p>
@@ -240,7 +244,7 @@ systemd<span class="o">(</span><span class="m">1</span><span class="o">)</span>�
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;子进程：Pid=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
     <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;父进程：Pid=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
-        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">print</span><span class="p">(</span><span class="s2">&quot;父亲我忙着呢，没时间管你个小屁孩&quot;</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -279,7 +283,8 @@ systemd<span class="o">(</span><span class="m">1</span><span class="o">)</span>�
 </pre></div>
 <p>扩展：<strong>我们平时<code>Ctrl+C</code>其实就是给 2）<code>SIGINT</code>发一个信号</strong></p>
 <hr>
-<h4 id="2.3.1.wait">2.3.1.wait<a class="anchor-link" href="#2.3.1.wait">&#182;</a></h4><p>步入正题：</p>
+<h4 id="2.3.1.wait">2.3.1.wait<a class="anchor-link" href="#2.3.1.wait">&#182;</a></h4><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/wait" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/wait</a></p>
+<p>步入正题：</p>
 <p>Python的Wait和C系列的稍有不同，这边重点说说Python：</p>
 <div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">)</span>
 
@@ -327,7 +332,7 @@ pid=22322,over</code></pre>
     <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;子进程：Pid=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
-        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">print</span><span class="p">(</span><span class="s2">&quot;孩子老卵，就是不听话&quot;</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -370,7 +375,7 @@ pid=22322,over</code></pre>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i=</span><span class="si">%d</span><span class="s2">,子进程：Pid=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">print</span><span class="p">(</span><span class="s2">&quot;(PID=</span><span class="si">%d</span><span class="s2">)我又老卵了，怎么滴～&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span> <span class="c1"># 循环结束后，父进程才会退出，这时候i=3</span>
@@ -397,7 +402,8 @@ pid=22322,over</code></pre>
 <p>演示：看最后一句输出，父进程扫尾工作做完就over了
 <img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180725105051778-1590933700.png" alt="回收所有子进程"></p>
 <hr>
-<h4 id="2.3.2.waitpid">2.3.2.waitpid<a class="anchor-link" href="#2.3.2.waitpid">&#182;</a></h4><p>上面说的<code>wait</code>方法是阻塞进程的一种方式，<code>waitpid</code>可以设置不阻塞进程</p>
+<h4 id="2.3.2.waitpid">2.3.2.waitpid<a class="anchor-link" href="#2.3.2.waitpid">&#182;</a></h4><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/waitpid" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/waitpid</a></p>
+<p>上面说的<code>wait</code>方法是阻塞进程的一种方式，<code>waitpid</code>可以设置不阻塞进程</p>
 <div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">)</span>
 
 <span class="n">Help</span> <span class="n">on</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">function</span> <span class="n">waitpid</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">posix</span><span class="p">:</span>
@@ -413,8 +419,8 @@ pid=22322,over</code></pre>
 <p>等待进程id为pid的进程结束，返回一个tuple，包括进程的进程ID和退出信息(和os.wait()一样)，参数options会影响该函数的行为。在默认情况下，options的值为0。</p>
 <ol>
 <li>如果pid是一个正数，waitpid()请求获取一个pid指定的进程的退出信息</li>
-<li><strong>如果pid为0，则等待并获取当前进程组中的任何子进程的值</strong></li>
-<li>如果pid为-1，则等待当前进程的任何子进程</li>
+<li>如果pid为0，则等待并获取当前进程组中的任何子进程的值</li>
+<li><strong>如果pid为-1，则等待当前进程的任何子进程</strong></li>
 <li>如果pid小于-1，则获取进程组id为pid的绝对值的任何一个进程</li>
 <li>当系统调用返回-1时，抛出一个OSError异常。</li>
 </ol>
@@ -449,7 +455,7 @@ If pid is less than -1, status is requested for any process in the process group
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]PID：</span><span class="si">%d</span><span class="s2">，PPID：</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">wpid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">WNOHANG</span><span class="p">)</span>
+                <span class="n">wpid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">WNOHANG</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">wpid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;回收子进程wpid:</span><span class="si">%d</span><span class="s2">,状态status:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">wpid</span><span class="p">,</span> <span class="n">status</span><span class="p">))</span>
             <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
@@ -474,7 +480,8 @@ If pid is less than -1, status is requested for any process in the process group
 父进程忙着挣钱养家呢～
 没有子进程了
 [over]PID：1371，PPID：29604</code></pre>
-<h4 id="2.3.3.wait3-and-wait4">2.3.3.wait3 and wait4<a class="anchor-link" href="#2.3.3.wait3-and-wait4">&#182;</a></h4><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">wait3</span><span class="p">)</span>
+<h4 id="2.3.3.wait3-and-wait4">2.3.3.wait3 and wait4<a class="anchor-link" href="#2.3.3.wait3-and-wait4">&#182;</a></h4><p>代码实例：<a href="https://github.com/lotapp/BaseCode/blob/master/python/5.concurrent/Linux/wait3.py" target="_blank">https://github.com/lotapp/BaseCode/blob/master/python/5.concurrent/Linux/wait3.py</a></p>
+<div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">wait3</span><span class="p">)</span>
 
 <span class="n">Help</span> <span class="n">on</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">function</span> <span class="n">wait3</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">posix</span><span class="p">:</span>
 
@@ -537,7 +544,8 @@ If pid is less than -1, status is requested for any process in the process group
 没有子进程了
 [over]PID：2638，PPID：29604</code></pre>
 <hr>
-<h3 id="&#25193;&#23637;&#65306;execl-and-execlp">&#25193;&#23637;&#65306;execl and execlp<a class="anchor-link" href="#&#25193;&#23637;&#65306;execl-and-execlp">&#182;</a></h3><p>之前有说fork后，相当于copy了一份，.text里面放的是代码段，如果想要调用另一个程序，可以使用<code>execlxxx</code>，他会把.text里面的代码替换掉</p>
+<h3 id="&#25193;&#23637;&#65306;execl-and-execlp">&#25193;&#23637;&#65306;execl and execlp<a class="anchor-link" href="#&#25193;&#23637;&#65306;execl-and-execlp">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/blob/master/python/5.concurrent/Linux/execl.py" target="_blank">https://github.com/lotapp/BaseCode/blob/master/python/5.concurrent/Linux/execl.py</a></p>
+<p>之前有说fork后，相当于copy了一份，.text里面放的是代码段，如果想要调用另一个程序，可以使用<code>execlxxx</code>，他会把.text里面的代码替换掉</p>
 <div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">execl</span><span class="p">)</span>
 
 <span class="n">Help</span> <span class="n">on</span> <span class="n">function</span> <span class="n">execl</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">os</span><span class="p">:</span>
@@ -594,7 +602,8 @@ drwxrwxr-x 2 dnt dnt 4096 7月  25 12:18 进程</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;">2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;<a class="anchor-link" href="#2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;">&#182;</a></h3><p>讲管道之前，先说个简单的：通过文件进行通信</p>
+<h3 id="2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;">2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;<a class="anchor-link" href="#2.4.1.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#25991;&#20214;&#36890;&#20449;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/1.file" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/1.file</a></p>
+<p>讲管道之前，先说个简单的：通过文件进行通信</p>
 <p>来一个简单读写的案例先适应下文件操作：</p>
 
 </div>
@@ -689,7 +698,8 @@ test.txt  并发编程～进程先导篇.ipynb
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015;-Queue">2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015; Queue<a class="anchor-link" href="#2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015;-Queue">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span>
+<h3 id="2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015;-Queue&#65288;&#24120;&#29992;&#65289;">2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015; Queue&#65288;&#24120;&#29992;&#65289;<a class="anchor-link" href="#2.4.2.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;&#38431;&#21015;-Queue&#65288;&#24120;&#29992;&#65289;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/2.Queue" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/2.Queue</a></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span>
 
 <span class="n">help</span><span class="p">(</span><span class="n">Queue</span><span class="p">)</span>
 
@@ -780,7 +790,8 @@ test.txt  并发编程～进程先导篇.ipynb
 [OVER]:pid:744,ppid:743
 [父进程]帮pid:744收尸，状态：0
 [OVER]:pid:743,ppid:12403</code></pre>
-<h3 id="2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;">2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;<a class="anchor-link" href="#2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;">&#182;</a></h3><p>知识普及：</p>
+<h3 id="2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;&#65288;&#24120;&#29992;&#65289;">2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;&#65288;&#24120;&#29992;&#65289;<a class="anchor-link" href="#2.4.3.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;PIPE&#21311;&#21517;&#31649;&#36947;&#65288;&#24120;&#29992;&#65289;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/3.pipe" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/3.pipe</a></p>
+<p>知识普及：</p>
 <ol>
 <li>命令模式下默认有六个终端tty1-tty6</li>
 <li>tty7代表图形登录</li>
@@ -1254,7 +1265,8 @@ pipe2(flags, /)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;">2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;<a class="anchor-link" href="#2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;">&#182;</a></h3><p><strong><a href="https://baike.baidu.com/item/FIFO管道" target="_blank">FIFO管道</a></strong>：</p>
+<h3 id="2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;">2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;<a class="anchor-link" href="#2.4.4.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;FIFO&#26377;&#21517;&#31649;&#36947;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/4.fifo" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/4.fifo</a></p>
+<p><strong><a href="https://baike.baidu.com/item/FIFO管道" target="_blank">FIFO管道</a></strong>：</p>
 <ol>
 <li>有名管道，除了血缘关系进程通信，没有血缘关系的进程也可以通信</li>
 <li>在磁盘上有会存放一个文件类型为<code>p</code>，大小为<code>0</code>的管道文件（伪文件，大小始终为0）</li>
@@ -1288,7 +1300,7 @@ pipe2(flags, /)
 <li><strong>os.O_WRONLY: 以只写的方式打开</strong></li>
 <li><strong>os.O_RDWR : 以读写的方式打开</strong></li>
 <li><strong>os.O_NONBLOCK: 打开时不阻塞</strong></li>
-<li>os.O_APPEND: 以追加的方式打开</li>
+<li><strong>os.O_APPEND: 以追加的方式打开</strong></li>
 <li>os.O_CREAT: 创建并打开一个新文件</li>
 <li>os.O_TRUNC: 打开一个文件并截断它的长度为零（必须有写权限）</li>
 <li>os.O_EXCL: 如果指定的文件存在，返回错误</li>
@@ -1434,8 +1446,1094 @@ if __name__ == '__main__':
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;">2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;<a class="anchor-link" href="#2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;">&#182;</a></h3><h3 id="2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;">2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;<a class="anchor-link" href="#2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;">&#182;</a></h3><h3 id="&#25193;&#23637;&#35828;&#26126;&#65306;">&#25193;&#23637;&#35828;&#26126;&#65306;<a class="anchor-link" href="#&#25193;&#23637;&#35828;&#26126;&#65306;">&#182;</a></h3><p>Socket，在讲基础最后一个系列～<strong>网络编程</strong>的时候会讲，不急，而且进程间通信不需要这么<code>‘重量级’</code>的</p>
-<p>线程相关打算和代码一起讲，有机会可以单独拉出来说一个结尾篇</p>
+<h3 id="2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;&#65288;&#24120;&#29992;&#65289;">2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;&#65288;&#24120;&#29992;&#65289;<a class="anchor-link" href="#2.4.5.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;MMAP&#20869;&#23384;&#26144;&#23556;&#65288;&#24120;&#29992;&#65289;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/5.mmap" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/5.mmap</a></p>
+<p>好处：内存操作，比IO快</p>
+<p>缺点：和文件一样不会像管道一样阻塞（读的可能不全，需要自己考虑读写效率）</p>
+<p>画个简单的图示：
+<img src="https://images2018.cnblogs.com/blog/658978/201807/658978-20180728113442832-944980390.png" alt="1.mmap图示">
+PS：<strong>内存映射一个文件并不会导致整个文件被读取到内存中</strong>:</p>
+<ol>
+<li>文件并没有被复制到内存缓存中，操作系统仅仅为文件内容保留了一段虚拟内存。</li>
+<li>当你访问文件的不同区域时，这些区域的内容才根据需要被读取并映射到内存区域中。</li>
+<li>没有访问的部分还是留在磁盘上</li>
+</ol>
+<p>以Linux为例，简单解析一下帮助文档：（加粗的是必填参数）</p>
+<div class="highlight"><pre><span></span><span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="err">（</span><span class="n">fileno</span><span class="p">,</span><span class="n">length</span><span class="p">[,</span><span class="n">flags</span><span class="o">=</span><span class="n">MAP_SHARED</span><span class="p">][,</span><span class="n">prot</span><span class="o">=</span><span class="n">PROT_WRITE</span><span class="o">|</span><span class="n">PROT_READ</span><span class="p">][,</span><span class="n">access</span><span class="o">=</span><span class="n">ACCESS_DEFAULT</span><span class="p">][,</span><span class="n">offset</span><span class="p">]</span><span class="err">）</span>
+</pre></div>
+<ol>
+<li><strong>fileno</strong>：就是我们经常说的<code>文件描述fd</code><ol>
+<li>可以通过<code>os.open()</code>直接打开fd</li>
+<li>也可以调用文件的<code>f.fileno()</code></li>
+</ol>
+</li>
+<li><strong>length</strong>：映射区大小，（一般写0就OK了）<ol>
+<li>如果length为0，则映射的最大长度将是调用时文件的当前大小</li>
+<li>一般把<code>文件大小 os.path.getsize(path)</code>传进去就可以了</li>
+</ol>
+</li>
+<li>flags：映射区性质，默认是用共享<ol>
+<li>MAP_SHARED  共享（数据会自动同步磁盘）</li>
+<li>MAP_PRIVATE 私有（不同步磁盘）</li>
+</ol>
+</li>
+<li>prot：映射区权限，如果指定，就会提供内存保护（默认即可）<ol>
+<li>PROT_READ 读</li>
+<li>PROT_READ | PROT_WRITE 写（必须有读的权限）</li>
+</ol>
+</li>
+<li><em>access：可以指定访问来代替flags和prot作为可选的关键字参数【这个是Python为了简化而添加的】</em><ol>
+<li>ACCESS_READ：只读</li>
+<li>ACCESS_WRITE：读和写（会影响内存和文件）</li>
+<li>ACCESS_COPY：写时复制内存（影响内存，但不会更新基础文件）</li>
+<li><em>ACCESS_DEFAULT：延迟到prot（3.7才添加）</em></li>
+</ol>
+</li>
+<li>offset，偏移量，默认是0（和文件一致）</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 这个够明了了，\0转换成二进制就是\x00</span>
+<span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>b&#39;\x00&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 老规矩，开始之前，扩充一个小知识点：(空字符串和&#39;\0&#39;区别)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># 空字符串 （Python里面没有char类型）</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span> <span class="c1"># `\0` 的二进制写法</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ 
+ 
+0
+1
+1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>看个简单的案例快速熟悉mmap模块：(大文件处理这块先不说，以后要是有机会讲数据分析的时候会再提)</p>
+<div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>  <span class="c1"># 查看文件大小</span>
+<span class="n">m</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 修改Postion位置</span>
+<span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>  <span class="c1"># 返回 m 对应文件的Postion位置</span>
+<span class="n">m</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 读取所有内容并把\0删除</span>
+<span class="n">m</span><span class="o">.</span><span class="n">closed</span>  <span class="c1"># 查看mmap是否关闭</span>
+
+<span class="c1"># 支持切片操作</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span> <span class="c1"># 取值</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;1234567890&quot;</span>  <span class="c1"># 赋值</span>
+
+<span class="c1"># 对自行模式大文件处理的同志，给个提示</span>
+<span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="c1"># 读一行，并转换成str</span>
+<span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">==</span><span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span> <span class="c1"># while循环退出条件</span>
+</pre></div>
+<p>熟悉一下上面几个方法：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;初始化一个文件，并把文件扩充到指定大小&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 改变流的位置</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 在末尾写个`\0`</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">create_file</span><span class="p">(</span><span class="s2">&quot;mmap_file&quot;</span><span class="p">,</span> <span class="mi">4096</span><span class="p">)</span>  <span class="c1"># 创建一个4k的文件</span>
+    <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;mmap_file&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>  <span class="c1"># 创建映射</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>  <span class="c1"># 查看文件大小</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 重新设置文件大小</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>  <span class="c1"># len也一样查看文件大小</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">))</span>  <span class="c1"># 读取所有内容并把\0删除</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 读取一行，bytes转成str</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>  <span class="c1"># 返回 m 对应文件的当前位置</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 修改Postion位置</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>  <span class="c1"># 返回 m 对应文件的当前位置</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># 支持切片操作</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+        <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;1234567890&quot;</span>  <span class="c1"># 赋值</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># 取值</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">[:]</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 全部读出来</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">closed</span><span class="p">)</span>  <span class="c1"># 查看mmap是否关闭</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：(测试了一下，切片操作【读、写】不会影响postion)</p>
+
+<pre><code>4096
+1024
+b''
+
+1024
+0
+b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+postion_index:0
+postion_index:0
+b'1234567890'
+postion_index:0
+1234567890
+True</code></pre>
+<p>看下open打开的案例：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;小明同学最爱刷碗</span><span class="se">\n</span><span class="s2">小潘同学最爱打扫&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+    <span class="c1"># 打开磁盘二进制文件进行更新（读写）</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>  <span class="c1"># 转成str并去除两端空格</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">[:]</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>  <span class="c1"># 全部读出来</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;postion_index:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>postion_index:0
+小明同学最爱刷碗
+postion_index:25
+小明同学最爱刷碗
+小潘同学最爱打扫
+postion_index:25
+postion_index:0</code></pre>
+<p>其他方法可以参考：<a href="https://www.cnblogs.com/zhoujinyi/p/6062907.html" target="_blank">这篇文章</a>（Python3很多都和Python2不太相同，辩证去看吧）</p>
+<p>注意一点：</p>
+<p>通过MMap内存映射之后，<strong>进程间通信并不是对文件操作，而是在内存中</strong>。文件保持同步只是因为mmap的flags默认设置的是共享模式（MAP_SHARED）</p>
+<p>PS：还记得之前讲<a href="https://www.cnblogs.com/dotnetcrazy/p/9202988.html#1.8-实例方法、类方法、静态方法" target="_blank">类方法和实例方法</a>的时候吗？Python中类方法可以直接被对象便捷调用，这边<strong>mmap实例对象中的方法，其实很多都是类方法</strong>
+<strong>步入正轨</strong>：</p>
+<p>来看一个有血缘关系的通信案例：（一般用匿名）</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">x00&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;temp.bin&quot;</span>
+    <span class="c1"># mmap映射的时候不能映射空文件，所以我们自己创建一个</span>
+    <span class="n">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>  <span class="c1"># m.resize(1024) # 大小可以自己调整的</span>
+        <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;子进程说：老爸，我想出去玩了～</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 和文件一样，非堵塞</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;父进程说：去吧去吧</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="n">wpid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]收尸：PID:</span><span class="si">%d</span><span class="s2">，Status:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">wpid</span><span class="p">,</span> <span class="n">status</span><span class="p">))</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>[父进程]PID:6843，PPID:3274
+[子进程]PID:6844，PPID:6843
+子进程说：老爸，我想出去玩了～
+父进程说：去吧去吧
+[父进程]收尸：PID:6844，Status:0</code></pre>
+<h4 id="&#26377;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;">&#26377;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;<a class="anchor-link" href="#&#26377;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;">&#182;</a></h4><p>父进程创建了一份mmap对象，fork产生子进程的时候相当于copy了一份指向，所以可以进行直接通信（联想fd的copy）</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 不记录文件中，直接内存中读写（这个地方len就不能为0了，自己指定一个大小eg：4k）</span>
+    <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4096</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;[子进程]老爸我出去嗨了～</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;[父进程]去吧，皮卡丘～&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+            <span class="n">wpid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]收尸：PID:</span><span class="si">%d</span><span class="s2">，Status:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">wpid</span><span class="p">,</span> <span class="n">status</span><span class="p">))</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>[父进程]PID:8115，PPID:3274
+[子进程]PID:8116，PPID:8115
+[子进程]老爸我出去嗨了～
+[父进程]去吧，皮卡丘～
+[父进程]收尸：PID:8116，Status:0</code></pre>
+<h4 id="&#26080;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;">&#26080;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;<a class="anchor-link" href="#&#26080;&#34880;&#32536;&#20851;&#31995;&#20351;&#29992;MMAP&#36890;&#20449;">&#182;</a></h4><p>因为不同进程之前没有关联，必须以文件为媒介（文件描述符fd）</p>
+<p>进程1：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">x00&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;temp.bin&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+        <span class="c1"># mmap映射的时候不能映射空文件，所以我们自己创建一个</span>
+        <span class="n">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>  <span class="c1"># m.resize(1024) # 大小可以自己调整的</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[进程1]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;进程1说：小明放学去撸串吗？</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>进程2：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">x00&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;temp.bin&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+        <span class="c1"># mmap映射的时候不能映射空文件，所以我们自己创建一个</span>
+        <span class="n">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>  <span class="c1"># m.resize(1024) # 大小可以自己调整的</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[进程2]PID:</span><span class="si">%d</span><span class="s2">，PPID:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;进程2说：为毛不去？</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出图示：
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180729054655551-1740522040.png" alt="2.mmap无血缘关系进程通信"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;">2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;<a class="anchor-link" href="#2.4.6.&#36827;&#31243;&#38388;&#36890;&#20449;&#65374;Signal&#20449;&#21495;">&#182;</a></h3><p>代码实例：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/6.signal" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程通信/6.signal</a></p>
+<p><a href="https://baike.baidu.com/item/信号/7927794" target="_blank">信号</a>：它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被中断。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。</p>
+<p>一般信号不太用于进程间通信，常用就是发个信号把xxx进程干死。</p>
+<p>先来个例子，等会讲理论：</p>
+<p>Python里面一般用<code>os.kill(pid,signalnum)</code>来发信号：eg：<code>kill 9 pid</code></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]孩子老卵，怎么滴吧～&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;父进程耐心有限，准备杀了儿子&quot;</span><span class="p">)</span>
+
+        <span class="c1"># sigkill 相当于kill 9 pid</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGKILL</span><span class="p">)</span>  <span class="c1"># 发信号</span>
+
+        <span class="c1"># 收尸</span>
+        <span class="n">wpid</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;父进程收尸：子进程PID=</span><span class="si">%d</span><span class="s2">,Status=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">wpid</span><span class="p">,</span> <span class="n">status</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>[父进程]PID=21841,PPID=5559
+[子进程]PID=21842,PPID=21841
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+父进程耐心有限，准备杀了儿子
+父进程收尸：子进程PID=21842,Status=9</code></pre>
+<p>扩展一下：</p>
+<ol>
+<li><code>signal.pthread_kill(thread_id,signal.SIGKILL))  # 杀死线程</code></li>
+<li><code>os.abort()  # 给自己发异常终止信号</code></li>
+</ol>
+<h4 id="&#29702;&#35770;&#24320;&#22987;">&#29702;&#35770;&#24320;&#22987;<a class="anchor-link" href="#&#29702;&#35770;&#24320;&#22987;">&#182;</a></h4><p>这边开始说说理论：</p>
+<p><strong>信号状态</strong>：</p>
+<ol>
+<li>产生状态</li>
+<li>未决状态（信号产生后没有被处理）</li>
+<li>递达状态（信号已经传达到进程中）</li>
+</ol>
+<p><strong>产生、传递</strong>等都是通过内核进行的，结合上面的例子画个图理解下：
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180729162253198-1772478445.png" alt="3.signal图示"></p>
+<p>未决信号集：没有被当前进程处理的信号集合（可以通过<code>signal.sigpending()</code>获取<code>set</code>集合）</p>
+<p>阻塞信号集：要屏蔽的信号（不能被用户操作）</p>
+<p>回顾一下上面说<code>kill 9 pid</code>原理的知识：<code>kill -l</code></p>
+
+<pre><code> 1) SIGHUP   2) SIGINT   3) SIGQUIT  4) SIGILL   5) SIGTRAP
+ 6) SIGABRT  7) SIGBUS   8) SIGFPE   9) SIGKILL 10) SIGUSR1
+11) SIGSEGV 12) SIGUSR2 13) SIGPIPE 14) SIGALRM 15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD 18) SIGCONT 19) SIGSTOP 20) SIGTSTP
+21) SIGTTIN 22) SIGTTOU 23) SIGURG  24) SIGXCPU 25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF 28) SIGWINCH    29) SIGIO   30) SIGPWR
+31) SIGSYS  34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
+<p>说下常用的几个信号：</p>
+<ol>
+<li>9号信号（<code>sigkill</code>）是<code>kill 9</code></li>
+<li>2号信号（<code>sigint</code>）是<code>Ctrl+C</code>终止进程</li>
+<li>3号信号（<code>sigquit</code>）是<code>Ctrl+\</code>终止进程</li>
+</ol>
+<h4 id="&#20449;&#21495;&#25429;&#25417;">&#20449;&#21495;&#25429;&#25417;<a class="anchor-link" href="#&#20449;&#21495;&#25429;&#25417;">&#182;</a></h4><p>现在说说信号捕捉<code>signal.signal(signalnum, handler)</code></p>
+<p><code>handler处理函数</code>，除了自定义信号处理函数外也可以使用系统提供的两种方式：</p>
+<ol>
+<li><code>SIG_IGN</code>（忽略该信号）</li>
+<li><code>SIG_DFL</code>（系统默认操作）</li>
+</ol>
+<p>注意一点：<code>SIGSTOP</code> 和 <code>SIGKILL</code> 信号是不能被捕获、忽略和阻塞的（这个是系统预留的，如果连预留都没有可以想象肯定木马横向）</p>
+<p>PS:<strong>信号的优先级</strong>一般都是<strong>比较高</strong>的,往往<strong>进程收到信号后都会停下手上的事情先处理信号</strong>（死循环也一样歇菜）</p>
+<p>来看一个例子:(处理singint，忽略sigquit)</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">print_info</span><span class="p">(</span><span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;信号:</span><span class="si">%d</span><span class="s2">准备弄我,我是小强我怕谁?(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">print_info</span><span class="p">)</span>  <span class="c1"># 处理Ctrl+C的终止命令(singint)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGQUIT</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_IGN</span><span class="p">)</span>  <span class="c1"># 忽略Ctrl+\的终止命令(sigquit)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[PID:</span><span class="si">%d</span><span class="s2">]我很坚强,不退出,等着信号来递达~&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 你要保证进程不会退出才能处理信号,不用担心影响信号（优先级高）</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出图示:（我休息3s，在3s内给程序发送了<code>sigint</code>信号（Ctrl+C）就立马处理了）
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180729164618029-1946929329.gif" alt="signal信号捕捉"></p>
+<p>扩展：</p>
+<ol>
+<li>如果你只是等一个信号就退出，可以使用：<code>signal.pause()</code>，不必使用死循环来轮询了</li>
+<li><code>os.killpg(pgid, sid)</code>进程组结束</li>
+<li><code>signal.siginterrupt(signal.SIGALRM, False)</code> 防止系统调用被信号打断所设立（其实一般也不太用，出问题才用）</li>
+</ol>
+<p>通俗的讲就是，要是系统和你发一样的信号可能也就被处理了，加上这句就ok了，eg：</p>
+<p>举个例子，有时候有些恶意程序蓄意破坏或者被所谓的安全软件误杀比如系统函数<code>kill(-1)</code>【有权限的都杀了】</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">print_info</span><span class="p">(</span><span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;死前留言：我被信号</span><span class="si">%d</span><span class="s2">弄死了，记得替我报仇啊！&quot;</span> <span class="o">%</span> <span class="n">signalnum</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">print_info</span><span class="p">)</span>  <span class="c1"># 处理Ctrl+C的终止命令(singint)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGQUIT</span><span class="p">,</span> <span class="n">print_info</span><span class="p">)</span>  <span class="c1"># 处理Ctrl+\的终止命令(singquit)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">siginterrupt</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">siginterrupt</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGQUIT</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>  <span class="c1"># 设置一个进程到休眠状态直到接收一个信号</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>dnt@MZY-PC:~/桌面/work/BaseCode/python/5.concurrent/Linux/进程通信/6.signal python3 1.os_kill2.py 
+^C死前留言：我被信号2弄死了，记得替我报仇啊！
+dnt@MZY-PC:~/桌面/work/BaseCode/python/5.concurrent/Linux/进程通信/6.signal python3 1.os_kill2.py 
+^\死前留言：我被信号3弄死了，记得替我报仇啊！
+dnt@MZY-PC:~/桌面/work/BaseCode/python/5.concurrent/Linux/进程通信/6.signal</code></pre>
+<h4 id="&#23450;&#26102;&#22120;alarm&#65288;&#25191;&#34892;&#19968;&#27425;&#65289;">&#23450;&#26102;&#22120;alarm&#65288;&#25191;&#34892;&#19968;&#27425;&#65289;<a class="anchor-link" href="#&#23450;&#26102;&#22120;alarm&#65288;&#25191;&#34892;&#19968;&#27425;&#65289;">&#182;</a></h4><p>再说两个定时器就进下一个话题把，这个主要就是<strong>信号捕捉用得比较多</strong>，然后就是<strong>一般都是守护进程发信号</strong></p>
+<p>先验证一个概念：<strong>alarm闹钟不能被fork后的子进程继承</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 不受进程影响，每个进程只能有一个定时器，再设置只是重置</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">alarm</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 设置终止时间（3s），然后终止进程（sigaltirm）</span>
+
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[子进程]孩子老卵，怎么滴吧～&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[父进程]PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[遗言]PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出</p>
+
+<pre><code>[父进程]PID=9687,PPID=9063
+[遗言]PID=9687,PPID=9063
+[子进程]PID=9688,PPID=9687
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+[子进程]孩子老卵，怎么滴吧～
+[遗言]PID=9688,PPID=1060</code></pre>
+<p>这个你可以自己验证：<strong>不受进程影响，每个进程只能有一个定时器，再设置只是重置</strong></p>
+<h4 id="&#26222;&#21450;&#19968;&#20010;&#23567;&#25216;&#24039;">&#26222;&#21450;&#19968;&#20010;&#23567;&#25216;&#24039;<a class="anchor-link" href="#&#26222;&#21450;&#19968;&#20010;&#23567;&#25216;&#24039;">&#182;</a></h4><p>其实好好看逆天的问题都会发现各种小技巧的，所有小技巧自我总结一下就会产生质变了</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">alarm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 设置终止时间（3s），然后终止进程（sigaltirm）</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 别忘记，Python里面没有++哦～</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>运行一下：<strong><code>time python3 xxx.py</code></strong>
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180729104653284-401486532.png" alt="time1">
+运行一下：<strong><code>time python3 xxx.py &gt; temp</code></strong>
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180729104514041-1693000606.png" alt="time2"></p>
+<p>简单说下三个参数：</p>
+<ol>
+<li><code>real</code>总共运行时间（real=user+sys+损耗时间）</li>
+<li><code>user</code>（用户代码真正运行时间）</li>
+<li><code>sys</code>（内核运行时间）【内核不运行，你系统也不正常了】</li>
+</ol>
+<p>其实就是减少了IO操作，性能方面就相差几倍！我这边只是一台老电脑，要是真在服务器下性能相差可能让你吓一跳</p>
+<p>现在知道为什么要realase发布而不用debug直接部署了吧（<strong>线上项目非必要情况，一般都会删除所有日记输出的</strong>）</p>
+<h4 id="&#23450;&#26102;&#22120;setitimer&#65288;&#21608;&#26399;&#25191;&#34892;&#65289;">&#23450;&#26102;&#22120;setitimer&#65288;&#21608;&#26399;&#25191;&#34892;&#65289;<a class="anchor-link" href="#&#23450;&#26102;&#22120;setitimer&#65288;&#21608;&#26399;&#25191;&#34892;&#65289;">&#182;</a></h4><p><code>signal.setitimer(which, seconds, interval=0.0)</code> which参数说明：</p>
+<ol>
+<li><strong>signal.TIMER_REAL：按实际时间计时，计时到达将给进程发送SIGALRM信号</strong></li>
+<li>signal.ITIMER_VIRTUAL：仅当进程执行时才进行计时。计时到达将发送SIGVTALRM信号给进程。</li>
+<li>signal.ITIMER_PROF：当进程执行时和系统为该进程执行动作时都计时。与ITIMER_VIRTUAL是一对，该定时器经常用来统计进程在用户态和内核态花费的时间。计时到达将发送SIGPROF信号给进程。</li>
+</ol>
+<p>这个一般在守护进程中经常用，看个简单案例：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">say_hai</span><span class="p">(</span><span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我会周期性执行哦～&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 捕捉信号（在前面最好，不然容易漏捕获）</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGALRM</span><span class="p">,</span> <span class="n">say_hai</span><span class="p">)</span>
+    <span class="c1"># 设置定时器，第一次1s后执行，以后都3s执行一次</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">setitimer</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">ITIMER_REAL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># print(signal.getitimer(signal.ITIMER_REAL))</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我在做其他事情&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>我在做其他事情
+我会周期性执行哦～
+我在做其他事情
+我在做其他事情
+我在做其他事情
+我会周期性执行哦～
+我在做其他事情
+我在做其他事情
+我在做其他事情
+我会周期性执行哦～
+我在做其他事情
+我在做其他事情
+我在做其他事情
+...</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.4.7.&#36827;&#31243;&#23432;&#25252;">2.4.7.&#36827;&#31243;&#23432;&#25252;<a class="anchor-link" href="#2.4.7.&#36827;&#31243;&#23432;&#25252;">&#182;</a></h3><p>实例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程守护" target="_blank">"https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Linux/进程守护</a></p>
+<p>守护进程应用场景很多，比如程序上线后有个bug被不定时的触发，每次都导致系统爆卡或者退出，而程序员修复bug需要时间，但是线上项目又不能挂，这时候就可以使用一个心跳检测的守护进程（查错也可以使用守护进程）【为恶就不说了】</p>
+<p>正式开始前，先来个伪案例：</p>
+<p>模拟一个漏洞百出的程序</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[PID:</span><span class="si">%d</span><span class="s2">]进程运行中...&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>  <span class="c1"># 给自己发异常终止信号</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>写个简单版本的守护进程：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+
+<span class="k">def</span> <span class="nf">write_log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">is_running</span><span class="p">(</span><span class="n">p_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;是否在运行&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># grep -v grep 不显示grep本身，wc -l是计数用的</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&quot;ps ax | grep </span><span class="si">%s</span><span class="s2"> | grep -v grep&quot;</span> <span class="o">%</span> <span class="n">p_name</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">write_log</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">is_restart</span><span class="p">(</span><span class="n">p_script</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;重启程序&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">p_script</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">write_log</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">heartbeat</span><span class="p">(</span><span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;心跳检查&quot;&quot;&quot;</span>
+    <span class="n">p_name</span> <span class="o">=</span> <span class="s2">&quot;test.py&quot;</span>
+    <span class="n">p_script</span> <span class="o">=</span> <span class="s2">&quot;python3 ./test.py&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_running</span><span class="p">(</span><span class="n">p_name</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;程序(</span><span class="si">%s</span><span class="s2">)已挂，准备重启&quot;</span> <span class="o">%</span> <span class="n">p_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_restart</span><span class="p">(</span><span class="n">p_script</span><span class="p">):</span>
+            <span class="n">is_restart</span><span class="p">(</span><span class="n">p_script</span><span class="p">)</span>  <span class="c1"># 再给一次机会</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 信号处理</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGALRM</span><span class="p">,</span> <span class="n">heartbeat</span><span class="p">)</span>
+    <span class="c1"># 第一次1s后检查，以后每5s检查一次</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">setitimer</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">ITIMER_REAL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 不用担心影响signal（优先级别高）</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>程序(test.py)已挂，准备重启
+[PID:7270]进程运行中...
+Aborted (core dumped)
+程序(test.py)已挂，准备重启
+[PID:7278]进程运行中...
+Aborted (core dumped)
+[PID:7284]进程运行中...
+.....</code></pre>
+<h4 id="&#27491;&#35268;&#27969;&#31243;&#30340;&#23432;&#25252;&#36827;&#31243;">&#27491;&#35268;&#27969;&#31243;&#30340;&#23432;&#25252;&#36827;&#31243;<a class="anchor-link" href="#&#27491;&#35268;&#27969;&#31243;&#30340;&#23432;&#25252;&#36827;&#31243;">&#182;</a></h4><p>写了个伪牌子的，现在说说正规的，看看概念的东西：</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>后台服务进程</li>
+<li>脱离于控制终端（setpid）</li>
+<li>周期性的执行某个任务|等待某个事件发生（setitimer）</li>
+<li>不受用户登录注销影响（关机影响，不过你可以添加启动项）</li>
+<li>一般使用以d结尾的服务名称（约定俗成）</li>
+</ol>
+<p>讲正式流程前先复习一下上面说的<code>进程组</code>和<code>会话</code></p>
+<ol>
+<li>进程组：每一个进程都属于一个“进程组”，当一个进程被创建的时候，它默认是其父进程所在组的成员（<strong>你们一家</strong>）</li>
+<li>会  话：几个进程组又构成一个会话（<strong>你们小区</strong>）</li>
+</ol>
+<p>需要扩充几点：</p>
+<ol>
+<li><p><strong>进程组</strong>：</p>
+<ol>
+<li>组长：第一个进程</li>
+<li>组长ID==进程组ID</li>
+<li>组长挂了不影响进程组</li>
+</ol>
+</li>
+<li><p><strong>会话</strong>：</p>
+<ol>
+<li>组长不能创建会话（你都有官了，不留点门路给后人？）</li>
+<li>创建会话的进程成为新进程组的组长（新进程组里面就它一个嘛）</li>
+<li>创建出新会话会丢弃原有的控制终端（到了新环境里面，人脉得重新建立）</li>
+</ol>
+</li>
+</ol>
+<p>稍微验证一下，然后步入正题：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;子进程：PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">,PGrpID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">()))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;父进程：PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">,PGrpID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">()))</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;遗言：PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">,PGrpID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">()))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>验证结果：<code>父进程ID==进程组ID</code>，<code>父进程挂了进程组依旧在</code>，顺便验证了下<code>ps -ajx</code>的参数
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180730052716451-1335691435.png" alt="7.psjax"></p>
+<p>先看看这个SessionID是啥：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;进程：PID=</span><span class="si">%d</span><span class="s2">,PPID=</span><span class="si">%d</span><span class="s2">,PGrpID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">()))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getsid</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;over&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p><strong><code>ps ajx</code></strong>的参数现在全知道了：<strong>PPID   PID  PGID   SID</strong> (你不加grep就能看到的)
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180730053900042-1627085753.png" alt="session_test]"></p>
+<p>验证一下SessionID的事情：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 验证一下父进程不能创建会话ID</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;进程：PPID=</span><span class="si">%d</span><span class="s2">,PID=</span><span class="si">%d</span><span class="s2">,GID=</span><span class="si">%d</span><span class="s2">,SID=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">(),</span><span class="n">os</span><span class="o">.</span><span class="n">getsid</span><span class="p">(</span><span class="n">pid</span><span class="p">)))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">()</span> <span class="c1"># 父进程没法设置为会话ID的验证</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>进程：PPID=3301,PID=2588,GID=3301,SID=3301
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">PermissionError</span>                           Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-375f70009fcf&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> 
+<span class="ansi-green-intense-fg ansi-bold">      9</span> <span class="ansi-green-fg">if</span> __name__ <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;__main__&#39;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 10</span><span class="ansi-red-fg">     </span>main<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-1-375f70009fcf&gt;</span> in <span class="ansi-cyan-fg">main</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     pid <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>getpid<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;进程：PPID=%d,PID=%d,GID=%d,SID=%d&#34;</span> <span class="ansi-blue-fg">%</span> <span class="ansi-blue-fg">(</span>pid<span class="ansi-blue-fg">,</span> os<span class="ansi-blue-fg">.</span>getppid<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> os<span class="ansi-blue-fg">.</span>getpgrp<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>os<span class="ansi-blue-fg">.</span>getsid<span class="ansi-blue-fg">(</span>pid<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     </span>os<span class="ansi-blue-fg">.</span>setsid<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># 父进程没法设置为会话ID的验证</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> 
+<span class="ansi-green-intense-fg ansi-bold">      8</span> 
+
+<span class="ansi-red-fg">PermissionError</span>: [Errno 1] Operation not permitted</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>步入正轨：</p>
+<p><strong>创建守护进程的步骤</strong>：</p>
+<ol>
+<li>fork子进程，父进程退出（子进程变成了孤儿）</li>
+<li>子进程创建新会话（创建出新会话会丢弃原有的控制终端）</li>
+<li>改变当前工作目录【为了减少bug】（eg：你在某个文件夹下运行，这个文件夹被删了，多少会点受影响）</li>
+<li>重置文件掩码（继承了父进程的文件掩码，通过<code>umask(0)</code>重置一下，这样可以获取777权限）</li>
+<li>关闭文件描述符（既然用不到了，就关了）</li>
+<li>自己的逻辑代码</li>
+</ol>
+<p>先简单弄个例子实现上面步骤：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="c1"># 【必须】1. fork子进程，父进程退出（子进程变成了孤儿）</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 【必须】2. 子进程创建新会话（创建出新会话会丢弃原有的控制终端）</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">()</span>
+
+    <span class="c1"># 3. 改变当前工作目录【为了减少bug】# 改成不会被删掉的目录，比如/</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/home/dnt&quot;</span><span class="p">)</span>  <span class="c1"># 我这边因为是用户创建的守护进程，就放它下面，用户删了，它也没必要存在了</span>
+
+    <span class="c1"># 4. 重置文件掩码（获取777权限）</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 5. 关闭文件描述符（如果写日志也可以重定向一下）</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stderr</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+
+    <span class="c1"># 【必须】6. 自己的逻辑代码</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>运行效果：（直接后台走起了）
+<img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180730061004184-1729802785.png" alt="create_pro"></p>
+<hr>
+<h4 id="&#22522;&#30784;&#22238;&#39038;">&#22522;&#30784;&#22238;&#39038;<a class="anchor-link" href="#&#22522;&#30784;&#22238;&#39038;">&#182;</a></h4><p><strong>如果对Linux基础不熟，可以看看几年前说的LinuxBase：</strong></p>
+<p>Linux基础命令：<a href="http://www.cnblogs.com/dunitian/p/4822807.html" target="_blank">http://www.cnblogs.com/dunitian/p/4822807.html</a></p>
+<p>Linux系列其他文章：<a href="https://www.cnblogs.com/dunitian/p/4822808.html#linux" target="_blank">https://www.cnblogs.com/dunitian/p/4822808.html#linux</a></p>
+<hr>
+<p><strong>如果对部署运行系列不是很熟，可以看之前写的小demo：</strong></p>
+<p>用Python3、NetCore、Shell分别开发一个Ubuntu版的定时提醒（附NetCore跨平台两种发布方式）：<a href="https://www.cnblogs.com/dotnetcrazy/p/9111200.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9111200.html</a></p>
+<hr>
+<p><strong>如果对OOP不是很熟悉可以查看之前写的OOP文章：</strong></p>
+<p>Python3 与 C# 面向对象之～封装<a href="https://www.cnblogs.com/dotnetcrazy/p/9202988.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9202988.html</a></p>
+<p>Python3 与 C# 面向对象之～继承与多态<a href="https://www.cnblogs.com/dotnetcrazy/p/9219226.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9219226.html</a></p>
+<p>Python3 与 C# 面向对象之～异常相关<a href="https://www.cnblogs.com/dotnetcrazy/p/9219751.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9219751.html</a></p>
+<hr>
+<p><strong>如果基础不牢固，可以看之前写的PythonBase：</strong></p>
+<p>Python3 与 C# 基础语法对比（Function专栏）<a href="https://www.cnblogs.com/dotnetcrazy/p/9175950.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9175950.html</a></p>
+<p>Python3 与 C# 扩展之～模块专栏<a href="https://www.cnblogs.com/dotnetcrazy/p/9253087.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9253087.html</a></p>
+<p>Python3 与 C# 扩展之～基础衍生<a href="https://www.cnblogs.com/dotnetcrazy/p/9278573.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9278573.html</a></p>
+<p>Python3 与 C# 扩展之～基础拓展<a href="https://www.cnblogs.com/dotnetcrazy/p/9333792.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9333792.html</a></p>
+<hr>
+<p>现在正儿八经的来个<strong>简化版的守护进程</strong>：（你可以根据需求多加点信号处理）</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdin</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+
+<span class="k">class</span> <span class="nc">Daemon</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">p_script</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_name</span> <span class="o">=</span> <span class="n">p_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_script</span> <span class="o">=</span> <span class="n">p_script</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">write_log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+        <span class="c1"># 追加方式写</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;info.log&quot;</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_running</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;是否在运行&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># grep -v grep 不显示grep本身，wc -l是计数用的</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span>
+                <span class="s2">&quot;ps ax | grep </span><span class="si">%s</span><span class="s2"> | grep -v grep&quot;</span> <span class="o">%</span> <span class="n">p_name</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">is_restart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p_script</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;重启程序&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">p_script</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">heartbeat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signalnum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;心跳检查&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_name</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]程序(</span><span class="si">%s</span><span class="s2">)已挂，准备重启&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> </span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">),</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">p_name</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_restart</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_script</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_restart</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_script</span><span class="p">)</span>  <span class="c1"># 再给一次机会</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;运行守护进程&quot;&quot;&quot;</span>
+        <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">()</span>  <span class="c1"># 子进程创建新会话</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/home/dnt&quot;</span><span class="p">)</span>  <span class="c1"># 改变当前工作目录</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 获取777权限</span>
+
+        <span class="c1"># 5. 关闭文件描述符</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">stderr</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+
+        <span class="c1"># 【必须】6. 自己的逻辑代码</span>
+        <span class="c1"># 捕捉设置的定时器</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGALRM</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">heartbeat</span><span class="p">)</span>
+        <span class="c1"># 第一次2s后执行，以后5s执行一次</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">setitimer</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">ITIMER_REAL</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]daeman running&quot;</span> <span class="o">%</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> </span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="s2">&quot;p_name:</span><span class="si">%s</span><span class="s2">，p_script:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_script</span><span class="p">))</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 不用担心影响signal（优先级别高）</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pro</span> <span class="o">=</span> <span class="n">Daemon</span><span class="p">(</span><span class="s2">&quot;test.py&quot;</span><span class="p">,</span> <span class="s2">&quot;python3 ~/demo/test.py&quot;</span><span class="p">)</span>
+        <span class="n">pro</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">Daemon</span><span class="o">.</span><span class="n">write_log</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>运行效果：(关闭文件描述符后就不要printf了)</p>
+<p><img src="https://images2018.cnblogs.com/blog/1127869/201807/1127869-20180730090146834-1230082672.png" alt="10.mini"></p>
+<p>扩展说明，如果你要文件描述符重定向的话可以这么写：</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;in.log&quot;</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;out.log&quot;</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;err.log&quot;</span><span class="p">,</span> <span class="s2">&quot;a+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+</pre></div>
+<p>之后你printf就自动到指定的文件了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#25193;&#23637;&#35828;&#26126;&#65306;">&#25193;&#23637;&#35828;&#26126;&#65306;<a class="anchor-link" href="#&#25193;&#23637;&#35828;&#26126;&#65306;">&#182;</a></h3><p>Socket，在讲基础最后一个系列～<strong>网络编程</strong>的时候会讲，不急，而且进程间通信不需要这么<code>‘重量级’</code>的</p>
+<p>线程相关打算和代码一起讲，有机会也可以单独拉出来说一个结尾篇</p>
+<hr>
+<p>业余拓展：</p>
+<p><a href="https://docs.python.org/3/contents.html" target="_blank">官方文档大全</a></p>
+<p><a href="https://docs.python.org/3/library/ipc.html" target="_blank">进程间通信和网络</a></p>
+<p><a href="https://docs.python.org/3/library/os.html" target="_blank">os - 其他操作系统接口</a></p>
+<p><a href="https://docs.python.org/3/library/mmap.html" target="_blank">mmap - 内存映射文件支持</a></p>
+<p><a href="https://docs.python.org/3/library/signal.html" target="_blank">signal - 设置异步事件的处理程序</a></p>
+<p>Other：</p>
+
+<pre><code>Linux下0、1、2号进程
+https://blog.csdn.net/gatieme/article/details/51484562
+https://blog.csdn.net/gatieme/article/details/51532804
+https://blog.csdn.net/gatieme/article/details/51566690
+
+Linux 的启动流程
+http://www.ruanyifeng.com/blog/2013/08/linux_boot_process.html
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html
+
+孤儿进程与僵尸进程
+https://www.cnblogs.com/Anker/p/3271773.html
+https://blog.csdn.net/believe_s/article/details/77040494
+
+Python2 OS模块之进程管理
+https://www.cnblogs.com/now-fighting/p/3534185.html
+
+缓冲区的个人理解
+https://blog.csdn.net/lina_acm/article/details/51865543
+
+深入Python多进程编程基础
+https://zhuanlan.zhihu.com/p/37370577
+https://zhuanlan.zhihu.com/p/37370601
+
+python多进程实现进程间通信实例
+https://www.jb51.net/article/129016.htm
+
+PIPE2参考：
+https://bugs.python.org/file22147/posix_pipe2.diff
+https://stackoverflow.com/questions/30087506/event-driven-system-call-in-python
+https://stackoverflow.com/questions/5308080/python-socket-accept-nonblocking/5308168
+
+FIFO参考：
+https://blog.csdn.net/an_tang/article/details/68951819
+https://blog.csdn.net/firefoxbug/article/details/8137762
+
+Python之mmap内存映射模块（大文本处理）说明
+https://www.cnblogs.com/zhoujinyi/p/6062907.html
+
+python 基于mmap模块的jsonmmap实现本地多进程内存共享
+https://www.cnblogs.com/dacainiao/p/5914114.html
+
+如果把一个事务可看作是一个程序,它要么完整的被执行,要么完全不执行。这种特性就叫原子性。
+https://blog.csdn.net/Android_Mrchen/article/details/77866490
+
+事务四大特征：原子性，一致性，隔离性和持久性
+https://blog.csdn.net/u014079773/article/details/52808193
+
+python 、mmap 实现内存数据共享
+https://www.jianshu.com/p/c3afc0f02560
+http://www.cnblogs.com/zhoujinyi/p/6062907.html
+https://blog.csdn.net/zhaohongyan6/article/details/71158522
+
+Python信号相关：
+https://my.oschina.net/guol/blog/136036
+
+Linux--进程组、会话、守护进程
+https://www.cnblogs.com/forstudy/archive/2012/04/03/2427683.html</code></pre>
 
 </div>
 </div>
