@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>2.并发编程</title>
+<title>2.并发编程-进程篇</title>
 <script src="https://cdn.bootcss.com/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="../../../style/css/jupyter.all.min.css"> 
@@ -10,6 +10,7 @@
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -187,7 +188,7 @@ ZeroDivisionError: division by zero</code></pre>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>图示：（join可以指定超时时间，eg：<code>p.join(1)</code>）
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180805164841812-1549223582.gif" alt="1.进程池"></p>
+<img src="../../../images/python/2018-08-03/1.进程池.gif" alt="1.进程池"></p>
 <p><strong>调用<code>join()</code>之前必须先调用<code>close()</code>，调用<code>close()</code>之后就不能继续添加新的<code>Process</code>了</strong>(<a href="#pool.join源码分析" target="_blank">下面会说为什么</a>)</p>
 <hr>
 <h3 id="1.3.&#28304;&#30721;&#25299;&#23637;">1.3.&#28304;&#30721;&#25299;&#23637;<a class="anchor-link" href="#1.3.&#28304;&#30721;&#25299;&#23637;">&#182;</a></h3><p>验证一下<strong>Pool的默认大小是CPU的核数</strong>，看源码：</p>
@@ -512,7 +513,7 @@ CompletedProcess(args=['ls', '-al'], returncode=0)</code></pre>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>图示：
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180807184228333-373477332.gif" alt="2.subprocess.gif"></p>
+<img src="../../../images/python/2018-08-03/2.subprocess.gif" alt="2.subprocess.gif"></p>
 <h4 id="&#20132;&#20114;demo">&#20132;&#20114;demo<a class="anchor-link" href="#&#20132;&#20114;demo">&#182;</a></h4><p>再来个强大的案例（交互的程序都可以，比如 <strong><code>ftp</code>，<code>nslookup</code></strong> 等等）：<code>popen1.communicate</code></p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 
@@ -1241,7 +1242,7 @@ test
 [INFO/MainProcess] process shutting down</code></pre>
 <hr>
 <h4 id="3.&#36827;&#31243;5&#24577;">3.&#36827;&#31243;5&#24577;<a class="anchor-link" href="#3.&#36827;&#31243;5&#24577;">&#182;</a></h4><p>之前忘记说了～现在快结尾了，补充一下进程5态：(来个草图)</p>
-<p><img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180810162418968-770691664.png" alt="3.进程5态.png"></p>
+<p><img src="../../../images/python/2018-08-03/3.进程5态.png" alt="3.进程5态.png"></p>
 
 </div>
 </div>
@@ -1340,7 +1341,7 @@ test
 <span class="p">}</span>
 </pre></div>
 <p>这两个类型其实是<code>ctypes</code>类型，更多的类型可以去<a href="https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.sharedctypes" target="_blank">` multiprocessing.sharedctypes`</a>查看，来张图：
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180815162731961-1455673124.png" alt="4.ctypes.png">
+<img src="../../../images/python/2018-08-03/4.ctypes.png" alt="4.ctypes.png">
 回头解决<code>GIL</code>的时候会用到<code>C</code>系列或者<code>Go</code>系列的共享库（讲线程的时候会说）</p>
 <hr>
 <p>关于进程安全的补充说明：对于原子性操作就不用说，铁定安全，但注意一下<code>i+=1</code>并不是原子性操作：</p>
@@ -1549,11 +1550,11 @@ real    0m6.105s
 user    0m0.071s
 sys     0m0.042s</code></pre>
 <p>Win下亦通用（win下没有<code>os.getgid</code>）
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180816163829040-2076694825.png" alt="5.win.png"></p>
+<img src="../../../images/python/2018-08-03/5.win.png" alt="5.win.png"></p>
 <hr>
 <h3 id="1.7.&#20998;&#24067;&#24335;&#36827;&#31243;&#30340;&#26696;&#20363;">1.7.&#20998;&#24067;&#24335;&#36827;&#31243;&#30340;&#26696;&#20363;<a class="anchor-link" href="#1.7.&#20998;&#24067;&#24335;&#36827;&#31243;&#30340;&#26696;&#20363;">&#182;</a></h3><p>有了<code>1.6</code>的基础，咱们来个例子练练：</p>
 <p><code>BaseManager</code>的缩略图：
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180816165142638-798135918.png" alt="6.缩略.png"></p>
+<img src="../../../images/python/2018-08-03/6.缩略.png" alt="6.缩略.png"></p>
 <p>服务器端代码：</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span>
 <span class="kn">from</span> <span class="nn">multiprocessing.managers</span> <span class="kn">import</span> <span class="n">BaseManager</span>
@@ -1627,9 +1628,9 @@ def main():
 if __name__ == '__main__':
     main()</code></pre>
 <p>输出图示：
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180816180721761-490336831.gif" alt="7.manager.gif">
+<img src="../../../images/python/2018-08-03/7.manager.gif" alt="7.manager.gif">
 服务器运行在Linux的测试：
-<img src="https://images2018.cnblogs.com/blog/1127869/201808/1127869-20180816181817723-1399170499.png" alt="8.win.png"></p>
+<img src="../../../images/python/2018-08-03/8.win.png" alt="8.win.png"></p>
 <p>其实还有一部分内容没说，明天得出去办点事，先到这吧，后面找机会继续带一下</p>
 <hr>
 <p>参考文章：</p>
@@ -1640,6 +1641,7 @@ if __name__ == '__main__':
 <p>有深度但需要辩证看的两篇文章：</p>
 <p>跨进程对象共享：<a href="http://blog.ftofficer.com/2009/12/python-multiprocessing-3-about-queue/" target="_blank">http://blog.ftofficer.com/2009/12/python-multiprocessing-3-about-queue</a></p>
 <p>关于Queue：<a href="http://blog.ftofficer.com/2009/12/python-multiprocessing-2-object-sharing-across-process" target="_blank">http://blog.ftofficer.com/2009/12/python-multiprocessing-2-object-sharing-across-process</a></p>
+
 </div>
 </div>
 </div>
@@ -1872,10 +1874,15 @@ sys 0m0.021s</code></pre>
 <li><strong>不可变类型</strong>：<code>Microsoft.Bcl.Immutable</code></li>
 </ol>
 <p>不得不感慨一句，微软妈妈真的花了很多功夫，Net的并发编程比Python省心多了（完）</p>
+
 </div>
 </div>
 </div>
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>
