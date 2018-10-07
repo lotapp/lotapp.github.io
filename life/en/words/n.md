@@ -582,16 +582,118 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `fruit juice`<br/>果汁
 
+---
+
+**3`apple`** /ap‧ple/ ['æpl] n.苹果
+
+`apple pie` 苹果派（馅饼）
+
+`an apple tree` 苹果树
+
+`An apple a day keeps the doctor away`<br/>一日一苹果，医生远离我
+
 **知识扩展**：
 
-**`puppy`** /pup‧py/ ['pʌpi] n.小狗
-
-**`doggie`** /dog‧gie/ ['dɔgɪ] n.小狗
-
-音标 **i** 和 **I** 是一个音标，**I** 比 **i** 读的时候稍微拉长一点，再听一下：`puppy` `doggie`
-
-一般 **ie** **y** 结尾的都代表昵称，或者亲昵的叫法
-
-eg：`daddy` 爹地 `mommy` 妈咪 
+前面一个单词结尾的音标是辅音，后面一个单词开头是原因，那么它们的音标就可以连在一起读
 
 ---
+
+**4`pear`** [peə(r)] n.梨
+
+`I like apples,but not pears`<br/>我喜欢苹果，但是不喜欢梨
+
+---
+
+**5`peach`** [piːtʃ] n.桃子
+
+`I like fresh juicy peaches.`<br/>我喜欢新鲜多汁的桃汁
+
+---
+
+**6`banana`** /ba‧na‧na/ [bəˈnɑːnə] n.香蕉
+
+`a bunch of bananas` 一串香蕉
+
+`Look!The monkey is eating a banana.`<br/>一串香蕉
+
+**知识拓展**：
+
+美国人经常把英国音标中`ɑ`发音成`æ`
+
+`is eating` 正在吃
+
+---
+
+**7`orange`** /or‧ange/ [ˈɒrɪndʒ] n.橙子、柑橘
+
+`orange juice` 橙汁
+
+`Peel the oranges` 剥橘子
+
+**知识拓展**：
+
+`peel` [piːl] n.水果、蔬菜的皮 v.剥落；去皮
+
+上面的例子`peel`做动词，所以翻译成剥橘子
+
+---
+
+**8`cherry`** /cher‧ry/ ['tʃerɪ] n.樱桃
+
+`a cherry tree` 樱桃树
+
+`There is a cherry on the cake`<br/>那个蛋糕上有一颗樱桃
+
+---
+
+**9`strawberry`** /straw‧ber‧ry/ [ˈstrɔˌberi] n.草莓
+
+`The strawberry is my favorite fruit.`<br/>草莓是我最喜爱的水果
+
+**知识拓展**：
+
+**`blueberry`** /blue‧ber‧ry/ [ˈbluːb(ə)ri] n.蓝莓
+
+`blueberry pie` 蓝莓派
+
+`The blueberry is good for your eyes`<br/>蓝莓对你的眼睛有好处
+
+`Raspberry` /rasp‧ber‧ry/ [ˈrɑːzbəri] n.覆盆子、树莓
+
+编程：`Raspberry Pi` 树莓派
+
+---
+
+**10`lemon`** /lem‧on/ ['lemən] n.柠檬
+
+`a lemon tree`柠檬树
+
+`a slice of lemon` 一片柠檬
+
+**知识扩展**：
+
+`a slice of bread` 一片面包
+
+**`lemonade`** /lem‧on‧ade/ ['lemə.neɪd] n.柠檬水、柠檬汁
+
+`Have some lemonade.` 喝点柠檬水
+
+---
+
+**11`mango`** /man‧go/ ['mæŋɡəʊ] n.芒果
+
+`Some people are allergic to mango.`<br/>一些人对芒果过敏
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
+
+`testtesttest`<br/>testtesttest
