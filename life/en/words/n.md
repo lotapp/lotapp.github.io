@@ -559,3 +559,39 @@ eg：`daddy` 爹地 `mommy` 妈咪
 章鱼有8只爪子，`octo`，那`october`为什么是十月呢？
 
 以前古罗马只有10个月份，后来人后加了两个月份在开头，所以`october`变成了十月
+
+---
+
+### 1.2.食物篇
+
+**1`food`** [fuːd] n.食物
+
+`Everyone needs food.` 每个人都需要食物
+
+`fast food` 快餐
+
+`junk food` 垃圾食品
+
+---
+
+**2`fruit`** [fru:t] n.水果
+
+`Try to eat plenty of fresh fruit.`<br/>努力吃新鲜大量的水果
+
+`fruit and vegetables`<br/>水果和蔬菜
+
+`fruit juice`<br/>果汁
+
+**知识扩展**：
+
+**`puppy`** /pup‧py/ ['pʌpi] n.小狗
+
+**`doggie`** /dog‧gie/ ['dɔgɪ] n.小狗
+
+音标 **i** 和 **I** 是一个音标，**I** 比 **i** 读的时候稍微拉长一点，再听一下：`puppy` `doggie`
+
+一般 **ie** **y** 结尾的都代表昵称，或者亲昵的叫法
+
+eg：`daddy` 爹地 `mommy` 妈咪 
+
+---
