@@ -179,7 +179,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `The Silence of the Lambs`<br/>沉默的羔羊
 
-扩充：`Python`里面的 **匿名函数**用`lambda`前缀是一样的哦
+编程：`Python`里面的 **匿名函数**用`lambda`前缀是一样的哦
 
 ---
 
@@ -684,16 +684,86 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 `Some people are allergic to mango.`<br/>一些人对芒果过敏
 
-`testtesttest`<br/>testtesttest
+**知识扩展**：
 
-`testtesttest`<br/>testtesttest
+`be allergic to` 对...什么过敏
 
-`testtesttest`<br/>testtesttest
+---
 
-`testtesttest`<br/>testtesttest
+**12`pineapple`** /pine‧ap‧ple/ [ˈpaɪnˌæpəl] n.菠萝
 
-`testtesttest`<br/>testtesttest
+`pineapple juice` 菠萝汁
 
-`testtesttest`<br/>testtesttest
+编程：`wifi pineapple` 无线网渗透神器～大菠萝
 
-`testtesttest`<br/>testtesttest
+---
+
+**13`grape`** [ɡreɪp] n.葡萄
+
+`a bunch of grapes` 一串葡萄
+
+`seedless grapes` 无籽葡萄
+
+**知识扩展**：
+
+`seedless` /seed‧less/ ['siːdləs] adj.无籽的
+
+`seed`：n.种子 `less`：prep.去除
+
+---
+
+**14`plum`** [plʌm] n.李子
+
+`a plum tree` 一颗李子树
+
+`juicy ripe plums` 多汁的成熟李子
+
+中医：桃养人杏伤人李子树下埋死人（李子吃多容易危害人体）
+
+---
+
+**15`kiwi fruit`** /ki‧wi‧fruit/ [ˈki:wi: fru:t] n.猕猴桃
+
+`Kiwi fruit is rich in vitamin C.`<br/>弥核桃富含维生素C
+
+---
+
+**16`durian`** ['dʊəriən] n.榴莲
+
+`I cant't bear the smell of a durian.`<br/>我忍受不了榴莲的味道
+
+---
+
+**17`coconut`** /co‧co‧nut/ [ˈkoʊkəˌnʌt] n.椰子
+
+`coconut milk` 椰奶
+
+`I was hit by a coconut when I was sitting under a coconut palm.`<br/>当我坐在椰子树下时，我被一只椰子击中了
+
+**知识拓展**：
+
+`hit` 打、击中
+
+---
+
+**18`papaya`** /pa‧pa‧ya/  [pəˈpaɪə] n.木瓜
+
+`A papaya, and a pineapple.` 一个木瓜和一个菠萝
+
+**知识拓展**：
+
+`pawpaw` /paw‧paw/ [ˈpɔ:pɔ:] n.木瓜
+
+`pawpaw ointment` 木瓜软膏（类似于凡士林）
+
+---
+
+**19`pomegranate`** /pom‧e‧gran‧ate/ [ˈpɒmɪgrænɪt] n.石榴
+
+`pomegranate juice` 石榴汁
+
+`pomegranate seeds` 石榴籽
+
+---
+
+**20`persimmon`** /per‧sim‧mon/ [pə(r)'sɪmən] n.柿子
