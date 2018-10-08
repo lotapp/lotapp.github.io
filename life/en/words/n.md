@@ -233,25 +233,119 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 **19`bear`**  [beə(r)] n.熊
 
+**`polar bear`** /ˌpolar ˈbear/ [ˈpəulə bɛə] n.北极熊
+
 **`bear market`** 熊市<br/>**`bull market`** 牛市
 
-...
+**`He gave me a bear-hug`**<br/>他给了我一个熊抱
 
 ---
 
+**20`panda`** /pan‧da/ ['pændə] n.熊猫
+
+`giant panda` 大熊猫
+
+`The panda is a national treasu of china`<br/>大熊猫是中国的国宝
+
+**知识拓展**：
+
+可数词前面加`the`泛指这一类名词
 
 ---
 
+**21`camel`** /cam‧el/ ['kæm(ə)l] n.骆驼
+
+`camel live in deserts` 骆驼住在沙漠中
 
 ---
 
+**22`deer`** /deer/ [dɪər(r)] n.鹿
+
+`deer` 鹿的复数
+
+`The deer is eating grass` 这些鹿在吃草
+
+回顾：可数词前面加`the`泛指这一类名词
 
 ---
 
+**23`giraffe`** /gi‧raffe/ [dʒəˈrɑːf] n.长颈鹿
+
+`A giraffe has a very long neck`<br/>长颈鹿脖子很长
 
 ---
 
-**43`dinosaur`** /di‧no‧saur/ ['daɪnə.sɔː(r)] n.恐龙
+**24`elephant`** /el‧e‧phant/ [ˈɛlifənt] n.大象
+
+`You can see many elephant in Thailand.`<br/>你可以在泰国看到很多大象
+
+---
+
+**25`fox`** /fox/ [fɒks] n.狐狸，狡猾的人
+
+`julie is as sly as afox` 朱莉像狐狸一样狡猾
+
+`I don't like that sly old fox`<br/>我不喜欢那只狡猾的老狐狸
+
+**知识拓展**：
+
+`as...as` 和...一样
+
+---
+
+**26`kangaroo`** /kan‧ga‧roo/ [ˌkæŋɡəˈruː] n.袋鼠
+
+`kangaroos are found in Australia`<br/>袋鼠在澳大利亚被发现
+
+---
+
+**27`koala`** /ko‧a‧la/ [kəʊˈɑːlə] n.考拉，树袋熊
+
+`I love koala, They are just so cute !`<br/>我喜欢考拉,他们真可爱!
+
+---
+
+**28`ostrich`** /os‧trich/ ['ɒstrɪtʃ] n.鸵鸟
+
+`Ostrich can't fly, but it can run very fast`<br/>鸵鸟不能飞，但它可以跑得很快
+
+---
+
+**29`rabbit`** /rab‧bit/ ['ræbɪt] n.兔子
+
+`Aaron keeps a rabbit as a pet`<br/>亚伦养了一只兔子作为宠物
+
+---
+
+**30`snake`** /snake/ [sneɪk] n.蛇
+
+`I am scared of snakes` 我害怕蛇
+
+`steve was bitten by a snake`<br/>史蒂夫被蛇咬伤了
+
+`stay away from him, He is a snake`<br/>远离他，他是一个阴险的人
+
+---
+
+**31`mouse`** /mouse/ [maʊs] n.老鼠，鼠标
+
+`mice` [maɪs] 老鼠的复数
+
+`a mouse mat` 鼠标垫
+
+**`Mickey Mouse`** 米老鼠
+
+---
+
+**32`squirrel`** /squir‧rel/ ['skwɪrəl] n.松鼠
+
+`squirrel like eating nuts` 松鼠喜欢吃坚果
+
+`The squirrel in the movie Ice Age is very funny.`<br/>电影"冰河世纪"中的松鼠非常有趣。
+
+---
+
+**33`dinosaur`** /di‧no‧saur/ ['daɪnə.sɔː(r)] n.恐龙
 
 `Boys usually likes dinosaur`<br/>男孩子通常喜欢收集恐龙
 
@@ -259,7 +353,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**44`ant`** [ænt] n.蚂蚁
+**34`ant`** [ænt] n.蚂蚁
 
 `Ants live in large groups.`<br/>蚂蚁成群结队的生活
 
@@ -267,7 +361,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**55`spider`** ['spaɪdə(r)] n.蜘蛛
+**35`spider`** ['spaɪdə(r)] n.蜘蛛
 
 `Many girls are afraid of apiders`<br/>很多女孩害怕蜘蛛
 
@@ -275,7 +369,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**56`snail`** [sneɪl] n.蜗牛
+**36`snail`** [sneɪl] n.蜗牛
 
 `The snail came out of its shell`<br/>那只蜗牛从它的壳里出来了
 
@@ -283,7 +377,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**57`cockroach`** /cock‧roach/ [ˈkɒkˌroʊtʃ] n.蟑螂
+**37`cockroach`** /cock‧roach/ [ˈkɒkˌroʊtʃ] n.蟑螂
 
 简写：`roach`
 
@@ -291,7 +385,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**58`bird`** [bɜː(r)d] n.鸟
+**38`bird`** [bɜː(r)d] n.鸟
 
 **`The early bird catches the worm`**<br/>早起的鸟儿有虫吃
 
@@ -301,14 +395,15 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**59`parrot`** /par‧rot/ ['pærət] n.鹦鹉
+**39`parrot`** /par‧rot/ ['pærət] n.鹦鹉
 
 `I have a parrot named Henry`<br/>我有一只名字叫Henry的鹦鹉
 
 `The parrot can say 'Good morning' and 'Good night'`<br/>
 
 ---
-**60`magpie`** /mag‧pie/ [ˈmæɡpaɪ] n.喜鹊，爱收集或贮藏东西的人，爱饶舌的人
+
+**40`magpie`** /mag‧pie/ [ˈmæɡpaɪ] n.喜鹊，爱收集或贮藏东西的人，爱饶舌的人
 
 `Magpies are common birds birds in China.`<br/>喜鹊在中国是常见的鸟类
 
@@ -316,7 +411,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**61`sparrow`** /spar‧row/ ['spærəʊ] n.麻雀
+**41`sparrow`** /spar‧row/ ['spærəʊ] n.麻雀
 
 `There are several sparrows twittering outside my window.`<br/>有几只麻雀在我窗户外面叽叽喳喳的叫
 
@@ -330,23 +425,23 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**62`swallow`** /swal‧low/ ['swɒləʊ] n.燕子 v.咽下，吞下
+**42`swallow`** /swal‧low/ ['swɒləʊ] n.燕子 v.咽下，吞下
 
 `One swallow does not make a summer.`<br/>一燕不成夏
 
 ---
 
-**63`dove`** [dʌv] n.鸽子
+**43`dove`** [dʌv] n.鸽子
 
 `dove of peace`<br/>和平鸽
 
 ---
 
-**64`crow`** [krəʊ] n.乌鸦
+**44`crow`** [krəʊ] n.乌鸦
 
 `She thinks something bad is going to happen because she saw a crow this morning.`<br/>她觉得有不好的事情要发生了，因为她今天早上看见了一只乌鸦
 
-**65`owl`** [aʊl] n.猫头鹰
+**45`owl`** [aʊl] n.猫头鹰
 
 `An owl usually sleeps with one eye open and the other closed.`<br/>猫头鹰通常一只眼睛睁着一只眼睛闭着睡觉
 
@@ -354,7 +449,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**66`eagle`** /ea‧gle/ [ˈiːɡ(ə)l] n.鹰
+**46`eagle`** /ea‧gle/ [ˈiːɡ(ə)l] n.鹰
 
 `An eagle is flying in the sky.`<br/>一只老鹰在天空中飞
 
@@ -364,7 +459,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**67`bee`** [bi:] n.蜜蜂
+**47`bee`** [bi:] n.蜜蜂
 
 `John is as busy as a bee.`<br/>约翰像蜜蜂一样忙
 
@@ -376,7 +471,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**68`dragonfly`** /drag‧on‧fly/ ['dræɡənflaɪ] n.蜻蜓
+**48`dragonfly`** /drag‧on‧fly/ ['dræɡənflaɪ] n.蜻蜓
 
 `There are many dragonflies flying over the river`<br/>在河上空有很多蜻蜓在飞
 
@@ -390,7 +485,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**69`butterfly`** /but‧ter‧fly/ ['bʌtəflaɪ] n.蝴蝶
+**49`butterfly`** /but‧ter‧fly/ ['bʌtəflaɪ] n.蝴蝶
 
 `I saw many beautiful butterflies in Melbourne Zoo.`<br/>在墨尔本动物园我看到了很多漂亮的蝴蝶
 
@@ -398,7 +493,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**70`fly`** [fleɪl] n.苍蝇
+**50`fly`** [fleɪl] n.苍蝇
 
 `In summer you can see many files near river.`<br/>在河的附近你可以看见很多苍蝇
 
@@ -406,7 +501,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**71`mosquito`** /mos‧qui‧to/ [məˈskiːtoʊ] n.蚊子
+**51`mosquito`** /mos‧qui‧to/ [məˈskiːtoʊ] n.蚊子
 
 `I was bitten by a mosquito.`<br/>我被一只蚊子咬了
 
@@ -414,7 +509,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**72`bat`** [bæt] n.蝙蝠，球棒
+**52`bat`** [bæt] n.蝙蝠，球棒
 
 `A bat can fly around at night`<br/>蝙蝠在夜晚可以到处飞
 
@@ -422,11 +517,11 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**73`seagull`** /sea‧gull/ ['siː.ɡʌl] n.海鸥
+**53`seagull`** /sea‧gull/ ['siː.ɡʌl] n.海鸥
 
 `Seagulls live near the sea.`<br/>海鸥生活在海边
 
-**74`fish`** [fɪʃ] n.鱼
+**54`fish`** [fɪʃ] n.鱼
 
 `fish and chips`<br/>炸鱼加炸薯条（英国快餐）
 
@@ -440,13 +535,13 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**75`tuna`** /tu‧na/ ['tjuːnə] n.金枪鱼
+**55`tuna`** /tu‧na/ ['tjuːnə] n.金枪鱼
 
 `tuna fish sandwich`<br/>金枪鱼三明治（sand‧wich）
 
 ---
 
-**76`dolphin`** /dol‧phin/ [ˈdɒlfɪn] n.海豚
+**56`dolphin`** /dol‧phin/ [ˈdɒlfɪn] n.海豚
 
 **`a dolphin show`**<br/>海豚表演
 
@@ -454,7 +549,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**77`whale`** [weɪl] n.鲸
+**57`whale`** [weɪl] n.鲸
 
 `The whale is not a fish`<br/>鲸不是鱼
 
@@ -462,7 +557,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**78`seal`** [siːl] n.海豹 v.封闭
+**58`seal`** [siːl] n.海豹 v.封闭
 
 **`sea lion`** [si: ˈlaiən] n.海狮
 
@@ -478,11 +573,13 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**79`sea horse`** /sea‧horse/ [ˈsiːˌhɔː(r)s] n.海马
+**59`sea horse`** /sea‧horse/ [ˈsiːˌhɔː(r)s] n.海马
 
 `A sea horse has a head that looks like the head of a horse`<br/>海马有一个像马一样的头
 
-**80`turtle`** /tur‧tle/ [ˈtɜr(r)t(ə)l] n.海龟
+---
+
+**60`turtle`** /tur‧tle/ [ˈtɜr(r)t(ə)l] n.海龟
 
 `tortoise` /tor‧toise/ [ˈtɔː(r)təs] n.陆龟
 
@@ -490,25 +587,25 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**81`shrimp`** [ʃrɪmp] n.小虾
+**61`shrimp`** [ʃrɪmp] n.小虾
 
 `Do you know a shrimp has ten legs?`<br/>你知道一只虾有十条腿吗？
 
 ---
 
-**82`lobster`** /lob‧ster/ [ˈlɒbstə(r)] n.龙虾（读音有点像：老不死的）
+**62`lobster`** /lob‧ster/ [ˈlɒbstə(r)] n.龙虾（读音有点像：老不死的）
 
 `I bought several live lobsters. They are so expensive.`<br/>我买了几只活龙虾。它们太贵了
 
 ---
 
-**83`crab`** [kræb] n.蟹
+**63`crab`** [kræb] n.蟹
 
 `Don't touch the crab! It has two powerful claws.`<br/>你别碰那只螃蟹！它有两只强壮的钳子。
 
 ---
 
-**84`jellyfish`** /jel‧ly‧fish/ ['dʒeli.fɪʃ] n.水母
+**64`jellyfish`** /jel‧ly‧fish/ ['dʒeli.fɪʃ] n.水母
 
 `A jellyfish is swimming after you.`<br/>一只水母在你身后游泳
 
@@ -518,7 +615,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**85`starfish`** /star‧fish/ ['stɑː(r).fɪʃ] n.海星
+**65`starfish`** /star‧fish/ ['stɑː(r).fɪʃ] n.海星
 
 `I found a starfish on the beach.`<br/>我在沙滩上找到了一只海星
 
@@ -530,19 +627,19 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**86.`squid`** [skwɪd] n.鱿鱼，乌贼
+**66.`squid`** [skwɪd] n.鱿鱼，乌贼
 
 `I've never seen a live squid before.`<br/>我以前从来没有见过一只活的鱿鱼
 
 ---
 
-**87`walrus`** /wal‧rus/ ['wɔːlrəs] n.海象
+**67`walrus`** /wal‧rus/ ['wɔːlrəs] n.海象
 
 `A walrus also has two long teeth called tusks.`<br/>一只海象也有两只长长的牙齿被称作海象牙
 
 ---
 
-**88`shark`** [ʃɑːk] n.鲨鱼
+**68`shark`** [ʃɑːk] n.鲨鱼
 
 `a great white shark`<br/>一只大白鲨
 
@@ -550,7 +647,7 @@ eg：`daddy` 爹地 `mommy` 妈咪
 
 ---
 
-**89`octopus`** /oc‧to‧pus/  ['ɒktəpəs] n.章鱼
+**69`octopus`** /oc‧to‧pus/  ['ɒktəpəs] n.章鱼
 
 `There was an amazing octopus during the World Cup in 2010.`<br/>在2010年的世界杯期间有一只令人惊讶的章鱼
 
