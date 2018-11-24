@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>1.网罗天下之~正则表达</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#27491;&#21017;&#34920;&#36798;">&#27491;&#21017;&#34920;&#36798;<a class="anchor-link" href="#&#27491;&#21017;&#34920;&#36798;">&#182;</a></h1><h2 id="1.&#21333;&#20010;&#23383;&#31526;">1.&#21333;&#20010;&#23383;&#31526;<a class="anchor-link" href="#1.&#21333;&#20010;&#23383;&#31526;">&#182;</a></h2><table>
+<thead><tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>匹配任意1个字符（除了<code>\n</code>）</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>匹配<code>[ ]</code>中列举的1个字符（<code>^</code>可以取反）</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>匹配数字（<code>0~9</code>）</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>匹配非数字（<code>非数字</code>）</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配空白（<code>空格、Tab键、回车</code>）</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配非空白</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>匹配单词字符，即<code>a-z、A-Z、0-9、_</code>（包括单个中文字符）</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>匹配非单词字符</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<ol>
+<li><code>\s</code>并不匹配<code>""</code></li>
+<li><code>&lt;re.Match object; span=(0, 1), match='\t'&gt;</code><ul>
+<li>PS：<code>match=xxx</code>，就是我们<code>ret.group()</code>的结果</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 定义一个通用测试方法</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span> <span class="n">input_str</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;[匹配结果:{ret.group()}]&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;[</span><span class="si">{input_str}</span><span class="s2">不匹配]&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ret</span>
+
+<span class="c1"># Python中字符串前面加上 r 表示原生字符串（不转义）</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># \s 验证</span>
+
+<span class="c1"># 空格匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="c1"># Tab键匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 回车匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 不匹配验证：（空字符串）</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果: ]
+[匹配结果:	]
+[匹配结果:
+]
+[不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># \d 验证</span>
+
+<span class="c1"># 匹配单个数字</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="c1"># 一点要变成字符串</span>
+
+<span class="c1"># 多个数字则只能匹配一个字符</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">)</span> <span class="c1"># 注意</span>
+
+<span class="c1"># 解决：以^开头，以$结尾</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;^\d$&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:1]
+[匹配结果:1]
+[11不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [] 验证</span>
+
+<span class="c1"># 不是1、2、3则不匹配</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[1-3]&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+
+<span class="c1"># 匹配1~3,6~9</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[1-36-9]&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[1-36-9]&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
+
+<span class="c1"># 只匹配数字和字母（大小写）</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[\da-zA-Z]&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[\da-zA-Z]&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[\da-zA-Z]&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[\da-zA-Z]&quot;</span><span class="p">,</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[4不匹配]
+[匹配结果:7]
+[5不匹配]
+[匹配结果:7]
+[匹配结果:b]
+[匹配结果:B]
+[_不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [] 取反扩展</span>
+<span class="c1"># \d ==&gt; [0-9]</span>
+<span class="c1"># \D ==&gt; [^0-9]</span>
+
+<span class="c1"># 非2、4、6</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^246]&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^246]&quot;</span><span class="p">,</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^246]&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+
+<span class="c1"># 非 1~6</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^1-6]&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^1-6]&quot;</span><span class="p">,</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;[^1-6]&quot;</span><span class="p">,</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:3]
+[匹配结果:@]
+[4不匹配]
+[匹配结果:7]
+[匹配结果:#]
+[5不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># \w在UTF8下会匹配中文的验证：</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\w&quot;</span><span class="p">,</span><span class="s2">&quot;滚&quot;</span><span class="p">)</span>
+
+<span class="c1"># .匹配任意字符，不包括\n的验证：</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 除了\n，可以匹配任意一个字符</span>
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:滚]
+[
+不匹配]
+[匹配结果:	]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 1), match=&#39;\t&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 扩展</span>
+
+<span class="c1"># 如果想让.支持\n，再多传个flag：re.S</span>
+<span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 1), match=&#39;\n&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#22810;&#20010;&#23383;&#31526;">2.&#22810;&#20010;&#23383;&#31526;<a class="anchor-link" href="#2.&#22810;&#20010;&#23383;&#31526;">&#182;</a></h2><table>
+<thead><tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>1个字符出现次数：<code>&gt;=0</code></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1个字符出现次数：<code>&gt;=1</code></td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>1个字符出现次数：<code>1 or 0</code></td>
+</tr>
+<tr>
+<td><code>{m}</code></td>
+<td>1个字符出现<code>m</code>次</td>
+</tr>
+<tr>
+<td><code>{m,n}</code></td>
+<td>1个字符出现从<code>[m,n]</code>次</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>转义特殊字符</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>匹配字符串开头</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>匹配字符串结尾</td>
+</tr>
+</tbody>
+</table>
+<p>多个字符，一般都是以<code>^</code>开头，以<code>$</code>结尾，不然容易出Bug（<code>re.match</code>方法默认以<code>^</code>开头）</p>
+<p>PS：<code>vi</code>命令模式下，输入<code>^</code>和<code>$</code>，光标会跳转到头和尾</p>
+<p><strong>Python中<code>r""</code>代表不转义字符串</strong>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># r&quot;&quot;，如果包含转义字符\就容易出错了，这时候r&quot;&quot;就上场了</span>
+<span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">,</span><span class="s2">&quot;\mmd&quot;</span><span class="p">)</span>
+
+<span class="c1"># 原因分析</span>
+<span class="c1"># \是有特殊含义的，想要没有特殊含义就再加个\，</span>
+<span class="c1"># 那加上的这个\又有特殊含义，所以就蛋疼了，r&quot;&quot;这时候就上场了</span>
+
+<span class="c1"># 解决方法</span>
+<span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">)</span> <span class="c1"># 下面有案例</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># * 、 + 、?</span>
+
+<span class="c1"># *：0个或者多个</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d*&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d*&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">)</span>
+
+<span class="c1"># +：1个或者多个</span>
+<span class="c1"># 不匹配验证：</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># 匹配验证：</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ?：0个或者1次</span>
+<span class="c1"># 不匹配验证：</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;11&quot;</span><span class="p">)</span>
+<span class="c1"># 匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:]
+[匹配结果:11]
+[不匹配]
+[匹配结果:1]
+[匹配结果:11]
+[11不匹配]
+[匹配结果:]
+[匹配结果:1]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 1), match=&#39;1&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 为什么用^和$包裹，看下面两个奇葩案例就知道了</span>
+
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span><span class="s2">&quot;123333&quot;</span><span class="p">)</span>
+
+<span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;\d*&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="c1"># ==&gt; &quot;a&quot; ==&gt; &quot;&quot;&quot;a&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:1]
+[匹配结果:]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 0), match=&#39;&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># {}指定位数验证</span>
+<span class="c1"># ? ==&gt; {0,1}</span>
+
+<span class="c1"># 1位数字或者2位数字</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d{1,2}$&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
+<span class="c1"># 1位数字或者2位数字</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d{1,2}$&quot;</span><span class="p">,</span><span class="s2">&quot;17&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d{1,2}$&quot;</span><span class="p">,</span><span class="s2">&quot;777&quot;</span><span class="p">)</span>
+
+<span class="c1"># 指定位数 eg:10位数字</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d</span><span class="si">{10}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="s2">&quot;1234567890&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证 ~ 9位</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d</span><span class="si">{10}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="s2">&quot;123456789&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证 ～ 非整数</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d</span><span class="si">{10}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="s2">&quot;A123456789&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:7]
+[匹配结果:17]
+[777不匹配]
+[匹配结果:1234567890]
+[123456789不匹配]
+[A123456789不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># {} 扩展</span>
+<span class="c1"># * ==&gt; {0,}</span>
+<span class="c1"># + ==&gt; {1,}</span>
+
+<span class="c1"># \d 至少3个</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span><span class="s2">&quot;1234&quot;</span><span class="p">)</span>
+<span class="c1"># 错误验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span><span class="s2">&quot;12&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:123]
+[匹配结果:1234]
+[12不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ^ $ 案例</span>
+
+<span class="c1"># 验证变量命名</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-z_]\w*$&quot;</span><span class="p">,</span><span class="s2">&quot;a_bbp&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-z_]\w*$&quot;</span><span class="p">,</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:a_bbp]
+[匹配结果:_]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 1), match=&#39;_&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 测试一个就知道为什么用\w了</span>
+<span class="k">def</span> <span class="nf">test蛋</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mmd&quot;</span><span class="p">)</span>
+
+<span class="n">test蛋</span><span class="p">()</span> <span class="c1"># Python Code</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mmd
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 如果没有加开头和结尾的Bug测试</span>
+
+<span class="c1"># 没有判断结尾的Bug案例</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-zA-z_]\w*&quot;</span><span class="p">,</span><span class="s2">&quot;a_b#w&quot;</span><span class="p">)</span>
+
+<span class="c1"># 测试Bug，这个也匹配了</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-zA-z_]+@qq.com&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@qq.comcom&quot;</span><span class="p">)</span>
+
+<span class="c1"># 改进 ~ 现在不匹配了</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-z_]\w*$&quot;</span><span class="p">,</span><span class="s2">&quot;a_b#w&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:a_b]
+[匹配结果:mmd@qq.com]
+[a_b#w不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 转义字符 \ 引入案例</span>
+
+<span class="c1"># 测试Bug，这个也匹配了</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-zA-z_]+@qq.com&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@qq#comcom&quot;</span><span class="p">)</span>
+
+<span class="c1"># 改进 ~ 现在不匹配了 (开头结尾+\转义)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-z_]+@qq\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@qq#comcom&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:mmd@qq#com]
+[mmd@qq#comcom不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># r&quot;&quot;，如果包含转义字符\就容易出错了，这时候r&quot;&quot;就上场了</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">my_match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">,</span><span class="s2">&quot;\mmd&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+
+<span class="c1"># 原因分析</span>
+<span class="c1"># \是有特殊含义的，想要没有特殊含义就再加个\，</span>
+<span class="c1"># 那加上的这个\又有特殊含义，所以就蛋疼了，r&quot;&quot;这时候就上场了</span>
+
+<span class="c1"># 解决方法</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mmd&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>bad escape \m at position 0
+[匹配结果:\mmd]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;re.Match object; span=(0, 4), match=&#39;\\mmd&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.&#20854;&#20182;&#23383;&#31526;">3.&#20854;&#20182;&#23383;&#31526;<a class="anchor-link" href="#3.&#20854;&#20182;&#23383;&#31526;">&#182;</a></h2><table>
+<thead><tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>匹配左右任意一个表达式</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>匹配一个单词的边界(字母与空格间的位置)</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>匹配非单词的边界</td>
+</tr>
+<tr>
+<td><code>( )</code></td>
+<td>将括号中字符作为一个分组</td>
+</tr>
+<tr>
+<td><code>\num</code></td>
+<td>引用分组num匹配到的字符串</td>
+</tr>
+<tr>
+<td><em><code>(?P&lt;name&gt;)</code></em></td>
+<td>分组起别名</td>
+</tr>
+<tr>
+<td><em><code>(?P=name)</code></em></td>
+<td>引用别名为name分组匹配到的字符串</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 匹配边界</span>
+
+<span class="c1"># \b 匹配以net结尾的单词</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+net\b&quot;</span><span class="p">,</span><span class="s2">&quot;dotnet&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+net\b&quot;</span><span class="p">,</span><span class="s2">&quot;dotnet crazy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+net\b&quot;</span><span class="p">,</span><span class="s2">&quot;dotnetcrazy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 后面会讲</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+net\b&quot;</span><span class="p">,</span><span class="s2">&quot;dotnet crazy aspnet&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:dotnet]
+[匹配结果:dotnet]
+[dotnetcrazy不匹配]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;dotnet&#39;, &#39;aspnet&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 不匹配验证：\b、\B、^、$只是代表边界，并不表示空格</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\bnet\b&quot;</span><span class="p">,</span><span class="s2">&quot;dot net crazy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 正确修改</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\s\bnet\b&quot;</span><span class="p">,</span><span class="s2">&quot;dot net crazy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 把上面换成\B，则代表单词间必须是 非空格的字符</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\Bnet\B&quot;</span><span class="p">,</span><span class="s2">&quot;dotnetcrazy&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\Bnet\B&quot;</span><span class="p">,</span><span class="s2">&quot;dotnetAcrazy&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\Bnet\B&quot;</span><span class="p">,</span><span class="s2">&quot;dotnet1crazy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+\Bnet\B&quot;</span><span class="p">,</span><span class="s2">&quot;dotnet#crazy&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[dot net crazy不匹配]
+[匹配结果:dot net]
+[匹配结果:dotnet]
+[匹配结果:dotnet]
+[匹配结果:dotnet]
+[dotnet#crazy不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># | 匹配左右任意一个表达式</span>
+
+<span class="c1"># 匹配小明或者小张</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^小明|小张$&quot;</span><span class="p">,</span><span class="s2">&quot;小明&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^小明|小张$&quot;</span><span class="p">,</span><span class="s2">&quot;小张&quot;</span><span class="p">)</span>
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^小明|小张$&quot;</span><span class="p">,</span><span class="s2">&quot;小潘&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:小明]
+[匹配结果:小张]
+[小潘不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># () 将括号中字符作为一个分组</span>
+
+<span class="c1"># group(1) 返回第1个括号匹配内容</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-Z0-9_]+@(qq|163)\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@163.com&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># HTML的标签匹配匹配检查</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^&lt;([a-zA-Z1-9]+)&gt;.*&lt;/\1&gt;$&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;h1&gt;萌萌哒&lt;/h1&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:mmd@163.com]
+[匹配结果:&lt;h1&gt;萌萌哒&lt;/h1&gt;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;h1&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># groups返回所有的匹配结果</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^&lt;([a-zA-Z1-9]+)&gt;&lt;([a-zA-Z1-9]+)&gt;(.*)&lt;/\2&gt;&lt;/\1&gt;$&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;p&gt;&lt;font&gt;我去&lt;/font&gt;&lt;/p&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:&lt;p&gt;&lt;font&gt;我去&lt;/font&gt;&lt;/p&gt;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#39;p&#39;, &#39;font&#39;, &#39;我去&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 匹配 qq.com 和 163.com (别忘记转义.)</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(^[a-zA-Z0-9_]+)@(qq|163)\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@qq.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(^[a-zA-Z0-9_]+)@(qq|163)\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@163.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(^[a-zA-Z0-9_]+)@(qq|163)\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;@163.com&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^(^[a-zA-Z0-9_]+)@(qq|163)\.com$&quot;</span><span class="p">,</span><span class="s2">&quot;mmd@123.com&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:mmd@qq.com]
+(&#39;mmd&#39;, &#39;qq&#39;)
+[匹配结果:mmd@163.com]
+(&#39;mmd&#39;, &#39;163&#39;)
+[@163.com不匹配]
+[mmd@123.com不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 别名案例（不常用）</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(?P&lt;mmd&gt;\w*)&gt;&lt;(?P&lt;dnt&gt;.*)&gt;.*&lt;/(?P=dnt)&gt;&lt;/(?P=mmd)&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;html&gt;&lt;h1&gt;萌萌哒&lt;/h1&gt;&lt;/html&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(?P&lt;mmd&gt;\w*)&gt;&lt;(?P&lt;dnt&gt;.*)&gt;.*&lt;/(?P=dnt)&gt;&lt;/(?P=mmd)&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;&lt;html&gt;&lt;h1&gt;萌萌哒&lt;/h2&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[匹配结果:&lt;html&gt;&lt;h1&gt;萌萌哒&lt;/h1&gt;&lt;/html&gt;]
+[&lt;html&gt;&lt;h1&gt;萌萌哒&lt;/h2&gt;&lt;/html&gt;不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 练练手</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1~100之间的数字：(1,100)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[1-9]\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[1-9]\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span> <span class="c1"># 十位只能是1~9</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[1-9]\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;77&quot;</span><span class="p">)</span>
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[1-9]\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;07&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[1-9]\d?$&quot;</span><span class="p">,</span><span class="s2">&quot;777&quot;</span><span class="p">)</span>
+
+<span class="c1"># 0~100的数字：[0,100]</span>
+<span class="n">re_str</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^([1-9]?\d?|100)$&quot;</span> <span class="c1"># ^([1-9]\d?|100|0)$</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;70&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
+<span class="c1"># 不匹配验证</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;07&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;170&quot;</span><span class="p">)</span>
+<span class="n">my_match</span><span class="p">(</span><span class="n">re_str</span><span class="p">,</span><span class="s2">&quot;700&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0不匹配]
+[匹配结果:7]
+[匹配结果:77]
+[07不匹配]
+[777不匹配]
+[匹配结果:0]
+[匹配结果:1]
+[匹配结果:70]
+[匹配结果:100]
+[07不匹配]
+[170不匹配]
+[700不匹配]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.Python&#25193;&#23637;">4.Python&#25193;&#23637;<a class="anchor-link" href="#4.Python&#25193;&#23637;">&#182;</a></h2><p>上面的都是通用系列，下面的才能体现为啥爬虫是Python的优势：</p>
+<ol>
+<li><code>re.match</code>：和其他语言用法一致（默认从头开始匹配）</li>
+<li><code>re.search</code>：匹配第一个并返回（如果加了<code>^</code>和<code>$</code>就和match一样了）</li>
+<li><strong><code>re.findall</code>：返回所有匹配的列表</strong></li>
+<li><strong><code>re.sub</code>：将匹配到的数据进行替换，再返回新的字符串</strong><ul>
+<li>匹配之后替换成默认值</li>
+<li>匹配之后进行函数处理</li>
+</ul>
+</li>
+<li><code>re.split</code>：正则切割函数（类似于字符串的split）</li>
+<li><em><code>re.compile</code>：正则字符串编译成正则表达式对象</em></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 匹配第一个就结束了</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span><span class="s2">&quot;我的名字叫小明，今年23,88&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+
+<span class="c1"># 如果加了开头结尾就和match一样了</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d$&quot;</span><span class="p">,</span><span class="s2">&quot;我的名字叫小明，今年23,88&quot;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+None
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 返回所有匹配的列表</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d&quot;</span><span class="p">,</span><span class="s2">&quot;我的名字叫小明，今年23，88&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;2&#39;, &#39;3&#39;, &#39;8&#39;, &#39;8&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;，|。&quot;</span><span class="p">,</span><span class="s2">&quot;我的名字叫小明，今年23。88&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;我的名字叫小明&#39;, &#39;今年23&#39;, &#39;88&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sub案例：批量替换1</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="s2">&quot;***&quot;</span><span class="p">,</span><span class="s2">&quot;我上次买的时候98.5块，现在30就拿到了，差评！&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;我上次买的时候***.***块，现在***就拿到了，差评！&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sub案例：批量替换2 ~ 拿到分组内容并进行处理</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;400\1&quot;</span><span class="p">,</span><span class="s2">&quot;我是小明，客服电话是：6789688&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;我是小明，客服电话是：4006789688&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sub案例：函数处理</span>
+<span class="k">def</span> <span class="nf">shit_test</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+    <span class="c1"># 返回类型必须是str</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="n">shit_test</span><span class="p">,</span><span class="s2">&quot;我上次买的时候98.5块，现在30就拿到了，差评！&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;我上次买的时候196.0.10.0块，现在60.0就拿到了，差评！&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 扩展内容</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;A.*Z&quot;</span><span class="p">,</span><span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="c1"># 表达式复用</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="s2">&quot;ABZ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="s2">&quot;ACZ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ABZ
+ACZ
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 练手小案例</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 提取单词</span>
+<span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;Python Golang NetCore JavaScript&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="n">input_str</span><span class="p">))</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z]+&quot;</span><span class="p">,</span><span class="n">input_str</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Python&#39;, &#39;Golang&#39;, &#39;NetCore&#39;, &#39;JavaScript&#39;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;Python&#39;, &#39;Golang&#39;, &#39;NetCore&#39;, &#39;JavaScript&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 提取文字 &quot;&quot;&quot; 保留字符串原始格式</span>
+<span class="n">html_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div&gt;</span>
+<span class="s2">    &lt;h3&gt;职位描述&lt;/h3&gt;</span>
+<span class="s2">    &lt;div&gt;</span>
+<span class="s2">    岗位职责： &lt;br&gt;1. 负责公司数据管理制度、规范、流程的设计，参与数据开发平台的建设和管理&lt;br&gt;2. 规划数据仓库工作方向，持续提升团队工作目标和工作效率&lt;br&gt;3. 负责全面了解公司业务，进行深层次的数据分析，为数据开发项目提供指导性的意见，从数据角度为公司产品开发、业务运营提供决策支持建议&lt;br&gt;4. 掌握业界技术动向，组织研究大数据相关前沿技术，用于指导实际的数据支持项目&lt;br&gt;任职要求：&lt;br&gt;1. 精通数据仓库实施理论，生命周期管理，具备大型互联网数据仓库架构设计、模型设计、ETL设计经验，以及海量数据处理和优化经验&lt;br&gt;2. 深入理解Hadoop/Hive/Spark/Storm/Kylin等大数据相关技术和原理&lt;br&gt;3. 有实际使用Hive/MR/Spark等大数据处理技术解决大数据相关问题的项目经验，具备丰富的性能调优经验&lt;br&gt;4 熟悉OLAP工具和数据分析技能，对数据敏感，能够进行数据分析，挖掘数据价值&lt;br&gt;5. 逻辑思维能力强，有较强的学习能力和创新思维，能够解决复杂的商业问题&lt;br&gt;6. 优秀的沟通能力和文字表达能力，有较强的团队管理能力</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 清除HTML标签（`/?`：`/`出现0次或者1次）</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;/?\w+&gt;|\n| &quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">html_str</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;职位描述岗位职责：1.负责公司数据管理制度、规范、流程的设计，参与数据开发平台的建设和管理2.规划数据仓库工作方向，持续提升团队工作目标和工作效率3.负责全面了解公司业务，进行深层次的数据分析，为数据开发项目提供指导性的意见，从数据角度为公司产品开发、业务运营提供决策支持建议4.掌握业界技术动向，组织研究大数据相关前沿技术，用于指导实际的数据支持项目任职要求：1.精通数据仓库实施理论，生命周期管理，具备大型互联网数据仓库架构设计、模型设计、ETL设计经验，以及海量数据处理和优化经验2.深入理解Hadoop/Hive/Spark/Storm/Kylin等大数据相关技术和原理3.有实际使用Hive/MR/Spark等大数据处理技术解决大数据相关问题的项目经验，具备丰富的性能调优经验4熟悉OLAP工具和数据分析技能，对数据敏感，能够进行数据分析，挖掘数据价值5.逻辑思维能力强，有较强的学习能力和创新思维，能够解决复杂的商业问题6.优秀的沟通能力和文字表达能力，有较强的团队管理能力&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.&#36138;&#23146;&#27169;&#24335;">5.&#36138;&#23146;&#27169;&#24335;<a class="anchor-link" href="#5.&#36138;&#23146;&#27169;&#24335;">&#182;</a></h2><p>正则表达式默认就是贪婪模式，只要符合表达式就尽可能去匹配（eg：<code>.+</code>、<code>.*</code>）</p>
+<p><strong>解决方法：后面加个<code>?</code>（eg：<code>.+?</code>、<code>.*?</code>）</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 贪婪演示</span>
+
+<span class="c1"># 贪婪模式下会尽可能匹配:</span>
+<span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;我叫小明，欢迎拨打客服：4006789678&quot;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.+)(\d+)&quot;</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[提取的号码为:]&quot;</span><span class="p">,</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[贪婪的字符串:]&quot;</span><span class="p">,</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># 解决方法 .+? or .*?</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.+?)(\d+)&quot;</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[提取的号码为:]&quot;</span><span class="p">,</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[贪婪的字符串:]&quot;</span><span class="p">,</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[提取的号码为:] 8
+[贪婪的字符串:] 我叫小明，欢迎拨打客服：400678967
+[提取的号码为:] 4006789678
+[贪婪的字符串:] 我叫小明，欢迎拨打客服：
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 练手小案例</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加强版提取案例 ~ BOSS</span>
+
+<span class="n">html_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div class=&quot;detail-content&quot;&gt;</span>
+<span class="s2">    &lt;div class=&quot;job-sec&quot;&gt;</span>
+<span class="s2">        &lt;h3&gt;职位描述&lt;/h3&gt;</span>
+<span class="s2">        &lt;div class=&quot;text&quot;&gt;</span>
+<span class="s2">        岗位职责： &lt;br&gt;1. 负责公司数据管理制度、规范、流程的设计，参与数据开发平台的建设和管理&lt;br&gt;2. 规划数据仓库工作方向，持续提升团队工作目标和工作效率&lt;br&gt;3. 负责全面了解公司业务，进行深层次的数据分析，为数据开发项目提供指导性的意见，从数据角度为公司产品开发、业务运营提供决策支持建议&lt;br&gt;4. 掌握业界技术动向，组织研究大数据相关前沿技术，用于指导实际的数据支持项目&lt;br&gt;任职要求：&lt;br&gt;1. 精通数据仓库实施理论，生命周期管理，具备大型互联网数据仓库架构设计、模型设计、ETL设计经验，以及海量数据处理和优化经验&lt;br&gt;2. 深入理解Hadoop/Hive/Spark/Storm/Kylin等大数据相关技术和原理&lt;br&gt;3. 有实际使用Hive/MR/Spark等大数据处理技术解决大数据相关问题的项目经验，具备丰富的性能调优经验&lt;br&gt;4 熟悉OLAP工具和数据分析技能，对数据敏感，能够进行数据分析，挖掘数据价值&lt;br&gt;5. 逻辑思维能力强，有较强的学习能力和创新思维，能够解决复杂的商业问题&lt;br&gt;6. 优秀的沟通能力和文字表达能力，有较强的团队管理能力</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">    &lt;div class=&quot;job-sec&quot;&gt;pass&lt;/div&gt;</span>
+<span class="s2">    &lt;div class=&quot;job-sec&quot;&gt;xx&lt;/div&gt;</span>
+<span class="s2">    &lt;div class=&quot;job-sec company-info&quot;pass&lt;/div&gt;</span>
+<span class="s2">    &lt;div class=&quot;job-sec&quot;&gt;pass&lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 先找到第一个job-sec（正则思路：直接定位匹配，写几个关键词，其他都是偷懒写法.*?）</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;div.*?job-sec&quot;&gt;.*?text&quot;&gt;(.*?)&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">html_str</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+<span class="n">new_str</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_str</span><span class="p">)</span>
+
+<span class="c1"># 再处理下多余的HTML标签</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;br&gt;|\s&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">new_str</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+        岗位职责： &lt;br&gt;1. 负责公司数据管理制度、规范、流程的设计，参与数据开发平台的建设和管理&lt;br&gt;2. 规划数据仓库工作方向，持续提升团队工作目标和工作效率&lt;br&gt;3. 负责全面了解公司业务，进行深层次的数据分析，为数据开发项目提供指导性的意见，从数据角度为公司产品开发、业务运营提供决策支持建议&lt;br&gt;4. 掌握业界技术动向，组织研究大数据相关前沿技术，用于指导实际的数据支持项目&lt;br&gt;任职要求：&lt;br&gt;1. 精通数据仓库实施理论，生命周期管理，具备大型互联网数据仓库架构设计、模型设计、ETL设计经验，以及海量数据处理和优化经验&lt;br&gt;2. 深入理解Hadoop/Hive/Spark/Storm/Kylin等大数据相关技术和原理&lt;br&gt;3. 有实际使用Hive/MR/Spark等大数据处理技术解决大数据相关问题的项目经验，具备丰富的性能调优经验&lt;br&gt;4 熟悉OLAP工具和数据分析技能，对数据敏感，能够进行数据分析，挖掘数据价值&lt;br&gt;5. 逻辑思维能力强，有较强的学习能力和创新思维，能够解决复杂的商业问题&lt;br&gt;6. 优秀的沟通能力和文字表达能力，有较强的团队管理能力
+        
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;岗位职责：1.负责公司数据管理制度、规范、流程的设计，参与数据开发平台的建设和管理2.规划数据仓库工作方向，持续提升团队工作目标和工作效率3.负责全面了解公司业务，进行深层次的数据分析，为数据开发项目提供指导性的意见，从数据角度为公司产品开发、业务运营提供决策支持建议4.掌握业界技术动向，组织研究大数据相关前沿技术，用于指导实际的数据支持项目任职要求：1.精通数据仓库实施理论，生命周期管理，具备大型互联网数据仓库架构设计、模型设计、ETL设计经验，以及海量数据处理和优化经验2.深入理解Hadoop/Hive/Spark/Storm/Kylin等大数据相关技术和原理3.有实际使用Hive/MR/Spark等大数据处理技术解决大数据相关问题的项目经验，具备丰富的性能调优经验4熟悉OLAP工具和数据分析技能，对数据敏感，能够进行数据分析，挖掘数据价值5.逻辑思维能力强，有较强的学习能力和创新思维，能够解决复杂的商业问题6.优秀的沟通能力和文字表达能力，有较强的团队管理能力&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 再来一例 ～ 拉勾</span>
+
+<span class="n">html_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;dd class=&quot;job_bt&quot;&gt;</span>
+<span class="s2">        &lt;h3 class=&quot;description&quot;&gt;职位描述：&lt;/h3&gt;</span>
+<span class="s2">        &lt;div&gt;</span>
+<span class="s2">        &lt;p&gt;岗位职责：&lt;br&gt;1. 为政企客户和合作伙伴提供腾讯互联网+整体解决方案技术层面的售前架构咨询服务；&amp;nbsp;&lt;br&gt;2. 为政府、企业提供腾讯大数据等项目的规划、咨询服务，协助合作伙伴及产品部门进行大数据等项目的落地；&amp;nbsp;&lt;br&gt;3. 配合BD等团队发展生态合作伙伴，将腾讯能力与合作伙伴方案进行方案融合，为合作伙伴提供咨询、培训、方案融合服务；&amp;nbsp;&lt;br&gt;4. 针对客户互联网+需求，深度定制互联网+解决方案并制定实施计划，把握全局项目进度，协调相关资源、协助实施团队完成方案Demo系统搭建，PoC测试及项目落地工作；&amp;nbsp;&lt;br&gt;5. 负责互联网+案例、技术方案的更新维护，以及布道工作。&lt;/p&gt;</span>
+<span class="s2">&lt;p&gt;&lt;br&gt;岗位要求：&lt;br&gt;1. 本科以上学历，5年（硕士3年）以上大数据等售前咨询相关的工作经验；&amp;nbsp;&lt;br&gt;2. 熟悉Hadoop、Spark等开源大数据技术体系，熟悉Oracle、PostgreSQL等数据库。要求至少有3个以上政企大数据项目规划与落地经验；&amp;nbsp;&lt;br&gt;3. 具有宏观思维，有高层汇报能力。熟悉医疗、公安等行业大数据优先；&amp;nbsp;&lt;br&gt;4. 具备优秀的文档能力，清晰明了地表达架构意图，能够熟练编写各类技术文档；&amp;nbsp;&lt;br&gt;5. 良好的沟通、协调及资源整合能力；&amp;nbsp;&lt;br&gt;6. 有针对行业ISV的渠道支持经验优先。&lt;/p&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &lt;/dd&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 匹配需要的内容（正则思路：快速定位，然后.*?偷懒写法走起）</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;&lt;h3.*?p&gt;(.*?)&lt;/p&gt;.*?p&gt;(.*?)&lt;/p&gt;&#39;</span><span class="p">,</span><span class="n">html_str</span><span class="p">,</span><span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+<span class="c1"># 再处理下多余的HTML标签</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s|&amp;nbsp;|&lt;br&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>岗位职责：1.为政企客户和合作伙伴提供腾讯互联网+整体解决方案技术层面的售前架构咨询服务；2.为政府、企业提供腾讯大数据等项目的规划、咨询服务，协助合作伙伴及产品部门进行大数据等项目的落地；3.配合BD等团队发展生态合作伙伴，将腾讯能力与合作伙伴方案进行方案融合，为合作伙伴提供咨询、培训、方案融合服务；4.针对客户互联网+需求，深度定制互联网+解决方案并制定实施计划，把握全局项目进度，协调相关资源、协助实施团队完成方案Demo系统搭建，PoC测试及项目落地工作；5.负责互联网+案例、技术方案的更新维护，以及布道工作。
+岗位要求：1.本科以上学历，5年（硕士3年）以上大数据等售前咨询相关的工作经验；2.熟悉Hadoop、Spark等开源大数据技术体系，熟悉Oracle、PostgreSQL等数据库。要求至少有3个以上政企大数据项目规划与落地经验；3.具有宏观思维，有高层汇报能力。熟悉医疗、公安等行业大数据优先；4.具备优秀的文档能力，清晰明了地表达架构意图，能够熟练编写各类技术文档；5.良好的沟通、协调及资源整合能力；6.有针对行业ISV的渠道支持经验优先。
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+</body>
+</html>
