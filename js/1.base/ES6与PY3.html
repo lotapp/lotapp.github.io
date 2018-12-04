@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>ES6与PY3</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../style/css/jupyter.all.min.css">
+<script src="../../style/js/mynav.min.js" async></script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#8544;.ES6~POP">&#8544;.ES6~POP<a class="anchor-link" href="#&#8544;.ES6~POP">&#182;</a></h1><p>ES6现在浏览器基本上都支持了，可以收一波韭菜了～（关键移动端都支持了）</p>
+<h2 id="1.&#21464;&#37327;">1.&#21464;&#37327;<a class="anchor-link" href="#1.&#21464;&#37327;">&#182;</a></h2><h3 id="&#39564;&#35777;">&#39564;&#35777;<a class="anchor-link" href="#&#39564;&#35777;">&#182;</a></h3><ol>
+<li><code>var</code>：可以重复定义，不能限制修改，没有块级作用域（和Python差不多）</li>
+<li><code>let</code>：不可以重复定义，相当于C#的变量，块级作用域（以后var全部换成let）</li>
+<li><code>const</code>：不可以重复定义，相当于C#的常量，块级作用域</li>
+</ol>
+<h3 id="&#21487;&#20197;&#37325;&#22797;&#23450;&#20041;&#30340;&#39564;&#35777;">&#21487;&#20197;&#37325;&#22797;&#23450;&#20041;&#30340;&#39564;&#35777;<a class="anchor-link" href="#&#21487;&#20197;&#37325;&#22797;&#23450;&#20041;&#30340;&#39564;&#35777;">&#182;</a></h3><p>1.<strong>var可以重复定义</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 定义了一个a变量</span>
+<span class="c1">// ...写了若干代码</span>
+<span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 然后又重新定义了一个a，这时候可能就有潜在bug了</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a1</span><span class="p">);</span> <span class="c1">// 5</span>
+</pre></div>
+<p>2.<strong>let不可以重复定义，相当于C#的变量</strong>（以后var全部换成let）</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">a2</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">a2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// 标识符a已经被声明</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span> <span class="c1">// Identifier &#39;a2&#39; has already been declared</span>
+</pre></div>
+<p>3.<strong>const：不可以重复定义，相当于C#的常量</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">a3</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">a3</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// 标识符a已经被声明</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a3</span><span class="p">);</span> <span class="c1">// Identifier &#39;a3&#39; has already been declared</span>
+</pre></div>
+<hr>
+<h3 id="&#21487;&#20197;&#34987;&#20462;&#25913;&#30340;&#39564;&#35777;">&#21487;&#20197;&#34987;&#20462;&#25913;&#30340;&#39564;&#35777;<a class="anchor-link" href="#&#21487;&#20197;&#34987;&#20462;&#25913;&#30340;&#39564;&#35777;">&#182;</a></h3><p>1.<strong><code>var</code>可以修改</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">// var 可以修改</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">//3</span>
+</pre></div>
+<p>2.<strong><code>let</code>可以修改</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">// let可以修改</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+</pre></div>
+<p>3.<strong><code>const</code>不可以修改</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="nx">c</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// 不能赋值给常量变量</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// Assignment to constant variable.</span>
+</pre></div>
+<hr>
+<h3 id="&#39564;&#35777;&#20316;&#29992;&#22495;">&#39564;&#35777;&#20316;&#29992;&#22495;<a class="anchor-link" href="#&#39564;&#35777;&#20316;&#29992;&#22495;">&#182;</a></h3><p>1.<strong>var没有块级作用域</strong></p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">b1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// var没有块级作用域</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b1</span><span class="p">);</span> <span class="c1">// 1</span>
+</pre></div>
+<p>2.<strong>let复合正常变量特性</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// 和我们平时使用差不多了</span>
+<span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">b2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ReferenceError: b2 is not defined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b2</span><span class="p">);</span> <span class="c1">// b2 没有定义</span>
+</pre></div>
+<p>3.<strong>更严格的const就更不说了</strong></p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+    <span class="kr">const</span> <span class="nx">b3</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ReferenceError: b3 is not defined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b3</span><span class="p">);</span> <span class="c1">// b3 没有定义</span>
+</pre></div>
+<hr>
+<h3 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h3><p><strong>变量没有修饰符的，直接定义，全局变量<code>global</code>引用即可</strong></p>
+<p>1.<strong>var变量和Python类似</strong></p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 1</span>
+</pre></div>
+<p>2.<strong>全局变量建议<code>global</code>引用一下</strong></p>
+<div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">age</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="c1"># 20</span>
+</pre></div>
+<h3 id="&#32467;&#35770;&#65306;(&#20197;&#21518;var&#20840;&#37096;&#25442;&#25104;let)">&#32467;&#35770;&#65306;(&#20197;&#21518;<code>var</code>&#20840;&#37096;&#25442;&#25104;<code>let</code>)<a class="anchor-link" href="#&#32467;&#35770;&#65306;(&#20197;&#21518;var&#20840;&#37096;&#25442;&#25104;let)">&#182;</a></h3><ol>
+<li><code>var</code>：可以重复定义，不能限制修改，没有块级作用域（和Python差不多）</li>
+<li><code>let</code>：不可以重复定义，相当于C#的变量，块级作用域（以后var全部换成let）</li>
+<li><code>const</code>：不可以重复定义，相当于C#的常量，块级作用域</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#35299;&#26500;&#36171;&#20540;">2.&#35299;&#26500;&#36171;&#20540;<a class="anchor-link" href="#2.&#35299;&#26500;&#36171;&#20540;">&#182;</a></h2><p>这个特性不管是<code>C#</code>还是<code>ES6</code>都是从<code>Python</code>那借鉴过来的，特点：</p>
+<ol>
+<li>左右两边结构一样</li>
+<li>定义和赋值同时完成</li>
+</ol>
+<h3 id="&#22522;&#30784;">&#22522;&#30784;<a class="anchor-link" href="#&#22522;&#30784;">&#182;</a></h3><p>简单版：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// 1 2 3</span>
+</pre></div>
+<p>变化版：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">{</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="nx">b</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="nx">c</span><span class="o">:</span><span class="mi">3</span><span class="p">};</span> <span class="c1">// json格式对应也行</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// 1 2 3</span>
+</pre></div>
+<p>PS：把后面改成<code>{a1:1,b1:2,c1:3}</code>就变成<code>undefined undefined undefined</code></p>
+<p>复杂版：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">},</span> <span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span> <span class="mi">3</span> <span class="p">},</span> <span class="mi">5</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span> <span class="c1">// 1 2 3 4 5</span>
+</pre></div>
+<h3 id="&#39564;&#35777;">&#39564;&#35777;<a class="anchor-link" href="#&#39564;&#35777;">&#182;</a></h3><ol>
+<li><p><strong>左右两边结构需要一样</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// 这种就不行，格式得对应（左边3，右边5个 ==&gt; over）</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="p">},</span> <span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">5</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span> <span class="c1">// 未捕获的TypeError：{...}不可迭代</span>
+</pre></div>
+</li>
+<li><p><strong>定义和赋值同时完成</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">];</span>
+<span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// 未捕获的SyntaxError：在解构声明中缺少初始化程序</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+</pre></div>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.&#20989;&#25968;&#31995;">3.&#20989;&#25968;&#31995;<a class="anchor-link" href="#3.&#20989;&#25968;&#31995;">&#182;</a></h2><h3 id="3.1.&#31661;&#22836;&#20989;&#25968;&#65288;&#21311;&#21517;&#20989;&#25968;&#65289;">3.1.&#31661;&#22836;&#20989;&#25968;&#65288;&#21311;&#21517;&#20989;&#25968;&#65289;<a class="anchor-link" href="#3.1.&#31661;&#22836;&#20989;&#25968;&#65288;&#21311;&#21517;&#20989;&#25968;&#65289;">&#182;</a></h3><p>以前写法：</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="p">(</span><span class="nx">参数</span><span class="p">,</span><span class="nx">参数</span><span class="p">){</span>
+    <span class="nx">函数体</span>
+<span class="p">}</span>
+</pre></div>
+<p>简化写法：</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">参数</span><span class="p">,</span><span class="nx">参数</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">函数体</span>
+<span class="p">}</span>
+
+<span class="nx">参数</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">函数体</span>
+<span class="p">}</span>
+
+<span class="nx">参数</span> <span class="p">=&gt;</span> <span class="nx">表达式</span>
+</pre></div>
+<p><strong>举个例子</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">add1</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">add2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">add3</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+</pre></div>
+<h4 id="&#23567;&#39564;&#35777;&#65288;&#21644;Net&#29992;&#36215;&#26469;&#22522;&#26412;&#19978;&#19968;&#26679;&#65289;">&#23567;&#39564;&#35777;&#65288;<code>&#21644;Net&#29992;&#36215;&#26469;&#22522;&#26412;&#19978;&#19968;&#26679;</code>&#65289;<a class="anchor-link" href="#&#23567;&#39564;&#35777;&#65288;&#21644;Net&#29992;&#36215;&#26469;&#22522;&#26412;&#19978;&#19968;&#26679;&#65289;">&#182;</a></h4><ol>
+<li><strong>如果只有一个参数：<code>()</code>可以省略</strong><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">get_age</span> <span class="o">=</span> <span class="nx">age</span> <span class="p">=&gt;</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nx">age</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">get_age</span><span class="p">(</span><span class="mi">18</span><span class="p">));</span> <span class="c1">// 16</span>
+</pre></div>
+</li>
+<li><strong>如果函数体只有一句话：<code>{}</code>可以省略</strong><ul>
+<li>如果只有一句<code>return</code>，那么<code>return</code>也可以省略<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">get_age</span> <span class="o">=</span> <span class="nx">age</span> <span class="p">=&gt;</span> <span class="nx">age</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">get_age</span><span class="p">(</span><span class="mi">18</span><span class="p">));</span> <span class="c1">// 16</span>
+</pre></div>
+</li>
+<li>没有<code>return</code>也可以简写<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">print_age</span> <span class="o">=</span> <span class="nx">age</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">age</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">print_age</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span> <span class="c1">// 16</span>
+</pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<p>PS：<strong>箭头函数会改变<code>this</code>（后面会说）</strong></p>
+<hr>
+<h3 id="3.2.&#40664;&#35748;&#21442;&#25968;">3.2.&#40664;&#35748;&#21442;&#25968;<a class="anchor-link" href="#3.2.&#40664;&#35748;&#21442;&#25968;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">// 原来：</span>
+<span class="kd">function</span> <span class="nx">show</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">||</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 默认参数</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 现在：</span>
+<span class="kd">function</span> <span class="nx">show</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">show</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 1 2 7</span>
+<span class="nx">show</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// 1 2 3</span>
+</pre></div>
+<hr>
+<h3 id="3.3.&#21442;&#25968;&#23637;&#24320;">3.3.&#21442;&#25968;&#23637;&#24320;<a class="anchor-link" href="#3.3.&#21442;&#25968;&#23637;&#24320;">&#182;</a></h3><h4 id="&#22522;&#26412;&#29992;&#27861;">&#22522;&#26412;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#26412;&#29992;&#27861;">&#182;</a></h4><p>举个例子：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">show_args</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+<span class="c1">// `...args`是个数组（Python是元组）</span>
+<span class="nx">show_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span><span class="c1">// 1 2 [3, 4, 5, 6]</span>
+</pre></div>
+<h4 id="&#23567;&#39564;&#35777;">&#23567;&#39564;&#35777;<a class="anchor-link" href="#&#23567;&#39564;&#35777;">&#182;</a></h4><ol>
+<li><strong><code>...args</code>必须是最后一个参数</strong><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">show_args</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+<span class="c1">// Uncaught SyntaxError: Rest parameter must be last formal parameter</span>
+<span class="nx">show_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// ...args必须是最后一个参数</span>
+</pre></div>
+</li>
+</ol>
+<p>PS：<strong>Python里面可以</strong>：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># 1 2 (4, 5, 6) 3</span>
+<span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+<h4 id="&#25193;&#23637;&#29992;&#27861;">&#25193;&#23637;&#29992;&#27861;<a class="anchor-link" href="#&#25193;&#23637;&#29992;&#27861;">&#182;</a></h4><p><strong>案例1</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="c1">// 解包使用</span>
+<span class="kd">let</span> <span class="nx">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">...</span><span class="nx">nums</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="c1">// [0,1,2,3,4,5,6]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums2</span><span class="p">);</span>
+</pre></div>
+<p>PS：<strong>Python用法类似</strong>：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 列表换成元组也一样用</span>
+<span class="n">num_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="c1"># 不管是列表还是元组，这边需要加*才能解包</span>
+<span class="n">num_list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">*</span><span class="n">num_list</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="c1"># [0, 1, 2, 3, 4, 5, 6]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_list2</span><span class="p">)</span>
+</pre></div>
+<p><strong>案例2</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="nx">nums</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">nums2</span><span class="p">);</span>
+<span class="c1">// [1, 2, 3, 4, 0, 5, 6]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums</span><span class="p">);</span>
+</pre></div>
+<p>PS：<strong>Python用法类似</strong>：</p>
+<div class="highlight"><pre><span></span><span class="n">num_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">num_list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="c1"># [1, 2, 3, 4, 0, 5, 6]</span>
+<span class="n">num_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">num_list2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span>
+
+<span class="c1"># 如果使用append就是嵌套版列表了</span>
+<span class="c1"># num_list.append(num_list2)</span>
+<span class="c1"># [1, 2, 3, 4, [0, 5, 6]]</span>
+</pre></div>
+<hr>
+<h3 id="3.4.&#29305;&#27530;&#30340;this&#65288;&#37325;&#35201;&#65289;">3.4.&#29305;&#27530;&#30340;this&#65288;&#37325;&#35201;&#65289;<a class="anchor-link" href="#3.4.&#29305;&#27530;&#30340;this&#65288;&#37325;&#35201;&#65289;">&#182;</a></h3><p><strong>普通函数的this ==&gt; 谁调用就是谁（经常变：谁调用是谁）</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// 1,2,3,4</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// [1, 2, 3, 4, show: ƒ]</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="nx">show</span><span class="p">;</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+<hr>
+<p><strong>箭头函数的this ==&gt; 在谁的环境下<code>this</code>就是谁（不变：当前作用域）</strong></p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// [object Window]</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// Window</span>
+<span class="p">}</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+<p>再举个例子：<strong>在document内</strong></p>
+<div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// document</span>
+    <span class="p">}</span>
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.&#25968;&#32452;&#26041;&#27861;">4.&#25968;&#32452;&#26041;&#27861;<a class="anchor-link" href="#4.&#25968;&#32452;&#26041;&#27861;">&#182;</a></h2><p><strong>下面几个方法都不会改变原数组</strong></p>
+<h3 id="4.1.map">4.1.map<a class="anchor-link" href="#4.1.map">&#182;</a></h3><p><strong>映射</strong>，传几个参数进去，出来几个参数。（<strong>不改变数组内容，生成新数组</strong>）</p>
+<h4 id="&#22522;&#26412;&#29992;&#27861;">&#22522;&#26412;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#26412;&#29992;&#27861;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="nx">scor_arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">64</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">scor_arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">item</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">);</span>
+
+<span class="c1">// [true, false, false, true]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span> <span class="c1">// 不改变scor_arr内容，生成新数组</span>
+
+<span class="c1">// old：</span>
+<span class="c1">// let results = scor_arr.map(function (item) {</span>
+<span class="c1">//     return item &gt;= 60;</span>
+<span class="c1">// });</span>
+</pre></div>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><p>Python略有不同：(<code>把函数依次作用在list的每个元素上</code>)</p>
+<div class="highlight"><pre><span></span><span class="n">scor_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">64</span><span class="p">]</span>
+<span class="n">result_list</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">scor_list</span><span class="p">)</span>
+
+<span class="c1"># [True, False, False, True] 不改变旧list的值</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result_list</span><span class="p">))</span>
+</pre></div>
+<p>PS：result_list：PY2直接返回list，PY3返回<code>Iterator</code></p>
+<hr>
+<h3 id="4.2.filter">4.2.filter<a class="anchor-link" href="#4.2.filter">&#182;</a></h3><p>代言词：<strong>过滤</strong>（<strong>不改变数组内容，生成新数组</strong>）</p>
+<h4 id="&#22522;&#26412;&#29992;&#27861;">&#22522;&#26412;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#26412;&#29992;&#27861;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+<span class="nx">nums2</span> <span class="o">=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// [2, 4, 6, 8, 10]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums2</span><span class="p">)</span> <span class="c1">// 不改变旧数组的值</span>
+</pre></div>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><p>Python略有不同：(<code>把函数依次作用在list的每个元素上</code>)</p>
+<div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">nums2</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>
+
+<span class="c1"># [2, 4, 6, 8, 10] 不改变旧list的值</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nums2</span><span class="p">))</span>
+</pre></div>
+<p>PS：nums2：PY2直接返回list，PY3返回<code>Iterator</code></p>
+<hr>
+<h3 id="4.3.forEach">4.3.forEach<a class="anchor-link" href="#4.3.forEach">&#182;</a></h3><p><strong>不做任何修改，纯粹的遍历</strong>，用法和<code>net</code>里面的<code>ForEach</code>差不多</p>
+<h4 id="forEach&#27809;&#26377;&#36820;&#22238;&#20540;&#30340;&#39564;&#35777;"><code>forEach</code>&#27809;&#26377;&#36820;&#22238;&#20540;&#30340;&#39564;&#35777;<a class="anchor-link" href="#forEach&#27809;&#26377;&#36820;&#22238;&#20540;&#30340;&#39564;&#35777;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span><span class="nx">nums</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">item</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span> <span class="c1">// 55</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span> <span class="c1">// 验证了：forEach 没有返回值</span>
+</pre></div>
+<p><strong>NetCore</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">sum</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span> <span class="p">};</span>
+<span class="n">list</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">sum</span> <span class="p">+=</span> <span class="n">item</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum</span><span class="p">);</span> <span class="c1">// 55</span>
+</pre></div>
+<h4 id="&#19981;&#20250;&#25913;&#21464;&#21407;&#25968;&#32452;&#30340;&#39564;&#35777;">&#19981;&#20250;&#25913;&#21464;&#21407;&#25968;&#32452;&#30340;&#39564;&#35777;<a class="anchor-link" href="#&#19981;&#20250;&#25913;&#21464;&#21407;&#25968;&#32452;&#30340;&#39564;&#35777;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+<span class="nx">nums</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">item</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nums</span><span class="p">);</span> <span class="c1">//不会改变nums，仅仅是遍历</span>
+</pre></div>
+<p><strong>NetCore</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span> <span class="p">};</span>
+<span class="n">list</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">item</span> <span class="p">+=</span> <span class="m">1</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">list</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 12345678910</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span> <span class="c1">//不会改变list里面的值</span>
+<span class="p">}</span>
+</pre></div>
+<hr>
+<h3 id="4.4.reduce">4.4.reduce<a class="anchor-link" href="#4.4.reduce">&#182;</a></h3><p>代言词：<strong>汇总</strong>，和<code>map</code>有点相反，<strong>进去一堆出来一个</strong></p>
+<h4 id="&#22522;&#30784;&#29992;&#27861;">&#22522;&#30784;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#30784;&#29992;&#27861;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+<span class="c1">// x是第一个元素，y是第二个元素</span>
+<span class="nx">nums</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>1 2 1
+undefined 3 2
+undefined 4 3
+undefined 5 4
+undefined 6 5
+undefined 7 6
+undefined 8 7
+undefined 9 8
+undefined 10 9</code></pre>
+<h4 id="&#36870;&#25512;JS&#25191;&#34892;&#36807;&#31243;">&#36870;&#25512;JS&#25191;&#34892;&#36807;&#31243;<a class="anchor-link" href="#&#36870;&#25512;JS&#25191;&#34892;&#36807;&#31243;">&#182;</a></h4><p><strong>逆推整个执行过程</strong>：</p>
+<ol>
+<li>x只被赋值一次</li>
+<li>y从第二个值开始往下遍历</li>
+<li>整个过程只遍历9遍就结束了<ul>
+<li>for循环需要10次遍历结束</li>
+<li>y从第二个数开始的，少一次遍历也正常</li>
+</ul>
+</li>
+</ol>
+<p>简单说就是按顺序依次执行函数，eg：</p>
+<div class="highlight"><pre><span></span><span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span> <span class="o">/</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 5.5</span>
+</pre></div>
+<p>reduce直接求平均值：（<strong>return</strong>是关键）</p>
+
+<pre><code>nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let result = nums.reduce((temp, item, index) =&gt; {
+    temp += item;
+    if (index &lt; nums.length - 1) {
+        return temp;
+    } else { // 最后一次，返回平均值即可
+        return temp / nums.length;
+    }
+});
+console.log(result) // 5.5</code></pre>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><p><strong>reduce就两个参数（<code>有且仅有</code>）</strong></p>
+<p><code>Python</code>的<code>Reduce</code>没<code>js</code>的强大，一般都是对列表做一个累积的‘汇总’操作</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span> <span class="c1"># 5.5</span>
+</pre></div>
+<p>可以看看执行过程：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">nums</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>1 2
+None 3
+None 4
+None 5
+None 6
+None 7
+None 8
+None 9
+None 10
+None</code></pre>
+<hr>
+<h3 id="4.5.Array.from">4.5.Array.from<a class="anchor-link" href="#4.5.Array.from">&#182;</a></h3><p>通俗讲：<strong>把类数组集合转化成数组</strong></p>
+<p>HTML代码：<code>/BaseCode/javascript/1.ES6/1.array.from.html</code></p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Array.from的应用<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+        <span class="nt">div</span> <span class="p">{</span>
+            <span class="k">width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+            <span class="k">height</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+            <span class="k">margin-right</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+            <span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+<p>JS部分：(<strong>collection是没有forEach方法的，需要转化成数组</strong>)</p>
+<div class="highlight"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+    <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">collection</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.JSON&#31995;">5.JSON&#31995;<a class="anchor-link" href="#5.JSON&#31995;">&#182;</a></h2><h3 id="&#38190;&#20540;&#30456;&#21516;&#21487;&#20197;&#21482;&#20889;&#19968;&#20010;">&#38190;&#20540;&#30456;&#21516;&#21487;&#20197;&#21482;&#20889;&#19968;&#20010;<a class="anchor-link" href="#&#38190;&#20540;&#30456;&#21516;&#21487;&#20197;&#21482;&#20889;&#19968;&#20010;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span> <span class="c1">// {a: 1, b: 2, c: 3}</span>
+
+<span class="c1">// 原来写法</span>
+<span class="c1">// json = { a: a, b: b, c: 3 };</span>
+</pre></div>
+<h3 id="&#20989;&#25968;function&#21487;&#20197;&#30465;&#30053;">&#20989;&#25968;function&#21487;&#20197;&#30465;&#30053;<a class="anchor-link" href="#&#20989;&#25968;function&#21487;&#20197;&#30465;&#30053;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span> <span class="c1">// 1 2</span>
+
+<span class="c1">// 原来写法</span>
+<span class="c1">// json = {</span>
+<span class="c1">//     a: 1,</span>
+<span class="c1">//     b: 2,</span>
+<span class="c1">//     show: function () {</span>
+<span class="c1">//         console.log(this.a, this.b);</span>
+<span class="c1">//     }</span>
+<span class="c1">// };</span>
+</pre></div>
+<h3 id="&#22522;&#30784;&#22797;&#20064;">&#22522;&#30784;&#22797;&#20064;<a class="anchor-link" href="#&#22522;&#30784;&#22797;&#20064;">&#182;</a></h3><p><strong><code>Json</code>字符串的标准写法</strong>：</p>
+<ol>
+<li><strong>只能用双引号</strong></li>
+<li><strong>所有名字必须用引号包裹</strong></li>
+</ol>
+<p><strong>字符串和Json相互转换</strong>：</p>
+<ol>
+<li>**转换成字符串：<code>JSON.parse()</code></li>
+<li><strong>转换成Json：<code>JSON.stringify()</code></strong></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">let</span> <span class="nx">str1</span> <span class="o">=</span> <span class="s1">&#39;{ a: 12, b: 5 }&#39;</span><span class="p">;</span> <span class="c1">// 错误</span>
+<span class="kd">let</span> <span class="nx">str2</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;a&quot;: 12, &quot;b&quot;: 5 }&#39;</span><span class="p">;</span><span class="c1">// 正确</span>
+<span class="kd">let</span> <span class="nx">str3</span> <span class="o">=</span> <span class="s2">&quot;{ &#39;a&#39;: &#39;abc&#39;, &#39;b&#39;: 5 }&quot;</span><span class="p">;</span><span class="c1">// 错误（单引号）</span>
+<span class="kd">let</span> <span class="nx">str4</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;a&quot;: &quot;abc&quot;, &quot;b&quot;: 5 }&#39;</span><span class="p">;</span><span class="c1">// 正确（双引号）</span>
+
+<span class="c1">// 测试是否为字符串</span>
+<span class="p">[</span><span class="nx">str1</span><span class="p">,</span> <span class="nx">str2</span><span class="p">,</span> <span class="nx">str3</span><span class="p">,</span> <span class="nx">str4</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">str</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="c1">// 转换成字符串</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`字符串：</span><span class="si">${</span><span class="nx">str</span><span class="si">}</span><span class="sb">转换发生异常：</span><span class="si">${</span><span class="nx">ex</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>字符串：{ a: 12, b: 5 }转换发生异常：SyntaxError: Unexpected token a in JSON at position 2
+{ a: 12, b: 5 }
+字符串：{ &#39;a&#39;: &#39;abc&#39;, &#39;b&#39;: 5 }转换发生异常：SyntaxError: Unexpected token &#39; in JSON at position 2
+{ a: &#39;abc&#39;, b: 5 }
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">let</span> <span class="nx">json1</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nx">test</span><span class="o">:</span> <span class="s2">&quot;我X!@#$%^&amp;*(-_-)=+&quot;</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">new_str</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json1</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">new_str</span><span class="p">);</span>
+
+<span class="c1">// encodeURI对有些特殊符号并不会编码替换</span>
+<span class="kd">let</span> <span class="nx">urlstr</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="sb">`https://www.baidu.com/s?wd=</span><span class="si">${</span><span class="nx">new_str</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">urlstr</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">urlstr</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#34;name&#34;:&#34;小明&#34;,&#34;age&#34;:23,&#34;test&#34;:&#34;我X!@#$%^&amp;*(-_-)=+&#34;}
+https%3A%2F%2Fwww.baidu.com%2Fs%3Fwd%3D%7B%22name%22%3A%22%E5%B0%8F%E6%98%8E%22%2C%22age%22%3A23%2C%22test%22%3A%22%E6%88%91X!%40%23%24%25%5E%26*(-_-)%3D%2B%22%7D
+https://www.baidu.com/s?wd={&#34;name&#34;:&#34;小明&#34;,&#34;age&#34;:23,&#34;test&#34;:&#34;我X!@#$%^&amp;*(-_-)=+&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.&#23383;&#31526;&#20018;&#31995;">5.&#23383;&#31526;&#20018;&#31995;<a class="anchor-link" href="#5.&#23383;&#31526;&#20018;&#31995;">&#182;</a></h2><h3 id="1.&#23383;&#31526;&#20018;&#27169;&#26495;">1.&#23383;&#31526;&#20018;&#27169;&#26495;<a class="anchor-link" href="#1.&#23383;&#31526;&#20018;&#27169;&#26495;">&#182;</a></h3><h4 id="&#28210;&#26579;&#21464;&#37327;">&#28210;&#26579;&#21464;&#37327;<a class="anchor-link" href="#&#28210;&#26579;&#21464;&#37327;">&#182;</a></h4><p>省的一个个去拼接了（PS：<code>反单引号</code>）</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">];</span>
+
+<span class="c1">// 我叫小明,我今年23</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我叫</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">,我今年</span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+<p><strong>Python3用起来差不多</strong>：</p>
+<div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="mi">23</span>
+
+<span class="c1"># 我叫小明,今年23</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;我叫{name},今年{age}&quot;</span><span class="p">)</span>
+</pre></div>
+<h4 id="&#20445;&#25345;&#21407;&#26377;&#26684;&#24335;">&#20445;&#25345;&#21407;&#26377;&#26684;&#24335;<a class="anchor-link" href="#&#20445;&#25345;&#21407;&#26377;&#26684;&#24335;">&#182;</a></h4><p><strong>注意一点：换行内容如果不想要空格就顶行写</strong></p>
+<div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我叫：</span>
+<span class="sb">小明</span>
+<span class="sb">今年：</span>
+<span class="sb">23`</span><span class="p">);</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>我叫：
+小明
+今年：
+23</code></pre>
+<p>Python就换成了<code>"""</code></p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;我叫：</span>
+<span class="s2">小明</span>
+<span class="s2">今年：</span>
+<span class="s2">23</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+<h3 id="2.&#24320;&#22836;&#32467;&#23614;&#26041;&#27861;">2.&#24320;&#22836;&#32467;&#23614;&#26041;&#27861;<a class="anchor-link" href="#2.&#24320;&#22836;&#32467;&#23614;&#26041;&#27861;">&#182;</a></h3><h4 id="&#22522;&#26412;&#29992;&#27861;">&#22522;&#26412;&#29992;&#27861;<a class="anchor-link" href="#&#22522;&#26412;&#29992;&#27861;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.baidu.com&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">url</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;B/S&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&quot;.com&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;.com&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.baidu.com&quot;</span>
+
+<span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B/S&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.com&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;.com&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#8545;.ES6~OOP">&#8545;.ES6~OOP<a class="anchor-link" href="#&#8545;.ES6~OOP">&#182;</a></h1><p>参考文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes</a></p>
+<p>以前JS的OOP严格意义上还是一个个函数，只是人为给他含义罢了，现在是真的支持了，<strong>性能和语法都优化了</strong></p>
+<h2 id="1.&#23553;&#35013;">1.&#23553;&#35013;<a class="anchor-link" href="#1.&#23553;&#35013;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="c1">// People后面没有括号</span>
+<span class="kr">class</span> <span class="nx">People</span> <span class="p">{</span>
+    <span class="c1">// 构造函数</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我叫：</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">，今年</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 静态方法</span>
+    <span class="kr">static</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// new别忘记了</span>
+<span class="kd">let</span> <span class="nx">xiaoming</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">People</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+<span class="nx">xiaoming</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span> <span class="c1">//我叫：小明，今年23</span>
+<span class="c1">// xiaoming.hello(); 这个不能访问（PY可以）</span>
+<span class="nx">People</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span> <span class="c1">//Hello World!</span>
+</pre></div>
+<p>看看Python怎么定义的：（self每个都要写）</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;我叫：{self.name}，今年：{self.age}&quot;</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+
+<span class="n">xiaoming</span> <span class="o">=</span> <span class="n">People</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+<span class="n">xiaoming</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># 我叫：小明，今年：23</span>
+<span class="c1"># 这个虽然可以访问到，但我一直都不建议这么用（不然用其他语言会混乱崩溃的）</span>
+<span class="n">xiaoming</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>  <span class="c1"># Hello World!</span>
+<span class="n">People</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>  <span class="c1"># Hello World!</span>
+</pre></div>
+<p>PS：JS后来居上，看起来语法比PY更简洁点了</p>
+<h2 id="2.&#32487;&#25215;">2.&#32487;&#25215;<a class="anchor-link" href="#2.&#32487;&#25215;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Teacher</span> <span class="kr">extends</span> <span class="nx">People</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">work</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span> <span class="c1">// 放上面</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">work</span> <span class="o">=</span> <span class="nx">work</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">show_job</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我是做</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">work</span><span class="si">}</span><span class="sb">工作的`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">xiaozhang</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Teacher</span><span class="p">(</span><span class="s2">&quot;小张&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;思想教育&quot;</span><span class="p">);</span>
+<span class="nx">xiaozhang</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span> <span class="c1">// 我叫：小张，今年25</span>
+<span class="nx">xiaozhang</span><span class="p">.</span><span class="nx">show_job</span><span class="p">();</span> <span class="c1">// 我是做思想教育工作的</span>
+<span class="nx">Teacher</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span> <span class="c1">// Hello World!</span>
+</pre></div>
+<blockquote><p>PS：<strong>如果子类中存在构造函数，则需要在使用<code>this</code>之前首先调用<code>super()</code></strong></p>
+</blockquote>
+<p>看看Python语法：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">work</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">work</span> <span class="o">=</span> <span class="n">work</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">show_job</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;我是做{self.work}工作的&quot;</span><span class="p">)</span>
+
+
+<span class="n">xiaozhang</span> <span class="o">=</span> <span class="n">Teacher</span><span class="p">(</span><span class="s2">&quot;小张&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;思想教育&quot;</span><span class="p">)</span>
+<span class="n">xiaozhang</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># 我叫：小张，今年：25</span>
+<span class="n">xiaozhang</span><span class="o">.</span><span class="n">show_job</span><span class="p">()</span>  <span class="c1"># 我是做思想教育工作的</span>
+<span class="n">Teacher</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span>  <span class="c1"># Hello World!</span>
+</pre></div>
+<h2 id="3.&#22810;&#24577;">3.&#22810;&#24577;<a class="anchor-link" href="#3.&#22810;&#24577;">&#182;</a></h2><p>多态这方面和Python一样，有点后劲不足，只能伪实现，不能像Net、Java这些这么强大</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Animal</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">会跑`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">class</span> <span class="nx">Dog</span> <span class="kr">extends</span> <span class="nx">Animal</span> <span class="p">{</span>
+    <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">会飞快的跑着`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 借助一个方法来实现多态</span>
+<span class="kd">let</span> <span class="nx">run</span> <span class="o">=</span> <span class="nx">obj</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="nx">run</span><span class="p">(</span><span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s2">&quot;动物&quot;</span><span class="p">));</span> <span class="c1">// 动物会跑</span>
+<span class="nx">run</span><span class="p">(</span><span class="k">new</span> <span class="nx">Dog</span><span class="p">(</span><span class="s2">&quot;小狗&quot;</span><span class="p">));</span> <span class="c1">// 小狗会飞快的跑着</span>
+</pre></div>
+<p>Python也半斤八两，十分相似</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.name}会跑&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.name}会飞快的跑着&quot;</span><span class="p">)</span>
+
+<span class="c1"># 借助一个方法来实现多态</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">run</span><span class="p">(</span><span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;动物&quot;</span><span class="p">))</span>  <span class="c1"># 动物会跑</span>
+<span class="n">run</span><span class="p">(</span><span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;小狗&quot;</span><span class="p">))</span>  <span class="c1"># 小狗会飞快的跑着</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#19994;&#20313;&#25299;&#23637;">&#19994;&#20313;&#25299;&#23637;<a class="anchor-link" href="#&#19994;&#20313;&#25299;&#23637;">&#182;</a></h2><h3 id="&#20989;&#25968;&#20013;&#30340;bind">&#20989;&#25968;&#20013;&#30340;<code>bind</code><a class="anchor-link" href="#&#20989;&#25968;&#20013;&#30340;bind">&#182;</a></h3><blockquote><p><strong>直接指定函数中<code>this</code>的值，防止改变</strong></p>
+</blockquote>
+<p><strong>如果指定一个事件执行函数的时候，class里面的this会变化，这时候不想外面套一层方法就可以使用bind</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">People</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我叫：</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">，今年</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">People</span><span class="p">(</span><span class="s2">&quot;小明&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+
+<span class="c1">// 按照道理应该可以，但是因为this变了，所以不行</span>
+<span class="c1">//document.onclick = p.show; // 我叫：undefined，今年undefined</span>
+
+<span class="c1">// 原来写法：外面包裹一层方法</span>
+<span class="c1">//document.onclick = () =&gt; p.show(); // 我叫：小明，今年23</span>
+
+<span class="c1">// 简写：bind</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span> <span class="c1">// 我叫：小明，今年23</span>
+</pre></div>
+<hr>
+<h3 id="&#20960;&#20010;&#39564;&#35777;">&#20960;&#20010;&#39564;&#35777;<a class="anchor-link" href="#&#20960;&#20010;&#39564;&#35777;">&#182;</a></h3><p><strong>小验证</strong>：直接指定函数中<code>this</code>的值，防止改变</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">show</span><span class="p">;</span> <span class="c1">// document</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;mmd&quot;</span><span class="p">);</span> <span class="c1">// String {&quot;mmd&quot;}</span>
+</pre></div>
+<p><strong>小验证</strong>：<code>箭头函数的优先级比bind高</code></p>
+<div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// document</span>
+    <span class="p">}</span>
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;mmd&quot;</span><span class="p">);</span> <span class="c1">// 箭头函数的优先级比bind高</span>
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="ES6&#32487;&#25215;&#30340;&#19981;&#36275;">ES6&#32487;&#25215;&#30340;&#19981;&#36275;<a class="anchor-link" href="#ES6&#32487;&#25215;&#30340;&#19981;&#36275;">&#182;</a></h3><ol>
+<li>只支持静态方法，不支持静态属性</li>
+<li>class中不能定义私有变量和函数<ul>
+<li>class中定义的所有方法都会被放倒原型当中，都会被子类继承，而属性都会作为实例属性挂到this上</li>
+</ul>
+</li>
+</ol>
+<p>课后拓展：<code>https://www.jianshu.com/p/5cb692658704</code></p>
+<h3 id="Python3&#19982;NetCore">Python3&#19982;NetCore<a class="anchor-link" href="#Python3&#19982;NetCore">&#182;</a></h3><p><strong>Python3 与 C# 面向对象之～封装</strong>：
+<a href="https://www.cnblogs.com/dotnetcrazy/p/9202988.html">https://www.cnblogs.com/dotnetcrazy/p/9202988.html</a></p>
+<p><strong>Python3 与 C# 面向对象之～继承与多态</strong>：
+<a href="https://www.cnblogs.com/dotnetcrazy/p/9219226.html">https://www.cnblogs.com/dotnetcrazy/p/9219226.html</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.OOP&#23454;&#25112;">4.OOP&#23454;&#25112;<a class="anchor-link" href="#4.OOP&#23454;&#25112;">&#182;</a></h2><p><strong>微信小程序出来后，组件化的概念越来越火（可以理解为模块化），结合<code>OOP</code>真的很方便</strong></p>
+<h3 id="4.1.React&#32452;&#20214;&#24341;&#20837;">4.1.React&#32452;&#20214;&#24341;&#20837;<a class="anchor-link" href="#4.1.React&#32452;&#20214;&#24341;&#20837;">&#182;</a></h3><p>先看个<code>React</code>的基础案例（结合<code>Next.js</code>更爽）</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>React组件化<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react/16.6.3/react.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react-dom/16.6.3/react-dom.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/babel-core/5.8.38/browser.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- 注意下类型是&quot;text/babel&quot; --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/babel&quot;</span><span class="p">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">item</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+        <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">公众号</span><span class="err">：</span><span class="nx">逸鹏说道</span><span class="o">&lt;</span><span class="err">/strong&gt;,</span>
+            <span class="nx">item</span>
+        <span class="p">);</span>
+    <span class="p">};</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出：<strong>公众号：逸鹏说道</strong></p>
+<h3 id="&#25193;&#23637;&#35828;&#26126;">&#25193;&#23637;&#35828;&#26126;<a class="anchor-link" href="#&#25193;&#23637;&#35828;&#26126;">&#182;</a></h3><p><strong>业余扩展：<code>AMD</code>、<code>CMD</code>、<code>CJS</code>、<code>UMD</code></strong>：
+<a href="https://blog.csdn.net/yikewang2016/article/details/79358563">https://blog.csdn.net/yikewang2016/article/details/79358563</a></p>
+<h4 id="1.React-and-babel">1.React and babel<a class="anchor-link" href="#1.React-and-babel">&#182;</a></h4><p><strong>PS：<code>React 16.x</code>开始</strong>：</p>
+<ol>
+<li><code>react.js</code> ==&gt; <code>react.development.js</code><ul>
+<li><strong><code>react.min.js</code> ==&gt; <code>react.production.min.js</code></strong></li>
+</ul>
+</li>
+<li><code>react-dom.js</code> ==&gt; <code>react-dom.development.js</code><ul>
+<li><strong><code>react-dom.min.js</code> ==&gt; <code>react-dom.production.min.js</code></strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>PS：如果自己找JS，搜索三个包：<code>react</code>、<code>react-dom</code>、<code>babel-core 5.x</code></strong>（JSX）</p>
+<h4 id="2.npm-and-cnpm">2.npm and cnpm<a class="anchor-link" href="#2.npm-and-cnpm">&#182;</a></h4><p><strong>npm国内镜像</strong>：<code>https://npm.taobao.org</code></p>
+<p>配置一下即可：<strong><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></strong></p>
+<p>然后就可以把<code>cnpm</code>当作<code>npm</code>来用了，比如上面三个js文件：</p>
+<ol>
+<li><strong><code>cnpm install react</code></strong></li>
+<li><strong><code>cnpm install react-dom</code></strong></li>
+<li><strong><code>cnpm i babel-core@old</code></strong></li>
+</ol>
+<p><strong>PS：<code>i</code>是<code>install</code>的简写，<code>-g</code>是安装到全局环境中，不加就只是安装到当前目录</strong></p>
+<hr>
+<h3 id="4.2.OOP&#32452;&#20214;">4.2.OOP&#32452;&#20214;<a class="anchor-link" href="#4.2.OOP&#32452;&#20214;">&#182;</a></h3><h4 id="1.OOP&#25913;&#36896;">1.OOP&#25913;&#36896;<a class="anchor-link" href="#1.OOP&#25913;&#36896;">&#182;</a></h4><p>用<code>OOP</code>来改造一下上面的案例：（<code>ReactDOM</code>在执行<code>render</code>渲染<code>&lt;MyTest&gt;</code>标签的时候会返回，<code>MyTest类</code>里面的<code>return值</code>）</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>OOP组件<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react/16.6.3/react.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react-dom/16.6.3/react-dom.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/babel-core/5.8.38/browser.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/babel&quot;</span><span class="p">&gt;</span>
+        <span class="kr">class</span> <span class="nx">MyTest</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
+            <span class="c1">// 可以省略</span>
+            <span class="nx">constructor</span><span class="p">(...</span><span class="nx">args</span><span class="p">){</span>
+                <span class="kr">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// 必须定义的方法</span>
+            <span class="nx">render</span><span class="p">(){</span>
+                <span class="k">return</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">公众号</span><span class="err">：</span><span class="nx">逸鹏说道</span><span class="o">&lt;</span><span class="err">/strong&gt;;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="p">()=&gt;{</span>
+            <span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+            <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+                <span class="o">&lt;</span><span class="nx">MyTest</span><span class="o">&gt;&lt;</span><span class="err">/MyTest&gt;,</span>
+                <span class="nx">test</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出：<strong>公众号：逸鹏说道</strong></p>
+<h4 id="&#35821;&#27861;&#34893;&#29983;">&#35821;&#27861;&#34893;&#29983;<a class="anchor-link" href="#&#35821;&#27861;&#34893;&#29983;">&#182;</a></h4><p>好处通过这个案例可能还看不出来，但是你想一下：当那些常用功能模板成为一个个自己的组件时，你的每一次前端开发是多么幸福的事情？</p>
+<p>再语法衍生一下，来个稍微动态一点案例：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>OOP组件<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react/16.6.3/react.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react-dom/16.6.3/react-dom.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/babel-core/5.8.38/browser.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/babel&quot;</span><span class="p">&gt;</span>
+        <span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
+            <span class="nx">render</span><span class="p">(){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+                <span class="k">return</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">str</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/strong&gt;;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="p">()=&gt;{</span>
+            <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Item</span> <span class="nx">str</span><span class="o">=</span><span class="s2">&quot;我叫小明&quot;</span><span class="o">&gt;&lt;</span><span class="err">/Item&gt;,document.getElementById(&quot;test&quot;));</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出：(<strong>两种方式传参：1.字符串，2.{}表达式</strong>)
+<img src="../../images/js/我是小明.png" alt="我叫小明"></p>
+<h4 id="&#33258;&#23450;&#20041;&#32452;&#20214;">&#33258;&#23450;&#20041;&#32452;&#20214;<a class="anchor-link" href="#&#33258;&#23450;&#20041;&#32452;&#20214;">&#182;</a></h4><p>有上面两个铺垫，现在做个自己的小组件：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>OOP组件<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react/16.6.3/react.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/react-dom/16.6.3/react-dom.production.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/babel-core/5.8.38/browser.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/babel&quot;</span><span class="p">&gt;</span>
+        <span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
+            <span class="nx">render</span><span class="p">(){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+                <span class="k">return</span> <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">str</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/strong&gt;&lt;/li&gt;;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="kr">class</span> <span class="nx">MyList</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>            
+            <span class="nx">render</span><span class="p">(){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+                <span class="k">return</span> <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">names</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;</span> <span class="o">&lt;</span><span class="nx">Item</span> <span class="nx">str</span><span class="o">=</span><span class="p">{</span><span class="nx">x</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="err">/Item&gt;)}</span>
+                <span class="o">&lt;</span><span class="err">/ul&gt;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="p">()=&gt;{</span>
+            <span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+            <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+                <span class="c1">// 这边的值可以从后台获取</span>
+                <span class="o">&lt;</span><span class="nx">MyList</span> <span class="nx">names</span><span class="o">=</span><span class="p">{[</span><span class="s2">&quot;Golang&quot;</span><span class="p">,</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span><span class="s2">&quot;NetCore&quot;</span><span class="p">,</span><span class="s2">&quot;JavaScript&quot;</span><span class="p">]}</span><span class="o">&gt;&lt;</span><span class="err">/MyList&gt;,</span>
+                <span class="nx">test</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出：(<strong>两种方式传参：1.字符串，2.{}表达式</strong>)
+<img src="../../images/js/我是小明2.png" alt="我叫小明2"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#8546;.ES6&#65374;EXT">&#8546;.ES6&#65374;EXT<a class="anchor-link" href="#&#8546;.ES6&#65374;EXT">&#182;</a></h1><p>课后拓展：<code>https://www.babeljs.cn/learn-es2015/</code></p>
+<h2 id="1.&#24322;&#27493;">1.&#24322;&#27493;<a class="anchor-link" href="#1.&#24322;&#27493;">&#182;</a></h2><p>最后方案和写法类似于<code>Python</code>、<code>NetCore</code>，都是<code>async</code>和<code>await</code>，前面是一步步引入（本质）</p>
+<h3 id="1.1.JQ&#24341;&#20837;">1.1.JQ&#24341;&#20837;<a class="anchor-link" href="#1.1.JQ&#24341;&#20837;">&#182;</a></h3><h4 id="&#24120;&#35265;&#24773;&#26223;">&#24120;&#35265;&#24773;&#26223;<a class="anchor-link" href="#&#24120;&#35265;&#24773;&#26223;">&#182;</a></h4><p>基于<code>JQ</code>的异步操作很常见，比如：</p>
+<div class="highlight"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;--------------------&quot;</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span>
+    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">},</span> <span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;请求失败&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;--------------------&quot;</span><span class="p">)</span>
+</pre></div>
+<p>输出：（的确是异步操作，不等结果返回就先执行下面语句了）</p>
+
+<pre><code>--------------------
+--------------------
+{Name: "小明", Age: 23}</code></pre>
+<h4 id="&#25506;&#35752;&#26412;&#36136;">&#25506;&#35752;&#26412;&#36136;<a class="anchor-link" href="#&#25506;&#35752;&#26412;&#36136;">&#182;</a></h4><p>那么它的本质是什么呢？来看看返回什么：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span>
+    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p1</span><span class="p">);</span>
+</pre></div>
+<p>输出：（其实本质也是一个封装版的<strong><code>Promise</code></strong>）
+<img src="../../images/js/jq.png" alt="JQ"></p>
+<p><strong>用等价写法改装一下</strong>：（<code>then两个方法，一个处理成功，一个处理失败</code>）</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">p1</span> <span class="o">=</span> <span class="err">\</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span>
+    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span>
+<span class="p">});</span>
+
+<span class="c1">// 不存在的文件</span>
+<span class="kd">let</span> <span class="nx">p2</span> <span class="o">=</span> <span class="err">\</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/mmd.json&quot;</span><span class="p">,</span>
+    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span>
+<span class="p">});</span>
+
+<span class="nx">p1</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span> <span class="nx">ex</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;请求失败&quot;</span><span class="p">));</span>
+<span class="nx">p2</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span> <span class="nx">ex</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;请求失败&quot;</span><span class="p">));</span>
+</pre></div>
+<p>输出：(忽略上面的<code>\</code>我的渲染有的问题，需要转义一下)</p>
+
+<pre><code>{Name: "小明", Age: 23}
+请求失败</code></pre>
+<h3 id="1.2.Promise">1.2.Promise<a class="anchor-link" href="#1.2.Promise">&#182;</a></h3><p>简单的说就是：<strong>Promise：用同步的方式去写异步</strong></p>
+<p>语法：<code>Promise(()=&gt;{});</code></p>
+<p>有点类似于<code>NetCore</code>的<code>Task</code>==&gt; <code>Task.Run(()=&gt;{});</code></p>
+<p>上面的那个例子本质上相当于：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span>
+        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+        <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">reject</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nx">p1</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span> <span class="nx">ex</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;请求失败&quot;</span><span class="p">));</span>
+</pre></div>
+<p>业务上难免都有相互依赖，以前写法也只能在<code>sucess</code>回调函数里面一层层的嵌套</p>
+<p>一个是比较麻烦，还有就是看起来特别不方便，一不小心就搞错了，现在就简单多了，then里面直接处理</p>
+<p>咋一看，没啥好处啊？而且还复杂了，其实当任务多的时候好处就来了</p>
+<p>比如<strong>结合JQ来模拟一个<code>事务</code>性的案例</strong>：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">});</span>
+<span class="kd">let</span> <span class="nx">p2</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/list.txt&quot;</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">});</span>
+<span class="kd">let</span> <span class="nx">p3</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/package.json&quot;</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">});</span>
+
+<span class="c1">// 进行一系列处理（有一个失败都会直接进入错误处理）</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="nx">arr</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 这时候返回的是一个数组</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+<span class="p">},</span> <span class="nx">ex</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+<p>输出：
+<img src="../../images/js/promise.png" alt="Promise"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#36845;&#20195;&#22120;">2.&#36845;&#20195;&#22120;<a class="anchor-link" href="#2.&#36845;&#20195;&#22120;">&#182;</a></h2><p>这个简单过一下，和Python没有太多不同</p>
+<h3 id="2.1.&#24341;&#20837;">2.1.&#24341;&#20837;<a class="anchor-link" href="#2.1.&#24341;&#20837;">&#182;</a></h3><p>用<code>function*</code>来定义一个迭代器</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="o">*</span> <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="s2">&quot;1&quot;</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="s2">&quot;2&quot;</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="s2">&quot;d&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">gen</span> <span class="o">=</span> <span class="nx">show</span><span class="p">();</span>
+<span class="c1">// 每一次next都执行到下一个yield停止</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">());</span>
+<span class="c1">// 返回值.value 可以得到yield返回的值</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>
+<span class="c1">// done==true的时候代表迭代结束</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">());</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>a
+{value: "1", done: false}
+b
+2
+c
+{value: "d", done: true}</code></pre>
+<h3 id="2.2.&#36941;&#21382;">2.2.&#36941;&#21382;<a class="anchor-link" href="#2.2.&#36941;&#21382;">&#182;</a></h3><h4 id="JavaScript">JavaScript<a class="anchor-link" href="#JavaScript">&#182;</a></h4><p>通过上面输出可以瞬间知道退出条件：<code>done: true</code>，那么遍历方式就来了：</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="o">*</span> <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">yield</span> <span class="s2">&quot;1&quot;</span><span class="p">;</span>
+    <span class="k">yield</span> <span class="s2">&quot;2&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">&quot;d&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">gen</span> <span class="o">=</span> <span class="nx">show</span><span class="p">();</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`返回值：</span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>1
+2
+返回值：d</code></pre>
+<p>JS也提供了<strong><code>for of</code></strong>来遍历：</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">show</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><p>大体上差不多，结束条件是触发<code>StopIteration</code>异常</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="k">yield</span> <span class="s2">&quot;1&quot;</span>
+    <span class="k">yield</span> <span class="s2">&quot;2&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;d&quot;</span>
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">show</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;返回值：{ex.value}&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">show</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  <span class="c1"># 1 2</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>1
+2
+返回值：d
+1
+2</code></pre>
+<h3 id="2.3.&#20256;&#21442;">2.3.&#20256;&#21442;<a class="anchor-link" href="#2.3.&#20256;&#21442;">&#182;</a></h3><h4 id="JavaScript">JavaScript<a class="anchor-link" href="#JavaScript">&#182;</a></h4><div class="highlight"><pre><span></span><span class="kd">function</span><span class="o">*</span> <span class="nx">show2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">=</span> <span class="k">yield</span> <span class="s2">&quot;111&quot;</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+    <span class="nx">c</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+    <span class="k">return</span> <span class="s2">&quot;over&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">gen</span> <span class="o">=</span> <span class="nx">show2</span><span class="p">();</span>
+<span class="c1">// 和Python一样，第一个不传参</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="s2">&quot;bbb&quot;</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="s2">&quot;ccc&quot;</span><span class="p">));</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>{value: "111", done: false}
+aaa
+{value: "aaa", done: false}
+bbb
+{value: "bbb", done: false}
+ccc
+{value: "over", done: true}</code></pre>
+<h4 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h4><p>传参Python是使用的send方法，其实next本质也是send，这个之前讲过了：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="k">yield</span> <span class="s2">&quot;111&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">a</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">b</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;over&quot;</span>
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">show</span><span class="p">()</span>
+<span class="c1"># 第一个不传参</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>  <span class="c1"># gen.send(None)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;bbb&quot;</span><span class="p">))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;ccc&quot;</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>111
+aaa
+bbb
+bbb
+ccc
+over</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.async/await">3.<code>async/await</code><a class="anchor-link" href="#3.async/await">&#182;</a></h2><p>如果你现在还没有用过<code>async</code>和<code>await</code>的话...需要好好提升下了，还是通俗说下吧：</p>
+<ol>
+<li>await你可以理解为：等待后面异步方法的结果，这时候的结果就是你需要的</li>
+<li>async你可以理解为：使用了await的方法需要特殊标记一下</li>
+</ol>
+<h3 id="3.1.&#24341;&#20837;">3.1.&#24341;&#20837;<a class="anchor-link" href="#3.1.&#24341;&#20837;">&#182;</a></h3><p>ES6出来前，我们用异步一般是这么用的：</p>
+<ol>
+<li><strong>和下文JS不关联的外部JS，都打个异步标签来异步加载</strong></li>
+<li><code>&lt;script src="./js/test.js" async&gt;&lt;/script&gt;</code></li>
+</ol>
+<p>现在可以正经的使用了，继续把上面那个例子衍生下：（之前用<code>then(()=&gt;{},()=&gt;{})</code>，现在可以使用<code>async</code>和<code>await</code>来简化）</p>
+<div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">show</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span> <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">show</span><span class="p">(</span><span class="s2">&quot;./data/list.txt&quot;</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<h3 id="3.2.&#25209;&#37327;">3.2.&#25209;&#37327;<a class="anchor-link" href="#3.2.&#25209;&#37327;">&#182;</a></h3><p>就算是批量任务也不用那么麻烦了：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">show</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">urls</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">url</span> <span class="k">of</span> <span class="nx">urls</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">});</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">show</span><span class="p">([</span><span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/list.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/package.json&quot;</span><span class="p">]);</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>{Name: "小明", Age: 23}
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+{name: "data", version: "0.1.0", description: "测试", main: "index.js", scripts: {…}, …}</code></pre>
+<h3 id="3.3.&#21311;&#21517;">3.3.&#21311;&#21517;<a class="anchor-link" href="#3.3.&#21311;&#21517;">&#182;</a></h3><p><strong>应用常见其实很多，比如执行某个事件、比如引入某个外部JS...</strong>，eg：</p>
+<p><strong>test.js</strong></p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;./data/list.txt&quot;</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span> <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})();</span>
+</pre></div>
+<p>HTML中引用一下：<code>&lt;script src="./js/test.js" async&gt;&lt;/script&gt;</code></p>
+<p>输出：</p>
+
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<h3 id="3.4.&#23884;&#22871;">3.4.&#23884;&#22871;<a class="anchor-link" href="#3.4.&#23884;&#22871;">&#182;</a></h3><p>和<code>NetCore</code>一样，可以嵌套使用的，<code>await</code>的对象一般都是<code>Promise</code>或者同是<code>async</code>修饰的方法</p>
+<p><strong>举个例子</strong>：</p>
+<p><code>test.js</code>：</p>
+<div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">show</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">urls</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">url</span> <span class="k">of</span> <span class="nx">urls</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span> <span class="p">});</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">show</span><span class="p">([</span><span class="s2">&quot;./data/user.json&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/list.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/package.json&quot;</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>页面</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/test.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">test</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>{Name: "小明", Age: 23}
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+{name: "data", version: "0.1.0", description: "测试", main: "index.js", scripts: {…}, …}
+ok</code></pre>
+<h3 id="Python3">Python3<a class="anchor-link" href="#Python3">&#182;</a></h3><p>Python3.7开始，语法才开始简洁：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="c1"># 模拟一个异步操作</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="n">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;写完文章早点睡觉哈~&quot;</span>
+
+<span class="c1"># 定义一个异步方法</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">await</span> <span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Python &gt;= 3.7</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="s2">&quot;这是一个测试&quot;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Python &gt;= 3.4</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="s2">&quot;这是一个测试&quot;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+<p>输出：</p>
+
+<pre><code>这是一个测试
+写完文章早点睡觉哈~</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.&#27169;&#22359;&#21270;">4.&#27169;&#22359;&#21270;<a class="anchor-link" href="#4.&#27169;&#22359;&#21270;">&#182;</a></h2><p>这个ES6里面有，但是浏览器并没有完全支持，所以现在大家还是用<strong><code>Require.js</code></strong>和<code>Sea.js</code>更多点</p>
+<p>简单看看就行：扩展链接 ~ <code>https://www.cnblogs.com/diligenceday/p/5503777.html</code></p>
+<p>模块定义：</p>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">test</span><span class="p">,</span> <span class="nx">user</span> <span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>    
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="s2">&quot;小明&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+<p>导入模块：</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">test</span><span class="p">,</span> <span class="nx">user</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;./mod.js&quot;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="nx">test</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">());</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
