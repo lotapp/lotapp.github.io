@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
     - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+        - [2018-12-05](#2018-12-05)
         - [2018-12-02](#2018-12-02)
         - [2018-12-01](#2018-12-01)
         - [todo](#todo)
@@ -50,6 +51,14 @@
 
 
 ## 十二月
+
+### 2018-12-05
+
+Ubuntu解决dpkg returned an error code (1)
+```
+https://blog.csdn.net/qq_31617637/article/details/72881105
+https://jingyan.baidu.com/article/647f0115d248ae7f2148a8a3.html
+```
 
 ### 2018-12-02
 
