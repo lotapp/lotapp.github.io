@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-16](#2018-12-16)
     - [2018-12-15](#2018-12-15)
     - [2018-12-14](#2018-12-14)
     - [2018-12-13](#2018-12-13)
@@ -57,6 +58,17 @@
 
 ## 十二月
 
+
+### 2018-12-16
+
+NetCore招聘：
+https://dotnet.microsoft.com/platform/customers
+
+**NetCore：人工智能聊天机器人框架**
+```
+https://botsharp.readthedocs.io
+https://github.com/dotnetcore/BotSharp
+```
 
 ### 2018-12-15
 
