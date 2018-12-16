@@ -60,8 +60,12 @@
 
 ### 2018-12-15
 
-**【推荐】CUP 基础库是百度开源的 Python 语言基础库**(致力将 DEV 从涉及底层操作、Util 操作类解放出来，使其更关注构建 service 上层业务逻辑)
-https://github.com/LessChina/CUP
+**【推荐】CUP基础库是百度开源的Python2基础库**
+```
+https://github.com/lotapp/CUP
+文档：https://cupdoc.iobusy.com
+https://github.com/Baidu/CUP/wiki
+```
 
 **Python 开发的守护进程**
 https://github.com/lotapp/supervisor
