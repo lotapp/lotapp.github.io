@@ -1,5 +1,7 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-15](#2018-12-15)
+    - [2018-12-14](#2018-12-14)
     - [2018-12-13](#2018-12-13)
     - [2018-12-12](#2018-12-12)
     - [2018-12-09](#2018-12-09)
@@ -55,10 +57,86 @@
 
 ## 十二月
 
+
+### 2018-12-15
+
+**【推荐】CUP基础库是百度开源的Python2基础库**
+```
+https://github.com/lotapp/CUP
+文档：https://cupdoc.iobusy.com
+https://github.com/Baidu/CUP/wiki
+```
+
+**Python 开发的守护进程**
+https://github.com/lotapp/supervisor
+
+**微信网页版 API 的 Go 实现**
+https://github.com/lotapp/wechat-go
+
+**Golang微信支付SDK**
+https://github.com/objcoding/wxpay
+
+Facebook GraphQL 协议的 Go 语言版本
+https://github.com/samsarahq/thunder
+
+机器学习库
+https://github.com/lotapp/awesome-machine-learning
+
+JavaScript3D库`three.js`
+```
+Docs：https://threejs.org/docs/
+Demo：https://threejs.org/examples/
+https://github.com/mrdoob/three.js
+```
+
+200行实现的面部识别库
+https://github.com/tehnokv/picojs
+
+### 2018-12-14
+
+**微信小程序即时通讯**
+https://github.com/lotapp/wechat-im
+
+**神经网络与深度学习**
+```
+https://nndl.github.io/
+https://github.com/lotapp/nndl.github.io
+```
+
+ES6手册（在线：http://es6.ruanyifeng.com）
+https://github.com/lotapp/es6tutorial
+
+webpack学习demo
+https://github.com/lotapp/webpack-demos
+
+react学习demo
+https://github.com/lotapp/react-demos
+
+**易搭建的自助Git服务**（Golang）
+https://github.com/lotapp/gitea
+
+Java 性能监控
+https://github.com/LinShunKang/MyPerf4J
+
 ### 2018-12-13
 
-Linux下文件的三个时间（Atime，Mtime，Ctime）
-http://www.cnblogs.com/MrListening/p/5793944.html
+**SQL 速查表**
+https://github.com/lotapp/quick-SQL-cheatsheet
+
+**Chrome 插件开发完整教程**
+https://github.com/lotapp/chrome-plugin-demo
+
+**Leetcode 题解及经典算法实现，实现语言包含 Python、Java、C++、JS**
+https://github.com/lotapp/awesome-algorithm
+
+**centos7 mysql数据库安装和配置**
+https://www.cnblogs.com/starof/p/4680083.html
+
+重置密码解决`MySQL for Linux`错误 ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+https://www.cnblogs.com/gumuzi/p/5711495.html
+
+**爱奇艺解析**（Python）
+https://github.com/ZSAIm/iqiyi-parser
 
 找回 Node.js 里面那些遗失的 ES6 特性
 http://taobaofed.org/blog/2016/01/07/find-back-the-lost-es6-features-in-nodejs/
@@ -86,6 +164,9 @@ http://www.cnblogs.com/hzc2012/p/8277826.html
 
 **jupyter notebook导出pdf并支持中文**
 https://www.jianshu.com/p/6b84a9631f8a
+
+Linux下文件的三个时间（Atime，Mtime，Ctime）
+http://www.cnblogs.com/MrListening/p/5793944.html
 
 ### 2018-12-05
 
