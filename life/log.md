@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-17](#2018-12-17)
     - [2018-12-16](#2018-12-16)
     - [2018-12-15](#2018-12-15)
     - [2018-12-14](#2018-12-14)
@@ -58,6 +59,29 @@
 
 ## 十二月
 
+### 2018-12-17
+
+**图灵系列丛书203册**
+链接: https://pan.baidu.com/s/1-Ai-OXFyOU2D6IF9AjbSkg 密码: 6xk6
+
+**百度网盘客户端（Golang版本）**
+https://github.com/lotapp/BaiduPCS-Go
+https://github.com/lotapp/baidupcs-web
+
+**PDF下载站**：
+```
+https://kgbook.com
+http://www.pdfbook.cn
+```
+
+**【推荐】牛津书虫-双语读物**
+链接：https://pan.baidu.com/s/1GA87KxEjk9ZhRqAQ_g67Fg 提取码：hs6n 
+
+**【推荐】2018最新学而思小学奥数全套**（49G）
+链接：https://pan.baidu.com/s/1aRWXWrLDmcT1EP4djWD1Vw 提取码：ublz
+
+**2019初级会计**
+https://pan.baidu.com/s/1vwlbwooSlozsoeROAd-Fvw 提取码：u5ai
 
 ### 2018-12-16
 
