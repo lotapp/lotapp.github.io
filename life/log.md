@@ -66,7 +66,13 @@
 https://www.cnblogs.com/ZaraNet/p/10136589.html
 
 **IdentityServer4**
+```
+http://www.cnblogs.com/stulzq/p/8119928.html
 https://www.cnblogs.com/FireworksEasyCool/category/1364487.html
+```
+
+**Asp.net core WebApi 使用Swagger生成帮助页**
+https://www.cnblogs.com/suxinlcq/p/6757556.html
 
 CSS系列——前端进阶之路：初涉Less
 https://www.cnblogs.com/landeanfen/p/6047031.html
