@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-18](#2018-12-18)
     - [2018-12-17](#2018-12-17)
     - [2018-12-16](#2018-12-16)
     - [2018-12-15](#2018-12-15)
@@ -59,6 +60,33 @@
 
 ## 十二月
 
+### 2018-12-18
+
+**自己手动搭建SS优雅上网**：http://blog.51cto.com/13589319/2125370
+```
+国外服务端：
+pip install shadowsocks
+
+# `locale.Error: unsupported locale setting` 》》`export LC_ALL=C`
+
+ssserver -c json配置文件 -d start
+
+json配置文件内容：
+{
+"server":"0.0.0.0",
+"server_port":8000,
+"local_address":"127.0.0.1",
+"local_port":1080,
+"password":"自定义密码",
+"timeout":300,
+"method":"aes-256-cfb"
+}
+---
+Linux客户端使用`Shadowsocks-qt5`即可：
+https://github.com/shadowsocks/shadowsocks-qt5/releases/download/v3.0.1/Shadowsocks-Qt5-3.0.1-x86_64.AppImage
+
+sudo chomod +x Shadowsocks*
+```
 ### 2018-12-17
 
 **图灵系列丛书203册**
