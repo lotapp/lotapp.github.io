@@ -1,3 +1,88 @@
+- [Ⅰ.ES6~POP](#%E2%85%B0es6pop)
+  - [1.变量](#1%E5%8F%98%E9%87%8F)
+    - [验证](#%E9%AA%8C%E8%AF%81)
+    - [可以重复定义的验证](#%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E7%9A%84%E9%AA%8C%E8%AF%81)
+    - [可以被修改的验证](#%E5%8F%AF%E4%BB%A5%E8%A2%AB%E4%BF%AE%E6%94%B9%E7%9A%84%E9%AA%8C%E8%AF%81)
+    - [验证作用域](#%E9%AA%8C%E8%AF%81%E4%BD%9C%E7%94%A8%E5%9F%9F)
+    - [Python3](#python3)
+    - [结论：(以后`var`全部换成`let`)](#%E7%BB%93%E8%AE%BA%E4%BB%A5%E5%90%8Evar%E5%85%A8%E9%83%A8%E6%8D%A2%E6%88%90let)
+  - [2.解构赋值](#2%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC)
+    - [基础](#%E5%9F%BA%E7%A1%80)
+    - [验证](#%E9%AA%8C%E8%AF%81-1)
+  - [3.函数系](#3%E5%87%BD%E6%95%B0%E7%B3%BB)
+    - [3.1.箭头函数（匿名函数）](#31%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0)
+      - [小验证（`和Net用起来基本上一样`）](#%E5%B0%8F%E9%AA%8C%E8%AF%81%E5%92%8Cnet%E7%94%A8%E8%B5%B7%E6%9D%A5%E5%9F%BA%E6%9C%AC%E4%B8%8A%E4%B8%80%E6%A0%B7)
+    - [3.2.默认参数](#32%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0)
+    - [3.3.参数展开](#33%E5%8F%82%E6%95%B0%E5%B1%95%E5%BC%80)
+      - [基本用法](#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95)
+      - [小验证](#%E5%B0%8F%E9%AA%8C%E8%AF%81)
+      - [扩展用法](#%E6%89%A9%E5%B1%95%E7%94%A8%E6%B3%95)
+    - [3.4.特殊的this（重要）](#34%E7%89%B9%E6%AE%8A%E7%9A%84this%E9%87%8D%E8%A6%81)
+  - [4.数组方法](#4%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95)
+    - [4.1.map](#41map)
+      - [基本用法](#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1)
+      - [Python3](#python3-1)
+    - [4.2.filter](#42filter)
+      - [基本用法](#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2)
+      - [Python3](#python3-2)
+    - [4.3.forEach](#43foreach)
+      - [`forEach`没有返回值的验证](#foreach%E6%B2%A1%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E9%AA%8C%E8%AF%81)
+      - [不会改变原数组的验证](#%E4%B8%8D%E4%BC%9A%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E9%AA%8C%E8%AF%81)
+    - [4.4.reduce](#44reduce)
+      - [基础用法](#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
+      - [逆推JS执行过程](#%E9%80%86%E6%8E%A8js%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B)
+      - [Python3](#python3-3)
+    - [4.5.Array.from](#45arrayfrom)
+  - [5.JSON系](#5json%E7%B3%BB)
+    - [键值相同可以只写一个](#%E9%94%AE%E5%80%BC%E7%9B%B8%E5%90%8C%E5%8F%AF%E4%BB%A5%E5%8F%AA%E5%86%99%E4%B8%80%E4%B8%AA)
+    - [函数function可以省略](#%E5%87%BD%E6%95%B0function%E5%8F%AF%E4%BB%A5%E7%9C%81%E7%95%A5)
+    - [基础复习](#%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0)
+  - [5.字符串系](#5%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B3%BB)
+    - [1.字符串模板](#1%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF)
+      - [渲染变量](#%E6%B8%B2%E6%9F%93%E5%8F%98%E9%87%8F)
+      - [保持原有格式](#%E4%BF%9D%E6%8C%81%E5%8E%9F%E6%9C%89%E6%A0%BC%E5%BC%8F)
+    - [2.开头结尾方法](#2%E5%BC%80%E5%A4%B4%E7%BB%93%E5%B0%BE%E6%96%B9%E6%B3%95)
+      - [基本用法](#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-3)
+      - [Python3](#python3-4)
+- [Ⅱ.ES6~OOP](#%E2%85%B1es6oop)
+  - [1.封装](#1%E5%B0%81%E8%A3%85)
+  - [2.继承](#2%E7%BB%A7%E6%89%BF)
+  - [3.多态](#3%E5%A4%9A%E6%80%81)
+  - [业余拓展](#%E4%B8%9A%E4%BD%99%E6%8B%93%E5%B1%95)
+    - [函数中的`bind`](#%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84bind)
+    - [几个验证](#%E5%87%A0%E4%B8%AA%E9%AA%8C%E8%AF%81)
+    - [ES6继承的不足](#es6%E7%BB%A7%E6%89%BF%E7%9A%84%E4%B8%8D%E8%B6%B3)
+    - [Python3与NetCore](#python3%E4%B8%8Enetcore)
+  - [4.OOP实战](#4oop%E5%AE%9E%E6%88%98)
+    - [4.1.React组件引入](#41react%E7%BB%84%E4%BB%B6%E5%BC%95%E5%85%A5)
+    - [扩展说明](#%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E)
+      - [1.React and babel](#1react-and-babel)
+      - [2.npm and cnpm](#2npm-and-cnpm)
+    - [4.2.OOP组件](#42oop%E7%BB%84%E4%BB%B6)
+      - [1.OOP改造](#1oop%E6%94%B9%E9%80%A0)
+      - [语法衍生](#%E8%AF%AD%E6%B3%95%E8%A1%8D%E7%94%9F)
+      - [自定义组件](#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6)
+- [Ⅲ.ES6～EXT](#%E2%85%B2es6ext)
+  - [1.异步](#1%E5%BC%82%E6%AD%A5)
+    - [1.1.JQ引入](#11jq%E5%BC%95%E5%85%A5)
+      - [常见情景](#%E5%B8%B8%E8%A7%81%E6%83%85%E6%99%AF)
+      - [探讨本质](#%E6%8E%A2%E8%AE%A8%E6%9C%AC%E8%B4%A8)
+    - [1.2.Promise](#12promise)
+  - [2.迭代器](#2%E8%BF%AD%E4%BB%A3%E5%99%A8)
+    - [2.1.引入](#21%E5%BC%95%E5%85%A5)
+    - [2.2.遍历](#22%E9%81%8D%E5%8E%86)
+      - [JavaScript](#javascript)
+      - [Python3](#python3-5)
+    - [2.3.传参](#23%E4%BC%A0%E5%8F%82)
+      - [JavaScript](#javascript-1)
+      - [Python3](#python3-6)
+  - [3.`async/await`](#3asyncawait)
+    - [3.1.引入](#31%E5%BC%95%E5%85%A5)
+    - [3.2.批量](#32%E6%89%B9%E9%87%8F)
+    - [3.3.匿名](#33%E5%8C%BF%E5%90%8D)
+    - [3.4.嵌套](#34%E5%B5%8C%E5%A5%97)
+    - [Python3](#python3-7)
+  - [4.模块化](#4%E6%A8%A1%E5%9D%97%E5%8C%96)
 
 # Ⅰ.ES6~POP
 
@@ -662,9 +747,8 @@ json.show(); // 1 2
 2. **所有名字必须用引号包裹**
 
 **字符串和Json相互转换**：
-1. **转换成字符串：`JSON.parse()`
-2. **转换成Json：`JSON.stringify()`**
-
+1. **字符串转换成Json对象：`JSON.parse()`**
+2. **Json对象转换成字符串：`JSON.stringify()`**
 
 
 ```javascript
@@ -676,7 +760,7 @@ let str4 = '{ "a": "abc", "b": 5 }';// 正确（双引号）
 // 测试是否为字符串
 [str1, str2, str3, str4].forEach(str => {
     try {
-        let json = JSON.parse(str);// 转换成字符串
+        let json = JSON.parse(str);// 转换成JSON对象
         console.log(json);
     } catch (ex) {
         console.log(`字符串：${str}转换发生异常：${ex}`);
@@ -1655,3 +1739,5 @@ console.log(a);
 test();
 console.log(user());
 ```
+
+**ES7、ES8**：<https://dwz.cn/4fLDIbu1>

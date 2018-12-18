@@ -524,8 +524,8 @@ None</code></pre>
 </ol>
 <p><strong>字符串和Json相互转换</strong>：</p>
 <ol>
-<li>**转换成字符串：<code>JSON.parse()</code></li>
-<li><strong>转换成Json：<code>JSON.stringify()</code></strong></li>
+<li><strong>字符串转换成Json对象<code>JSON.parse()</code></strong></li>
+<li><strong>Json对象转换成字符串<code>JSON.stringify()</code></strong></li>
 </ol>
 
 </div>
@@ -544,7 +544,7 @@ None</code></pre>
 <span class="c1">// 测试是否为字符串</span>
 <span class="p">[</span><span class="nx">str1</span><span class="p">,</span> <span class="nx">str2</span><span class="p">,</span> <span class="nx">str3</span><span class="p">,</span> <span class="nx">str4</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">str</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="k">try</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="c1">// 转换成字符串</span>
+        <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="c1">// 转换成JSON对象</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`字符串：</span><span class="si">${</span><span class="nx">str</span><span class="si">}</span><span class="sb">转换发生异常：</span><span class="si">${</span><span class="nx">ex</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
