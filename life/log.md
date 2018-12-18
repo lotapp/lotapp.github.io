@@ -62,6 +62,15 @@
 
 ### 2018-12-18
 
+**一步一步教你如何用Python做词云**
+https://www.cnblogs.com/ZaraNet/p/10136589.html
+
+**IdentityServer4**
+https://www.cnblogs.com/FireworksEasyCool/category/1364487.html
+
+CSS系列——前端进阶之路：初涉Less
+https://www.cnblogs.com/landeanfen/p/6047031.html
+
 **自己手动搭建SS优雅上网**：http://blog.51cto.com/13589319/2125370
 ```
 国外服务端：
@@ -210,6 +219,9 @@ http://taobaofed.org/blog/2016/01/07/find-back-the-lost-es6-features-in-nodejs/
 **Python词云图案**
 ```
 在线工具：http://yciyun.com/
+
+一步一步教你如何用Python做词云
+https://www.cnblogs.com/ZaraNet/p/10136589.html
 
 利用Python爬取微博数据生成词云图片实例代码
 https://www.jianshu.com/p/6b84a9631f8a
