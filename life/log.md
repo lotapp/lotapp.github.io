@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-19](#2018-12-19)
     - [2018-12-18](#2018-12-18)
     - [2018-12-17](#2018-12-17)
     - [2018-12-16](#2018-12-16)
@@ -59,6 +60,34 @@
 
 
 ## 十二月
+
+### 2018-12-19
+
+**Taro京东开源的多端统一框架**（`小程序`，`H5`，`ReactNative`）
+https://github.com/LessChina/taro
+```
+逆天点评：这个之前我有提到过
+
+最近百度小程序也比较火，大有超越微信小程序的趋势，这款开始慢慢支持百度小程序和支付宝小程序了
+
+前端大一统早就是经常提的，Taro就是这一款开发框架（采用`React`语法标准，支持`JSX`和`TypeScript`）
+
+最重要的是有个强大的后盾~`京东`，而且这款开源的确是京东为数不多的良心之作了，希望不要和360一样，各自开源胎死腹中......
+
+相关链接：
+https://taro.aotu.io
+https://nervjs.github.io/taro
+https://github.com/NervJS/awesome-taro
+https://nervjs.github.io/taro/docs/README.html
+
+https://nerv.aotu.io
+https://nervjs.github.io/docs
+
+京东前端团队：https://aotu.io
+https://github.com/NervJS
+https://github.com/o2team
+```
+小程序市场分析：https://baijiahao.baidu.com/s?id=1612578358728437062
 
 ### 2018-12-18
 
