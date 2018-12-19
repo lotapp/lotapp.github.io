@@ -63,12 +63,17 @@
 
 ### 2018-12-19
 
+**Node包管理工具**：
+1. Nvm：https://github.com/creationix/nvm
+2. **Yarn**：https://yarnpkg.com/zh-Hans/
+
+
 **Taro京东开源的多端统一框架**（`小程序`，`H5`，`ReactNative`）
 https://github.com/LessChina/taro
 ```
 逆天点评：这个之前我有提到过
 
-最近百度小程序也比较火，大有超越微信小程序的趋势，这款开始慢慢支持百度小程序和支付宝小程序了
+最近百度小程序也比较火，大有超越微信小程序的趋势，这款也支持百度小程序和支付宝小程序了
 
 前端大一统早就是经常提的，Taro就是这一款开发框架（采用`React`语法标准，支持`JSX`和`TypeScript`）
 
@@ -79,6 +84,7 @@ https://taro.aotu.io
 https://nervjs.github.io/taro
 https://github.com/NervJS/awesome-taro
 https://nervjs.github.io/taro/docs/README.html
+https://juejin.im/book/5b73a131f265da28065fb1cd
 
 https://nerv.aotu.io
 https://nervjs.github.io/docs
