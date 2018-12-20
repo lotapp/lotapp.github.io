@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-20](#2018-12-20)
     - [2018-12-19](#2018-12-19)
     - [2018-12-18](#2018-12-18)
     - [2018-12-17](#2018-12-17)
@@ -61,14 +62,32 @@
 
 ## 十二月
 
+### 2018-12-20
+
+**解释Referer信息泄露的一篇文章**
+https://mp.weixin.qq.com/s/xFmepVSfOKIh_L-6GaltcA
+
+**正则小工具**（图形演示整个匹配过程）
+```
+在线演示：https://jex.im/regulex
+https://github.com/lotapp/regulex
+```
+**Java架构师知识图谱参考**：
+https://github.com/lotapp/architect-awesome
+
+**极客时间-从零开始学架构**（PDF+音频）
+链接: https://pan.baidu.com/s/1Z18zinechCefigAFO5s0xA 提取码: b7c3
+
 ### 2018-12-19
+
+**如何让nginx修改Response HTTP Header中的server的值**
+https://blog.csdn.net/caoshiying/article/details/78114315
 
 **Node包管理工具**：
 1. Nvm：https://github.com/creationix/nvm
 2. **Yarn**：https://yarnpkg.com/zh-Hans/
 
-
-**Taro京东开源的多端统一框架**（`小程序`，`H5`，`ReactNative`）
+**【推荐】Taro京东开源的多端统一框架**（`小程序`，`H5`，`ReactNative`）
 https://github.com/LessChina/taro
 ```
 逆天点评：这个之前我有提到过
