@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+    - [2018-12-23](#2018-12-23)
     - [2018-12-20](#2018-12-20)
     - [2018-12-19](#2018-12-19)
     - [2018-12-18](#2018-12-18)
@@ -61,6 +62,30 @@
 
 
 ## 十二月
+
+### 2018-12-23
+
+【开源】**Bug管理系统**（PHP）
+https://github.com/lotapp/masterlab
+
+**CMS内容管理系统**（NodeJS）
+https://github.com/lotapp/DoraCMS
+
+**阿里巴巴开源的LoT系统**
+https://github.com/lotapp/AliOS-Things
+
+博客园文章管理编辑器客户端
+https://gitee.com/lotapp/cnblogs
+
+一款优雅的中国风Android App(包括Server端)
+```
+https://github.com/lotapp/jianshi
+如何在一天之内完成一款Android产品
+https://www.jianshu.com/p/cf496fc408b2
+```
+
+基于svg图片生成的图标字体
+https://github.com/uiw-react/icons
 
 ### 2018-12-20
 
