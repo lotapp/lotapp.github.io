@@ -1,5 +1,6 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
+      - [2018-12-24](#2018-12-24)
     - [2018-12-23](#2018-12-23)
     - [2018-12-20](#2018-12-20)
     - [2018-12-19](#2018-12-19)
@@ -62,6 +63,20 @@
 
 
 ## 十二月
+
+#### 2018-12-24
+
+**对SQL进行优化和改写的自动化工具**（小米开源）
+https://github.com/lotapp/soar
+
+**HBase替代方案**：Pegasus（小米开源）
+https://github.com/lotapp/pegasus
+
+**滴滴 Elasticsearch 多集群架构实践**
+https://www.infoq.cn/article/SbfS6uOcF_gW6FEpQlLK
+
+2018 年最值得关注的 10 个机器学习开源项目
+https://www.infoq.cn/article/8u2DZBVI*2pp7Y39l1ak
 
 ### 2018-12-23
 
