@@ -1,6 +1,8 @@
 ﻿- [2018年](#2018%E5%B9%B4)
   - [十二月](#%E5%8D%81%E4%BA%8C%E6%9C%88)
-      - [2018-12-24](#2018-12-24)
+    - [2018-12-26](#2018-12-26)
+    - [2018-12-25](#2018-12-25)
+    - [2018-12-24](#2018-12-24)
     - [2018-12-23](#2018-12-23)
     - [2018-12-20](#2018-12-20)
     - [2018-12-19](#2018-12-19)
@@ -64,7 +66,32 @@
 
 ## 十二月
 
-#### 2018-12-24
+### 2018-12-26
+
+更新维基hosts：`C:\Windows\System32\drivers\etc`
+```
+# https://zh.wikibooks.org/wiki/突破网络审查#修改hosts文件
+198.35.26.96 zh.wikipedia.org #中文维基百科
+198.35.26.96 zh.m.wikipedia.org #中文维基百科移动版
+198.35.26.96 zh-yue.wikipedia.org #粤文维基百科
+198.35.26.96 wuu.wikipedia.org #吴语维基百科
+198.35.26.96 zh.wikinews.org #中文维基新闻
+198.35.26.96 ja.wikipedia.org #日文维基百科
+198.35.26.96 ja.m.wikipedia.org #日文维基百科移动版
+```
+
+### 2018-12-25
+
+**JetBrains全家桶破解思路**（最新更新：2018-12-24）
+https://www.cnblogs.com/dotnetcrazy/p/9711763.html
+
+**最适合Net开发人员的`MySQL``IDE`**
+https://www.cnblogs.com/dotnetcrazy/p/10172959.html
+
+DataGrip基础教程
+https://blog.csdn.net/u013870094/article/details/79460787
+
+### 2018-12-24
 
 **对SQL进行优化和改写的自动化工具**（小米开源）
 https://github.com/lotapp/soar
