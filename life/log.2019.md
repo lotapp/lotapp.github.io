@@ -1,8 +1,13 @@
-
+- [2019](#2019)
+  - [一月](#%E4%B8%80%E6%9C%88)
+    - [2019-01-02](#2019-01-02)
+    - [2019-01-01](#2019-01-01)
 
 # 2019
 
 ## 一月
+
+### 2019-01-02
 
 ### 2019-01-01
 
@@ -21,7 +26,6 @@ https://github.com/LessChina/sanic
 9. 解决方案虽然各种出，但是web框架不行啊，于是又冒了个主流**`sanic`**（语法和`Flask`很像，性能不亚于`Japronto`）
 10. 现在又刚冒出**`vibora`**（都是C实现）有超过`sanic`的趋势（PS：等过几个版本再试水，不过现在很多开发者都是`Go + Python`了)
 
-
 uvloop —— 超级快的 Python 异步网络框架
 https://github.com/LessChina/uvloop
 https://magic.io/blog/uvloop-blazing-fast-python-networking/
@@ -34,7 +38,42 @@ https://github.com/aio-libs/aiohttp-jinja2
 https://github.com/aio-libs/aiohttp-debugtoolbar
 ```
 
+某Python博客：http://xiaorui.cc
+
 推荐一款ORM：peewee
 https://github.com/lotapp/peewee
 
-某Python博客：http://xiaorui.cc
+**Sanic框架应用部署方法详解**
+https://www.jb51.net/article/143992.htm
+
+**阻碍你使用 GraphQL 的十个问题**
+http://web.jobbole.com/94006/
+
+**年度最佳API扩展**：
+1. **`Swagger`：自动生成API文档**
+    - 妈妈再也不用担心动态API文档了
+2. **`GraphQL`：基于API的查询语言**
+    - 妈妈再也不用担心API返回多余数据了
+```
+Swagger：https://swagger.io/
+https://github.com/LessChina/swagger-ui
+https://github.com/LessChina/go-swagger
+https://github.com/LessChina/swagger-node
+https://github.com/LessChina/swagger-py-codegen
+https://github.com/LessChina/Swashbuckle.AspNetCore
+
+GraphQL：http://graphql.cn/code
+
+Client：
+https://github.com/apollographql
+https://github.com/facebook/relay
+
+Server：
+Go：https://github.com/LessChina/graphql
+JS：https://github.com/LessChina/graphql-js
+Python：https://github.com/LessChina/graphene
+dotnet：https://github.com/LessChina/graphql-dotnet
+
+PDF：
+http://file.allitebooks.com/20180818/Learning GraphQL.epub
+```
