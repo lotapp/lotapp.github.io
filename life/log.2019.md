@@ -9,6 +9,22 @@
 
 ### 2019-01-02
 
+**Win下Py包安装出错就去这个网站下对应包**
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+**开源爬虫参考**：
+https://github.com/lotapp/WebHubBot
+https://github.com/lotapp/distribute_crawler
+
+**区块链数据库**（start 3k+）
+https://github.com/lotapp/bigchaindb
+
+MacOS全套开发环境：（start 4k+）
+https://github.com/donnemartin/dev-setup
+
+Python的REST API框架 eve（start 5k+）
+https://github.com/pyeve/eve
+
 ### 2019-01-01
 
 **【推荐】Python高性能异步框架**
@@ -32,6 +48,7 @@ https://magic.io/blog/uvloop-blazing-fast-python-networking/
 
 几款基于AIO的库：`https://github.com/aio-libs`
 ```
+https://github.com/LessChina/aio-pika
 https://github.com/LessChina/aiomysql
 https://github.com/LessChina/aioredis
 https://github.com/aio-libs/aiohttp-jinja2
@@ -40,7 +57,7 @@ https://github.com/aio-libs/aiohttp-debugtoolbar
 
 某Python博客：http://xiaorui.cc
 
-推荐一款ORM：peewee
+推荐一款ORM：`peewee`
 https://github.com/lotapp/peewee
 
 **Sanic框架应用部署方法详解**

@@ -595,6 +595,7 @@ sys 0m2.644s</code></pre>
 
 <pre><code>[转账前]小明5000,小张8000
 [转账后]小明5000,小张8000</code></pre>
+<p>PS：<code>lock.locked()</code>：判断 lock 当前是否上锁，如果上锁，返回True，否则返回False【上锁失败时候的处理】</p>
 <hr>
 <h3 id="2.2.4.&#32447;&#31243;&#21516;&#27493;~&#26465;&#20214;&#21464;&#37327;Condition">2.2.4.&#32447;&#31243;&#21516;&#27493;~&#26465;&#20214;&#21464;&#37327;Condition<a class="anchor-link" href="#2.2.4.&#32447;&#31243;&#21516;&#27493;~&#26465;&#20214;&#21464;&#37327;Condition">&#182;</a></h3><p><strong>条件变量一般都不是锁，能阻塞线程，从而减少不必要的竞争</strong>，Python内置了<code>RLock</code>（不指定就是RLock）</p>
 <p>看看源码：</p>
@@ -4327,7 +4328,7 @@ yum install htop -y</code></pre>
 <p>使用distutils构建C和C ++扩展：<a href="https://docs.python.org/3/extending/building.html" target="_blank">https://docs.python.org/3/extending/building.html</a></p>
 <hr>
 <h3 id="2.3.4.&#36890;&#29992;&#20195;&#30721;">2.3.4.&#36890;&#29992;&#20195;&#30721;<a class="anchor-link" href="#2.3.4.&#36890;&#29992;&#20195;&#30721;">&#182;</a></h3><p>官方文档：<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank">concurrent.futures--启动并行任务</a></p>
-<p>上次说到了<code>yield from</code>，这次讲的这个就是基于<code>线程/进程</code>再结合<code>yield</code>的一个通用实现：（上节回顾：<a href="https://mp.weixin.qq.com/s?timestamp=1544593324&src=3&ver=1&signature=VaQe6O78OPwqaW30ihixqEaEs2*whUgYb5Fcp6VxjCGD43ey7MNlkrU8DbBQIzxGgfo2WGOUL2htGThRVk55MUDxQMkCQB0CbU7wy*WgdXiuuODWbELgvfgreJkKDyYAojDGFupiskmKMpTf0*QeD3-H552sHBrtKn23Q1vRWcw=" target="_blank">并发编程~协程演变过程</a>）</p>
+<p>上次说到了<code>yield from</code>，这次讲的这个就是基于<code>线程/进程</code>再结合<code>yield</code>的一个通用实现：（上节回顾：<a href="https://mp.weixin.qq.com/s/5d701WQG1L8mDOO-bnKXdQ" target="_blank">并发编程~协程演变过程</a>）</p>
 <p>这个是Python3.2开始有<code>concurrent.futures</code>模块，我们主要使用就2个类：<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>（本质上是对<code>threading</code>和<code>multiprocessing</code>进行了高级别的抽象，方便我们实现异步调用）</p>
 <h4 id="1.&#22522;&#30784;&#26696;&#20363;">1.&#22522;&#30784;&#26696;&#20363;<a class="anchor-link" href="#1.&#22522;&#30784;&#26696;&#20363;">&#182;</a></h4><p>通过使用以及看源码发现：<strong>传参和之前稍微有点不同</strong></p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
