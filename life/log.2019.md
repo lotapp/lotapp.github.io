@@ -1,11 +1,31 @@
 - [2019](#2019)
   - [一月](#%E4%B8%80%E6%9C%88)
+    - [2019-01-06](#2019-01-06)
     - [2019-01-02](#2019-01-02)
     - [2019-01-01](#2019-01-01)
 
 # 2019
 
 ## 一月
+
+### 2019-01-06
+
+**免费建站**：http://www.zhujiwu.com
+
+贴一波**资源站**：
+https://shenzjd.com
+http://www.bwfxw.com
+https://www.ddccs.net
+https://www.go176.net
+https://www.fcy99.com
+https://www.cheat8.com
+http://www.dakamao8.com
+https://blog.basnit.com
+https://blog.52damu.com
+https://www.tianchenw.com
+
+**漂亮博客**：
+https://www.zcjun.com/
 
 ### 2019-01-02
 
