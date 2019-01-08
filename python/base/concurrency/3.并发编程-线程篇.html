@@ -14,7 +14,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.&#32447;&#31243;&#31687;">2.&#32447;&#31243;&#31687;<a class="anchor-link" href="#2.&#32447;&#31243;&#31687;">&#182;</a></h1><p>示例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Thread" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Thread</a></p>
+<h1 id="2.&#32447;&#31243;&#31687;">2.&#32447;&#31243;&#31687;<a class="anchor-link" href="#2.&#32447;&#31243;&#31687;">&#182;</a></h1><p>在线预览：<a href="https://www.cnblogs.com/dotnetcrazy/p/9528315.html" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9528315.html</a></p>
+<p>示例代码：<a href="https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Thread" target="_blank">https://github.com/lotapp/BaseCode/tree/master/python/5.concurrent/Thread</a></p>
 <p>终于说道线程了，心酸啊，进程还有点东西下次接着聊，这周4天外出，所以注定发文少了<code>+_+</code></p>
 <p>用过Java或者Net的重点都在线程这块，Python的重点其实在上篇，但线程自有其独到之处～比如资源共享（更轻量级）</p>
 <p>这次采用循序渐进的方式讲解，<code>先使用，再深入，然后扩展，最后来个案例</code>，呃.呃.呃.先这样计划～欢迎纠正错误</p>
@@ -4327,10 +4328,10 @@ yum install htop -y</code></pre>
 <p>用C系列扩展Python：<a href="https://docs.python.org/3/extending/extending.html" target="_blank">https://docs.python.org/3/extending/extending.html</a></p>
 <p>使用distutils构建C和C ++扩展：<a href="https://docs.python.org/3/extending/building.html" target="_blank">https://docs.python.org/3/extending/building.html</a></p>
 <hr>
-<h3 id="2.3.4.&#36890;&#29992;&#20195;&#30721;">2.3.4.&#36890;&#29992;&#20195;&#30721;<a class="anchor-link" href="#2.3.4.&#36890;&#29992;&#20195;&#30721;">&#182;</a></h3><p>官方文档：<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank">concurrent.futures--启动并行任务</a></p>
+<h2 id="2.4.&#36890;&#29992;&#20195;&#30721;">2.4.&#36890;&#29992;&#20195;&#30721;<a class="anchor-link" href="#2.4.&#36890;&#29992;&#20195;&#30721;">&#182;</a></h2><p>官方文档：<a href="https://docs.python.org/3/library/concurrent.futures.html" target="_blank">concurrent.futures--启动并行任务</a></p>
 <p>上次说到了<code>yield from</code>，这次讲的这个就是基于<code>线程/进程</code>再结合<code>yield</code>的一个通用实现：（上节回顾：<a href="https://mp.weixin.qq.com/s/5d701WQG1L8mDOO-bnKXdQ" target="_blank">并发编程~协程演变过程</a>）</p>
 <p>这个是Python3.2开始有<code>concurrent.futures</code>模块，我们主要使用就2个类：<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>（本质上是对<code>threading</code>和<code>multiprocessing</code>进行了高级别的抽象，方便我们实现异步调用）</p>
-<h4 id="1.&#22522;&#30784;&#26696;&#20363;">1.&#22522;&#30784;&#26696;&#20363;<a class="anchor-link" href="#1.&#22522;&#30784;&#26696;&#20363;">&#182;</a></h4><p>通过使用以及看源码发现：<strong>传参和之前稍微有点不同</strong></p>
+<h3 id="1.&#22522;&#30784;&#26696;&#20363;">1.&#22522;&#30784;&#26696;&#20363;<a class="anchor-link" href="#1.&#22522;&#30784;&#26696;&#20363;">&#182;</a></h3><p>通过使用以及看源码发现：<strong>传参和之前稍微有点不同</strong></p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">apply_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">kwds</span><span class="o">=</span><span class="p">{},</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">error_callback</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -4384,7 +4385,7 @@ test over
         <span class="k">if</span> <span class="n">max_workers</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_max_workers</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">1</span>
 </pre></div>
-<h4 id="2.&#25209;&#37327;&#20219;&#21153;&#65288;as_completed&#65289;">2.&#25209;&#37327;&#20219;&#21153;&#65288;<code>as_completed</code>&#65289;<a class="anchor-link" href="#2.&#25209;&#37327;&#20219;&#21153;&#65288;as_completed&#65289;">&#182;</a></h4><p>来个批量请求的案例：</p>
+<h3 id="2.&#25209;&#37327;&#20219;&#21153;&#65288;as_completed&#65289;">2.&#25209;&#37327;&#20219;&#21153;&#65288;<code>as_completed</code>&#65289;<a class="anchor-link" href="#2.&#25209;&#37327;&#20219;&#21153;&#65288;as_completed&#65289;">&#182;</a></h3><p>来个批量请求的案例：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="kn">import</span> <span class="nn">concurrent.futures</span>
@@ -4467,7 +4468,7 @@ https://www.sogou.com 24414
 https://www.cnblogs.com 47148
 https://www.qq.com 46635
 0.2862071990966797</code></pre>
-<h4 id="3.&#25209;&#37327;&#20219;&#21153;&#65288;map&#65289;">3.&#25209;&#37327;&#20219;&#21153;&#65288;<code>map</code>&#65289;<a class="anchor-link" href="#3.&#25209;&#37327;&#20219;&#21153;&#65288;map&#65289;">&#182;</a></h4><p>上面的代码用map可以快速实现：（灵活性比<code>as_completed</code>稍微差点，合适场景下倒是挺方便）</p>
+<h3 id="3.&#25209;&#37327;&#20219;&#21153;&#65288;map&#65289;">3.&#25209;&#37327;&#20219;&#21153;&#65288;<code>map</code>&#65289;<a class="anchor-link" href="#3.&#25209;&#37327;&#20219;&#21153;&#65288;map&#65289;">&#182;</a></h3><p>上面的代码用map可以快速实现：（灵活性比<code>as_completed</code>稍微差点，合适场景下倒是挺方便）</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="kn">import</span> <span class="nn">concurrent.futures</span>
@@ -4532,7 +4533,7 @@ https://www.qq.com 46330
 https://www.sogou.com 24414
 https://www.cnblogs.com 47148
 0.29399967193603516</code></pre>
-<h4 id="&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;">&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;<a class="anchor-link" href="#&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;">&#182;</a></h4><p>和线程池用法一致，就换个名字而已(<code>ProcessPoolExecutor</code>)：</p>
+<h3 id="&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;">&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;<a class="anchor-link" href="#&#36827;&#31243;&#27744;&#30340;&#35828;&#26126;">&#182;</a></h3><p>和线程池用法一致，就换个名字而已(<code>ProcessPoolExecutor</code>)：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="kn">import</span> <span class="nn">concurrent.futures</span>
@@ -4569,7 +4570,7 @@ https://www.cnblogs.com 47148
 https://www.baidu.com 227
 https://www.cnblogs.com 47148
 https://www.qq.com 46364</code></pre>
-<h4 id="&#27969;&#31243;&#22270;&#35299;&#35828;">&#27969;&#31243;&#22270;&#35299;&#35828;<a class="anchor-link" href="#&#27969;&#31243;&#22270;&#35299;&#35828;">&#182;</a></h4><p>官方给的系统执行流程：<code>https://github.com/python/cpython/blob/3.7/Lib/concurrent/futures/process.py</code></p>
+<h3 id="&#27969;&#31243;&#22270;&#35299;&#35828;">&#27969;&#31243;&#22270;&#35299;&#35828;<a class="anchor-link" href="#&#27969;&#31243;&#22270;&#35299;&#35828;">&#182;</a></h3><p>官方给的系统执行流程：<code>https://github.com/python/cpython/blob/3.7/Lib/concurrent/futures/process.py</code></p>
 
 <pre><code>|======================= In-process =====================|== Out-of-process ==|
 +----------+     +----------+       +--------+     +-----------+    +---------+
@@ -4599,7 +4600,7 @@ https://www.qq.com 46364</code></pre>
 </li>
 </ol>
 <p>有了我们前面讲的知识，你再读<code>concurrent.futures</code>模块真的很轻松，大家有空可以去看看</p>
-<h4 id="Future&#23545;&#35937;"><code>Future</code>&#23545;&#35937;<a class="anchor-link" href="#Future&#23545;&#35937;">&#182;</a></h4><p>简单看下<code>Future</code>对象：</p>
+<h3 id="Future&#23545;&#35937;"><code>Future</code>&#23545;&#35937;<a class="anchor-link" href="#Future&#23545;&#35937;">&#182;</a></h3><p>简单看下<code>Future</code>对象：</p>
 <ol>
 <li><code>cancel()</code>：尝试去取消调用。如果调用当前正在执行，不能被取消(<code>返回False</code>)<ul>
 <li>成功返回True，失败返回False</li>
@@ -4612,7 +4613,7 @@ https://www.qq.com 46364</code></pre>
 <li><code>exception(timeout=None)</code>：捕获程序执行过程中的异常</li>
 <li><code>add_done_callback(fn)</code>：将fn绑定到future对象上。当future对象被取消或完成运行时，fn函数将会被调用</li>
 </ol>
-<h5 id="done()&#21644;cancel()&#26696;&#20363;&#65306;"><code>done()</code>&#21644;<code>cancel()</code>&#26696;&#20363;&#65306;<a class="anchor-link" href="#done()&#21644;cancel()&#26696;&#20363;&#65306;">&#182;</a></h5><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<h4 id="done()&#21644;cancel()&#26696;&#20363;&#65306;"><code>done()</code>&#21644;<code>cancel()</code>&#26696;&#20363;&#65306;<a class="anchor-link" href="#done()&#21644;cancel()&#26696;&#20363;&#65306;">&#182;</a></h4><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
@@ -4644,7 +4645,7 @@ https://www.qq.com 46364</code></pre>
 任务1是否完成：False，任务2是否完成：True
 test over
 任务1是否完成：True，任务2是否完成：True</code></pre>
-<h5 id="wait()&#35828;&#26126;"><code>wait()</code>&#35828;&#26126;<a class="anchor-link" href="#wait()&#35828;&#26126;">&#182;</a></h5><p>知识点其实就这么多了，其他的后面结合协程会继续说的，然后还有一个<code>wait</code>的用法简单说说：</p>
+<h4 id="wait()&#35828;&#26126;"><code>wait()</code>&#35828;&#26126;<a class="anchor-link" href="#wait()&#35828;&#26126;">&#182;</a></h4><p>知识点其实就这么多了，其他的后面结合协程会继续说的，然后还有一个<code>wait</code>的用法简单说说：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="kn">import</span> <span class="nn">concurrent.futures</span>
@@ -4717,7 +4718,7 @@ False
 False
 True
 False</code></pre>
-<h5 id="exception-and-add_done_callback"><code>exception</code> and <code>add_done_callback</code><a class="anchor-link" href="#exception-and-add_done_callback">&#182;</a></h5><p>来个案例：</p>
+<h4 id="exception-and-add_done_callback"><code>exception</code> and <code>add_done_callback</code><a class="anchor-link" href="#exception-and-add_done_callback">&#182;</a></h4><p>来个案例：</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">concurrent.futures</span>
 
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
