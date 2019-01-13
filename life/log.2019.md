@@ -19,6 +19,8 @@
 
 # 2019
 
+上篇回顾：<a href="https://mp.weixin.qq.com/s/VtGPvoHktolCCnC-MUsdlw">日常小计~12月下旬</a>
+
 ## 一月
 
 ### 2019-01-14
@@ -34,12 +36,13 @@ Code：https://github.com/lotapp/nginxconfig.io
 **【推荐】GPU任务监控工具（类似于htop）**
 https://github.com/lotapp/nvtop
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/32/img/nvtop.png)
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190113121312108-283288435.png)
 
 **【推荐】用来探索`docker`镜像背后的每一层文件系统，以及发现缩小镜像体积方法的命令行工具（启动命令：`dive 镜像名`）**
+https://github.com/LessChina/dive
 
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190113121348513-1342193461.png)
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/32/img/dive.gif)
 
 **【推荐】`SQL`自动优化和改写的工具**：（小米开源，之前推过）
 https://github.com/lotapp/soar
@@ -67,7 +70,7 @@ FROM
 **【推荐】抓包截取项目中的数据库请求并解析成相应的语句**：
 https://github.com/lotapp/go-sniffer
 
-![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/32/img/go-sniffer.gif)
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190113121546774-967332548.png)
 
 ```
 该工具通过抓包截取项目中的数据库、redis 请求解析成相应的语句。便于调试，不要修改代码，直接嗅探项目中的数据请求。使用说明如下：
