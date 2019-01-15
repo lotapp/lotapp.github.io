@@ -1,6 +1,10 @@
 - [2019](#2019)
   - [一月](#%E4%B8%80%E6%9C%88)
+    - [2019-01-18](#2019-01-18)
+    - [2019-01-17](#2019-01-17)
+      - [Code](#code)
     - [2019-01-16](#2019-01-16)
+      - [Apache ServiceComb微服务框架](#apache-servicecomb%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6)
     - [2019-01-14](#2019-01-14)
       - [工具](#%E5%B7%A5%E5%85%B7)
       - [文章](#%E6%96%87%E7%AB%A0)
@@ -24,10 +28,127 @@
 
 ## 一月
 
+### 2019-01-18
+
+todo
+
+### 2019-01-17
+
+**【推荐】阿里巴巴mysql数据库binlog的增量订阅组件**
+https://github.com/alibaba/canal
+```
+Golang：https://github.com/CanalClient/canal-go
+NetCore：https://github.com/CanalClient/CanalSharp
+```
+![架构](https://camo.githubusercontent.com/46c626b4cde399db43b2634a7911a04aecf273a0/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333130372f63383762363762612d333934632d333038362d393537372d3964623035626530346339352e6a7067)
+
+基于日志增量订阅&消费支持的业务：
+1. 数据库镜像
+2. **数据库实时备份**
+3. 多级索引 (卖家和买家各自分库索引)
+4. search build
+5. **业务cache刷新**
+6. **价格变化等重要业务消息**
+
+原理相对比较简单：
+1. canal模拟mysql slave的交互协议，伪装自己为mysql slave，向mysql master发送dump协议
+2. mysql master收到dump请求，开始推送binary log给slave(也就是canal)
+3. canal解析binary log对象(原始为byte流)
+
+**PS：支持kafka消息投递 and 支持prometheus监控**
+
+#### Code
+
+**1.MySQL配置：**
+```shell
+[mysqld]
+log-bin=mysql-bin # 添加这一行就ok
+binlog-format=ROW # 选择row模式
+server_id=1 # 配置mysql replaction需要定义，不能和canal的slaveId重复
+```
+canal的原理是模拟自己为mysql slave，所以这里一定需要做为mysql slave的相关权限:（针对已有的账户可直接通过grant）
+```sql
+CREATE USER canal IDENTIFIED BY 'canal';  
+GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'canal'@'%';
+-- GRANT ALL PRIVILEGES ON *.* TO 'canal'@'%' ;
+FLUSH PRIVILEGES;
+```
+
+**2.建立与Canal的连接demo：**
+![client](https://github.com/CanalClient/CanalSharp/raw/master/assets/668104-20180925182816462-2110152563.png)
+
+```csharp
+Install-Package CanalSharp.Client
+
+//canal 配置的 destination，默认为 example
+var destination = "example";
+//创建一个简单CanalClient连接对象（此对象不支持集群）传入参数分别为 canal地址、端口、destination、用户名、密码
+var connector = CanalConnectors.NewSingleConnector("127.0.0.1", 11111, destination, "", "");
+//连接 Canal
+connector.Connect();
+//订阅，同时传入Filter，如果不传则以Canal的Filter为准。Filter是一种过滤规则，通过该规则的表数据变更才会传递过来
+connector.Subscribe(".*\\\\..*");
+//获取数据但是不需要发送Ack来表示消费成功
+connector.Get(batchSize);
+//获取数据并且需要发送Ack表示消费成功
+// connector.GetWithoutAck(batchSize);
+```
+
+**3.测试**：
+```sql
+insert into test values(1000,'111');
+update test set name='222' where id=1000;
+delete from test where id=1000;
+```
+![client](https://github.com/CanalClient/CanalSharp/raw/master/assets/ys.gif)
+
+Kafka接入参考：https://github.com/alibaba/canal/wiki/Canal-Kafka-RocketMQ-QuickStart
+
+---
+
+**阿里巴巴分布式数据库同步系统**：
+https://github.com/alibaba/otter
+
+![架构](https://camo.githubusercontent.com/2988fbbc7ddfe94ed027cd71720b1ffa5912a635/687474703a2f2f646c322e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038382f313138392f64343230636131342d326438302d336435352d383038312d6239303833363036613830312e6a7067)
+
+原理描述：
+1. 基于**Canal**开源产品，获取数据库增量日志数据
+2. 基于**zookeeper**，解决分布式状态调度的，允许多node节点之间协同工作.
+3. 典型管理系统架构，manager(web管理)+node(工作节点)
+    - manager运行时推送同步配置到node节点
+    - node节点将同步状态反馈到manager上
+
+**PS：解决异地机房数据同步问题**
+
 ### 2019-01-16
 
-**【推荐】新云盘搜索**：
+**新云盘搜索**：
 https://so.6hgr.top
+
+**360开源一款多数据源SQL分析引擎:Quicksql**
+https://github.com/lotapp/Quicksql
+
+![架构图](https://github.com/lotapp/Quicksql/raw/master/doc/picture/p1.png)
+
+阿里Oracle数据迁移工具（Oracle to MySQL）
+https://github.com/alibaba/yugong
+
+#### Apache ServiceComb微服务框架
+
+**华为开源分布式事务解决方案：Saga**
+https://github.com/apache/servicecomb-pack
+
+![架构图](https://github.com/apache/servicecomb-pack/raw/master/docs/static_files/pack.png)
+```
+Golang：https://github.com/jeremyxu2010/matrix-saga-go
+NetCore：https://github.com/OpenSagas-csharp/servicecomb-pack-csharp
+```
+**PS：如果是Net方向的，还有一款轻量级的推荐：https://github.com/dotnetcore/CAP**
+
+**华为同系列还有一款Go实现的服务中心**：
+https://github.com/apache/servicecomb-service-center
+
+---
 
 ### 2019-01-14
 
