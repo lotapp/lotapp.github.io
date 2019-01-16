@@ -1,6 +1,7 @@
 - [2019](#2019)
   - [一月](#%E4%B8%80%E6%9C%88)
     - [2019-01-18](#2019-01-18)
+      - [源码阅读之Net专栏](#%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E4%B9%8Bnet%E4%B8%93%E6%A0%8F)
     - [2019-01-17](#2019-01-17)
       - [Code](#code)
     - [2019-01-16](#2019-01-16)
@@ -30,7 +31,28 @@
 
 ### 2019-01-18
 
-todo
+#### 源码阅读之Net专栏
+
+**某Net Core 2.1后台管理系统**
+https://gitee.com/hao-zhi-ying/HzyAdmin
+
+基于.Net Core的CMS内容管理系统
+https://gitee.com/feiyit/FytSoaCms
+https://github.com/hogenwang/comcms_core
+
+一个基于ASP.NET Core的可伸缩、通用的文件服务器：
+https://github.com/md-frank/file-service
+
+NetCore高性能和轻量级HTTP服务器组件：
+https://github.com/IKende/FastHttpApi
+
+![对比](https://camo.githubusercontent.com/0667c9daf8e9ee5d8fe80647864d4a2a71e7d8c6/68747470733a2f2f692e696d6775722e636f6d2f424d6a376234612e706e67)
+
+某NetCore小博客源码：
+https://github.com/IKende/XBlog
+
+基于.Net的开源挖矿工具
+https://github.com/ntminer/ntminer
 
 ### 2019-01-17
 
