@@ -1,10 +1,13 @@
 - [2019](#2019)
   - [一月](#%E4%B8%80%E6%9C%88)
+    - [2019-01-22](#2019-01-22)
+    - [2019-01-21](#2019-01-21)
+    - [2019-01-20（推荐）](#2019-01-20%E6%8E%A8%E8%8D%90)
     - [2019-01-18](#2019-01-18)
       - [源码阅读之Net专栏](#%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E4%B9%8Bnet%E4%B8%93%E6%A0%8F)
-    - [2019-01-17](#2019-01-17)
+    - [2019-01-17（必看）](#2019-01-17%E5%BF%85%E7%9C%8B)
       - [Code](#code)
-    - [2019-01-16](#2019-01-16)
+    - [2019-01-16（推荐）](#2019-01-16%E6%8E%A8%E8%8D%90)
       - [Apache ServiceComb微服务框架](#apache-servicecomb%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6)
     - [2019-01-14](#2019-01-14)
       - [工具](#%E5%B7%A5%E5%85%B7)
@@ -28,6 +31,74 @@
 上篇回顾：<a href="https://mp.weixin.qq.com/s/VtGPvoHktolCCnC-MUsdlw">日常小计~12月下旬</a>
 
 ## 一月
+
+### 2019-01-22
+
+
+
+**通过动态和交互式的方式了解字字典如何工作**：
+https://just-taking-a-ride.com/inside_python_dict/chapter1.html
+
+### 2019-01-21
+
+**【推荐】用于软件和Web开发的免费API的集合列表**
+https://github.com/lotapp/public-apis
+
+**掘金翻译计划**（英译中）
+https://github.com/lotapp/gold-miner
+
+**【推荐】如何设计大型系统**
+https://github.com/donnemartin/system-design-primer
+
+![](https://camo.githubusercontent.com/14f76dab28dfbfa12ea6b02c6bd0ec726fc17306/687474703a2f2f692e696d6775722e636f6d2f6a7255424146372e706e67)
+
+`Certbot`是**Let’s Encrypt**项目发布的官方客户端，利用它可以完全自动化的获取、部署和更新HTTPS证书
+https://github.com/lotapp/certbot
+
+**从YouTube.com和其他视频网站下载视频的命令行程序**
+```
+https://github.com/rg3/youtube-dl
+
+支持列表：
+https://github.com/rg3/youtube-dl/tree/master/youtube_dl/extractor
+
+比如：爱奇艺
+https://github.com/rg3/youtube-dl/blob/master/youtube_dl/extractor/iqiyi.py
+```
+
+收集Python中那些难以理解的例子以及鲜为人知的功能特性, 并尝试讨论这些现象背后真正的原理
+https://github.com/lotapp/wtfpython-cn
+
+**控制台命令纠正工具**：`The Fuck`
+https://github.com/lotapp/thefuck
+![](https://raw.githubusercontent.com/nvbn/thefuck/master/example.gif)
+
+curl代替工具：HTTPie
+https://github.com/jakubroztocil/httpie
+
+![](https://raw.githubusercontent.com/jakubroztocil/httpie/master/httpie.png)
+
+### 2019-01-20（推荐）
+
+**【推荐】mitmproxy是一个支持HTTP和HTTPS的抓包程序，有类似Fiddler、Charles的功能**
+https://github.com/lotapp/mitmproxy
+
+**【推荐】前端引导组件**：
+https://github.com/LessChina/intro.js
+
+![](https://raw.githubusercontent.com/usablica/intro.js/gh-pages/img/introjs-demo.png)
+
+**【推荐】在Web浏览器中可视化Python，Java，JavaScript，TypeScript，Ruby，C和C代码执行**
+https://github.com/LessChina/OnlinePythonTutor
+
+简单演示一下：（VSCode Ext：`Python Preview`）
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190121071805424-1156885895.gif)
+
+颜色配置（作者是浅色，我用浅色演示了下，发现色彩尚可）
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190121072404211-376355438.png)
+
+如果你也是深色主题可以参考我的设置：(`#21759b` `#0f3647` `#4c0b4c` `#79431c`)
+![](https://img2018.cnblogs.com/blog/1127869/201901/1127869-20190121073835489-626215055.png)
 
 ### 2019-01-18
 
@@ -54,7 +125,7 @@ https://github.com/IKende/XBlog
 基于.Net的开源挖矿工具
 https://github.com/ntminer/ntminer
 
-### 2019-01-17
+### 2019-01-17（必看）
 
 **【推荐】阿里巴巴mysql数据库binlog的增量订阅组件**
 https://github.com/alibaba/canal
@@ -142,7 +213,7 @@ https://github.com/alibaba/otter
 
 **PS：解决异地机房数据同步问题**
 
-### 2019-01-16
+### 2019-01-16（推荐）
 
 **新云盘搜索**：
 https://so.6hgr.top
