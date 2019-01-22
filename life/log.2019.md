@@ -34,7 +34,8 @@
 
 ### 2019-01-22
 
-
+**图片在线压缩**（谷歌提供）：
+https://squoosh.app
 
 **通过动态和交互式的方式了解字字典如何工作**：
 https://just-taking-a-ride.com/inside_python_dict/chapter1.html
