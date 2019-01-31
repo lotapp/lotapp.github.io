@@ -1,5 +1,9 @@
 - [2019](#2019)
   - [一月](#%E4%B8%80%E6%9C%88)
+    - [2019-01-31（推荐）](#2019-01-31%E6%8E%A8%E8%8D%90)
+    - [2019-01-29（资源）](#2019-01-29%E8%B5%84%E6%BA%90)
+    - [2019-01-27（推荐）](#2019-01-27%E6%8E%A8%E8%8D%90)
+    - [2019-01-25](#2019-01-25)
     - [2019-01-23](#2019-01-23)
     - [2019-01-22](#2019-01-22)
     - [2019-01-21](#2019-01-21)
@@ -10,7 +14,7 @@
       - [Code](#code)
     - [2019-01-16（推荐）](#2019-01-16%E6%8E%A8%E8%8D%90)
       - [Apache ServiceComb微服务框架](#apache-servicecomb%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6)
-    - [2019-01-14](#2019-01-14)
+    - [2019-01-14（必看）](#2019-01-14%E5%BF%85%E7%9C%8B)
       - [工具](#%E5%B7%A5%E5%85%B7)
       - [文章](#%E6%96%87%E7%AB%A0)
       - [源码](#%E6%BA%90%E7%A0%81)
@@ -19,27 +23,219 @@
     - [2019-01-11](#2019-01-11)
     - [2019-01-10](#2019-01-10)
     - [2019-01-09](#2019-01-09)
-    - [2019-01-08](#2019-01-08)
+    - [2019-01-08（推荐）](#2019-01-08%E6%8E%A8%E8%8D%90)
       - [建站专题](#%E5%BB%BA%E7%AB%99%E4%B8%93%E9%A2%98)
     - [2019-01-07](#2019-01-07)
     - [2019-01-06](#2019-01-06)
     - [2019-01-04](#2019-01-04)
     - [2019-01-02](#2019-01-02)
-    - [2019-01-01](#2019-01-01)
+    - [2019-01-01（必看）](#2019-01-01%E5%BF%85%E7%9C%8B)
 
 # 2019
 
-上篇回顾：<a href="https://mp.weixin.qq.com/s/VtGPvoHktolCCnC-MUsdlw">日常小计~12月下旬</a>
-
 ## 一月
 
+上篇回顾：<a href="https://mp.weixin.qq.com/s/VtGPvoHktolCCnC-MUsdlw">日常小计~12月下旬</a>
+
+### 2019-01-31（推荐）
+
+**【推荐】网页正文抽取工具**：
+https://github.com/lotapp/cx-extractor-python
+> `cx-extractor`算法的`python`版本，改进了原有算法，使其支持中英文(对新闻类网页正文抽取效果较好)
+
+**【推荐】记录终端命令并生成svg动画：`termtosvg`**
+https://github.com/lotapp/termtosvg
+> 通过命令 termtosvg 运行该工具，然后在终端执行你要展示的命令
+输入 exit 结束录制，本地会生成一份 SVG 动画用于展示终端操作
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/30/img/termtosvg.gif)
+
+**【推荐】阿里提供的基于`React`的中后台应用解决方案-ice**(10.8k+，让前端开发简单而友好)
+https://github.com/lotapp/ice
+
+简介：组件、区块、布局、模板等统称为物料，基于这些物料结合 Iceworks 可以快速搭建中后台应用。在此之外，如果已有的物料不能满足你的业务需求，我们提供了一套完整的开发规范和开发者工具，你可以参与共建飞冰物料，也可以自建私有的物料体系。
+1. 组件：最基础的物料，目前飞冰的基础组件达到 55+，具有高度可复用性。
+2. 区块：通过对大量的中后台系统常用的场景进行分类、对比和抽象，基于基础组件组合而成，目前飞冰的区块达到 110+，可以通过 iceworks 进行快速组合搭建应用，减少重复的开发，提升效率。
+3. 布局：在中后台系统中布局通常较为统一，以 顶部-侧边布局-通栏 模式为主，为此我们提供了 4+ 常见的布局，支持 light 和 dark 两套主题。
+4. 模板：基于已有的区块搭建而成，目前提供了 4+ 的特定领域的模板，可以从零开始搭建应用，也可以选择特定类型的模板开始使用。
+![](https://img.alicdn.com/tfs/TB1uMkVnTtYBeNjy1XdXXXXyVXa-2048-1400.jpg)
+
+**PS：之前推荐过一款阿里推荐的前端UI解决方案：`https://github.com/LessChina/ant-design`**
+
+一个可用于**内网穿透**的高性能的**反向代理**应用
+https://github.com/lotapp/frp
+
+**【推荐】自带文件浏览器的网盘服务**。支持功能：文件浏览、文件生成分享链接、批量上传、文件夹创建等服务、用户系统
+<https://github.com/lotapp/filebrowser>
+
+安装步骤如下:
+1. 安装：`docker pull filebrowser/filebrowser`
+2. 配置：配置文件在 `/etc/config.json`，数据库在 `/etc/database.db`
+3. 启动：`docker run \ -v /path/to/sites/root:/srv \ -v /path/to/config.json:/config.json \ -v /path/to/database.db:/database.db \ -p 80:80 \ filebrowser/filebrowser`
+4. 访问：然后访问 `http://localhost` 即可，默认是 80 端口，改端口的话修改 config.json 文件
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/30/img/filebrowser.gif)
+
+**开箱即用的前端工作流客户端**(内置最前沿的 WebPack4、Babel7、Gulp4 的构建工具)
+https://github.com/lotapp/legoflow
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/30/img/legoflow.png)
+
+**【推荐】基于 Vue2 简洁易用、可批量、拖拽的文件上传插件**
+https://github.com/TerryZ/v-uploader
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/30/img/v-uploader.png)
+
+### 2019-01-29（资源）
+
+JavaScript英文教程（从编程基础到前端、后端 Web 开发）
+https://github.com/lotapp/thejsway
+> 该教程采用 ES5 语法编写，使用 ESLint 、Pretties 工具，每章都有练习，最后的一个实战项目将指导你创建新闻 Web 应用
+
+**【推荐】中华新华字典数据库。包括歇后语，成语，词语，汉字**
+https://github.com/lotapp/chinese-xinhua
+
+**【推荐】机器学习100天**
+https://github.com/lotapp/100-Days-Of-ML-Code
+
+**【推荐】算法、深度学习、NLP 面试笔记**
+https://github.com/lotapp/Algorithm_Interview_Notes-Chinese
+
+**OpenAI制作的教育资源，可以更容易地学习深层强化学习**
+https://github.com/lotapp/spinningup
+
+**【推荐】阿里前端精读周刊**
+https://github.com/lotapp/weekly
+
+**滴滴前端技术分享**
+https://github.com/lotapp/DDFE-blog
+
+### 2019-01-27（推荐）
+
+**【推荐】根据SQL和配置文件生成接口的工具（支持`SQLServer` and `MySQL`）**
+https://github.com/lotapp/sqler
+>  SQLer是一个小巧的便携式服务器，使您可以使用SQL查询编写API，以便在任何人点击时执行它，还可以让您定义验证规则，以便您可以验证请求正文/查询参数，以及使用简单的数据转换 javascript语法。 sqler使用nginx样式配置语言（HCL）和jd引擎进行自定义表达式（与传统的 SQL 生成 RESETful API 的工具不同，这个工具允许你自定义一些 API 的前、后处理，Auth 之类的行为）
+```json
+启动命令 sqler -config=path to config file，配置示例
+
+adduser {
+// 参数校验
+    validators {
+        user_name_is_empty = "$input.user_name && $input.user_name.trim().length > 0"
+        user_email_is_empty = "$input.user_email && $input.user_email.trim(' ').length > 0"
+        user_password_is_not_ok = "$input.user_password && $input.user_password.trim(' ').length > 5"
+    }
+
+    bind {
+        name = "$input.user_name"
+        email = "$input.user_email"
+        password = "$input.user_password"
+    }
+
+    methods = ["POST"]
+// 权限校验
+    authorizer = <<JS
+        (function(){
+            log("use this for debugging")
+            token = $input.http_authorization
+            response = fetch("http://requestbin.fullcontact.com/zxpjigzx", {
+                headers: {
+                    "Authorization": token
+                }
+            })
+            if ( response.statusCode != 200 ) {
+                return false
+            }
+            return true
+        })()
+    JS
+
+    exec = <<SQL
+        INSERT INTO users(name, email, password, time) VALUES(:name, :email, :password, UNIX_TIMESTAMP());
+        SELECT * FROM users WHERE id = LAST_INSERT_ID();
+    SQL
+}
+```
+
+**【推荐】通过动态二维码传输数据**
+https://github.com/lotapp/txqr
+
+![](https://github.com/divan/txqr/raw/master/docs/demo.gif)
+
+**【推荐】批量管理Git仓库的命令行工具**
+https://github.com/lotapp/gitbatch
+
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/34/img/gitbatch.gif)
+
+**【推荐】腾讯开源的移动 H5 的控制台开发调试工具**，支持查看 console 日志、网络请求、自定义插件等
+https://github.com/lotapp/vConsole
+
+![](https://github.com/lotapp/vConsole/raw/dev/example/snapshot/log_panel.png)
+
+**WeChat官方设计团队的UI库**（21.3k+）
+https://github.com/Tencent/weui
+
+PS：知识拓展
+1. **基于`Vue.js`和`Weui`的移动端框架`Vux`**：https://github.com/lotapp/vux
+2. **基于`Vue.js`的轻量级应用框架**：https://github.com/lotapp/nuxt.js
+
+**腾讯开源的通用 Web 组件化框架**(7k+，可和阿里的对比)
+https://github.com/lotapp/omi
+
+![](https://github.com/Tencent/omi/raw/master/assets/omi-rm-v1.png)
+
+### 2019-01-25
+
+提供**在线借书**功能的**开源小程序**项目
+https://github.com/imageslr/weapp-library
+
+**一个静态博客写作客户端**
+https://github.com/lotapp/hve-notes
+
+**基于`Three.js`的`Web3D`地球数据可视化组件**
+https://github.com/lotapp/giojs
+
+> 使用 Gio.js 的网页应用开发者，可以快速地以申明的方式创建自定义的 Web3D 数据可视化模型，添加数据，并且将其作为一个组件整合到自己的应用中。支持静态 Dom、React和微信小程序。具有一下特点：
+1. 易用性 -- 仅使用 4 行 Javascript 即可创建 3D 地球数据可视化模型
+2. 定制化 -- 使用 Gio.js 提供的丰富的 API 来创建自定义样式的 3D 地球
+3. 现代化 -- 基于 Gio.js 构建高交互、跨平台、自适应的现代化 3D 前端应用
+
+**钓鱼网站生成工具** 该工具会根据给定的模版生成一个钓鱼网站，然后在该网站输入的用户名密码等敏感信息会被记录 
+https://github.com/lotapp/Modlishka
+
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/34/img/Modlishka.jpeg)
+
+**开源版视频播放器**potplayer ，用于学习和交流音视频技术
+https://github.com/itisyang/playerdemo
+
+一个轻量级的css框架：
+https://github.com/ajusa/lit
+
+lit有两个模块：lit和util。 它们都设计得尽可能小，并且易于扩展：
+1. lit包含框架的所有基础知识，例如响应式网格，排版和其他元素
+2. util有许多CSS实用程序类，可用于扩展lit或任何CSS框架
+
 ### 2019-01-23
+
+**算法可视化工具**：https://github.com/lotapp/algorithm-visualizer
+> 你可以自由选择自己想学习的算法，每个算法它都清晰描绘了其原理和运作过程
+
+![](https://raw.githubusercontent.com/algorithm-visualizer/algorithm-visualizer/master/branding/screenshot.png)
+
+**简单易用的Python爬虫框架**
+https://github.com/lotapp/PSpider
+
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/34/img/PSpider.png)
+
+**【推荐】介绍 Python 有趣、神奇的开源项目**
+https://github.com/lotapp/awesome-python-applications
 
 **讲谈社·中国的历史**（1-10卷）
 ```
 逆天点评：日本人的角度客观回顾中国历史，感兴趣的推荐看看
 https://pan.baidu.com/s/1WDjJkzgAq2BZppM-Jmg2Mg 密码：jqet
 ```
+
+**【推荐】在屏幕上实时显示当前按键的工具**
+https://github.com/keycastr/keycastr
+
+![](https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/34/img/keycastr.gif)
 
 ### 2019-01-22
 
@@ -253,7 +449,9 @@ https://github.com/apache/servicecomb-service-center
 
 ---
 
-### 2019-01-14
+### 2019-01-14（必看）
+
+上篇回顾：<a href="https://mp.weixin.qq.com/s/VtGPvoHktolCCnC-MUsdlw">日常小计~12月下旬</a>
 
 #### 工具
 
@@ -439,7 +637,7 @@ pip install -r requirements.txt
 python run.py
 ```
 
-### 2019-01-08
+### 2019-01-08（推荐）
 
 #### 建站专题
 
@@ -464,6 +662,14 @@ https://cloud.tencent.com/act/group/amd/index
 
 **阿里云**目前只有海外虚拟主机有优惠：香港1核1G虚拟主机：2年546元
 https://www.aliyun.com/chinaglobal/promotion/virtual2017
+
+**百度云**最新优惠：
+
+年底秒杀
+https://cloud.baidu.com/event/mid-yearPromotion/index.html
+
+最新活动：
+https://cloud.baidu.com/campaign/PromotionActivity/index.html
 
 ### 2019-01-07
 
@@ -564,7 +770,7 @@ https://github.com/donnemartin/dev-setup
 Python的REST API框架 eve（start 5k+）
 https://github.com/pyeve/eve
 
-### 2019-01-01
+### 2019-01-01（必看）
 
 **【推荐】Python高性能异步框架**
 https://github.com/LessChina/sanic
