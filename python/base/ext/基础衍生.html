@@ -2,10 +2,12 @@
 <html>
 <head><meta charset="utf-8" />
 <title>基础衍生</title>
+<head>
 <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
-<script src="../../../style/js/mynav.min.js" async></script></head>
+<script src="../../../style/js/mynav.min.js" async></script>
+</head>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
@@ -17,7 +19,7 @@
 <p>本文适应人群：<code>C#</code> or <code>Python3</code> 基础巩固</p>
 <p>代码裤子： <a href="https://github.com/lotapp/BaseCode" target="_blank">https://github.com/lotapp/BaseCode</a></p>
 <p>在线编程： <a href="https://mybinder.org/v2/gh/lotapp/BaseCode/master" target="_blank">https://mybinder.org/v2/gh/lotapp/BaseCode/master</a></p>
-<p>在线预览：<a href="http://github.lesschina.com/python/base/ext/基础衍生.html" target="_blank">http://github.lesschina.com/python/base/ext/基础衍生.html</a></p>
+<p>在线预览：<a href="https://github.lesschina.com/python/base/ext/基础衍生.html" target="_blank">http://github.lesschina.com/python/base/ext/基础衍生.html</a></p>
 <p>马上快期末考试了，老师蜜月也回来了，于是有了一场跨季度的复习讲课了：</p>
 <h2 id="1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;">1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;<a class="anchor-link" href="#1.Python&#22522;&#30784;&#35821;&#27861;&#25193;&#23637;">&#182;</a></h2><h3 id="1.1.if-&#21028;&#26029;&#26465;&#20214;&#30456;&#20851;">1.1.if &#21028;&#26029;&#26465;&#20214;&#30456;&#20851;<a class="anchor-link" href="#1.1.if-&#21028;&#26029;&#26465;&#20214;&#30456;&#20851;">&#182;</a></h3><p><code>None、""、0、[]、{}</code> ==&gt; 假</p>
 <p><code>1、" "、[None,""]、{"":None}</code> ==&gt; 真</p>
@@ -2416,6 +2418,8 @@ key:Age,value:23
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>扩：当拷贝的不可变对象含有引用类型时：赋值和浅拷贝不会copy，而深拷贝(deepcopy)会递归复制</strong>
 <img src="https://img2018.cnblogs.com/blog/658978/201903/658978-20190314113927119-1660617447.png" alt="深拷贝.png"></p>
+<p><strong>PS：我们常用的切片相当于浅拷贝</strong>（<code>copy.copy()</code>）
+<img src="https://img2018.cnblogs.com/blog/658978/201903/658978-20190314121336517-2122258672.png" alt="切片.png"></p>
 <h2 id="4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;<a class="anchor-link" href="#4.CSharp&#20013;&#36171;&#20540;&#12289;&#27973;&#25335;&#36125;&#12289;&#28145;&#25335;&#36125;">&#182;</a></h2><p>小明听懂了Python的深拷贝和浅拷贝后，本着学以致用的原则，写下了C#的实现：</p>
 <p>先声明一下，本机环境是Ubuntu + NetCore，欢迎贴Code补充</p>
 <h3 id="4.1.&#36171;&#20540;">4.1.&#36171;&#20540;<a class="anchor-link" href="#4.1.&#36171;&#20540;">&#182;</a></h3><p>Code：<a href="https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/deepcopy" target="_blank">https://github.com/lotapp/BaseCode/tree/master/netcore/3_Ext/deepcopy</a></p>
