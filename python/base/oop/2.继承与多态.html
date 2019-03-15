@@ -1,47 +1,37 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8" />
-  <title>2.继承与多态</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
-  <script src="../../../style/js/mynav.min.js" async></script>
+<head><meta charset="utf-8" />
+<title>2.继承与多态</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../../style/css/jupyter.all.min.css">
+<script src="../../../style/js/mynav.min.js" async></script>
 </head>
-
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <h2 id="2.&#32487;&#25215;">2.&#32487;&#25215;
-              <a class="anchor-link" href="#2.&#32487;&#25215;">&#182;</a>
-            </h2>
-            <h3 id="2.1.&#21333;&#32487;&#25215;">2.1.&#21333;&#32487;&#25215;
-              <a class="anchor-link" href="#2.1.&#21333;&#32487;&#25215;">&#182;</a>
-            </h3>
-            <p>在OOP中，当我们定义一个Class的时候，可以从某个现有的Class继承</p>
-            <p>新的Class称为子类，而被继承的class称为 基类 或者 父类</p>
-            <p>Python的继承格式 ==&gt;
-              <strong>xxx(base_class)</strong>
-            </p>
-            <p>小明兴高采烈的听着老师开新课，不一会就看见了一个演示Demo：</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.&#32487;&#25215;">2.&#32487;&#25215;<a class="anchor-link" href="#2.&#32487;&#25215;">&#182;</a></h2><p>代码裤子：<a href="https://github.com/lotapp/BaseCode">https://github.com/lotapp/BaseCode</a></p>
+<p>在线编程：<a href="https://mybinder.org/v2/gh/lotapp/BaseCode/master">https://mybinder.org/v2/gh/lotapp/BaseCode/master</a></p>
+<p>在线预览：<a href="http://github.lesschina.com/python/base/oop/2.继承与多态.html">http://github.lesschina.com/python/base/oop/2.继承与多态.html</a></p>
+<h3 id="2.1.&#21333;&#32487;&#25215;">2.1.&#21333;&#32487;&#25215;<a class="anchor-link" href="#2.1.&#21333;&#32487;&#25215;">&#182;</a></h3><p>在OOP中，当我们定义一个Class的时候，可以从某个现有的Class继承</p>
+<p>新的Class称为子类，而被继承的class称为 基类 或者 父类</p>
+<p>Python的继承格式 ==&gt; <strong>xxx(base_class)</strong></p>
+<p>小明兴高采烈的听着老师开新课，不一会就看见了一个演示Demo：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[1]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;动物会吃&quot;</span><span class="p">)</span>
 
@@ -60,57 +50,47 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>动物会吃
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>动物会吃
 动物会吃
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>当听到老师说：“
-              <strong>私有</strong>的属性方法
-              <strong>不会被子类继承</strong> ”的时候，小明心里一颤，联想到之前讲的
-              <strong>类属性</strong>、
-              <strong>实例属性</strong>、
-              <strong>实例方法</strong>、
-              <strong>类方法</strong>、
-              <strong>静态方法</strong>，于是赶紧写个Demo验证一下：</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>当听到老师说：“<strong>私有</strong>的属性方法 <strong>不会被子类继承</strong> ”的时候，小明心里一颤，联想到之前讲的 <strong>类属性</strong>、<strong>实例属性</strong>、<strong>实例方法</strong>、<strong>类方法</strong>、<strong>静态方法</strong>，于是赶紧写个Demo验证一下：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[2]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># 类属性</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;动物&#39;</span>
 
@@ -163,24 +143,23 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>1
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
 我是实例方法，动物会吃哦～
 动物
 我是类方法，动物会叫哦
@@ -190,39 +169,31 @@
 我是静态方法，动物会玩耍哦
 我是静态方法，动物会玩耍哦
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>来张图就懂了，不是
-              <strong>私有的</strong> 都能访问：</p>
-            <p>
-              <img src="../../../images/python/2018-06-20/extends.png" alt="一张图就懂了">
-            </p>
-            <p>这时候，小明老高兴了，单回头一想 ==&gt; 不科学啊，dog应该有其对应的方法吧，C#有
-              <strong>虚方法</strong>重写，Python怎么搞？在
-              <strong>子类</strong>里面又
-              <strong>怎么调用父类方法</strong>呢？</p>
-            <p>对于小明的提示老师很高兴，于是点名小潘来写一个子类调用父类的demo（老师昨天从窗户里看见小潘有预习）：</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>来张图就懂了，不是 <strong>私有的</strong> 都能访问：</p>
+<p><img src="../../../images/python/2018-06-20/extends.png" alt="一张图就懂了"></p>
+<p>这时候，小明老高兴了，单回头一想 ==&gt; 不科学啊，dog应该有其对应的方法吧，C#有<strong>虚方法</strong>重写，Python怎么搞？在<strong>子类</strong>里面又<strong>怎么调用父类方法</strong>呢？</p>
+<p>对于小明的提示老师很高兴，于是点名小潘来写一个子类调用父类的demo（老师昨天从窗户里看见小潘有预习）：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[3]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="c1"># 调用父类的方法</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 调用父类的方法</span>
 <span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文雅的吃饭&quot;</span><span class="p">)</span>
@@ -250,56 +221,51 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>文雅的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>文雅的吃饭
 文雅的吃饭
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>一般我们使用
-              <code>super().方法</code>来调用父类方法</p>
-            <p>第二种方法
-              <code>类名.方法(self)</code>千万别忘记传self哦</p>
-            <p>对了，C#是用base关键词，别搞混了</p>
-            <p>小明这时候可不高兴了，风头怎么能被小潘全部抢走呢，赶紧问问旁边同样预习的伟哥</p>
-            <p>不一会儿淡定的发了份重写父类方法的demo给老师：</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>一般我们使用<code>super().方法</code>来调用父类方法</p>
+<p>第二种方法<code>类名.方法(self)</code>千万别忘记传self哦</p>
+<p>对了，C#是用base关键词，别搞混了</p>
+<p>小明这时候可不高兴了，风头怎么能被小潘全部抢走呢，赶紧问问旁边同样预习的伟哥</p>
+<p>不一会儿淡定的发了份重写父类方法的demo给老师：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[4]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="c1"># 重写父类方法==&gt;子类和父类有同名方法</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 重写父类方法==&gt;子类和父类有同名方法</span>
 <span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -326,68 +292,52 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>小明喜欢文雅的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>小明喜欢文雅的吃饭
 小潘喜欢大口吃饭大口喝酒
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>老师半喜半忧的说道：“小明同学啊，你也老大不小了，怎么跟孩子一样啊？案例不错，但是怎么能人身攻击人家小潘了？”</p>
-            <p>当子类和父类都存在相同的
-              <code>eat()</code>方法时，我们说，子类的
-              <code>eat()</code>覆盖了父类的
-              <code>eat()</code>
-            </p>
-            <p>在代码运行的时候，总是会调用子类的
-              <code>eat()</code> 这样，我们就获得了继承的另一个好处：
-              <strong>多态</strong>
-            </p>
-            <h3 id="2.2.&#22810;&#32487;&#25215;">2.2.&#22810;&#32487;&#25215;
-              <a class="anchor-link" href="#2.2.&#22810;&#32487;&#25215;">&#182;</a>
-            </h3>
-            <p>在讲
-              <code>多态</code>之前，我们先引入一下Python的
-              <strong>多继承</strong> 对，你没有听错</p>
-            <p>Java、C#都是单继承，多实现。Python和C++一样，可以多继承，先不要吐槽，
-              <strong>规范使用</strong>其实很方便的</p>
-            <p>来个案例看看：</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>老师半喜半忧的说道：“小明同学啊，你也老大不小了，怎么跟孩子一样啊？案例不错，但是怎么能人身攻击人家小潘了？”</p>
+<p>当子类和父类都存在相同的<code>eat()</code>方法时，我们说，子类的<code>eat()</code>覆盖了父类的<code>eat()</code></p>
+<p>在代码运行的时候，总是会调用子类的<code>eat()</code> 这样，我们就获得了继承的另一个好处：<strong>多态</strong></p>
+<h3 id="2.2.&#22810;&#32487;&#25215;">2.2.&#22810;&#32487;&#25215;<a class="anchor-link" href="#2.2.&#22810;&#32487;&#25215;">&#182;</a></h3><p>在讲<code>多态</code>之前，我们先引入一下Python的 <strong>多继承</strong> 对，你没有听错</p>
+<p>Java、C#都是单继承，多实现。Python和C++一样，可以多继承，先不要吐槽，<strong>规范使用</strong>其实很方便的</p>
+<p>来个案例看看：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[5]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="c1"># 多继承引入</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 多继承引入</span>
 <span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文雅的吃饭&quot;</span><span class="p">)</span>
@@ -410,57 +360,50 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>文雅的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>文雅的吃饭
 小碎步
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>继承可以把父类的所有功能都直接拿过来，这样就不必重0开始写代码，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写</p>
-            <p>注意一个情况，如果父类里面有同名方法咋办了？到底调哪个呢？</p>
-            <p>使用
-              <code>子类名.__mro__</code>可以看在调方法的时候搜索顺序</p>
-            <p>一般同名方法都是
-              <strong>先看自己</strong>有没有，然后看继承顺序，比如这边
-              <strong>先看Mom再看Father</strong>
-            </p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>继承可以把父类的所有功能都直接拿过来，这样就不必重0开始写代码，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写</p>
+<p>注意一个情况，如果父类里面有同名方法咋办了？到底调哪个呢？</p>
+<p>使用<code>子类名.__mro__</code>可以看在调方法的时候搜索顺序</p>
+<p>一般同名方法都是 <strong>先看自己</strong>有没有，然后看继承顺序，比如这边 <strong>先看Mom再看Father</strong></p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[6]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="c1"># 如果父类里面有同名方法怎么知道调哪个？</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 如果父类里面有同名方法怎么知道调哪个？</span>
 <span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文雅的吃饭&quot;</span><span class="p">)</span>
@@ -483,43 +426,39 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>开心的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>开心的吃饭
 (&lt;class &#39;__main__.Son&#39;&gt;, &lt;class &#39;__main__.Mom&#39;&gt;, &lt;class &#39;__main__.Father&#39;&gt;, &lt;class &#39;object&#39;&gt;)
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>Python的多继承最好是当C#或者Java里面的接口使用，这样结构不会混乱(
-              <strong>特殊情况除外</strong>)</p>
-            <p>来个例子：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python的多继承最好是当C#或者Java里面的接口使用，这样结构不会混乱(<strong>特殊情况除外</strong>)</p>
+<p>来个例子：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="k">class</span> <span class="nc">Flyable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -542,20 +481,13 @@
 <span class="k">class</span> <span class="nc">Dack</span><span class="p">(</span><span class="n">Animal</span><span class="p">,</span> <span class="n">Runable</span><span class="p">,</span> <span class="n">Flyable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;鸭子会飞也会跑&quot;&quot;&quot;</span>
     <span class="k">pass</span>
-</pre>
-            </div>
-            <p>和C#一样，Python的
-              <strong>父类构造函数不会被继承</strong>
-            </p>
-            <p>其实从资源角度也不应该被继承，如果有1w个子类，那每个子类里面都有一个父类方法，想想这是多么浪费的一件事情？</p>
-            <hr>
-            <h3 id="2.3.C#&#32487;&#25215;">2.3.C#&#32487;&#25215;
-              <a class="anchor-link" href="#2.3.C#&#32487;&#25215;">&#182;</a>
-            </h3>
-            <p>下课后，小明认真思考总结，然后对照Python写下了C#版的继承：</p>
-            <p>定义一个人类</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+</pre></div>
+<p>和C#一样，Python的 <strong>父类构造函数不会被继承</strong></p>
+<p>其实从资源角度也不应该被继承，如果有1w个子类，那每个子类里面都有一个父类方法，想想这是多么浪费的一件事情？</p>
+<hr>
+<h3 id="2.3.C#&#32487;&#25215;">2.3.C#&#32487;&#25215;<a class="anchor-link" href="#2.3.C#&#32487;&#25215;">&#182;</a></h3><p>下课后，小明认真思考总结，然后对照Python写下了C#版的继承：</p>
+<p>定义一个人类</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">public</span> <span class="kt">ushort</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -574,11 +506,9 @@
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">Name</span> <span class="p">+</span> <span class="s">&quot; Age: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">Age</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个学生类</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span> <span class="p">:</span> <span class="n">Person</span>
+</pre></div>
+<p>定义一个学生类</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span> <span class="p">:</span> <span class="n">Person</span>
 <span class="p">{</span>
     <span class="cp">#region 属性</span>
     <span class="c1">/// &lt;summary&gt;</span>
@@ -628,32 +558,25 @@
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">Name</span> <span class="p">+</span> <span class="s">&quot; Age: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">Age</span> <span class="p">+</span> <span class="s">&quot; School: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">School</span> <span class="p">+</span> <span class="s">&quot; strClass: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">StrClass</span> <span class="p">+</span> <span class="s">&quot; strNum: &quot;</span> <span class="p">+</span> <span class="k">this</span><span class="p">.</span><span class="n">StrNum</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>调用一下：</p>
-            <div class="highlight">
-              <pre><span></span><span class="n">Person</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;app&quot;</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="s">&quot;北京大学&quot;</span><span class="p">,</span> <span class="s">&quot;001&quot;</span><span class="p">,</span> <span class="s">&quot;01001&quot;</span><span class="p">);</span>
+</pre></div>
+<p>调用一下：</p>
+<div class="highlight"><pre><span></span><span class="n">Person</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;app&quot;</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="s">&quot;北京大学&quot;</span><span class="p">,</span> <span class="s">&quot;001&quot;</span><span class="p">,</span> <span class="s">&quot;01001&quot;</span><span class="p">);</span>
 <span class="n">p</span><span class="p">.</span><span class="n">Hi</span><span class="p">();</span> <span class="n">p</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
 
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
 
 <span class="n">Student</span> <span class="n">s</span> <span class="p">=</span> <span class="n">p</span> <span class="k">as</span> <span class="n">Student</span><span class="p">;</span>
 <span class="n">s</span><span class="p">.</span><span class="n">Hi</span><span class="p">();</span> <span class="n">s</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
-</pre>
-            </div>
-            <p>结果:</p>
+</pre></div>
+<p>结果:</p>
 
-            <pre><code>Name: app Age: 10
+<pre><code>Name: app Age: 10
 Name: app Age: 10 School: 北京大学 strClass: 001 strNum: 01001
 Name: app Age: 10 School: 北京大学 strClass: 001 strNum: 01001
 Name: app Age: 10 School: 北京大学 strClass: 001 strNum: 01001</code></pre>
-            <hr>
-            <h3 id="2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;">2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;
-              <a class="anchor-link" href="#2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;">&#182;</a>
-            </h3>
-            <p>定义两个接口：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IRun</span>
+<hr>
+<h3 id="2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;">2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;<a class="anchor-link" href="#2.4C#&#25509;&#21475;&#30340;&#22810;&#23454;&#29616;">&#182;</a></h3><p>定义两个接口：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IRun</span>
 <span class="p">{</span>
     <span class="c1">//什么都不用加</span>
     <span class="k">void</span> <span class="nf">Run</span><span class="p">();</span>
@@ -663,50 +586,30 @@ Name: app Age: 10 School: 北京大学 strClass: 001 strNum: 01001</code></pre>
 <span class="p">{</span>
     <span class="k">void</span> <span class="nf">Eat</span><span class="p">();</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个Dog类来实现两个接口，这样dog就有了run和eat的方法了</p>
-            <div class="highlight">
-              <pre><span></span><span class="kt">var</span> <span class="n">dog</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">();</span>
+</pre></div>
+<p>定义一个Dog类来实现两个接口，这样dog就有了run和eat的方法了</p>
+<div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">dog</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">();</span>
 <span class="n">dog</span><span class="p">.</span><span class="n">Eat</span><span class="p">();</span>
 <span class="n">dog</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
-</pre>
-            </div>
-            <p>结果：</p>
+</pre></div>
+<p>结果：</p>
 
-            <pre><code>狗狗吃
+<pre><code>狗狗吃
 狗狗跑</code></pre>
-            <hr>
-            <h2 id="3-&#22810;&#24577;">3 &#22810;&#24577;
-              <a class="anchor-link" href="#3-&#22810;&#24577;">&#182;</a>
-            </h2>
-            <h3 id="3.1.Python">3.1.Python
-              <a class="anchor-link" href="#3.1.Python">&#182;</a>
-            </h3>
-            <p>说多态之前说说类型判断，以前我们用
-              <code>type()</code> or
-              <code>isinstance()</code>
-            </p>
-            <p>
-              <strong>判断一个变量和另一个变量是否是同一个类型</strong>==&gt;
-              <code>type(a)==type(b)</code>
-            </p>
-            <p>
-              <strong>判断一个变量是否是某个类型</strong>==&gt;
-              <code>type(a)==A</code> or
-              <code>isinstance(a,A)</code>
-            </p>
+<hr>
+<h2 id="3-&#22810;&#24577;">3 &#22810;&#24577;<a class="anchor-link" href="#3-&#22810;&#24577;">&#182;</a></h2><h3 id="3.1.Python">3.1.Python<a class="anchor-link" href="#3.1.Python">&#182;</a></h3><p>说多态之前说说类型判断，以前我们用<code>type()</code> or <code>isinstance()</code></p>
+<p><strong>判断一个变量和另一个变量是否是同一个类型</strong>==&gt; <code>type(a)==type(b)</code></p>
+<p><strong>判断一个变量是否是某个类型</strong>==&gt; <code>type(a)==A</code> or <code>isinstance(a,A)</code></p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[7]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="c1"># 判断一个变量是否是某个类型 ==&gt; isinstance() or type</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 判断一个变量是否是某个类型 ==&gt; isinstance() or type</span>
 <span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 
@@ -730,73 +633,66 @@ Name: app Age: 10 School: 北京大学 strClass: 001 strNum: 01001</code></pre>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>True
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>True
 True
 &lt;class &#39;__main__.Dog&#39;&gt;
 True
 True
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>小明老高兴了，终于讲解多态了，不禁问道：“
-              <strong>多态的好处</strong>是啥？”</p>
-            <p>小潘瞥了一眼小明～“废话，肯定为了
-              <strong>屏蔽子类差异用</strong>的啊，像简单工厂不就干的这个事？"</p>
-            <p>小明楞了楞，眼巴巴的看着老师继续讲课。</p>
-            <p>设计模式我们会找个专题讲讲，现在给你们说的是Python的基础。</p>
-            <p>Python是动态语言的“
-              <strong>鸭子类型</strong>”，它并不要求严格的继承体系。</p>
-            <p>一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子（最后会贴一个案例）</p>
-            <p>C#实现多态有很多方式，比如虚方法，比如抽象类，比如接口等等...</p>
-            <p>小明迷迷糊糊的问道：“那
-              <strong>Python怎么实现多态呢</strong>？”</p>
-            <p>老师看了一眼打断他讲课的小明，然后继续说道～来个简单案例：</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小明老高兴了，终于讲解多态了，不禁问道：“<strong>多态的好处</strong>是啥？”</p>
+<p>小潘瞥了一眼小明～“废话，肯定为了 <strong>屏蔽子类差异用</strong>的啊，像简单工厂不就干的这个事？"</p>
+<p>小明楞了楞，眼巴巴的看着老师继续讲课。</p>
+<p>设计模式我们会找个专题讲讲，现在给你们说的是Python的基础。</p>
+<p>Python是动态语言的“<strong>鸭子类型</strong>”，它并不要求严格的继承体系。</p>
+<p>一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子（最后会贴一个案例）</p>
+<p>C#实现多态有很多方式，比如虚方法，比如抽象类，比如接口等等...</p>
+<p>小明迷迷糊糊的问道：“那 <strong>Python怎么实现多态呢</strong>？”</p>
+<p>老师看了一眼打断他讲课的小明，然后继续说道～来个简单案例：</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[8]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;人类会吃饭&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;优雅的吃饭&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;赶时间的吃饭&quot;</span><span class="p">)</span>
 
@@ -812,61 +708,57 @@ True
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>赶时间的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>赶时间的吃饭
 优雅的吃饭
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>多态的好处在于，如果这时候我再来个Son子类，有eat()方法编写正确，不用管原来的代码是如何调用的</p>
-            <p>这次小明懂了，为了装一下，说道：”老师老师，我记得C# 或者 Java里面是写成 eat(People obj) 的吧？“</p>
-            <p>老师欣慰的笑了一下，说道：”记得刚才说的
-              <code>填鸭式</code>吗？Python这么写有个好处哦，我们来看个案例，然后你自己总结“</p>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>多态的好处在于，如果这时候我再来个Son子类，只要eat()方法编写正确，不用管原来的代码是如何调用的</p>
+<p>这次小明懂了，为了装一下，说道：”老师老师，我记得C# 或者 Java里面是写成 eat(People obj) 的吧？“</p>
+<p>老师欣慰的笑了一下，说道：”记得刚才说的<code>填鸭式</code>吗？Python这么写有个好处哦，我们来看个案例，然后你自己总结“</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing code_cell rendered">
-        <div class="input">
-          <div class="prompt input_prompt">In&nbsp;[9]:</div>
-          <div class="inner_cell">
-            <div class="input_area">
-              <div class=" highlight hl-ipython3">
-                <pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;人类会吃饭&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;优雅的吃饭&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Teacher</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;赶时间的吃饭&quot;</span><span class="p">)</span>
 
@@ -889,50 +781,115 @@ True
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre>
-              </div>
+</pre></div>
 
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
-        <div class="output_wrapper">
-          <div class="output">
-
-
-            <div class="output_area">
-
-              <div class="prompt"></div>
+<div class="output_wrapper">
+<div class="output">
 
 
-              <div class="output_subarea output_stream output_stdout output_text">
-                <pre>赶时间的吃饭
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>赶时间的吃饭
 优雅的吃饭
 舔着吃
 </pre>
-              </div>
-            </div>
+</div>
+</div>
 
-          </div>
-        </div>
+</div>
+</div>
 
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p>小明突然大声说道：”老师老师，我知道了，Python这是吧类的继承和接口继承融合起来了啊，实现多态就相当于C#里面的接口实现多态啊！！！“</p>
-            <p>老师点评道：”你姑且可以这么理解，这些我们后面还会继续说的，这种填鸭式的手段刚开始的确会有点不方便，用着用着你就会觉得挺方便的“</p>
-            <hr>
-            <p>小明认真思考总结，然后对照Python和小潘一起写下了
-              <strong>C#版的多态</strong>：</p>
-            <h3 id="3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;">3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;
-              <a class="anchor-link" href="#3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;">&#182;</a>
-            </h3>
-            <p>定义一个人类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小明赶紧结合之前学的内容写了个小案例：</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;人类会吃饭&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Father</span><span class="p">(</span><span class="n">People</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;优雅的吃饭&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;舔着吃饭&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Factory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;eat&quot;</span><span class="p">):</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;该类没有eat()方法!&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">people</span> <span class="o">=</span> <span class="n">People</span><span class="p">()</span>
+    <span class="n">father</span> <span class="o">=</span> <span class="n">Father</span><span class="p">()</span>
+    <span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+    
+    <span class="n">Factory</span><span class="o">.</span><span class="n">eat</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+    <span class="n">Factory</span><span class="o">.</span><span class="n">eat</span><span class="p">(</span><span class="n">father</span><span class="p">)</span>
+    <span class="n">Factory</span><span class="o">.</span><span class="n">eat</span><span class="p">(</span><span class="n">dog</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>人类会吃饭
+优雅的吃饭
+舔着吃饭
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>小明突然大声说道：”老师老师，我知道了，Python这是吧类的继承和接口继承融合起来了啊，实现多态就相当于C#里面的接口实现多态啊！！！“</p>
+<p>老师点评道：”你姑且可以这么理解，这些我们后面还会继续说的，这种填鸭式的手段刚开始的确会有点不方便，用着用着你就会觉得挺方便的“</p>
+<hr>
+<p>小明认真思考总结，然后对照Python和小潘一起写下了 <strong>C#版的多态</strong>：</p>
+<h3 id="3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;">3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;<a class="anchor-link" href="#3.2.C#&#34394;&#26041;&#27861;&#23454;&#29616;&#22810;&#24577;">&#182;</a></h3><p>定义一个人类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
 <span class="p">{</span>
     <span class="cp">#region 字段+属性</span>
     <span class="c1">/// &lt;summary&gt;</span>
@@ -996,11 +953,9 @@ True
     <span class="p">}</span>
     <span class="cp">#endregion</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个女孩类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Gril</span> <span class="p">:</span> <span class="n">Person</span>
+</pre></div>
+<p>定义一个女孩类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Gril</span> <span class="p">:</span> <span class="n">Person</span>
 <span class="p">{</span>
     <span class="cp">#region 构造函数</span>
     <span class="k">public</span> <span class="nf">Gril</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
@@ -1017,11 +972,9 @@ True
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;你好，我叫{Name}，今年{Age}岁了，我是一个腼腆的小{genderStr}&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个男孩类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Boy</span> <span class="p">:</span> <span class="n">Person</span>
+</pre></div>
+<p>定义一个男孩类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Boy</span> <span class="p">:</span> <span class="n">Person</span>
 <span class="p">{</span>
     <span class="cp">#region 构造函数</span>
     <span class="k">public</span> <span class="nf">Boy</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
@@ -1036,11 +989,9 @@ True
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;你好，我叫{Name}，今年{Age}岁了，我是一个腼腆的小{genderStr}&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>调用：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Person</span><span class="p">[]</span> <span class="n">persons</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Boy</span><span class="p">(</span><span class="s">&quot;铁锅&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="m">13</span><span class="p">),</span> <span class="k">new</span> <span class="n">Gril</span><span class="p">(</span><span class="s">&quot;妞妞&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="m">22</span><span class="p">)</span> <span class="p">};</span>
     <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">persons</span><span class="p">)</span>
@@ -1051,32 +1002,26 @@ True
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>结果：</p>
+</pre></div>
+<p>结果：</p>
 
-            <pre><code>Polymorphism1.Person
+<pre><code>Polymorphism1.Person
 我是一个人类！
 Polymorphism1.Boy
 你好，我叫铁锅，今年13岁了，我是一个腼腆的小男孩
 Polymorphism1.Gril
 你好，我叫妞妞，今年22岁了，我是一个腼腆的小女孩</code></pre>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <hr>
-            <h3 id="3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;">3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;
-              <a class="anchor-link" href="#3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;">&#182;</a>
-            </h3>
-            <p>定义一个动物类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Animal</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;">3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;<a class="anchor-link" href="#3.3.C#&#25277;&#35937;&#31867;&#23454;&#29616;&#22810;&#24577;">&#182;</a></h3><p>定义一个动物类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Animal</span>
 <span class="p">{</span>
     <span class="c1">/// &lt;summary&gt;</span>
     <span class="c1">/// 抽象类中可以有正常的方法</span>
@@ -1091,21 +1036,17 @@ Polymorphism1.Gril
     <span class="c1">/// &lt;/summary&gt;</span>
     <span class="k">public</span> <span class="k">abstract</span> <span class="k">void</span> <span class="nf">Call</span><span class="p">();</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个猫科动物类（子类必须实现父类抽象方法，如果不实现，那么该类也必须是抽象类）</p>
-            <div class="highlight">
-              <pre><span></span><span class="c1">/// &lt;summary&gt;</span>
+</pre></div>
+<p>定义一个猫科动物类（子类必须实现父类抽象方法，如果不实现，那么该类也必须是抽象类）</p>
+<div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
 <span class="c1">/// 猫科动物---子类必须实现父类抽象方法，如果不实现，那么该类也必须是抽象类</span>
 <span class="c1">/// &lt;/summary&gt;</span>
 <span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Feline</span> <span class="p">:</span> <span class="n">Animal</span>
 <span class="p">{</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个猫类</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="n">Feline</span>
+</pre></div>
+<p>定义一个猫类</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="n">Feline</span>
 <span class="p">{</span>
     <span class="c1">/// &lt;summary&gt;</span>
     <span class="c1">/// 子类必须实现父类抽象方法，如果不实现，那么该类也必须是抽象类</span>
@@ -1115,11 +1056,9 @@ Polymorphism1.Gril
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;喵喵叫~~~&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个狗类</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="n">Animal</span>
+</pre></div>
+<p>定义一个狗类</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="n">Animal</span>
 <span class="p">{</span>
     <span class="c1">/// &lt;summary&gt;</span>
     <span class="c1">/// 子类必须实现抽象类中的抽象方法</span>
@@ -1129,37 +1068,29 @@ Polymorphism1.Gril
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;汪汪叫~~~&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>调用：</p>
-            <div class="highlight">
-              <pre><span></span><span class="n">Animal</span><span class="p">[]</span> <span class="n">animals</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">()</span> <span class="p">};</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="n">Animal</span><span class="p">[]</span> <span class="n">animals</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">()</span> <span class="p">};</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">animals</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">item</span><span class="p">.</span><span class="n">Call</span><span class="p">();</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>结果：</p>
+</pre></div>
+<p>结果：</p>
 
-            <pre><code>汪汪叫~~~
+<pre><code>汪汪叫~~~
 喵喵叫~~~</code></pre>
 
-          </div>
-        </div>
-      </div>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="prompt input_prompt">
-        </div>
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <hr>
-            <h3 id="3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;">3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;
-              <a class="anchor-link" href="#3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;">&#182;</a>
-            </h3>
-            <p>定义一个跑的接口：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IRun</span>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;">3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;<a class="anchor-link" href="#3.4.C#&#25509;&#21475;&#23454;&#29616;&#22810;&#24577;">&#182;</a></h3><p>定义一个跑的接口：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IRun</span>
 <span class="p">{</span>
     <span class="c1">/// &lt;summary&gt;</span>
     <span class="c1">/// 接口中可以声明属性，方法，索引器等</span>
@@ -1168,52 +1099,45 @@ Polymorphism1.Gril
 
     <span class="k">void</span> <span class="nf">Runing</span><span class="p">();</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个猫类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="n">IRun</span>
+</pre></div>
+<p>定义一个猫类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="n">IRun</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">void</span> <span class="nf">Runing</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;飞快的跑着上树&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>定义一个学生类：</p>
-            <div class="highlight">
-              <pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span> <span class="p">:</span> <span class="n">IRun</span>
+</pre></div>
+<p>定义一个学生类：</p>
+<div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span> <span class="p">:</span> <span class="n">IRun</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">void</span> <span class="nf">Runing</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;飞快的跑着去上课&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>调用：</p>
-            <div class="highlight">
-              <pre><span></span><span class="n">IRun</span><span class="p">[]</span> <span class="n">objs</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">()</span> <span class="p">};</span>
+</pre></div>
+<p>调用：</p>
+<div class="highlight"><pre><span></span><span class="n">IRun</span><span class="p">[]</span> <span class="n">objs</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(),</span> <span class="k">new</span> <span class="n">Cat</span><span class="p">()</span> <span class="p">};</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">objs</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">item</span><span class="p">.</span><span class="n">Runing</span><span class="p">();</span>
 <span class="p">}</span>
-</pre>
-            </div>
-            <p>结果：</p>
+</pre></div>
+<p>结果：</p>
 
-            <pre><code>飞快的跑着去上课
+<pre><code>飞快的跑着去上课
 飞快的跑着上树</code></pre>
 
-          </div>
-        </div>
-      </div>
+</div>
+</div>
+</div>
     </div>
   </div>
 </body>
 
-
+ 
 
 
 </html>
