@@ -1461,7 +1461,7 @@ blockquote {
   padding: 9px 18px;
   margin: 0 0 18px;
   font-size: inherit;
-  border: 2px solid #efefef; /* add */
+  border: 1px solid #efefef; /* add */
   /* border-left: 5px solid #eeeeee; */
 }
 blockquote p:last-child,

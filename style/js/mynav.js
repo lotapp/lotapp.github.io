@@ -1,8 +1,9 @@
 $(function () {
     // 生成目录索引列表
     var temp_html = '<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt"></div><div class="inner_cell"><div class="text_cell_render border-box-sizing rendered_html"><p><strong>文章汇总：<a href="http://github.lesschina.com/" target="_blank">https://www.cnblogs.com/dotnetcrazy/p/9160514.html</a></strong></p>{dntnav}</div></div></div>';
-    var h_list = $('#notebook-container h1,#notebook-container h2,#notebook-container h3');//这边你可以自行修改
-
+    // 检测h1、h2、h3、h4
+    var h_list = $('#notebook-container h1,#notebook-container h2,#notebook-container h3,#notebook-container h4'); //这边你可以自行修改
+    // 有就生成导航
     if (h_list.length > 0) {
         var content = '<div id="navCategory"><a name="dnttop"></a>';
         content += '<p><b>目录：</b></p>';
@@ -17,9 +18,10 @@ $(function () {
                 li2_content = '<li><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
             } else if (targetName == 'h2') {
                 li2_content = '<li style="padding-left: 0.5em;"><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
-            }
-            else if (targetName == 'h3') {
+            } else if (targetName == 'h3') {
                 li2_content = '<li style="padding-left: 1em;"><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
+            } else if (targetName == 'h4') {
+                li2_content = '<li style="padding-left: 1.5em;"><a href="#_map' + i + '">' + $(h_list[i]).text() + '</a></li>';
             }
             content += li2_content;
         }
@@ -28,7 +30,6 @@ $(function () {
         if ($('#notebook-container').length != 0) {
             $($('#notebook-container')[0]).prepend(temp_html.replace("{dntnav}", content));
         }
-
         //返回顶部
         var div_cells = $('.text_cell');
         var top_str = '<div style="text-align: right"><p><a href="#dnttop">返回顶部</a></p></div>';
