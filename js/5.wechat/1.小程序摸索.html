@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<title>1.小程序摸索</title>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../../style/css/jupyter.all.min.css">
+<script src="../../style/js/mynav.min.js" async></script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#19968;&#25991;&#25720;&#25720;&#23567;&#31243;&#24207;&#30340;&#24213;">&#19968;&#25991;&#25720;&#25720;&#23567;&#31243;&#24207;&#30340;&#24213;<a class="anchor-link" href="#&#19968;&#25991;&#25720;&#25720;&#23567;&#31243;&#24207;&#30340;&#24213;">&#182;</a></h1><p>写在前面的话：<strong>算不了入门教程，只能算这几晚的摸索教程，下次会出一篇<code>一文入门小程序</code></strong></p>
+<p>本文示例源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base</a></p>
+<h2 id="1.&#23617;&#35805;&#19968;&#31657;&#31568;">1.&#23617;&#35805;&#19968;&#31657;&#31568;<a class="anchor-link" href="#1.&#23617;&#35805;&#19968;&#31657;&#31568;">&#182;</a></h2><p>有些同志留言说我消失了，文章更新频率比以前慢多了？我这边先统一回复一下：</p>
+<p>最近这<code>几个月</code>利用空闲时间把<strong>三国</strong>读完了（咳，别问我为什么读，就是突然想读了）</p>
+<blockquote><p>PS：有空聊聊呗~</p>
+</blockquote>
+<p>然后最近<code>两个星期</code>迷上了<strong>读书</strong>，回头可能会发点读书笔记，推荐几本不错的书给大家</p>
+<p>然后就是<code>上次发文</code>，修复Shopee上传限制的时候使用了下<code>JQ</code>来快速实现</p>
+<blockquote><p>PS：说到底还是个后端偏数据方向的，也就<code>JQ</code>还记得。。。</p>
+</blockquote>
+<p>然后本着专研的精神，又把<code>H5</code>复习了一下</p>
+<blockquote><p>PS：几年前曾经在旧博客写过H5的读书笔记</p>
+</blockquote>
+<p>本来准备找下思维导图快速过下的，之后发现。。。当时懒了一下，只是发图，所以。。<code>丢包了</code>。。。</p>
+<blockquote><p>PS：于是最近几天闲暇之余<code>W3C</code>逛的比较多</p>
+</blockquote>
+<p>然后先是改写了上次的脚本，再写了<code>H5</code>的markdown<code>草稿</code></p>
+<blockquote><p>PS：过几天你们应该可以看到了，咳，人老了~容易疲劳。。让我先缓缓。。先缓缓</p>
+</blockquote>
+<p>然后专研的毛病又来了，草稿写到导航和多媒体的时候想用小程序试试，毕竟现在是小程序的天下了</p>
+<blockquote><p>PS：之前前给亲戚弄小程序的时候研究了1个晚上，发现不是很难，然后现在想到了</p>
+</blockquote>
+<p>然后发现~前端的东西的确不难，但是我这人有个毛病：喜欢追求页面的美感。。</p>
+<p>于是发现。。demo几分钟搞定了，为了调个漂亮样式却耗去几小时。。。</p>
+<blockquote><p>PS：本来今天可以早点休息的，于是乎~陪大家熬个夜吧。。。</p>
+</blockquote>
+<h2 id="2.&#35760;&#24405;&#28857;&#23567;&#31243;&#24207;&#21151;&#33021;&#28857;">2.&#35760;&#24405;&#28857;&#23567;&#31243;&#24207;&#21151;&#33021;&#28857;<a class="anchor-link" href="#2.&#35760;&#24405;&#28857;&#23567;&#31243;&#24207;&#21151;&#33021;&#28857;">&#182;</a></h2><p>我用的不多，简单引入一下，小程序API用起来很简单的，更全的可以去官方查看</p>
+<blockquote><p>PS：唉，还是Python官方文档最省心啊~</p>
+</blockquote>
+<p><strong>话说，以后还是老老实实先把上面几个系列文章清了再说吧~</strong></p>
+<blockquote><p>PS：清了以后，我还会回来的~</p>
+</blockquote>
+<h3 id="2.1.&#21069;&#35328;">2.1.&#21069;&#35328;<a class="anchor-link" href="#2.1.&#21069;&#35328;">&#182;</a></h3><p><code>小程序|公众号</code>登录注册页面：<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a></p>
+<blockquote><p>这个太简单，就不浪费时间了，贴个官方教程：<a href="https://developers.weixin.qq.com/miniprogram/dev/#申请帐号">https://developers.weixin.qq.com/miniprogram/dev/#申请帐号</a></p>
+</blockquote>
+<p>下载开发工具：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a></p>
+<p>新建个简单项目：
+<img src="../../images/wechat/2019-03-25/1.创建小程序.png" alt="1.创建小程序.png"></p>
+<p>项目基本配置：一般在详细里面改就行了
+<img src="../../images/wechat/2019-03-25/2.配置文件.png" alt="2.配置文件.png"></p>
+<p>文件简单介绍：（图说的很清楚了）
+<img src="../../images/wechat/2019-03-25/3.文件介绍.png" alt="3.文件介绍.png"></p>
+<p><strong>PS：用法和css一样，在小程序中像素单位全部用<code>rpx</code>（类似于<code>rem</code>）</strong></p>
+<blockquote><p><code>rpx</code>: 可以根据屏幕宽度进行自适应，文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
+</blockquote>
+<p><strong>PS：小程序支持的标签</strong>：<a href="https://developers.weixin.qq.com/miniprogram/dev/component/">https://developers.weixin.qq.com/miniprogram/dev/component/</a></p>
+<p>下面开始就记录下遇到的<strong>小技术点</strong>：</p>
+<h3 id="2.2.&#39029;&#38754;&#21021;&#22987;&#25968;&#25454;&#30340;&#20351;&#29992;">2.2.&#39029;&#38754;&#21021;&#22987;&#25968;&#25454;&#30340;&#20351;&#29992;<a class="anchor-link" href="#2.2.&#39029;&#38754;&#21021;&#22987;&#25968;&#25454;&#30340;&#20351;&#29992;">&#182;</a></h3><p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/1data">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/1data</a></p>
+<h4 id="2.2.1.&#33719;&#21462;">2.2.1.&#33719;&#21462;<a class="anchor-link" href="#2.2.1.&#33719;&#21462;">&#182;</a></h4><p>在页面的data中定义了几个字段：
+<img src="../../images/wechat/2019-03-25/3.data.png" alt="3.data.png"></p>
+<p>想在页面中显示只需要写成<code>{{xxx}}</code>即可
+<img src="../../images/wechat/2019-03-25/3.渲染.png" alt="3.渲染.png"></p>
+<p><strong>PS：你每次保存，左边都会有预览的</strong></p>
+<hr>
+<p><strong><code>{{xxx}}</code>也可以在样式和属性中哦~</strong>（<code>wxss和css用法一样</code>）</p>
+<p>贴下demo：（支持的标签看官方文档即可）</p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!--index.wxml--&gt;</span>
+<span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;{{my_class}}&#39;</span><span class="p">&gt;</span>{{name}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{age}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{work.name}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{work.location}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>脚本：（支持ES6语法）</p>
+<div class="highlight"><pre><span></span><span class="c1">//index.js</span>
+<span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;小明&quot;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="nx">work</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;微软&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;中国&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">my_class</span><span class="o">:</span> <span class="s2">&quot;red&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;页面加载完成&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>样式：</p>
+<div class="highlight"><pre><span></span><span class="c">/* index.wxss */</span>
+<span class="nt">view</span> <span class="p">{</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">10</span><span class="n">rpx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">red</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>效果演示：
+<img src="../../images/wechat/2019-03-25/3.渲染2.png" alt="3.渲染2.png"></p>
+<hr>
+<h4 id="2.2.2.&#35774;&#32622;">2.2.2.&#35774;&#32622;<a class="anchor-link" href="#2.2.2.&#35774;&#32622;">&#182;</a></h4><p><code>知识点</code>：</p>
+<ul>
+<li><strong>获取：<code>this.data.xxx</code></strong></li>
+<li><strong>设置：<code>this.setData({xxx:xx})</code></strong></li>
+<li><strong>绑定事件：在标签中添加<code>bindtap="自定义方法"</code>属性</strong></li>
+</ul>
+<p>来个修改页面初始数据的案例：（官方说先修改js中的值，然后异步修改页面中的值）</p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!--index.wxml--&gt;</span>
+<span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;{{my_class}}&#39;</span><span class="p">&gt;</span>{{name}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{age}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{work.name}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{work.location}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;update_info&#39;</span><span class="p">&gt;</span>点我就修改<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>脚本文件：</p>
+<div class="highlight"><pre><span></span><span class="c1">//index.js</span>
+<span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;小明&quot;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="nx">work</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;微软&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;中国&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">my_class</span><span class="o">:</span> <span class="s2">&quot;red&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;页面加载完成&quot;</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="c1">// 自定义方法  // look：新增内容</span>
+  <span class="nx">update_info</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// this对象经常容易变，我一般都存一份</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 后台获取data里的值</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
+    <span class="c1">// 修改data(直接赋值没用)</span>
+    <span class="nx">that</span><span class="p">.</span><span class="nx">setData</span><span class="p">({</span>
+      <span class="nx">age</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;小华&quot;</span><span class="p">,</span>
+      <span class="nx">work</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;苹果&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;美国&quot;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>效果展示：
+<img src="../../images/wechat/2019-03-25/3.点我修改.gif" alt="3.点我修改.gif"></p>
+<hr>
+<h2 id="3.&#24377;&#26694;&#25552;&#37266;">3.&#24377;&#26694;&#25552;&#37266;<a class="anchor-link" href="#3.&#24377;&#26694;&#25552;&#37266;">&#182;</a></h2><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/wx.showToast.html">https://developers.weixin.qq.com/miniprogram/dev/api/wx.showToast.html</a></p>
+<p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/2show">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/2show</a></p>
+<p><strong>知识点：<code>wx.showToast({title:'内容',icon:'什么图标',duration:多少毫秒})</code></strong></p>
+<p>在View中添加按钮：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;show_msg1&#39;</span><span class="p">&gt;</span>点我弹两行<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;show_msg2&#39;</span><span class="p">&gt;</span>点我就成功<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+<p>脚本中添加自定义方法：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">title1</span><span class="o">:</span> <span class="s1">&#39;你知道吗？这是可以显示多行的弹框提醒~\r\n你知道吗？这是可以显示多行的弹框提醒~\r\n你知道吗？这是可以显示多行的弹框提醒~&#39;</span><span class="p">,</span>
+    <span class="nx">title2</span><span class="o">:</span> <span class="s1">&#39;一二三四五六七八&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;页面加载完成&quot;</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="c1">// 弹框提醒</span>
+  <span class="nx">show_msg1</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">title1</span><span class="p">,</span>
+      <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="c1">// 可以显示2行</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="mi">2000</span> <span class="c1">// 默认1500</span>
+    <span class="p">})</span>
+  <span class="p">},</span>
+  <span class="c1">// 弹框提醒</span>
+  <span class="nx">show_msg2</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 默认只能显示7个中文字</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">title2</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>效果演示：（<strong><code>\r\n</code>可能在PC调试的时候不换行，但是可以在手机中换行</strong>）
+<img src="../../images/wechat/2019-03-25/4.默认弹框.png" alt="4.默认弹框.png">
+<img src="../../images/wechat/2019-03-25/4.两行弹框.png" alt="4.两行弹框.png"></p>
+<hr>
+<h2 id="4.&#39029;&#38754;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;">4.&#39029;&#38754;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;<a class="anchor-link" href="#4.&#39029;&#38754;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;">&#182;</a></h2><p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/3data">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/3data</a></p>
+<h3 id="4.1.H5&#30340;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;">4.1.H5&#30340;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;<a class="anchor-link" href="#4.1.H5&#30340;&#33258;&#23450;&#20041;&#23646;&#24615;&#20540;">&#182;</a></h3><p>说这个之前，先普及一下H5的这方面知识：
+<strong><code>自定义属性</code></strong>：在标签中的<code>data-自定义属性名</code>（为了规范化）</p>
+<ol>
+<li>获取自定义属性：<code>dom.dataset.自定义属性名</code> or <code>dom.dataset["自定义属性名"]</code></li>
+<li>设置自定义属性：<code>dom.dataset.自定义属性名 = xxx</code> or <code>dom.dataset["自定义属性名"] = xxx</code></li>
+<li>删除自定义属性：<code>delete dom.dataset.自定义属性名</code> or <code>delete dom.dataset["自定义属性名"]</code></li>
+<li>一般属性：<ul>
+<li>获取某个属性：<code>dom.getAttribute("属性名")</code></li>
+<li>删除某个属性：<code>dom.removeAttribute("属性名")</code></li>
+<li>设置某个属性：<code>dom.setAttribute("属性名", "值")</code></li>
+<li>是否包含属性：<code>dom.hasAttribute("属性名")</code></li>
+</ul>
+</li>
+</ol>
+<p>举个栗子：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;test&quot;</span> <span class="na">data-name</span><span class="o">=</span><span class="s">&quot;mmd&quot;</span> <span class="na">data-test-one</span><span class="o">=</span><span class="s">&quot;test&quot;</span><span class="p">&gt;</span>自定义属性<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="c1">// 获取标签的自定义属性值</span>
+    <span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;.test&quot;</span><span class="p">).</span><span class="nx">dataset</span><span class="p">;</span>
+    <span class="c1">// 获取：dom.dataset.自定义属性名（属性名不包含`data-`)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="c1">// PS：test-one名字会改成驼峰命名的变量：testOne</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">testOne</span><span class="p">)</span>
+    <span class="c1">// 设置：dom.dataset.自定义属性名 = xxx or dataset[自定义属性名] = xxx</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;小明&quot;</span><span class="p">;</span> <span class="c1">// 标签中对应值会变成小明</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">// 添加一个属性</span>
+    <span class="c1">// PS：设置为data-test-two</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nx">testTwo</span> <span class="o">=</span> <span class="s2">&quot;test2&quot;</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+<p>输出效果：
+<img src="../../images/h5/2019-03-16/3.h5api.png" alt="/h5/2019-03-16/3.h5api.png"></p>
+<h3 id="4.2.&#23567;&#31243;&#24207;&#29256;">4.2.&#23567;&#31243;&#24207;&#29256;<a class="anchor-link" href="#4.2.&#23567;&#31243;&#24207;&#29256;">&#182;</a></h3><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html</a></p>
+<p><strong>知识点：<code>设置hover样式</code>：在标签内置了<code>hover-class="xxx"</code>属性</strong></p>
+<p>view：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">data-name</span><span class="o">=</span><span class="s">&#39;小张&#39;</span> <span class="na">data-age</span><span class="o">=</span><span class="s">&#39;22&#39;</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;get_datas&#39;</span> <span class="na">hover-class</span><span class="o">=</span><span class="s">&#39;hover&#39;</span><span class="p">&gt;</span>点我获取data值<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>js：（ES6语法忘记的同志可以去之前写的<a href="https://www.cnblogs.com/dotnetcrazy/p/10061671.html" target="_blank">一文读懂ES6</a>）</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;获取Data属性的值&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 设置标题</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">setNavigationBarTitle</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+  <span class="nx">get_datas</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">infos</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">dataset</span><span class="p">;</span>
+    <span class="c1">// 显示弹框</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="sb">`Name：</span><span class="si">${</span><span class="nx">infos</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">，Age：</span><span class="si">${</span><span class="nx">infos</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="c1">// ES6语法</span>
+      <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>样式：</p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">hover</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>动态演示：
+<img src="../../images/wechat/2019-03-25/5.获取data属性.gif" alt="5.获取data属性.gif"></p>
+<hr>
+<h2 id="5.&#23567;&#31243;&#24207;&#26631;&#39064;">5.&#23567;&#31243;&#24207;&#26631;&#39064;<a class="anchor-link" href="#5.&#23567;&#31243;&#24207;&#26631;&#39064;">&#182;</a></h2><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/wx.setNavigationBarTitle.html">https://developers.weixin.qq.com/miniprogram/dev/api/wx.setNavigationBarTitle.html</a></p>
+<p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/4title">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/4title</a></p>
+<p><strong>知识点：<code>wx.setNavigationBarTitle({title:"xxx"})</code></strong></p>
+<p>view：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">text</span><span class="p">&gt;</span>这是一个测试页面<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>js文件：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;欢迎光临&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 设置标题</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">setNavigationBarTitle</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>效果演示：
+<img src="../../images/wechat/2019-03-25/5.标题.png" alt="5.标题.png"></p>
+<hr>
+<h2 id="6.&#25320;&#25171;&#30005;&#35805;">6.&#25320;&#25171;&#30005;&#35805;<a class="anchor-link" href="#6.&#25320;&#25171;&#30005;&#35805;">&#182;</a></h2><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/wx.makePhoneCall.html">https://developers.weixin.qq.com/miniprogram/dev/api/wx.makePhoneCall.html</a></p>
+<p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/6tel">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/6tel</a></p>
+<p><strong>知识点：<code>wx.makePhoneCall({phoneNumber:"xx"})</code></strong></p>
+<p>view:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">hover-class</span><span class="o">=</span><span class="s">&#39;hover&#39;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">text</span> <span class="na">data-tel</span><span class="o">=</span><span class="s">&#39;{{tel}}&#39;</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;call_tel&#39;</span><span class="p">&gt;</span>{{info}}{{tel}}<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>js：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">info</span><span class="o">:</span> <span class="s2">&quot;客服电话：&quot;</span><span class="p">,</span>
+    <span class="nx">tel</span><span class="o">:</span> <span class="s2">&quot;95017&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{},</span>
+  <span class="nx">call_tel</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 打电话</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">makePhoneCall</span><span class="p">({</span>
+      <span class="nx">phoneNumber</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">tel</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>动态演示：
+<img src="../../images/wechat/2019-03-25/8.call.gif" alt="8.call.gif"></p>
+<hr>
+<h2 id="7.&#22270;&#29255;&#32972;&#26223;">7.&#22270;&#29255;&#32972;&#26223;<a class="anchor-link" href="#7.&#22270;&#29255;&#32972;&#26223;">&#182;</a></h2><p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/5img">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/5img</a></p>
+<h3 id="7.1.&#32972;&#26223;&#22270;&#29255;">7.1.&#32972;&#26223;&#22270;&#29255;<a class="anchor-link" href="#7.1.&#32972;&#26223;&#22270;&#29255;">&#182;</a></h3><p>这个和html一样，CSS3就可以实现了</p>
+<p>wxml:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container bg&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>This is Test<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>wxss:</p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+  <span class="k">height</span><span class="p">:</span> <span class="mi">1500</span><span class="n">rpx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">bg</span> <span class="p">{</span>
+  <span class="c">/* 设置背景图片的尺寸 */</span>
+  <span class="k">background-size</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="c">/* CSS3 */</span>
+  <span class="c">/* 不支持本地图片，可以使用Base64或者允许域名下的图片 */</span>
+  <span class="k">background-image</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">data:image/jpeg;base64,/9j/4AAQSkZJ...省略</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>动态展示：
+<img src="../../images/wechat/2019-03-25/7.填充页面.gif" alt="7.填充页面.gif"></p>
+<h3 id="7.2.&#39029;&#38754;&#22635;&#20805;">7.2.&#39029;&#38754;&#22635;&#20805;<a class="anchor-link" href="#7.2.&#39029;&#38754;&#22635;&#20805;">&#182;</a></h3><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/component/image.html">https://developers.weixin.qq.com/miniprogram/dev/component/image.html</a></p>
+<p><strong>PS：图片懒加载：<code>lazy-load="true"</code></strong></p>
+<p>wxml:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- 高度自适应 --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">image</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../images/bg.jpg&quot;</span> <span class="na">mode</span><span class="o">=</span><span class="s">&quot;widthFix&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>wxss:</p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="n">rpx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">bg</span> <span class="p">{</span>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>动态展示：
+<img src="../../images/wechat/2019-03-25/7.填充页面.gif" alt="7.填充页面.gif"></p>
+<h3 id="7.3.&#26032;&#24605;&#36335;">7.3.&#26032;&#24605;&#36335;<a class="anchor-link" href="#7.3.&#26032;&#24605;&#36335;">&#182;</a></h3><p>其实很多时候都是因为height设置100%，它不生效，所以才各种样式来调节</p>
+<p>可以这样设置来达到目的：<strong><code>设置宽度100%，高度100vh</code></strong>（整个屏幕默认满屏为100vh）</p>
+<blockquote><p>PS：地图用的比较多</p>
+</blockquote>
+<p>扩展：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_31496003/article/details/81095614">微信小程序之图片处理</a></li>
+<li><a href="https://www.jianshu.com/p/0d0a0c7da4d3">关于小程序widthFix图片高度不能自适应的问题</a></li>
+</ul>
+<hr>
+<h2 id="8.&#39029;&#38754;&#36339;&#36716;">8.&#39029;&#38754;&#36339;&#36716;<a class="anchor-link" href="#8.&#39029;&#38754;&#36339;&#36716;">&#182;</a></h2><p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/7goto">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/7goto</a></p>
+<p><code>知识点</code>：</p>
+<ul>
+<li><strong>通过方法跳转：<code>wx.navigateTo({url:"url地址"})</code></strong><ul>
+<li>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateTo.html">https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateTo.html</a></li>
+</ul>
+</li>
+<li><strong>页面直接跳转：<code>&lt;navigator url='url地址'&gt;xxx&lt;/navigator&gt;</code></strong><ul>
+<li>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html">https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html</a></li>
+<li>PS：<strong><code>open-type</code></strong>属性可以关注一下：
+演示demo：</li>
+</ul>
+</li>
+</ul>
+<p>先看一下目录结构：
+<img src="../../images/wechat/2019-03-25/9.目录结构.png" alt="9.目录结构.png"></p>
+<p>index页面</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">navigator</span> <span class="na">url</span><span class="o">=</span><span class="s">&#39;{{url}}&#39;</span> <span class="na">hover-class</span><span class="o">=</span><span class="s">&#39;hover&#39;</span><span class="p">&gt;</span>链接跳转<span class="p">&lt;/</span><span class="nt">navigator</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">hover-class</span><span class="o">=</span><span class="s">&#39;hover&#39;</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;to_page&#39;</span> <span class="na">data-url</span><span class="o">=</span><span class="s">&#39;{{url}}&#39;</span><span class="p">&gt;</span>方法跳转<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span> <span class="na">hover-class</span><span class="o">=</span><span class="s">&#39;hover&#39;</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;goto_page&#39;</span> <span class="na">data-url</span><span class="o">=</span><span class="s">&#39;{{url2}}&#39;</span><span class="p">&gt;</span>带参跳转<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>index脚本：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;小明&#39;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;../1data/update_info&#39;</span><span class="p">,</span>
+    <span class="nx">url2</span><span class="o">:</span> <span class="s1">&#39;./main&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="p">},</span>
+  <span class="nx">to_page</span><span class="o">:</span> <span class="nx">e</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 页面跳转</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">navigateTo</span><span class="p">({</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">url</span>
+    <span class="p">})</span>
+  <span class="p">},</span>
+  <span class="nx">goto_page</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 页面跳转</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">navigateTo</span><span class="p">({</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="sb">`</span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">?name=</span><span class="si">${</span><span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&amp;age=</span><span class="si">${</span><span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>main页面：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;container&#39;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{name}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>{{age}}<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>main脚本：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pms</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pms</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 设置data值</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setData</span><span class="p">({</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="nx">pms</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="nx">age</span><span class="o">:</span> <span class="nx">pms</span><span class="p">.</span><span class="nx">age</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>动态演示：
+<img src="../../images/wechat/2019-03-25/9.跳转.gif" alt="9.跳转.gif"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这些东西都是用API，算是比较简单的了，就是找起来麻烦点，时间不早了，地图这块我再贴一个案例就先结束吧</p>
+<h2 id="9.&#22320;&#22270;&#30456;&#20851;">9.&#22320;&#22270;&#30456;&#20851;<a class="anchor-link" href="#9.&#22320;&#22270;&#30456;&#20851;">&#182;</a></h2><p>源码：<a href="https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/8map">https://github.com/lotapp/BaseCode/tree/master/javascript/5.wechat/base/pages/8map</a></p>
+<h3 id="9.1.&#31616;&#21333;&#26696;&#20363;">9.1.&#31616;&#21333;&#26696;&#20363;<a class="anchor-link" href="#9.1.&#31616;&#21333;&#26696;&#20363;">&#182;</a></h3><p><code>知识点</code>：</p>
+<ul>
+<li><strong><code>wx.getLocation({success:成功执行的方法,fail:失败执行的方法})</code>：获取经纬度</strong></li>
+<li><strong><code>wx.openLocation({latitude: 经度值, longitude: 纬度值})</code>：显示对应位置的地图</strong></li>
+</ul>
+<p>wxml：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;get_location&#39;</span><span class="p">&gt;</span>{{demo1}}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">bindtap</span><span class="o">=</span><span class="s">&#39;open_location&#39;</span><span class="p">&gt;</span>{{demo2}}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>js源码：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">demo1</span><span class="o">:</span> <span class="s1">&#39;获取经纬&#39;</span><span class="p">,</span>
+    <span class="nx">demo2</span><span class="o">:</span> <span class="s1">&#39;打开地图&#39;</span><span class="p">,</span>
+    <span class="nx">lon</span><span class="o">:</span> <span class="mf">120.636146</span><span class="p">,</span>
+    <span class="nx">lat</span><span class="o">:</span> <span class="mf">31.25893</span>
+  <span class="p">},</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{},</span>
+  <span class="c1">// 需要使用this的时候，最外面方法老老实实写function()</span>
+  <span class="nx">get_location</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 获取经纬度</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">getLocation</span><span class="p">({</span>
+      <span class="c1">// 成功的时候</span>
+      <span class="nx">success</span><span class="o">:</span> <span class="nx">res</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">longitude</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">speed</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">accuracy</span><span class="p">);</span>
+        <span class="c1">// 更新页面数据</span>
+        <span class="nx">that</span><span class="p">.</span><span class="nx">setData</span><span class="p">({</span>
+          <span class="nx">lon</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">longitude</span><span class="p">,</span>
+          <span class="nx">lat</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">latitude</span>
+        <span class="p">});</span>
+        <span class="c1">// 弹框提醒</span>
+        <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="sb">`(</span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">longitude</span><span class="si">}</span><span class="sb">，</span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">latitude</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span> <span class="c1">// ES6语法</span>
+          <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span>
+        <span class="p">});</span>
+      <span class="p">},</span>
+      <span class="c1">// 失败的时候</span>
+      <span class="nx">fail</span><span class="o">:</span> <span class="nx">ex</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// 弹框提醒</span>
+        <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;定位未授权，请重新授权：\r\n删除小程序后再打开&#39;</span><span class="p">,</span>
+          <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+  <span class="c1">// 打开位置</span>
+  <span class="nx">open_location</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 打开位置</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">openLocation</span><span class="p">({</span>
+      <span class="nx">latitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lat</span><span class="p">,</span>
+      <span class="nx">longitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lon</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p><strong>简单说下成功之后的参数含义</strong>：</p>
+<ul>
+<li><code>res.longitude</code>：经度</li>
+<li><code>res.latitude</code>：纬度</li>
+<li><code>res.speed</code>：移动速度（实时定位的时候用的多）</li>
+<li><code>res.accuracy</code>：精确度（一般低于50，经纬数据就偏差太多）</li>
+</ul>
+<p>失败摸拟：
+<img src="../../images/wechat/2019-03-25/10.获取失败.gif" alt="10.获取失败.gif"></p>
+<p>成功摸拟：
+<img src="../../images/wechat/2019-03-25/10.成功获取.gif" alt="10.成功获取.gif"></p>
+<p><strong>额外说明：需要配置一下你需要使用的权限</strong>
+<img src="../../images/wechat/2019-03-25/10.权限声明.png" alt="10.权限声明.png"></p>
+<p>PS：授权之后，在开发的时候可以清楚状态（现实中重新授权需要<code>删除小程序再打开</code>）
+<img src="../../images/wechat/2019-03-25/10.清除状态.png" alt="10.清除状态.png"></p>
+<hr>
+<h3 id="9.2.Map&#32452;&#20214;">9.2.Map&#32452;&#20214;<a class="anchor-link" href="#9.2.Map&#32452;&#20214;">&#182;</a></h3><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/component/map.html">https://developers.weixin.qq.com/miniprogram/dev/component/map.html</a></p>
+<h4 id="1.&#31616;&#21333;&#26696;&#20363;&#25193;&#23637;">1.&#31616;&#21333;&#26696;&#20363;&#25193;&#23637;<a class="anchor-link" href="#1.&#31616;&#21333;&#26696;&#20363;&#25193;&#23637;">&#182;</a></h4><p>先看下简单案例的扩展：</p>
+<p><strong>在打开地图的时候指定<code>address</code></strong> 可以更人性化显示：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">lon</span><span class="o">:</span> <span class="mf">120.674297</span><span class="p">,</span>
+    <span class="nx">lat</span><span class="o">:</span> <span class="mf">31.324571</span>
+  <span class="p">},</span>
+<span class="nx">open_location</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 打开位置</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">openLocation</span><span class="p">({</span>
+      <span class="nx">latitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lat</span><span class="p">,</span>
+      <span class="nx">longitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lon</span><span class="p">,</span>
+      <span class="c1">// scale: 10, // 缩放级别（5~18）默认是18</span>
+      <span class="nx">address</span><span class="o">:</span> <span class="s1">&#39;江苏省苏州市工业园区都市花园&#39;</span> <span class="c1">// 这个信息可以通过地图api逆向解析</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>效果：
+<img src="../../images/wechat/2019-03-25/10.位置信息.png" alt="10.位置信息.png"></p>
+<h4 id="2.Map&#32452;&#20214;&#26696;&#20363;">2.Map&#32452;&#20214;&#26696;&#20363;<a class="anchor-link" href="#2.Map&#32452;&#20214;&#26696;&#20363;">&#182;</a></h4><p><code>知识点</code>：</p>
+<ul>
+<li><strong><code>show-location</code>：显示当前定位点</strong></li>
+<li><strong><code>markers</code>：多个标识</strong></li>
+<li><strong><code>bindmarkertap</code>：标记点击事件</strong></li>
+<li><strong>满屏设置：<code>width:100%;height:100vh</code></strong></li>
+</ul>
+<p>wxml：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">map</span> <span class="na">longitude</span><span class="o">=</span><span class="s">&#39;{{lon}}&#39;</span> <span class="na">latitude</span><span class="o">=</span><span class="s">&#39;{{lat}}&#39;</span> <span class="na">markers</span><span class="o">=</span><span class="s">&#39;{{markers}}&#39;</span> <span class="na">show-location</span><span class="o">=</span><span class="s">&#39;true&#39;</span> <span class="na">bindmarkertap</span><span class="o">=</span><span class="s">&#39;makertap&#39;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#39;width:100%;height:100vh&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">map</span><span class="p">&gt;</span>
+  <span class="c">&lt;!--  --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">view</span><span class="p">&gt;</span>
+</pre></div>
+<p>JS：</p>
+<div class="highlight"><pre><span></span><span class="nx">Page</span><span class="p">({</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">lon</span><span class="o">:</span> <span class="mf">120.674297</span><span class="p">,</span>
+    <span class="nx">lat</span><span class="o">:</span> <span class="mf">31.324571</span><span class="p">,</span>
+    <span class="nx">markers</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="c1">// 页面加载</span>
+  <span class="nx">onLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// eg：可以通过baidu Map获取到markers信息</span>
+    <span class="c1">// BMap.regeocoding({success: ret =&gt; {ret.wxMarkerData}});</span>
+    <span class="c1">// 假设通过API获取到了数据</span>
+    <span class="nx">that</span><span class="p">.</span><span class="nx">setData</span><span class="p">({</span>
+      <span class="nx">markers</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">latitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lat</span><span class="p">,</span>
+        <span class="nx">longitude</span><span class="o">:</span> <span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">lon</span><span class="p">,</span>
+        <span class="nx">address</span><span class="o">:</span> <span class="s1">&#39;江苏省苏州市工业园区都市花园&#39;</span><span class="p">,</span>
+        <span class="nx">iconPath</span><span class="o">:</span> <span class="s1">&#39;/images/marker_red.png&#39;</span><span class="p">,</span>
+        <span class="nx">callout</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;content&#39;</span><span class="o">:</span> <span class="s1">&#39;江苏省苏州市工业园区都市花园&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;bgColor&#39;</span><span class="o">:</span> <span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;color&#39;</span><span class="o">:</span> <span class="s1">&#39;#f00&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;padding&#39;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+          <span class="s1">&#39;display&#39;</span><span class="o">:</span> <span class="s1">&#39;ALWAYS&#39;</span><span class="p">,</span> <span class="c1">// BYCLICK：点击显示</span>
+          <span class="s1">&#39;borderRadius&#39;</span><span class="o">:</span> <span class="mi">5</span>
+        <span class="p">}</span>
+      <span class="p">}]</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+  <span class="c1">// 标记点击事件</span>
+  <span class="nx">makertap</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="c1">// 提示</span>
+    <span class="nx">wx</span><span class="p">.</span><span class="nx">showToast</span><span class="p">({</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="sb">`点击了标记点</span><span class="si">${</span><span class="nx">e</span><span class="p">.</span><span class="nx">markerId</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+      <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span>
+    <span class="p">});</span>
+    <span class="c1">// 可以根据e.markerId获取marker信息</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">markers</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">markerId</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+<p>动态演示：
+<img src="../../images/wechat/2019-03-25/10.点击标记.gif" alt="10.点击标记.gif"></p>
+<p>PS：可以通过经纬信息来获取对应的位置信息（<code>最后一个百度地图的demo里有贴</code>）</p>
+<blockquote><p>官方文档：<a href="http://lbsyun.baidu.com/index.php?title=wxjsapi/guide/getlocation">http://lbsyun.baidu.com/index.php?title=wxjsapi/guide/getlocation</a></p>
+</blockquote>
+<p>我还写了一个惯连的案例，这边就不演示了，给大家课后自测吧：
+<img src="../../images/wechat/2019-03-25/10.自测.gif" alt="10.自测.gif"></p>
+<p>PS：在使用外部链接的时候需要添加到白名单中（补充说明里有贴哦~）</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#34917;&#20805;&#35828;&#26126;">&#34917;&#20805;&#35828;&#26126;<a class="anchor-link" href="#&#34917;&#20805;&#35828;&#26126;">&#182;</a></h2><h3 id="1.&#20851;&#20110;&#35843;&#35797;">1.&#20851;&#20110;&#35843;&#35797;<a class="anchor-link" href="#1.&#20851;&#20110;&#35843;&#35797;">&#182;</a></h3><p>开发的时候可以在手机中预览，也可以真机调试把输出信息直接显示到PC端：
+<img src="../../images/wechat/2019-03-25/调试.png" alt="调试.png"></p>
+<p>手机调试可以打开调试模式：
+<img src="../../images/wechat/2019-03-25/开启调试.png" alt="开启调试.png"></p>
+<p>之后的操作都会记录，而且控制台输出也会显示：
+<img src="../../images/wechat/2019-03-25/效果预览.png" alt="效果预览.png">
+<img src="../../images/wechat/2019-03-25/显示信息.png" alt="显示信息.png"></p>
+<h3 id="2.&#20851;&#20110;&#24320;&#21457;&#32773;&#35774;&#32622;">2.&#20851;&#20110;&#24320;&#21457;&#32773;&#35774;&#32622;<a class="anchor-link" href="#2.&#20851;&#20110;&#24320;&#21457;&#32773;&#35774;&#32622;">&#182;</a></h3><p>有了AppID，并不可以开发，还需要是开发者|管理员：
+<img src="../../images/wechat/2019-03-25/添加开发者.png" alt="添加开发者.png"></p>
+<p>在没有上线前，职工开发和体验成员使用：
+<img src="../../images/wechat/2019-03-25/预览和体验.png" alt="预览和体验.png"></p>
+<h3 id="3.&#20851;&#20110;&#32593;&#32476;&#36164;&#28304;&#30340;&#35828;&#26126;">3.&#20851;&#20110;&#32593;&#32476;&#36164;&#28304;&#30340;&#35828;&#26126;<a class="anchor-link" href="#3.&#20851;&#20110;&#32593;&#32476;&#36164;&#28304;&#30340;&#35828;&#26126;">&#182;</a></h3><p>在使用外部链接的时候需要添加到白名单中（网站必须备案过）
+<img src="../../images/wechat/2019-03-25/添加域名.png" alt="添加域名.png"></p>
+<h3 id="4.&#21457;&#24067;&#21644;&#39044;&#35272;">4.&#21457;&#24067;&#21644;&#39044;&#35272;<a class="anchor-link" href="#4.&#21457;&#24067;&#21644;&#39044;&#35272;">&#182;</a></h3><p>先要上传代码：
+<img src="../../images/wechat/2019-03-25/上传.png" alt="上传.png">
+<img src="../../images/wechat/2019-03-25/上传2.png" alt="上传2.png"></p>
+<p>这时候可以选择
+<img src="../../images/wechat/2019-03-25/设置体验版.png" alt="设置体验版.png">
+<img src="../../images/wechat/2019-03-25/体验首页.png" alt="体验首页.png">
+<img src="../../images/wechat/2019-03-25/可体验.png" alt="可体验.png"></p>
+<p>PS：提交核审后就可以上线了（不推荐把自己做的demo提交核审，腾讯会处罚的~）</p>
+<p>现在小程序提供了<code>云开发</code>的API（可以当做<code>数据库</code>+<code>文件上传下载</code>）感兴趣的可以先了解下：</p>
+<blockquote><p><a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html">https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html</a></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</body>
+
+ 
+
+
+</html>
