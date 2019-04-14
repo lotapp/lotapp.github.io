@@ -1,0 +1,521 @@
+@charset "utf-8";
+/* 去除空隙 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 去除列表前的点 */
+li {
+  list-style: none;
+}
+
+/* 去除a标签的下划线 */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #ea5d07;
+}
+
+/* 去除i的默认倾斜样式 */
+i {
+  font-style: normal;
+}
+
+/* 去除图片边框 */
+img {
+  border: 0;
+  /* 解决黑边框问题 */
+  display: block;
+}
+
+/* 显示隐藏的元素 */
+.show {
+  display: block !important;
+}
+
+/* 隐藏元素 */
+.hidden {
+  display: none !important;
+}
+
+/* 标题多出部分显示... */
+.one_dot_hide {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* Firefox */
+  /* display: -moz-box; */
+  /* -moz-line-clamp: 1; */
+  /* Safari、Opera、Chrome */
+  /* display: -webkit-box; */
+  /* -webkit-line-clamp: 1; */
+}
+
+/* 两行显示，多出来的显示... */
+.two_dot_hide {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Firefox */
+  display: -moz-box;
+  -moz-line-clamp: 1;
+  -moz-box-orient: vertical;
+  /* Safari、Opera、Chrome */
+  display: -webkit-box;
+  /* 盒子垂直对齐 */
+  -webkit-box-orient: vertical;
+  /* 两行 */
+  -webkit-line-clamp: 2;
+}
+
+/* 清除浮动的样式 */
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* 兼容IE */
+.clearfix {
+  zoom: 1;
+}
+
+
+/* ==================网站公用样式================== */
+body {
+  font-family: 'Microsoft Yahei';
+  background: #E9EAED;
+}
+
+/* 最上方的渐变条 */
+body::before {
+  content: '';
+  width: 100%;
+  height: 5px;
+  background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+  position: absolute;
+  top: 0;
+}
+
+#header {
+  /* width: 100%; */
+  background-color: white;
+  padding: 1em 0.5em;
+}
+
+/* PC下设置最小宽度 */
+.navbox {
+  width: 57%;
+  min-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* logo左浮动 */
+.navbox .logo {
+  float: left;
+}
+
+/* nav右浮动 */
+#nav {
+  float: right;
+}
+
+/* Logo大小 */
+.logo {
+  padding-right: 40px;
+}
+
+.logo a {
+  width: 260px;
+  height: 60px;
+  display: inline-block;
+  background: url(../../images/logo.gif) no-repeat center;
+  /* 等比例缩放能完全放到容器为止 */
+  background-size: contain;
+}
+
+/* 当前页面对应的nav标签 */
+.active a {
+  color: #e15782;
+}
+
+/* 实现类似于浮动的效果 */
+#nav li {
+  /* line-height: 22px; */
+  padding: 20px 20px 0 10px;
+  /* 移动端的时候点菜单图标取消这个属性 */
+  display: inline-block;
+}
+
+/* nav的a标签设置相对定位 */
+#nav li a {
+  position: relative;
+  display: block;
+}
+
+#nav a span:first-child {
+  display: block;
+  font-size: 20px;
+}
+
+#nav a span:last-child {
+  opacity: 0;
+  display: block;
+  color: #999;
+  font: 12px Georgia, serif;
+  text-align: center;
+  transition: all 1s ease;
+}
+
+#nav a:hover span:last-child,
+#nav a:focus span:last-child {
+  opacity: 1;
+  transform: translateY(20%);
+}
+
+/* 搜索图标 */
+#nav li:last-child a {
+  font-weight: bold;
+  vertical-align: auto;
+  cursor: pointer;
+}
+
+/* 搜索栏，单击搜索图标出现 */
+.search {
+  width: 49%;
+  margin: 0 auto;
+  text-align: center;
+  border: black 1px solid;
+  display: none;
+  transition: all 3s ease 3s;
+}
+
+.search input {
+  border: 0;
+  /* 去除轮廓 */
+  outline: none;
+  font-size: 20px;
+  line-height: 40px;
+  /* 兼容IE */
+  height: 40px;
+}
+
+.search #keyboard {
+  width: 68%;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 0 1%;
+}
+
+.search #submit {
+  width: 30%;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* ======main相关样式====== */
+main {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 白色背景区域 */
+.bg_white {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* 边框圆角显示 */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* 防止图片太亮(如果有问题就去除) */
+.imgscale {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* 图片放大效果 */
+.imgscale img {
+  width: 100%;
+  /* 如果有问题就去除height */
+  height: 100%;
+  opacity: 0.7;
+  transition: all 500ms ease;
+}
+
+/* 改元素下的图片hover的时候会放大 */
+.imgscale:hover img {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+/* 广告样式 */
+
+.ad img {
+  width: 100%;
+}
+
+.ad p {
+  overflow: hidden;
+}
+
+/* ===设置li前五个的i的样式和文本(建议放在ul父div中)=== */
+/* 序号样式 */
+.top5_list li i {
+  float: left;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-top: 6px;
+  margin-right: 10px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.top5_list li i::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  color: #fff;
+  font-size: 9px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* 第1个i演示为橙色 */
+.top5_list li:nth-child(1) i {
+  background: #ea5c09;
+}
+
+/* 第1个i的序号 */
+.top5_list li:nth-child(1) i::before {
+  content: "1";
+}
+
+/* 第2个i演示为蓝色 */
+.top5_list li:nth-child(2) i {
+  background: #0493e6;
+}
+
+/* 第2个i的序号 */
+.top5_list li:nth-child(2) i::before {
+  content: "2";
+}
+
+/* 第3个i演示为绿色 */
+.top5_list li:nth-child(3) i {
+  background: #037913;
+}
+
+/* 第3个i的序号 */
+.top5_list li:nth-child(3) i::before {
+  content: "3";
+}
+
+/* 第4个i的序号 */
+.top5_list li:nth-child(4) i::before {
+  content: "4";
+}
+
+/* 第5个i的序号 */
+.top5_list li:nth-child(5) i::before {
+  content: "5";
+}
+
+/* hover的时候序号为黑灰色 */
+.top5_list li:hover i {
+  background: #222;
+  transition: all 500ms ease;
+}
+
+/* ======专栏系列====== */
+/* h1~h6标签的头部样式 */
+.htitle {
+  font-size: 16px;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+  color: #484848;
+  font-weight: normal;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* 标题加个下划线 */
+.htitle::after {
+  content: '';
+  width: 60px;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #000;
+  transition: all 500ms ease;
+}
+
+/* 为了动画的效果 */
+.htitle:hover:after {
+  width: 80px;
+}
+
+/*相关文章的第一个图片文章*/
+.topnew {
+  display: block;
+  margin: 20px 0;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  max-height: 110px;
+}
+
+/* 图片上的标题 */
+.topnew span {
+  color: #FFF;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  padding: 0 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  overflow: hidden;
+}
+
+/* 侧边栏ul列表样式 */
+.aside_list ul {
+  overflow: hidden;
+}
+
+.aside_list ul li {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+  /* 这边就不去一个个加...样式了 */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* 设置个过渡动画 */
+.aside_list li a:hover {
+  padding-left: 10px;
+  transition: all 500ms ease-out;
+}
+
+/* top5_list只有前5个，这边加一下 */
+.aside_list ul li:nth-child(6) i::before {
+  content: "6";
+}
+
+.aside_list ul li:nth-child(7) i::before {
+  content: "7";
+}
+
+.aside_list ul li:nth-child(8) i::before {
+  content: "8";
+}
+
+/* ======标签云====== */
+.cloud p a {
+  /* float: left; */
+  display: inline-block;
+  /* height: 24px; */
+  line-height: 24px;
+  padding: 3px 10px;
+  margin: 10px 5px 0 0;
+  border-radius: 3px;
+  transition: all 0.5s ease;
+  color: #FFF;
+  /* 默认背景 */
+  background: #999;
+}
+
+/* 特效 */
+.cloud p a:hover {
+  border-radius: 0;
+  text-shadow: #000 1px 1px 1px;
+}
+
+/* 颜色循环系列 */
+.cloud p a:nth-child(8n-7) {
+  background: #8A9B0F;
+}
+
+.cloud p a:nth-child(8n-6) {
+  background: #FE4365;
+}
+
+.cloud p a:nth-child(8n-5) {
+  background: #f16b17;
+}
+
+.cloud p a:nth-child(8n-4) {
+  background: #2AB8AD;
+}
+
+.cloud p a:nth-child(8n-3) {
+  background: #FC9D9A;
+}
+
+.cloud p a:nth-child(8n-2) {
+  background: #E2C52E;
+}
+
+.cloud p a:nth-child(8n-1) {
+  background: #83AF9B;
+}
+
+.cloud p a:nth-child(8n) {
+  background: #036564;
+}
+
+/* 第一个特殊色 */
+.cloud p a:first-child {
+  background: #000000ba;
+}
+
+/* 最后一个特殊色 */
+.cloud p a:last-child {
+  background: #3299BB;
+}
+
+/* ======文章列表====== */
+.bloglist li {
+  overflow: hidden;
+  padding-top: 10px;
+  border-bottom: #eee 1px dashed;
+  padding-bottom: 10px;
+  position: relative;
+  min-height: 120px;
+}
+
+.blogtitle {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.bloglist li:hover .blogtitle a {
+  color: #337ab7;
+}
+
+.blogtitle b {
+  color: #F00
+}
+
+
+/* ==================响应式布局================== */
+/* 屏幕小于1000px使用如下CSS */
+@media screen and (max-width: 1000px) {}

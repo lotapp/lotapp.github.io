@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+  <title>逆天博客首页</title>
+  <link rel="stylesheet" href="./style/css/base.css">
+  <link rel="stylesheet" href="./style/css/index.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1135885_8dpumzzjhj6.css">
+  <!--[if lt IE 9]>
+        <script type="text/javascript" src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header id="header">
+    <div class="navbox clearfix">
+      <!-- Logo(也可以是H1标题+H2次标题) -->
+      <div class="logo"><a href="#"></a></div>
+      <!-- 导航栏 -->
+      <nav id="nav">
+        <!-- ul>li*8>a{$} -->
+        <ul>
+          <li class="active"><a href="#"><span>主页</span><span>Home</span></a></li>
+          <li><a href="#"><span>资讯</span><span>News</span></a></li>
+          <li><a href="#"><span>专业</span><span>Pros</span></a></li>
+          <li><a href="#"><span>生活</span><span>Life</span></a></li>
+          <li><a href="#"><span>国学</span><span>Trad</span></a></li>
+          <li><a href="#"><span>资源</span><span>Share</span></a></li>
+          <li><a href="#"><span>实验</span><span>Test</span></a></li>
+          <li><a href="#"><span class="iconfont icon-sousuo"></span><span>Search</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="search">
+      <input type="text" id="keyboard" placeholder="请输入关键词" autocomplete="off" maxlength="32"><input type="button"
+        id="submit" value="搜 索">
+    </div>
+  </header>
+  <!-- 首页5个幻灯片(样式一) -->
+  <div id="banner">
+    <!-- ul>li*5>a>i+div -->
+    <ul>
+      <!-- 以此为循环 -->
+      <li class="imgscale">
+        <a href="#">
+          <i><img src="./images/banner/b01.jpg" alt="top1"></i>
+          <div class="font">
+            <h3 class="one_dot_hide">这个是文章标题</h3>
+          </div>
+        </a>
+      </li>
+      <li class="imgscale">
+        <a href="#">
+          <i><img src="./images/banner/b02.jpg" alt="top2"></i>
+          <div class="font">
+            <h3 class="one_dot_hide">这个是文章标题</h3>
+          </div>
+        </a>
+      </li>
+      <li class="imgscale">
+        <a href="#">
+          <i><img src="./images/banner/b03.jpg" alt="top3"></i>
+          <div class="font">
+            <h3 class="one_dot_hide">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</h3>
+          </div>
+        </a>
+      </li>
+      <li class="imgscale">
+        <a href="#">
+          <i><img src="./images/banner/b04.jpg" alt="top4"></i>
+          <div class="font">
+            <h3 class="one_dot_hide">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</h3>
+          </div>
+        </a>
+      </li>
+      <li class="imgscale">
+        <a href="#">
+          <i><img src="./images/banner/b05.jpg" alt="top5"></i>
+          <div class="font">
+            <h3 class="one_dot_hide">这个是文章标题</h3>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- 正文 -->
+  <main class="clearfix">
+    <!-- 文章内容 -->
+    <article>
+      <!-- 章节：各个分类最新5篇文章 -->
+      <section class="new_article bg_white">
+        <!-- header>nav>ul>li{$}*6 -->
+        <!-- 章节标题： -->
+        <header>
+          <nav>
+            <ul>
+              <li>首页</li>
+              <li>资讯</li>
+              <li>专业</li>
+              <li>生活</li>
+              <li>国学</li>
+              <li>资源</li>
+            </ul>
+          </nav>
+        </header>
+        <!-- div.new_tabs>div.new_item.clearfix*6>div*2>ul>li>a.one_dot_hide -->
+        <div class="new_tabs">
+          <!-- 以此为循环 -->
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/1.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/2.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <!-- 以此为循环 -->
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/3.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/4.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/5.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/6.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/3.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/4.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/1.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/2.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="new_item clearfix">
+            <ul class="new_pic">
+              <li class="imgscale"><a href="#"><img src="./images/dis/5.jpg"><span>这个是文章标题</span></a></li>
+              <li class="imgscale"><a href="#"><img
+                    src="./images/dis/6.jpg"><span>这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</span></a>
+              </li>
+            </ul>
+            <ul class="new_list top5_list">
+              <li><i></i><a href="#">这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。这个是一个过长文章标题的测试。</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">通知：2019-01-02</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。这个是一个过长文章内容的测试。
+                </p>
+              </li>
+              <li><i></i><a href="#">这个是一个过长文章标题的测试</a>
+                <p>
+                  这个是一个过短文章内容的测试。这个是一个过短文章内容的测试。
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- 广告栏 -->
+      <div class="ad bg_white">
+        <p class="imgscale"><a href="#" target="_blank"><img src="./images/advert/b1.jpg"></a></p>
+      </div>
+      <!-- 首页文章列表 -->
+      <section class="bloglist bg_white">
+        <h2 class="htitle">推荐文章</h2>
+        <!-- ul>li*15>h3.blogtitle+span.blogpic.imgscale+p.blogtext+p.bloginfo+a:link -->
+        <ul>
+          <li>
+            <h3 class="blogtitle">今天又看到一前端禁止调试的手段，分享下</h3>
+            <span class="blogpic imgscale"></span>
+            <p class="blogtext"></p>
+            <p class="bloginfo"></p>
+            <a href="#"></a>
+          </li>
+          <li>
+            <h3 class="blogtitle"></h3>
+            <span class="blogpic imgscale"></span>
+            <p class="blogtext"></p>
+            <p class="bloginfo"></p>
+            <a href="#"></a>
+          </li>
+        </ul>
+      </section>
+    </article>
+    <!-- 侧边栏相关文章 -->
+    <aside>
+      <!-- 以此为循环（点击排行） -->
+      <section class="aside_list top5_list bg_white">
+        <h2 class="htitle">点击排行</h2>
+        <!-- 第一个文章使用图文显示 -->
+        <div class="topnew imgscale">
+          <a href="#">
+            <img src="./images/dis/5.jpg">
+            <span
+              class="two_dot_hide">介绍一款自动给添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）介绍一款自动添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）</span>
+          </a>
+        </div>
+        <!-- ul>li*8>i+a -->
+        <ul class="clearfix">
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+          <li><i></i><a href="#">Ubuntu18.04搜狗输入法最新版本2.2.0.0108经常乱码的解决方案</a></li>
+          <li><i></i><a href="#">假如你不小心干掉了系统，你该怎么办？（一次手贱的记录 ~ Ubuntu and Python3.6）</a></li>
+          <li><i></i><a href="#">Navicat Premium 12 破解（MySQL、MariaDB、MongoDB、SQL Server、SQLite）</a></li>
+          <li><i></i><a href="#">rdesktop ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt
+              initialized
+              ? Failed to connect, CredSSP required by server</a></li>
+          <li><i></i><a href="#">QT5.8支持中文输入法（附带老版本的解决+不理想的情况解决）</a></li>
+          <li><i></i><a href="#">CPP--借助神器VS理解内存存储（含大小端对齐）</a></li>
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+        </ul>
+      </section>
+      <!-- 站长推荐 -->
+      <section class="aside_list top5_list bg_white">
+        <h2 class="htitle">站长推荐</h2>
+        <!-- 第一个文章使用图文显示 -->
+        <div class="topnew imgscale">
+          <a href="#">
+            <img src="./images/dis/3.jpg">
+            <span
+              class="two_dot_hide">介绍一款自动给添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）介绍一款自动添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）</span>
+          </a>
+        </div>
+        <!-- ul>li*8>i+a -->
+        <ul class="clearfix">
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+          <li><i></i><a href="#">Ubuntu18.04搜狗输入法最新版本2.2.0.0108经常乱码的解决方案</a></li>
+          <li><i></i><a href="#">假如你不小心干掉了系统，你该怎么办？（一次手贱的记录 ~ Ubuntu and Python3.6）</a></li>
+          <li><i></i><a href="#">Navicat Premium 12 破解（MySQL、MariaDB、MongoDB、SQL Server、SQLite）</a></li>
+          <li><i></i><a href="#">rdesktop ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt
+              initialized
+              ? Failed to connect, CredSSP required by server</a></li>
+          <li><i></i><a href="#">QT5.8支持中文输入法（附带老版本的解决+不理想的情况解决）</a></li>
+          <li><i></i><a href="#">CPP--借助神器VS理解内存存储（含大小端对齐）</a></li>
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+        </ul>
+      </section>
+      <!-- 广告 -->
+      <section class="ad bg_white">
+        <p class="imgscale">
+          <a href="#"><img src="./images/advert/s1.jpg"></a>
+        </p>
+      </section>
+      <!-- 相关文章可以在详细页出现 -->
+      <section class="aside_list top5_list bg_white">
+        <h2 class="htitle">相关文章</h2>
+        <!-- 第一个文章使用图文显示 -->
+        <div class="topnew imgscale">
+          <a href="#">
+            <img src="./images/dis/2.jpg">
+            <span
+              class="two_dot_hide">介绍一款自动给添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）介绍一款自动添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）</span>
+          </a>
+        </div>
+        <!-- ul>li*8>i+a -->
+        <ul class="clearfix">
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+          <li><i></i><a href="#">Ubuntu18.04搜狗输入法最新版本2.2.0.0108经常乱码的解决方案</a></li>
+          <li><i></i><a href="#">假如你不小心干掉了系统，你该怎么办？（一次手贱的记录 ~ Ubuntu and Python3.6）</a></li>
+          <li><i></i><a href="#">Navicat Premium 12 破解（MySQL、MariaDB、MongoDB、SQL Server、SQLite）</a></li>
+          <li><i></i><a href="#">rdesktop ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt
+              initialized
+              ? Failed to connect, CredSSP required by server</a></li>
+          <li><i></i><a href="#">QT5.8支持中文输入法（附带老版本的解决+不理想的情况解决）</a></li>
+          <li><i></i><a href="#">CPP--借助神器VS理解内存存储（含大小端对齐）</a></li>
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+        </ul>
+      </section>
+      <!-- 猜你喜欢（随机） -->
+      <section class="aside_list top5_list bg_white">
+        <h2 class="htitle">猜你喜欢</h2>
+        <!-- 第一个文章使用图文显示 -->
+        <div class="topnew imgscale">
+          <a href="#">
+            <img src="./images/dis/1.jpg">
+            <span
+              class="two_dot_hide">介绍一款自动给添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）介绍一款自动添加不同浏览器CSS3前缀的插件~Autoprefixer（附其他前端开发插件）</span>
+          </a>
+        </div>
+        <!-- ul>li*8>i+a -->
+        <ul class="clearfix">
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+          <li><i></i><a href="#">Ubuntu18.04搜狗输入法最新版本2.2.0.0108经常乱码的解决方案</a></li>
+          <li><i></i><a href="#">假如你不小心干掉了系统，你该怎么办？（一次手贱的记录 ~ Ubuntu and Python3.6）</a></li>
+          <li><i></i><a href="#">Navicat Premium 12 破解（MySQL、MariaDB、MongoDB、SQL Server、SQLite）</a></li>
+          <li><i></i><a href="#">rdesktop ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt
+              initialized
+              ? Failed to connect, CredSSP required by server</a></li>
+          <li><i></i><a href="#">QT5.8支持中文输入法（附带老版本的解决+不理想的情况解决）</a></li>
+          <li><i></i><a href="#">CPP--借助神器VS理解内存存储（含大小端对齐）</a></li>
+          <li><i></i><a href="#">couldn't run dumpcap in child process（附带Linux下探索过程）</a></li>
+        </ul>
+      </section>
+      <!-- 标签词云 -->
+      <section class="cloud bg_white">
+        <h2 class="htitle">标签词云</h2>
+        <p>
+          <a href="#" target="_blank">Python(45)</a>
+          <a href="#" target="_blank">Linux(34)</a>
+          <a href="#" target="_blank">except(26)</a>
+          <a href="#" target="_blank">IDE(21)</a>
+          <a href="#" target="_blank">netcore(19)</a>
+          <a href="#" target="_blank">jupyter(13)</a>
+          <a href="#" target="_blank">AI(12)</a>
+          <a href="#" target="_blank">anaconda(11)</a>
+          <a href="#" target="_blank">SQL(9)</a>
+          <a href="#" target="_blank">js(7)</a>
+          <a href="#" target="_blank">MySQL(5)</a>
+          <a href="#" target="_blank">notebook(5)</a>
+          <a href="#" target="_blank">numpy(4)</a>
+          <a href="#" target="_blank">Math(2)</a>
+          <a href="#" target="_blank">nodejs(1)</a>
+        </p>
+      </section>
+      <!-- 广告 -->
+      <section class="ad bg_white">
+        <p class="imgscale">
+          <a href="#"><img src="./images/advert/s1.jpg"></a>
+        </p>
+      </section>
+    </aside>
+  </main>
+  <!-- 尾部 -->
+  <footer>Footer</footer>
+  <script>
+    // 显示或者隐藏搜索框（不是新浏览器就不高兴支持了）
+    document.querySelector("nav ul .icon-sousuo").onclick = function () {
+      document.querySelector("header .search").classList.toggle("show");
+    }
+
+    // 显示不同分类的最新内容
+    var new_item_doms = document.querySelectorAll(".new_article .new_tabs .new_item");
+    var li_doms = document.querySelectorAll(".new_article header li");
+    // IE下不支持li_doms.forEach
+    for (var i = 0; i < li_doms.length; i++) {
+      li_doms[i].index = i; // 存储下当前li对应的序号
+      li_doms[i].onclick = function () {
+        // 获取同级li元素并移除样式 JQ：$(this).siblings().removeClass()
+        for (var j = 0; j < li_doms.length; j++) {
+          li_doms[j].classList.remove("bottom_line");
+        }
+        // 给当前li添加样式
+        this.classList.add("bottom_line");
+
+        // 移除其他显示内容
+        for (var j = 0; j < new_item_doms.length; j++) {
+          new_item_doms[j].classList.remove("show");
+          // 主要针对.new_item:first-child的隐藏
+          new_item_doms[j].classList.add("hidden");
+        }
+        // 显示对应的内容
+        new_item_doms[this.index].classList.remove("hidden");
+        new_item_doms[this.index].classList.add("show");
+      }
+    }
+  </script>
+  <!-- 粒子背景 -->
+  <script type="text/javascript" color="22,192,255" opacity="1" zindex="-2" count="99"
+    src="https://cdn.staticfile.org/canvas-nest.js/1.0.1/canvas-nest.js" async></script>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+@charset "utf-8";
+/* ===============第一种幻灯片============== */
+/* 置顶五篇文章 */
+#banner {
+    width: 100%;
+    overflow: hidden;
+    margin: 15px auto;
+}
+
+/* 去除inline-block的间隙：
+父元素的font-size设置为0，子元素的font-size设置为实际大小 */
+#banner ul {
+    font-size: 0;
+}
+
+/* 5个li平分 */
+#banner ul li {
+    width: 20%;
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+}
+
+#banner li i {
+    overflow: hidden;
+    display: block;
+    /* 设置定长在iPad下有问题 */
+    max-height: 400px;
+}
+
+/* 约束下图片 */
+#banner li img {
+    /* 去除img放大动画的影响 */
+    opacity: 1;
+}
+
+/* 标题字体设为白色 */
+#banner li .font {
+    color: #fff;
+}
+
+/* 默认透明(不显示) */
+#banner li .font::before,
+#banner li .font::after {
+    content: '';
+    opacity: 0;
+    /* 父元素已经设置相对定位 */
+    position: absolute;
+    transition: opacity 500ms, transform 500ms;
+}
+
+/* 划线上下的白线条 */
+#banner li .font::before {
+    top: 14%;
+    right: 5%;
+    bottom: 14%;
+    left: 5%;
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    /* 设置盒子缩放 */
+    transform: scale(0, 1);
+    /* 设置变形的中心点 */
+    transform-origin: 0 0;
+}
+
+/* 划线左右的白线条 */
+#banner li .font::after {
+    top: 8%;
+    right: 10%;
+    bottom: 8%;
+    left: 10%;
+    border-right: 1px solid rgba(0, 0, 0, 0.6);
+    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    transform: scale(1, 0);
+    transform-origin: 100% 0;
+}
+
+/* hover之后的伪元素线条显示 */
+#banner li:hover .font::before,
+#banner li:hover .font::after {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 500ms;
+}
+
+/* h3先不显示 */
+#banner li .font h3 {
+    width: 80%;
+    opacity: 0;
+    top: 50%;
+    left: 10%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    text-align: center;
+    line-height: 2em;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+}
+
+/* 显示h3 */
+#banner li:hover .font h3 {
+    top: 45%;
+    opacity: 1;
+}
+
+/* ===============文章相关============== */
+/* 主体文章 */
+article {
+    float: left;
+    width: 75%;
+}
+
+/* 侧边栏 */
+aside {
+    width: 20%;
+    /* float: right; */
+    float: left;
+    padding-left: 2em;
+}
+
+/* ===每个分类最新的5篇文章=== */
+
+/* 最新文章的header */
+.new_article header {
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-bottom: #e4e3e3 1px solid;
+    /* overflow: hidden; */
+}
+
+/* 小菜单样式 */
+.new_article header li {
+    width: 100px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 单击后出现的下划线 */
+.bottom_line::after {
+    content: '';
+    background: #000;
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* 隐藏第一个外的所有最新文章 */
+.new_tabs .new_item {
+    display: none;
+}
+
+/* 避免程序遍历判断第一个元素 */
+.new_tabs .new_item:first-child {
+    display: block;
+}
+
+/* 左边两个图片 */
+.new_item .new_pic {
+    float: left;
+    width: 32%;
+    max-height: 218px;
+    overflow: hidden;
+    /* position: relative; */
+}
+
+/* 图片版最新文章样式 */
+.new_pic li {
+    max-height: 100px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* 转成块级元素 */
+.new_pic li a {
+    display: block;
+    overflow: hidden;
+    /* ...隐藏多余文字，默认是不换行的 */
+    /* white-space: normal; */
+}
+
+/* 图片最新文章的标题 */
+.new_pic span {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFF;
+    padding: 0 40px;
+
+}
+
+/* 右边5个列表 */
+.new_item .new_list {
+    float: right;
+    width: 66%;
+}
+
+/* 右侧li样式 */
+.new_list li {
+    /* 这个高度只能显示标题 */
+    height: 22px;
+    line-height: 32px;
+    padding: 0 20px 10px 20px;
+    overflow: hidden;
+}
+
+/* 最多显示两行，多余部分... */
+/* PS：太多了，就不一个个加样式了 */
+.new_item li span,
+.new_item li a,
+.new_item li p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Firefox */
+    display: -moz-box;
+    -moz-line-clamp: 1;
+    -moz-box-orient: vertical;
+    /* Safari、Opera、Chrome */
+    display: -webkit-box;
+    /* 盒子垂直对齐 */
+    -webkit-box-orient: vertical;
+    /* 两行 */
+    -webkit-line-clamp: 2;
+}
+
+/* 设置li默认高度（只显示标题） */
+.new_list li a {
+    height: 32px;
+    /* 设置个字体加粗的过渡动画 */
+    transition: all 500ms ease-out;
+}
+
+/* hover的时候显示文章简介 */
+.new_tabs ul.new_list li:hover {
+    height: 100%;
+    background: #f3f3f3;
+}
+
+/* hover的时候标题加粗 */
+/* CSS权重高点，可以解决第一个样式的问题 */
+.new_tabs ul.new_list li:hover a {
+    color: black;
+    font-weight: bold;
+}
+
+/* 第一个li默认显示简介（避免程序判断和js） */
+.new_list li:first-child {
+    height: 100%;
+    background: #f3f3f3;
+}
+
+/* 第一个li默认标题加粗 */
+.new_list li:first-child a {
+    color: black;
+    font-weight: bold;
+}
+
+/* 恢复第一个的样式为普通样式（只显示标题） */
+.new_list:hover li:first-child {
+    height: 22px;
+    background: none;
+}
+
+/* 鼠标不在第一个li的时候恢复字体大小 */
+.new_list:hover li:nth-child(1) a {
+    font-weight: normal;
+}
+
+/* 内容简介样式 */
+.new_list p {
+    height: 48px;
+    font-size: 14px;
+    line-height: 24px;
+}
