@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>页面跳转</title>
+</head>
+
+<body>
+    记录一下外站[友情]链接，回头可能需要统计一下火热程度
+    <!-- PS：也可以记录下回访数 -->
+    <!-- xxx.html?ref=xxxx.xxx.xxx -->
+    <script>
+        // 获取地址栏中参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        //获取xxx.xxx/?url=xxx.html的p值
+        var url = getUrlParam("url");
+        if (url) {
+            console.warn(url); // 可以记录一下
+            window.location.href = url;
+        } else {
+            // 链接不正确
+            window.location.href = '/';
+        }
+    </script>
+</body>
+
+</html>

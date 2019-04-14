@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* 去除空隙 */
 * {
   margin: 0;
@@ -129,6 +130,11 @@ body::before {
   float: right;
 }
 
+/* 移动端的菜单栏默认隐藏 */
+.navbox h2 .icon-caidan {
+  display: none;
+}
+
 /* Logo大小 */
 .logo {
   padding-right: 40px;
@@ -162,11 +168,13 @@ body::before {
   display: block;
 }
 
+/* 中文 */
 #nav a span:first-child {
   display: block;
   font-size: 20px;
 }
 
+/* 英文 */
 #nav a span:last-child {
   opacity: 0;
   display: block;
@@ -368,7 +376,36 @@ main {
   width: 80px;
 }
 
-/*相关文章的第一个图片文章*/
+/* 标题后侧的导航 */
+.hnav {
+  float: right;
+}
+
+/* 导航分类左对齐 */
+.hnav a {
+  float: left;
+  display: block;
+  margin-right: 10px;
+  padding-right: 10px;
+  position: relative;
+}
+
+/* 分类后面有个/来间隔 */
+.hnav a:after {
+  content: "/";
+  color: #ccc;
+  position: relative;
+  right: -10px;
+  bottom: 0;
+}
+
+/* 去除最后一个/ */
+.hnav a:last-child::after {
+  content: '';
+}
+
+/* ======侧边栏相关====== */
+/*侧边栏相关文章的第一个图片文章*/
 .topnew {
   display: block;
   margin: 20px 0;
@@ -428,6 +465,11 @@ main {
 }
 
 /* ======标签云====== */
+.cloud p {
+  /* 父类加了这个，子类就可以跳出（显示效果好点） */
+  transform-style: preserve-3d;
+}
+
 .cloud p a {
   /* float: left; */
   display: inline-block;
@@ -436,16 +478,21 @@ main {
   padding: 3px 10px;
   margin: 10px 5px 0 0;
   border-radius: 3px;
-  transition: all 0.5s ease;
   color: #FFF;
   /* 默认背景 */
   background: #999;
+  /* 设置初始值（解决边角小bug） */
+  transform: perspective(700px) translateZ(0);
+  transition: all 500ms ease;
 }
 
 /* 特效 */
 .cloud p a:hover {
   border-radius: 0;
+  /* 让字显示的更清晰 */
   text-shadow: #000 1px 1px 1px;
+  /* 迎面扑来的效果 */
+  transform: perspective(700px) translateZ(100px);
 }
 
 /* 颜色循环系列 */
@@ -491,6 +538,18 @@ main {
   background: #3299BB;
 }
 
+/* ======友情链接====== */
+.links li {
+  float: left;
+  width: 30%;
+  line-height: 30px;
+  text-align: center;
+}
+
+.links li:hover {
+  background: #f7f7f7;
+}
+
 /* ======文章列表====== */
 .bloglist li {
   overflow: hidden;
@@ -517,5 +576,50 @@ main {
 
 
 /* ==================响应式布局================== */
-/* 屏幕小于1000px使用如下CSS */
-@media screen and (max-width: 1000px) {}
+/* 屏幕小于1024px使用如下CSS（iPad Pro） */
+@media screen and (max-width: 1024px) {
+  main {
+    width: 95%;
+  }
+
+  main article {
+    width: 100%;
+  }
+
+  main aside {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  /* top部分改造一下 */
+  .navbox {
+    width: 100%;
+    min-width: 260px;
+    text-align: left;
+  }
+
+  .navbox .logo,
+  .navbox #nav {
+    float: none;
+  }
+
+  /* 显示菜单栏 */
+  .navbox h2 .icon-caidan {
+    display: block;
+    float: right;
+    font-size: 55px;
+  }
+
+  /* 点菜单图标后再显示 */
+  .navbox #nav {
+    text-align: center;
+    display: none;
+  }
+
+  /* 导航换行显示 */
+  .navbox #nav li {
+    display: block;
+  }
+}

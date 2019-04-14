@@ -19,6 +19,7 @@
   <!-- 头部 -->
   <header id="header">
     <div class="navbox clearfix">
+      <h2><span class="iconfont icon-caidan"></span></h2>
       <!-- Logo(也可以是H1标题+H2次标题) -->
       <div class="logo"><a href="#"></a></div>
       <!-- 导航栏 -->
@@ -479,23 +480,51 @@
           <a href="#" target="_blank">nodejs(1)</a>
         </p>
       </section>
-      <!-- 广告 -->
-      <section class="ad bg_white">
-        <p class="imgscale">
-          <a href="#"><img src="./images/advert/s1.jpg"></a>
-        </p>
+      <!-- 友情链接（可以根据点击量+博客火热程度排行） -->
+      <section class="links bg_white">
+        <h2 class="htitle clearfix">
+          友情链接
+          <span class="hnav">
+            <a href="https://github.com/lotapp/H5Blog/issues/1" target="_blank">友情互链</a>
+          </span>
+        </h2>
+        <ul class="clearfix">
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://dotnetcrazy.cnblogs.com" target="_blank">我的新博客</a>
+          </li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://dotnetcrazy.cnblogs.com" target="_blank">我的老博客</a>
+          </li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=#<script>alert('xx'):</script>" target="_blank">安全测试</a>
+          </li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://www.baidu.com" target="_blank">百度首页</a></li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://tim.qq.com" target="_blank">腾讯TIM</a></li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://www.antfin.com/" target="_blank">蚂蚁金服官网</a></li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML"
+              target="_blank">超长标题我是一个超长的标题哈~我是一个超长的标题哈~我是一个超长的标题哈~我是一个超长的标题哈~</a>
+          </li>
+          <li class="one_dot_hide">
+            <a href="./goto.html?url=https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML"
+              target="_blank">开发者文档的标题哈~我是一个超长的标题哈~我是一个超长的标题哈~我是一个超长的标题哈~</a>
+          </li>
+        </ul>
       </section>
     </aside>
   </main>
   <!-- 尾部 -->
   <footer>Footer</footer>
+  <!-- 如果使用jq的同志可以改写下脚本，使其兼容更多浏览器（因为是个人博客`<=IE9`我是懒得兼容了） -->
   <script>
-    // 显示或者隐藏搜索框（不是新浏览器就不高兴支持了）
+    // 1.显示或者隐藏搜索框（很想用箭头函数，但是需考虑IE高版本兼容性，就常规写法吧）
     document.querySelector("nav ul .icon-sousuo").onclick = function () {
       document.querySelector("header .search").classList.toggle("show");
     }
-
-    // 显示不同分类的最新内容
+    // 2.显示不同分类的最新内容
     var new_item_doms = document.querySelectorAll(".new_article .new_tabs .new_item");
     var li_doms = document.querySelectorAll(".new_article header li");
     // IE下不支持li_doms.forEach
@@ -519,6 +548,11 @@
         new_item_doms[this.index].classList.remove("hidden");
         new_item_doms[this.index].classList.add("show");
       }
+    }
+
+    // 3.显示移动端菜单
+    document.querySelector(".navbox h2 .icon-caidan").onclick = function () {
+      document.querySelector(".navbox #nav").classList.toggle("show");
     }
   </script>
   <!-- 粒子背景 -->
