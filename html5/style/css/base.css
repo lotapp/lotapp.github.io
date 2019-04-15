@@ -17,14 +17,14 @@ a {
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
+a:hover {
   color: #ea5d07;
 }
 
-/* 去除i|em的默认倾斜样式 */
+/* 去除i|em|address的默认倾斜样式 */
 i,
-em {
+em,
+address {
   font-style: normal;
 }
 
@@ -231,7 +231,7 @@ body::before {
   font-size: 20px;
   line-height: 40px;
   /* 兼容IE */
-  height: 40px;
+  height: 41px;
 }
 
 .search #keyboard {
@@ -711,9 +711,10 @@ main {
   width: 100%;
   color: #666;
   text-align: center;
-  padding-top:27px;
+  padding-top: 27px;
 }
 
+/* index标签样式 */
 .pagelist a {
   display: inline-block;
   color: #666;
@@ -722,38 +723,148 @@ main {
   padding: 5px 10px;
 }
 
+/* 鼠标hover效果和加粗效果 */
 .pagelist a:hover,
-.pagelist>strong {
+.pagelist strong {
   color: #3690cf;
   color: #FFF;
   background: #1C2327;
 }
 
-.pagelist>strong {
+/* 加粗 */
+.pagelist strong {
   padding: 5px 10px;
 }
 
-a.curPage {
-  color: #19585d;
-  font-weight: bold;
+/* ======页面页脚====== */
+footer.clearfix {
+  width: 100%;
+  color: #73777a;
+  font-size: 15px;
+  padding: 30px 0;
+  background: #373D41;
+  border-top: #00C1DE 10px solid;
+  overflow: hidden;
+}
+
+/* 居中显示 */
+.copyright {
+  width: 60%;
+  min-width: 980px;
+  margin: 0 auto;
+}
+
+/* 页脚字体颜色 */
+.copyright a {
+  color: #a7a8a9;
+}
+
+.copyright a:hover {
+  color: #00C1DE;
+}
+
+.copyright ul {
+  float: left;
+  /* overflow: hidden; */
+  padding: 0 20px;
+  /* 方便子类脱离的动画效果 */
+  transform-style: preserve-3d;
+}
+
+.copyright ul li {
+  float: left;
+  padding: 0 10px;
+  text-align: center;
+}
+
+/* 约束一下二维码 */
+.copyright img {
+  max-height: 100px;
+  /* 设置初始值 */
+  transform: perspective(700px) translateZ(0);
+  transition: all 500ms ease;
+}
+
+.copyright img:hover {
+  transform: perspective(700px) translateZ(100px);
+}
+
+/* 加粗声明 */
+.copyright strong {
+  font-size: 16px;
+  color: #00c1de;
+}
+
+/* 段落间距 */
+.copyright p {
+  padding-bottom: 5px;
+}
+
+/* 图标颜色 */
+.copyright p i {
+  color: #eaa607;
+}
+
+#tbox {
+  line-height: 50px;
+  right: 50px;
+  bottom: 10%;
+  position: fixed;
+}
+
+#tbox a.iconfont {
+  font-size: 50px;
+}
+
+/* 设置置顶和到达底部的间隙 */
+#tbox a:first-child {
+  margin: 10px 0;
+}
+
+.top,
+.bottom {
+  width: 50px;
+  height: 50px;
+  display: block;
+  color: white;
+  border-radius: 6px;
+  background-color: black;
+}
+
+.top:hover,
+.bottom:hover {
+  /* 去除其他a样式的影响 */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* ==================响应式布局================== */
-/* 屏幕小于1024px使用如下CSS（iPad Pro） */
-@media screen and (max-width: 1024px) {
+/* 屏幕小于等于1200px使用如下CSS（非宽屏） */
+@media screen and (max-width: 1200px) {
   main {
     width: 95%;
   }
 
-  main article {
+  /* 文章宽屏显示 */
+  main article,
+  .copyright {
     width: 100%;
   }
 
+  /* 侧边栏隐藏 */
   main aside {
     display: none;
   }
+
+  /* 页脚宽屏显示 */
+  .copyright {
+    width: 100%;
+    min-width: auto;
+  }
+
 }
 
+/* 屏幕小于等于1000px（iPad） */
 @media screen and (max-width: 1000px) {
 
   /* top部分改造一下 */
@@ -785,4 +896,12 @@ a.curPage {
   .navbox #nav li {
     display: block;
   }
+
+  /* 分页列表不显示总数 */
+  .pagelist a:first-child {
+    display: none;
+  }
 }
+
+/* 屏幕小于等于767px（iPhone） */
+@media screen and (max-width: 767px) {}
