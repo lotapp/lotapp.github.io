@@ -812,15 +812,24 @@ footer.clearfix {
   padding-bottom: 5px;
 }
 
+/* 去除mark标签的影响+PC端隐藏 */
+.copyright mark {
+  display: none;
+  text-align: center;
+  color: #a7a8a9;
+  background: none;
+}
+
 /* 图标颜色 */
 .copyright p i {
   color: #eaa607;
 }
 
+/* 置顶和返回底部 */
 #tbox {
   line-height: 50px;
   right: 50px;
-  bottom: 10%;
+  bottom: 15%;
   position: fixed;
 }
 
@@ -909,6 +918,12 @@ footer.clearfix {
     display: block;
   }
 
+  /* 搜索框 */
+  #header .search {
+    width: 90%;
+    margin-top: 1em;
+  }
+
   /* 分页列表不显示总数 */
   .pagelist a:first-child {
     display: none;
@@ -916,4 +931,49 @@ footer.clearfix {
 }
 
 /* 屏幕小于等于767px（iPhone） */
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+
+  /* 隐藏最新文章的图片 */
+  .new_tabs .new_item .new_pic {
+    float: none;
+    display: none;
+  }
+
+  /* 宽屏显示最新文章的文字 */
+  .new_tabs .new_item .new_list {
+    float: none;
+    width: 100%;
+  }
+
+  /* 文章列表的图片样式 */
+  .bloglist li .blogpic {
+    width: 100%;
+    float: none;
+  }
+
+  /* 文章信息的时间去除 */
+  .bloglist li .bloginfo time {
+    display: none;
+  }
+
+  /* 移动端就不翻页了，最新文章就那么多 */
+  .pagelist {
+    display: none;
+  }
+
+  /* 移动端footer */
+  footer.clearfix {
+    padding: 15px 0;
+  }
+
+  /* 版权信息不需要了 */
+  .copyright ul,
+  .copyright p {
+    display: none;
+  }
+
+  /* 显示简洁版本的版权信息 */
+  .copyright mark {
+    display: block;
+  }
+}
