@@ -230,8 +230,6 @@ body::before {
   outline: none;
   font-size: 20px;
   line-height: 40px;
-  /* 兼容IE */
-  height: 41px;
 }
 
 .search #keyboard {

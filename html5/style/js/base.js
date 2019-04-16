@@ -41,13 +41,14 @@ window.onload = function () {
     // 加载成功就进行设置
     if (window.ScrollReveal) {
         // 实例化，根据默认配置改即可：https://scrollrevealjs.org/api/defaults.html
+        // 支持CSS选择器
         window.ScrollReveal({
             // easing: "ease", // 动画效果
+            // mobile: false, // 移动端不使用动画
             origin: "right", // 从右边出现
-            duration: 1200, // 持续时间1.5s
+            duration: 1000, // 持续时间1s
             opacity: 0.2, // 最低透明度
             reset: true // 循环
         }).reveal(".bloglist li,.bg_white,#header,#banner,#footer");
-        // 经测试，支持CSS选择器
     }
 }
