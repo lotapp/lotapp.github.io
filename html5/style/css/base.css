@@ -248,8 +248,22 @@ body::before {
 /* ======main相关样式====== */
 main {
   width: 90%;
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   overflow: hidden;
+}
+
+/* 主体文章 */
+article {
+  float: left;
+  width: 75%;
+}
+
+/* 侧边栏 */
+aside {
+  width: 20%;
+  /* float: right; */
+  float: left;
+  padding-left: 2em;
 }
 
 /* 白色背景区域 */

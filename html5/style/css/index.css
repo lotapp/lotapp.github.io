@@ -4,7 +4,7 @@
 #banner {
     width: 100%;
     overflow: hidden;
-    margin: 15px auto;
+    margin-top: 15px;
 }
 
 /* 去除inline-block的间隙：
@@ -105,22 +105,8 @@
 }
 
 /* ===============文章相关============== */
-/* 主体文章 */
-article {
-    float: left;
-    width: 75%;
-}
-
-/* 侧边栏 */
-aside {
-    width: 20%;
-    /* float: right; */
-    float: left;
-    padding-left: 2em;
-}
 
 /* ===每个分类最新的5篇文章=== */
-
 /* 最新文章的header */
 .new_article header {
     width: 100%;
