@@ -49,8 +49,7 @@ img {
 .one_dot_hide {
   overflow: hidden;
   white-space: nowrap;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   /* display: -moz-box; */
   /* -moz-line-clamp: 1; */
@@ -62,8 +61,7 @@ img {
 /* 两行显示，多出来的显示... */
 .two_dot_hide {
   overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   display: -moz-box;
   -moz-line-clamp: 2;
@@ -81,8 +79,7 @@ img {
 /* 超过三行的显示... */
 .three_dot_hide {
   overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   display: -moz-box;
   -moz-line-clamp: 3;
@@ -125,9 +122,6 @@ body::before {
   content: '';
   width: 100%;
   height: 5px;
-  background: #000 -webkit-linear-gradient(right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
-  background: #000 -moz-linear-gradient(right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
-  background: #000 -o-linear-gradient(right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
   background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
   position: absolute;
   top: 0;
@@ -173,8 +167,7 @@ body::before {
   display: inline-block;
   background: url(../../images/logo.gif) no-repeat center;
   /* 等比例缩放能完全放到容器为止 */
-  -o-background-size: contain;
-     background-size: contain;
+  background-size: contain;
 }
 
 /* 当前页面对应的nav标签 */
@@ -209,20 +202,13 @@ body::before {
   color: #999;
   font: 12px Georgia, serif;
   text-align: center;
-  -webkit-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -moz-transition: all 1s ease;
   transition: all 1s ease;
 }
 
 #nav a:hover span:last-child,
 #nav a:focus span:last-child {
   opacity: 1;
-  -webkit-transform: translateY(20%);
-     -moz-transform: translateY(20%);
-      -ms-transform: translateY(20%);
-       -o-transform: translateY(20%);
-          transform: translateY(20%);
+  transform: translateY(20%);
 }
 
 /* 搜索图标 */
@@ -239,9 +225,6 @@ body::before {
   text-align: center;
   border: black 1px solid;
   display: none;
-  -webkit-transition: all 3s ease 3s;
-  -o-transition: all 3s ease 3s;
-  -moz-transition: all 3s ease 3s;
   transition: all 3s ease 3s;
 }
 
@@ -308,20 +291,13 @@ aside {
   /* 如果有问题就去除height */
   height: 100%;
   opacity: 0.7;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
 /* 改元素下的图片hover的时候会放大 */
 .imgscale:hover img {
   opacity: 0.9;
-  -webkit-transform: scale(1.1);
-     -moz-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-       -o-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* 广告样式 */
@@ -401,9 +377,6 @@ aside {
 /* hover的时候序号为黑灰色 */
 .top5_list li:hover i {
   background: #222;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
@@ -428,9 +401,6 @@ aside {
   left: 0;
   bottom: 0;
   background: #000;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
@@ -472,9 +442,7 @@ aside {
 /* 标签云|文章分类 */
 .cloud div {
   /* 父类加了这个，子类就可以跳出（显示效果好点） */
-  -webkit-transform-style: preserve-3d;
-     -moz-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .cloud div a {
@@ -489,12 +457,7 @@ aside {
   /* 默认背景 */
   background: #999;
   /* 设置初始值（解决边角小bug） */
-  -webkit-transform: perspective(700px) translateZ(0);
-     -moz-transform: perspective(700px) translateZ(0);
-          transform: perspective(700px) translateZ(0);
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
+  transform: perspective(700px) translateZ(0);
   transition: all 500ms ease;
 }
 
@@ -504,9 +467,7 @@ aside {
   /* 让字显示的更清晰 */
   text-shadow: #000 1px 1px 1px;
   /* 迎面扑来的效果 */
-  -webkit-transform: perspective(700px) translateZ(100px);
-     -moz-transform: perspective(700px) translateZ(100px);
-          transform: perspective(700px) translateZ(100px);
+  transform: perspective(700px) translateZ(100px);
 }
 
 /* 颜色循环系列 */
@@ -586,8 +547,7 @@ aside {
   line-height: 30px;
   margin-bottom: 10px;
   /* 这边就不去一个个加...样式了 */
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -595,9 +555,6 @@ aside {
 /* 设置个过渡动画 */
 .aside_list li a:hover {
   padding-left: 10px;
-  -webkit-transition: all 500ms ease-out;
-  -o-transition: all 500ms ease-out;
-  -moz-transition: all 500ms ease-out;
   transition: all 500ms ease-out;
 }
 
@@ -649,9 +606,6 @@ aside {
 
 /* 给a加个过渡动画 */
 .blogtitle a {
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
@@ -728,9 +682,6 @@ aside {
   display: block;
   position: relative;
   /* 边框 */
-  background: -webkit-linear-gradient(bottom left, rgba(0, 153, 255, .9), rgba(42, 228, 197, .7));
-  background: -moz-linear-gradient(bottom left, rgba(0, 153, 255, .9), rgba(42, 228, 197, .7));
-  background: -o-linear-gradient(bottom left, rgba(0, 153, 255, .9), rgba(42, 228, 197, .7));
   background: linear-gradient(to top right, rgba(0, 153, 255, .9), rgba(42, 228, 197, .7));
 }
 
@@ -744,8 +695,7 @@ aside {
 .bloginfo i::after {
   content: '';
   background: url(../../images/v.png) no-repeat;
-  -o-background-size: 12px;
-     background-size: 12px;
+  background-size: 12px;
   width: 12px;
   height: 12px;
   position: absolute;
@@ -834,9 +784,7 @@ footer.clearfix {
   /* overflow: hidden; */
   padding: 0 20px;
   /* 方便子类脱离的动画效果 */
-  -webkit-transform-style: preserve-3d;
-     -moz-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .copyright ul li {
@@ -849,19 +797,12 @@ footer.clearfix {
 .copyright img {
   max-height: 100px;
   /* 设置初始值 */
-  -webkit-transform: perspective(700px) translateZ(0);
-     -moz-transform: perspective(700px) translateZ(0);
-          transform: perspective(700px) translateZ(0);
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
+  transform: perspective(700px) translateZ(0);
   transition: all 500ms ease;
 }
 
 .copyright img:hover {
-  -webkit-transform: perspective(700px) translateZ(100px);
-     -moz-transform: perspective(700px) translateZ(100px);
-          transform: perspective(700px) translateZ(100px);
+  transform: perspective(700px) translateZ(100px);
 }
 
 /* 加粗声明 */
