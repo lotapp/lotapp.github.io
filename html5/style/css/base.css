@@ -50,7 +50,7 @@ img {
   overflow: hidden;
   white-space: nowrap;
   -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   /* display: -moz-box; */
   /* -moz-line-clamp: 1; */
@@ -63,7 +63,7 @@ img {
 .two_dot_hide {
   overflow: hidden;
   -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   display: -moz-box;
   -moz-line-clamp: 2;
@@ -82,7 +82,7 @@ img {
 .three_dot_hide {
   overflow: hidden;
   -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   /* Firefox */
   display: -moz-box;
   -moz-line-clamp: 3;
@@ -174,7 +174,7 @@ body::before {
   background: url(../../images/logo.gif) no-repeat center;
   /* 等比例缩放能完全放到容器为止 */
   -o-background-size: contain;
-     background-size: contain;
+  background-size: contain;
 }
 
 /* 当前页面对应的nav标签 */
@@ -219,10 +219,10 @@ body::before {
 #nav a:focus span:last-child {
   opacity: 1;
   -webkit-transform: translateY(20%);
-     -moz-transform: translateY(20%);
-      -ms-transform: translateY(20%);
-       -o-transform: translateY(20%);
-          transform: translateY(20%);
+  -moz-transform: translateY(20%);
+  -ms-transform: translateY(20%);
+  -o-transform: translateY(20%);
+  transform: translateY(20%);
 }
 
 /* 搜索图标 */
@@ -318,10 +318,10 @@ aside {
 .imgscale:hover img {
   opacity: 0.9;
   -webkit-transform: scale(1.1);
-     -moz-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-       -o-transform: scale(1.1);
-          transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* 广告样式 */
@@ -473,8 +473,8 @@ aside {
 .cloud div {
   /* 父类加了这个，子类就可以跳出（显示效果好点） */
   -webkit-transform-style: preserve-3d;
-     -moz-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .cloud div a {
@@ -490,8 +490,8 @@ aside {
   background: #999;
   /* 设置初始值（解决边角小bug） */
   -webkit-transform: perspective(700px) translateZ(0);
-     -moz-transform: perspective(700px) translateZ(0);
-          transform: perspective(700px) translateZ(0);
+  -moz-transform: perspective(700px) translateZ(0);
+  transform: perspective(700px) translateZ(0);
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -moz-transition: all 500ms ease;
@@ -505,8 +505,8 @@ aside {
   text-shadow: #000 1px 1px 1px;
   /* 迎面扑来的效果 */
   -webkit-transform: perspective(700px) translateZ(100px);
-     -moz-transform: perspective(700px) translateZ(100px);
-          transform: perspective(700px) translateZ(100px);
+  -moz-transform: perspective(700px) translateZ(100px);
+  transform: perspective(700px) translateZ(100px);
 }
 
 /* 颜色循环系列 */
@@ -587,7 +587,7 @@ aside {
   margin-bottom: 10px;
   /* 这边就不去一个个加...样式了 */
   -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -745,7 +745,7 @@ aside {
   content: '';
   background: url(../../images/v.png) no-repeat;
   -o-background-size: 12px;
-     background-size: 12px;
+  background-size: 12px;
   width: 12px;
   height: 12px;
   position: absolute;
@@ -835,8 +835,8 @@ footer.clearfix {
   padding: 0 20px;
   /* 方便子类脱离的动画效果 */
   -webkit-transform-style: preserve-3d;
-     -moz-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .copyright ul li {
@@ -850,8 +850,8 @@ footer.clearfix {
   max-height: 100px;
   /* 设置初始值 */
   -webkit-transform: perspective(700px) translateZ(0);
-     -moz-transform: perspective(700px) translateZ(0);
-          transform: perspective(700px) translateZ(0);
+  -moz-transform: perspective(700px) translateZ(0);
+  transform: perspective(700px) translateZ(0);
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   -moz-transition: all 500ms ease;
@@ -860,8 +860,8 @@ footer.clearfix {
 
 .copyright img:hover {
   -webkit-transform: perspective(700px) translateZ(100px);
-     -moz-transform: perspective(700px) translateZ(100px);
-          transform: perspective(700px) translateZ(100px);
+  -moz-transform: perspective(700px) translateZ(100px);
+  transform: perspective(700px) translateZ(100px);
 }
 
 /* 加粗声明 */
@@ -1038,5 +1038,10 @@ footer.clearfix {
   /* 显示简洁版本的版权信息 */
   .copyright mark {
     display: block;
+  }
+
+  /* 移动端隐藏至底的按钮 */
+  #tbox .icon-jiantou_liebiaozhankai {
+    display: none;
   }
 }

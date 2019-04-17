@@ -980,4 +980,9 @@ footer.clearfix {
   .copyright mark {
     display: block;
   }
+
+  /* 移动端隐藏至底的按钮 */
+  #tbox .icon-jiantou_liebiaozhankai {
+    display: none;
+  }
 }
