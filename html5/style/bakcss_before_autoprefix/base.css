@@ -665,6 +665,8 @@ aside {
 /* 作者+时间+分类 */
 .bloginfo div:first-child {
   float: left;
+  /* 和更多对齐 */
+  padding-top: 5px;
 }
 
 /* 阅读更多 */
@@ -703,9 +705,10 @@ aside {
   bottom: 0;
 }
 
-/* 控制下间隙 */
-.bloginfo span {
-  padding: 0 5px;
+/* 作者和时间距离头像留白 */
+.bloginfo time,
+.bloginfo span:nth-of-type(1) {
+  padding-left: 5px;
 }
 
 /* 分类颜色 */
@@ -937,6 +940,12 @@ footer.clearfix {
 /* 屏幕小于等于767px（iPhone） */
 @media screen and (max-width: 767px) {
 
+  /* 间距缩小些 */
+  .bg_white {
+    padding: 5px;
+    margin: 8px auto;
+  }
+
   /* 隐藏最新文章的图片 */
   .new_tabs .new_item .new_pic {
     float: none;
@@ -955,8 +964,8 @@ footer.clearfix {
     float: none;
   }
 
-  /* 文章信息的时间去除 */
-  .bloglist li .bloginfo time {
+  /* 隐藏作者姓名(看头像就ok了) */
+  .bloginfo span:nth-of-type(1) {
     display: none;
   }
 

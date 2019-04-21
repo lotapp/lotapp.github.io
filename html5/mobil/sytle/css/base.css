@@ -28,7 +28,7 @@ address {
 img {
     border: 0;
     /* 解决黑边框问题 */
-    /* display: block; */
+    display: block;
 }
 
 /* 显示隐藏的元素 */
@@ -104,6 +104,35 @@ img {
 }
 
 /* ==================网站公用样式================== */
+.bg_white {
+    background-color: #fff;
+    /* 4px */
+    padding: .2rem;
+    /* 8px; */
+    margin: .4rem auto;
+    /* 4px */
+    border-radius: .2rem;
+    overflow: hidden;
+}
+
+/* 背景色 */
+.imgscale {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* 图片样式 */
+.imgscale img {
+    width: 100%;
+    opacity: 0.7;
+    transition: all 500ms ease;
+}
+
+/* hover动画 */
+.imgscale:hover img {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
 /* 有时候手机端底部导航有点问题，需要外部一个绝对定位的包裹容器 */
 /* PS：淘宝也是这么干的 */
 .container {
@@ -141,8 +170,7 @@ img {
     left: .75rem;
 }
 
-/* 消息图标 */
-/* #header .icon-msg { */
+/* 搜索图标 */
 #header a:last-child {
     position: absolute;
     /* 12px */
@@ -163,6 +191,306 @@ img {
     background-size: contain;
 }
 
+/* ======主体====== */
+main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* 50px */
+    top: 2.5rem;
+    bottom: 2.5rem;
+    /* x轴多余部分隐藏 */
+    overflow-x: hidden;
+    /* y轴可以出现滚动条 */
+    overflow-y: auto;
+}
+
+/* ======banner====== */
+.banner {
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+}
+
+/* ======菜单====== */
+main nav li {
+    float: left;
+    width: 33%;
+    text-align: center;
+    /* 10px */
+    padding: .5rem 0;
+}
+
+/* 图标和字体两行显示 */
+main nav span {
+    display: block;
+}
+
+/* 底部字体小一点 */
+main nav .text {
+    /* 10px */
+    font-size: .5rem;
+}
+
+/* 图标大小 */
+main nav span.iconfont {
+    /* 30px; */
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* 加个过渡动画 */
+    transition: all 1s ease;
+}
+
+/* 菜单图标添加hover动画 */
+main nav span:hover {
+    color: black !important;
+}
+
+/* 新闻 */
+main li:nth-child(1) span.iconfont {
+    color: #ec617a;
+}
+
+/* 专业 */
+main li:nth-child(2) span.iconfont {
+    color: #ea5c09;
+    /* 这个图标以及很粗了 */
+    font-weight: normal;
+}
+
+/* 生活 */
+main li:nth-child(3) span.iconfont {
+    color: #8a9b0f;
+}
+
+/* 国学 */
+main li:nth-child(4) span.iconfont {
+    color: #1a8236;
+}
+
+/* 资源 */
+main li:nth-child(5) span.iconfont {
+    color: #0493e6;
+    /* 这个图标以及很粗了 */
+    font-weight: normal;
+}
+
+/* 实验 */
+main li:nth-child(6) span.iconfont {
+    color: #8e23c3ba;
+}
+
+/* ======文章列表====== */
+.htitle {
+    /* 14px */
+    font-size: .7rem;
+    /* 30px */
+    line-height: 1.5rem;
+    /* 1px */
+    border-bottom: .05rem solid #eee;
+    color: #484848;
+    position: relative;
+    /* 10px */
+    padding-left: .5rem;
+    /* margin-bottom: .5rem; */
+}
+
+/* 生成一个下划线 */
+.htitle::after {
+    content: '';
+    /* 54px */
+    width: 2.7rem;
+    /* 1px */
+    height: .05rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    margin-left: 0.5rem;
+    transition: all 500ms ease;
+}
+
+/* 下划线延长 */
+.htitle:hover:after {
+    /* 66px */
+    width: 3.3rem;
+}
+
+/* 最后一篇文章底部留白 */
+.bloglist ul {
+    /* 20px */
+    padding-bottom: 1rem;
+}
+
+/* 文章列表的每一项 */
+.bloglist li {
+    overflow: hidden;
+    /* 120px */
+    min-height: 6rem;
+    /* 15px */
+    padding: .75rem;
+    /* 1px */
+    border-bottom: #eee .05rem dashed;
+    position: relative;
+}
+
+/* 文章标题 */
+.blogtitle {
+    /* 6px */
+    margin: 0 0 .3rem 0;
+    /* 16px */
+    font-size: .8rem;
+    overflow: hidden;
+}
+
+/* 置顶字眼 */
+.blogtitle strong {
+    color: red;
+}
+
+/* 设置过渡动画 */
+.blogtitle a {
+    transition: all 500ms ease;
+}
+
+/* hover动画 */
+.blogtitle a:hover {
+    color: #337ab7;
+    /* 10px */
+    padding-left: .5rem;
+}
+
+/* 展图 */
+.bloglist li .blogpic {
+    width: 100%;
+    /* 20px */
+    margin-right: 1rem;
+    display: block;
+    overflow: hidden;
+    /* 5px */
+    border-radius: .25rem;
+    position: relative;
+}
+
+/* 展图上的分类 */
+.blogpic i {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    font-style: normal;
+    /* 3px 5px */
+    padding: .15rem .25rem;
+    background: rgba(18, 182, 221, .8);
+    /* 14px */
+    font-size: .7rem;
+}
+
+/* 展图文字颜色 */
+.blogpic i a {
+    color: #fff;
+}
+
+/* 文章简介 */
+.blogtext {
+    color: #666;
+    /* 8px */
+    margin-top: .4rem;
+    /* 24px */
+    line-height: 1.2rem;
+    /* 120px */
+    max-height: 6rem;
+    color: #666;
+    font-size: .7rem;
+    overflow: hidden;
+}
+
+/* 作者信息 */
+.bloginfo {
+    color: #999;
+    /* 30px */
+    line-height: 1.5rem;
+    /* 16px */
+    font-size: 0.8rem;
+    /* 10px */
+    margin-top: .5rem;
+    overflow: hidden;
+}
+
+/* 信息 */
+.bloginfo div:first-child {
+    float: left;
+    /* 4px 和阅读更多基本对齐 */
+    padding-top: .2rem;
+}
+
+/* 阅读更多 */
+.bloginfo div:last-child {
+    float: right;
+}
+
+/* 头像 */
+.bloginfo i {
+    float: left;
+    /* 30px */
+    width: 1.5rem;
+    height: 1.5rem;
+    /* 变成圆 */
+    border-radius: 50%;
+    /* 2px */
+    padding: .1rem;
+    display: block;
+    position: relative;
+    /* 线性渐变 */
+    background: linear-gradient(to top right, rgba(0, 153, 255, .9), rgba(42, 228, 197, .7));
+}
+
+/* 头像也变成圆 */
+.bloginfo i img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* 添加一个认证标志 */
+.bloginfo i::after {
+    content: '';
+    background: url(../../images/v.png) no-repeat;
+    /* 12px */
+    background-size: .6rem;
+    width: .6rem;
+    height: .6rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+/* 作者和时间距离头像留白 */
+.bloginfo time,
+.bloginfo span:nth-of-type(1) {
+    /* 6px */
+    padding-left: .3rem;
+}
+
+/* 分类字体颜色 */
+.bloginfo span a {
+    color: #096;
+}
+
+.bloginfo .viewmore {
+    display: block;
+    /* 4px 6px */
+    padding: .2rem .3rem;
+    color: #fff;
+    background: #12b7de;
+    /* 5px */
+    border-radius: .25rem;
+}
+
 /* ======底部====== */
 #footer {
     position: absolute;
@@ -178,8 +506,8 @@ img {
     float: left;
     width: 25%;
     text-align: center;
-    /* 6px */
-    padding-top: .3rem;
+    /* 5px */
+    padding-top: .25rem;
     /* 20px */
     line-height: 1rem;
 }
@@ -200,4 +528,11 @@ img {
     font-size: .5rem;
 }
 
-/* ======主体====== */
+/* 手机屏幕 */
+@media screen and (max-width: 414px) {
+
+    /* 隐藏作者姓名(看头像就ok了) */
+    .bloginfo span:nth-of-type(1) {
+        display: none;
+    }
+}

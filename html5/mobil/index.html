@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>逆天博客-手机首页</title>
     <link rel="stylesheet" href="./sytle/css/base.css">
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1148101_xjatrvyid48.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1148101_h5fe3ssorlk.css">
 </head>
 
 <body>
@@ -24,35 +24,214 @@
             <!-- 搜索 -->
             <a href="#" class="iconfont icon-search"></a>
         </header>
+        <!-- 主体内容 -->
         <main id="main">
-            
+            <!-- 幻灯片 -->
+            <section class="banner">
+                <img src="./images/banner/1.jpg" alt="1" />
+            </section>
+            <!-- 分类导航 -->
+            <!-- nav>ul>li*6>a.iconfont -->
+            <nav class="bg_white">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-news"></span>
+                            <sapn class="text">资 讯</sapn>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-html5"></span>
+                            <sapn class="text">专 业</sapn>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-jujia"></span>
+                            <sapn class="text">生 活</sapn>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-guoxue"></span>
+                            <sapn class="text">国 学</sapn>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-yunpan"></span>
+                            <sapn class="text">资 源</sapn>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="iconfont icon-shiyan"></span>
+                            <sapn class="text">实 验</sapn>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- 文章主体 -->
+            <article>
+                <!-- 文章列表 -->
+                <section class="bloglist bg_white">
+                    <!-- 标题 -->
+                    <h2 class="htitle">推荐文章</h2>
+                    <!-- 文章 -->
+                    <ul>
+                        <!-- 以此为循环（每页15个） -->
+                        <li class="clearfix">
+                            <!-- 标题 -->
+                            <h3 class="blogtitle two_dot_hide">
+                                <!-- 置顶就显示这行 -->
+                                <strong>【顶】</strong>
+                                <a href="#">今天又看到一前端禁止调试的手段，分享下~</a>
+                            </h3>
+                            <!-- 显示发布文章时分配的展图 -->
+                            <div class="blogpic imgscale">
+                                <!-- 分类名称 -->
+                                <i><a href="#">Web</a></i>
+                                <a href="#" title="今天又看到一前端禁止调试的手段，分享下~">
+                                    <img src="../html5/images/dis/2.jpg" alt="今天又看到一前端禁止调试的手段，分享下~">
+                                </a>
+                            </div>
+                            <!-- 简介部分 -->
+                            <div class="blogtext three_dot_hide">
+                                点评：这次屏蔽和上次不太一样，是通过正常函数来实现的。PS：这个网站的屏蔽方式在360浏览器下生效，谷歌浏览器并没有生效（me：版本 70.0.3538.110）
+                            </div>
+                            <!-- 作者、时间、分类 -->
+                            <div class="bloginfo">
+                                <div>
+                                    <i><img src="./images/avatar.jpg"></i>
+                                    <span>逆天</span>
+                                    <time>2019-04-14</time>
+                                    <span>【<a href="#" target="_blank">Web</a>】</span></div>
+                                <div><a href="#" class="viewmore">阅读更多</a></div>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <!-- 标题 -->
+                            <h3 class="blogtitle two_dot_hide">
+                                <strong>【顶】</strong>
+                                <a
+                                    href="#">超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~~~</a>
+                            </h3>
+                            <!-- 显示发布文章时分配的展图 -->
+                            <div class="blogpic imgscale">
+                                <!-- 分类名称 -->
+                                <i><a href="#">五代十国</a></i>
+                                <a href="#" title="今天又看到一前端禁止调试的手段，分享下~">
+                                    <img src="../html5/images/dis/1.jpg" alt="今天又看到一前端禁止调试的手段，分享下~">
+                                </a>
+                            </div>
+                            <!-- 简介部分 -->
+                            <div class="blogtext three_dot_hide">
+                                超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，
+                                70.0.3538.110）
+                            </div>
+                            <!-- 作者、时间、分类 -->
+                            <div class="bloginfo">
+                                <div>
+                                    <i><img src="./images/avatar.jpg"></i>
+                                    <span>逆天</span>
+                                    <time>2019-04-14</time>
+                                    <span>【<a href="#" target="_blank">Web</a>】</span></div>
+                                <div><a href="#" class="viewmore">阅读更多</a></div>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <!-- 标题 -->
+                            <h3 class="blogtitle two_dot_hide">
+                                <a href="#">今天又看到一前端禁止调试的手段，分享下~</a>
+                            </h3>
+                            <!-- 显示发布文章时分配的展图 -->
+                            <div class="blogpic imgscale">
+                                <!-- 分类名称 -->
+                                <i><a href="#">JavaScript</a></i>
+                                <a href="#" title="今天又看到一前端禁止调试的手段，分享下~">
+                                    <img src="../html5/images/dis/3.jpg" alt="今天又看到一前端禁止调试的手段，分享下~">
+                                </a>
+                            </div>
+                            <!-- 简介部分 -->
+                            <div class="blogtext three_dot_hide">
+                                点评：这次屏蔽和上次不太一样，是通过正常函数来实现的。PS：这个网站的屏蔽方式在360浏览器下生效，谷歌浏览器并没有生效（me：版本 70.0.3538.110）
+                            </div>
+                            <!-- 作者、时间、分类 -->
+                            <div class="bloginfo">
+                                <div>
+                                    <i><img src="./images/avatar.jpg"></i>
+                                    <span>逆天</span>
+                                    <time>2019-04-14</time>
+                                    <span>【<a href="#" target="_blank">JavaScript</a>】</span></div>
+                                <div><a href="#" class="viewmore">阅读更多</a></div>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <!-- 标题 -->
+                            <h3 class="blogtitle two_dot_hide">
+                                <a href="#">超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~超长标题测试~~~</a>
+                            </h3>
+                            <!-- 显示发布文章时分配的展图 -->
+                            <div class="blogpic imgscale">
+                                <!-- 分类名称 -->
+                                <i><a href="#">Python</a></i>
+                                <a href="#" title="今天又看到一前端禁止调试的手段，分享下~">
+                                    <img src="../html5/images/dis/4.jpg" alt="今天又看到一前端禁止调试的手段，分享下~">
+                                </a>
+                            </div>
+                            <!-- 简介部分 -->
+                            <div class="blogtext three_dot_hide">
+
+                                超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，超长内容测试，
+                                70.0.3538.110）
+                            </div>
+                            <!-- 作者、时间、分类 -->
+                            <div class="bloginfo">
+                                <div>
+                                    <i><img src="./images/avatar.jpg"></i>
+                                    <span>逆天</span>
+                                    <time>2019-04-14</time>
+                                    <span>【<a href="#" target="_blank">Python</a>】</span></div>
+                                <div><a href="#" class="viewmore">阅读更多</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </main>
         <!-- 尾部导航 -->
         <!-- footer#footer>ul>li*4>a>span.iconfont+sapn.text -->
         <footer id="footer">
             <ul>
                 <li>
-                    <a href="#">
-                        <span class="iconfont icon-home_icon"></span>
-                        <sapn class="text">首页</sapn>
+                    <a href="/">
+                        <span class="iconfont icon-home"></span>
+                        <sapn class="text">首 页</sapn>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <span class="iconfont icon-HTML"></span>
-                        <sapn class="text">专业</sapn>
+                        <span class="iconfont icon-html"></span>
+                        <sapn class="text">专 业</sapn>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <span class="iconfont icon-show_icon"></span>
-                        <sapn class="text">资源</sapn>
+                        <span class="iconfont icon-show"></span>
+                        <sapn class="text">资 源</sapn>
                     </a>
                 </li>
+                <!-- <li>
+                    <a href="#">
+                        <span class="iconfont icon-guoxue"></span>
+                        <sapn class="text">国 学</sapn>
+                    </a>
+                </li> -->
                 <li>
                     <a href="#">
-                        <span class="iconfont icon-guoxuejingdian"></span>
-                        <sapn class="text">国学</sapn>
+                        <span class="iconfont icon-me"></span>
+                        <sapn class="text">我 的</sapn>
                     </a>
                 </li>
             </ul>
