@@ -155,6 +155,17 @@ img {
     background-color: white;
 }
 
+/* 彩色条 */
+#header::after {
+    content: '';
+    width: 100%;
+    /* 3px */
+    height: .15rem;
+    background: #000 linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    position: absolute;
+    bottom: 0;
+}
+
 /* 设置图标大小 */
 #header a {
     /* 25px */
@@ -281,7 +292,7 @@ main li:nth-child(5) span.iconfont {
 
 /* 实验 */
 main li:nth-child(6) span.iconfont {
-    color: #8e23c3ba;
+    color: #b04be2;
 }
 
 /* ======文章列表====== */
@@ -491,6 +502,64 @@ main li:nth-child(6) span.iconfont {
     border-radius: .25rem;
 }
 
+/* ===版权信息=== */
+#main footer {
+    width: 100%;
+    color: #73777a;
+    /* 15px */
+    font-size: .75rem;
+    /* 20px */
+    padding: 1rem 0;
+    background: #373d41;
+    /* 4px */
+    border-top: #00c1de .2rem solid;
+    overflow: hidden;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.copyright a {
+    color: #a7a8a9;
+}
+
+.copyright a:hover {
+    color: #00c1de;
+}
+
+/* 置顶 */
+#tbox {
+    /* 50px */
+    line-height: 2.5rem;
+    /* 20px */
+    right: 1rem;
+    bottom: 12%;
+    position: fixed;
+}
+
+#tbox a.iconfont {
+    /* 50px */
+    font-size: 2.5rem;
+}
+
+.top {
+    /* 50px */
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    color: #fff;
+    /* 6px */
+    border-radius: .3rem;
+    background-color: #000;
+}
+
+.top:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .4);
+}
+
 /* ======底部====== */
 #footer {
     position: absolute;
@@ -500,14 +569,25 @@ main li:nth-child(6) span.iconfont {
     /* 50px */
     height: 2.5rem;
     background-color: white;
+    overflow: hidden;
+}
+
+#footer::before {
+    content: '';
+    width: 100%;
+    /* 3px */
+    height: .1rem;
+    background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    position: absolute;
+    top: 0;
 }
 
 #footer li {
     float: left;
     width: 25%;
     text-align: center;
-    /* 5px */
-    padding-top: .25rem;
+    /* 7px */
+    padding-top: .35rem;
     /* 20px */
     line-height: 1rem;
 }
