@@ -10,4 +10,4 @@ window.onresize = set_font_size;
 // 需要手动执行一次
 window.onload = set_font_size;
 
-// 2.
+// 2.xxx
