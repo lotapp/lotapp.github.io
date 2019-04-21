@@ -322,8 +322,8 @@ main li:nth-child(6) span.iconfont {
 
 /* 最后一篇文章底部留白 */
 .bloglist ul {
-    /* 20px */
-    padding-bottom: 1rem;
+    /* 10px */
+    padding-bottom: 0.5rem;
 }
 
 /* 文章列表的每一项 */
