@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shoticon" href="./favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=0">
+  <meta name="description" content="在线MarkDown编辑器（微信公众号编辑器）">
+  <title>逸鹏说道~在线MarkDown编辑器</title>
+  <script src="./js/index.js"></script>
+  <link rel="stylesheet" href="./themes/github-v2.css" id="codeThemeId" />
+  <link rel="stylesheet" id="pageThemeId" />
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+    }
+
+    .topheader {
+      width: 100%;
+      float: left;
+      height: 100px;
+    }
+
+    #input {
+      width: 50%;
+      position: absolute;
+      top: 100px;
+      /*bottom: 100px;*/
+      left: 0px;
+    }
+
+    #output {
+      width: 50%;
+      position: absolute;
+      top: 100px;
+      /*bottom: 100px;*/
+      left: 50%;
+    }
+
+    .convert-button,
+    .copy-button {
+      position: inherit;
+    }
+
+    .google-adv {
+      height: 100px;
+      width: 50%;
+      position: absolute;
+      top: 0px;
+      right: 200px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="topheader">
+    <a href="https://www.cnblogs.com/dotnetcrazy/p/9111781.html">
+      <h1>逸鹏说道</h1>
+    </a>
+    <span>微信公众号编辑器</span>
+    <ul>
+      <li>
+        <iframe allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px" class="github-star"
+          src="http://ghbtns.com/github-btn.html?user=lotapp&amp;repo=online-markdown&amp;type=star&amp;count=true&amp;size=middle"></iframe>
+      </li>
+    </ul>
+  </div>
+  <!--编辑-->
+  <textarea id="input" spellcheck="false"></textarea>
+  <!--预览-->
+  <div id="output" class="themes-config">
+    <div class="theme-wrapper">
+      <label>页面主题选择：</label><select class="page-theme"></select><br><br>
+      <label>代码主题选择：</label><select class="code-theme"></select>
+    </div>
+    <div class="theme-wrapper">
+      <button class="btn copy-button" data-clipboard-action="cut" data-clipboard-target="#outputCtt">复制</button>
+    </div>
+    <div class="wrapper" id="outputCtt"></div>
+  </div>
+  <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+</body>
+
+</html>
