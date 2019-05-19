@@ -12,7 +12,7 @@
         - [2.3.Python专栏](#23python%E4%B8%93%E6%A0%8F)
             - [1.调试相关](#1%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3)
         - [2.4.大前端系列](#24%E5%A4%A7%E5%89%8D%E7%AB%AF%E7%B3%BB%E5%88%97)
-        - [其他系列](#%E5%85%B6%E4%BB%96%E7%B3%BB%E5%88%97)
+            - [其他系列](#%E5%85%B6%E4%BB%96%E7%B3%BB%E5%88%97)
         - [Old Article（Web）](#old-articleweb)
             - [Web大前端时代之：HTML5+CSS3入门系列](#web%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%97%B6%E4%BB%A3%E4%B9%8Bhtml5css3%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97)
             - [LoT.UI前后台通用框架分解系列汇总](#lotui%E5%89%8D%E5%90%8E%E5%8F%B0%E9%80%9A%E7%94%A8%E6%A1%86%E6%9E%B6%E5%88%86%E8%A7%A3%E7%B3%BB%E5%88%97%E6%B1%87%E6%80%BB)
@@ -190,6 +190,9 @@ PS：dbForge Studio for MySQL V8.0 Enterprise
 **05.`Anaconda换源`小记**
 - <https://www.cnblogs.com/dotnetcrazy/p/9750321.html>
 
+**PS：现在`不推荐换源`了，国内的现在基本上都移除Conda的镜像了（国内没授权）**
+> 我是直接使用原始的pip了，包管理就使用虚拟环境
+
 **06.`Jupyter-NoteBook` ~ 像`写文章般Coding` （附：同一个ipynb文件，`执行多语言代码`）**
 - <https://www.cnblogs.com/dotnetcrazy/p/9198629.html>
 
@@ -331,7 +334,7 @@ PS：一个`模块导入`的简单小`测试`
 **05.前端菜鸟的`小程序`摸索记录**
 - <https://www.cnblogs.com/dotnetcrazy/p/10597311.html>
 
-### 其他系列
+#### 其他系列
 
 **借助baidu的`jsonp`接口，做一个自己的候`选词组件`**
 - <https://www.cnblogs.com/dotnetcrazy/p/10107236.html>
