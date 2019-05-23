@@ -51,8 +51,11 @@
     - [8.区块链系](#8%E5%8C%BA%E5%9D%97%E9%93%BE%E7%B3%BB)
 
 **PS：`文章一直在更新`，建议看原文。他人抓取的可能更新不太及时**
+> 在线预览：<https://github.lesschina.com>
 
 ![img](https://images2018.cnblogs.com/blog/658978/201806/658978-20180609175806571-924134950.jpg)
+
+**常用解决方案**：<https://github.com/lotapp/awesome-tools>
 
 ## 1.Linux系列
 
