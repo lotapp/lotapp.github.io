@@ -567,6 +567,9 @@ SignalR代理对象异常：Uncaught TypeError: Cannot read property 'client' of
 **PS：`CentOS7`安装`MySQL8.0`安装小计**
 - <https://www.cnblogs.com/dotnetcrazy/p/10871352.html>
 
+**PS：`MySQL5.7.26`忘记Root密码小计**
+- <https://www.cnblogs.com/dotnetcrazy/p/11027732.html>
+
 **聊聊数据库~3.`SQL基础`篇（`MySQL`）**
 ><https://www.cnblogs.com/dotnetcrazy/p/10399838.html>
 
