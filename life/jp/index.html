@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>日语50音图</title>
+    <style>
+        /* 去除空隙 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Microsoft Yahei;
+            background: url(./images/bg.png) repeat 0 0;
+        }
+
+        #main {
+            /* 375px */
+            width: 18.75rem;
+            margin: 0 auto;
+        }
+
+        .top {
+            width: 100%;
+            /* 59px */
+            height: 2.95rem;
+            background: url(./images/top.jpg) no-repeat center;
+            /* 等比缩放 */
+            background-size: contain;
+        }
+
+        .bottom {
+            width: 100%;
+            text-align: center;
+        }
+
+        .bottom a {
+            /* 16px */
+            font-size: .8rem;
+            font-weight: bold;
+            color: #383838;
+            padding-right: 1em;
+            text-decoration: none;
+        }
+
+        article {
+            width: 100%;
+            /* 280px */
+            height: 14rem;
+            overflow: hidden;
+        }
+
+        footer {
+            /* 11px */
+            font-size: .55rem;
+            /* 2px */
+            letter-spacing: .1rem;
+        }
+
+        footer .title {
+            font-weight: bold;
+        }
+    </style>
+    <!--[if lte IE 9]>
+        <script type="text/javascript" src="https://cdn.staticfile.org/modernizr/2.8.3/modernizr.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 兼容IE -->
+    <div id="main">
+        <header>
+            <div class="top"></div>
+            <div class="bottom">
+                <a href="#" title="五十音发音表">五十音发音表</a>
+                <a href="#" title="五十音笔顺表">五十音笔顺表</a>
+            </div>
+        </header>
+        <article>
+            <!-- 透明插入 -->
+            <embed src="./images/50.swf" width="100%" height="100%" wmode="transparent">
+        </article>
+        <footer>
+            <div class="title">日语五十音小贴士</div>
+            <p>日语的字母叫做假名，每个假名代表一个音节。假名有两种书写方式，即平假名和片假名，平假名用于一般书写，片假名则用于表示外来语和特殊词汇等。日语的假名分为清音、浊音、半浊音、拨音4种。将清音按照发音规律排列在一起，再加上拨音“ん”构成的字母表叫做“五十音图”。背诵五十音图是学习日语的基础。
+            </p>
+            <p>很多学日语的中国学生都有一个通病，那就是把日语念得非常有“中国味”。常见的顽固发音错误有四点：①发音过重、过长 ②口型多变，嘴张得很开 ③な、ら不分
+                ④从喉咙发声。五十音作为日语入门最关键的一个环节，必须从基础开始重视起来。</p>
+        </footer>
+    </div>
+    <script>
+        // 1.根据屏幕动态调整html文档的字体（现在移动端都是这么干的）
+        var set_font_size = function () {
+            var dom = document.documentElement;
+            // 屏幕大于375的2倍就以375的2倍来计算（防止PC端头尾太高）
+            var clientWidthValue = dom.clientWidth > 750 ? 750 : dom.clientWidth;
+            // 375默认大小是20px，那就等比缩放
+            dom.style.fontSize = 20 * (clientWidthValue / 375) + 'px';
+        }
+        window.onresize = set_font_size;
+        // 需要手动执行一次
+        window.onload = set_font_size;
+    </script>
+</body>
+
+</html>
