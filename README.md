@@ -118,6 +118,9 @@ PS：**2.CentOS服务器`网络配置`（动态+静态）**
 **01.`Ubuntu`离线安装`VSCode`**
 - <https://www.cnblogs.com/dunitian/p/6661644.html>
 
+**01.本地`VSCode`编辑`远程`服务器`文件`**
+- <https://www.cnblogs.com/dotnetcrazy/p/11254225.html>
+
 扩：VSCode `MSSQL`插件使用：<https://www.cnblogs.com/dunitian/p/8045081.html>
 - **VS相关配置及异常**：<https://www.cnblogs.com/dunitian/p/4522988.html#vscode>
 
@@ -314,6 +317,9 @@ PS：一个`模块导入`的简单小`测试`
 - <https://mp.weixin.qq.com/s/zL8RhRb38N-t3s-9bkzP-w>
 
 ### 2.3.Python专栏
+
+**`Python3`开发过程常见的`异常`**
+- <https://www.cnblogs.com/dotnetcrazy/p/9192089.html>
 
 #### 1.调试相关
 
@@ -579,6 +585,9 @@ SignalR代理对象异常：Uncaught TypeError: Cannot read property 'client' of
 **聊聊数据库~5.`SQL运维`上篇（`MySQL`）**
 - <https://www.cnblogs.com/dotnetcrazy/p/10810798.html>
 
+**聊聊数据库~6.`SQL运维`中篇（`MySQL`）**
+- <https://www.cnblogs.com/dotnetcrazy/p/11029323.html>
+
 #### Other
 
 **监控`MySQL`|`Redis`|`MongoDB`的执行语句（`go-sniffer`）**
@@ -722,6 +731,9 @@ PS：当时写这个的时候主要是虚拟云服务器，云服务器就更简
 续上次的腾讯企业邮箱
 - <http://www.cnblogs.com/dunitian/p/8214052.html>
 
+记一次莫名的需求（临时邮箱|企业邮箱）
+- <https://www.cnblogs.com/dotnetcrazy/p/11068368.html>
+
 ##### 5.其他内容
 
 1.阿里云accessKey如何创建？
@@ -833,6 +845,9 @@ PS：当时写这个的时候主要是虚拟云服务器，云服务器就更简
 13.Hyper-V：无法打开虚拟机XXX，因为虚拟机监控程序未运行
 - <http://www.cnblogs.com/dunitian/p/6657344.html>
 
+14.记一次 WPS Pro 2019 设备和驱动器图标删除
+- <https://www.cnblogs.com/dotnetcrazy/p/11149948.html>
+
 ---
 
 ## 6.安全测试
@@ -845,7 +860,13 @@ PS：当时写这个的时候主要是虚拟云服务器，云服务器就更简
 - <a href="https://mp.weixin.qq.com/s/T680I8Pgo-KqwJizO3wfPQ">https://www.cnblogs.com/dotnetcrazy/p/10513460.html</a>
 
 **这期懂者自懂**（续集）
-<https://mp.weixin.qq.com/s/hnJa6s4oYF3lSfVOCFWYrw>
+- <https://mp.weixin.qq.com/s/hnJa6s4oYF3lSfVOCFWYrw>
+
+**FQ加密番外篇**
+- <https://mp.weixin.qq.com/s/VJt-wT6T4BJvnhoVtWKFCg>
+
+**FQ混淆番外篇**
+- <https://mp.weixin.qq.com/s/DTK9c13WMYy4nON2BMfGcQ>
 
 ### Old Article（2015）
 
@@ -866,6 +887,9 @@ PS：当时写这个的时候主要是虚拟云服务器，云服务器就更简
 
 【QQ技术】群文件报毒怎样下载？~ 变相绕过QQ复杂检验过程（思路最重要）
 - <https://www.cnblogs.com/dunitian/p/4761197.html>
+
+记一次Net软件逆向的过程（经典）
+- <https://www.cnblogs.com/dotnetcrazy/p/10142315.html>
 
 #### 1.Kali部署
 
@@ -938,6 +962,9 @@ PS：当时写这个的时候主要是虚拟云服务器，云服务器就更简
 
 **借网站日记分析~普及一下`Pandas`基础**
 - <https://www.cnblogs.com/dotnetcrazy/p/9405485.html>
+
+女性对`DeepNude`脱衣技术的防护
+- <https://www.cnblogs.com/dotnetcrazy/p/11141573.html>
 
 ### 7.2.todo
 
